@@ -21,8 +21,11 @@
   > `ABSOLUTELY NO on-screen text, NO subtitles, NO captions, NO burned-in words of ANY kind anywhere in the frame — completely clean footage, all text added later in post.`
 - 品牌名 / CTA / 字幕 **全部后期（CapCut/Canva）加**，AI 生成保持干净无字。
 
-### 2. 真人感：会眨眼 + 眼珠会动（否则「木偶死眼」）
-- prompt 写：
+### 2. 真人感：照片级真人 + 会眨眼 + 眼珠会动（否则「卡通脸 / 木偶死眼」）
+- 🔴 **数字人必须「照片级真人」**（不是卡通、不是 3D avatar）：prompt 写死
+  > `PHOTOREAL, REALISTIC HUMAN presenter talking to camera, a real-looking person, natural skin, NOT a cartoon, NOT a 3D avatar, NOT CGI.`
+  漏了这条第一版就会出卡通/塑料脸（详见 `03-ai-avatar.md`）。
+- prompt 再写活人细节：
   > `BLINKS naturally, EYES alive with the eyeballs MOVING via subtle micro-saccades, gaze shifts naturally, small head/eyebrow micro-movements, gentle breathing — a real living human, NOT a staring mannequin with dead eyes.`
 - 静态参考图 + 没写眼动 → 模型只动嘴、眼睛发呆。
 
