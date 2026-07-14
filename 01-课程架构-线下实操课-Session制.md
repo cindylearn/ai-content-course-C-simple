@@ -13,14 +13,14 @@
 ## 课程地图（一眼看懂全程）
 
 ```
-Session 0  喂地基（Feed）
+Session 0  喂地基（Feed · 原始资料库 + 八二法则）
    │
-   ├─ Session 1  AI 文案      ┐
-   ├─ Session 2  AI 图像      │
-   ├─ Session 3  AI 数字人    │  6 个 AI 技能
-   ├─ Session 4  AI PPT       │  一节一个，学 + 当场做出产物
-   ├─ Session 5  AI 音乐      │
-   ├─ Session 6  AI 影片      ┘
+   ├─ Session 1  AI 文案      ┐  每个都先分：个人IP内容 / 卖产品·服务
+   ├─ Session 2  AI 图文      │
+   ├─ Session 3  AI 影片      │  6 个 AI Agent
+   ├─ Session 4  AI 数字人    │  一节一个，学 + 当场做出产物
+   ├─ Session 5  AI PPT       │
+   ├─ Session 6  AI Music     ┘
    │
    ├─ Session 7  内容矩阵（大脑）
    ├─ Session 8  图文生产线
@@ -60,40 +60,40 @@ Session 0  喂地基（Feed）
 - 🛠️ 动手：把验证框架喂给 Claude，写你行业的 ToFu / MoFu / BoFu 各一条。
 - 🎁 交付：**3 条广告文案**。
 
-### Session 2 · AI 图像
-- 🎯 目标：出一张场景化海报 + 合上你的 logo。
+### Session 2 · AI 图文
+- 🎯 目标：出一张场景化海报 + 合上你的 logo（先分：个人IP内容 / 卖产品·服务）。
 - 📦 skill：Higgsfield（图像）
 - 📖 md：`tools/02-ai-image`
-- 🛠️ 动手：写场景 prompt → 出图 → Read 图审 → PIL 合 logo(顶部 header 带)。
+- 🛠️ 动手：挑海报风格（5 选 1）→ 写场景 prompt → 出图 → Read 图审 → PIL 合 logo(顶部 header 带)。
 - 🎁 交付：**1 张成品海报（带你的 logo）**。
 
-### Session 3 · AI 数字人
-- 🎯 目标：做一个照片级真人数字主播替你出镜。
+### Session 3 · AI 影片
+- 🎯 目标：做出一支完整短视频（先分：个人IP·数字人口播 / 产品·服务广告）。
+- 📦 skill：Higgsfield（Seedance）· `script-to-video-prompt`
+- 📖 md：`tools/06-ai-video`
+- 🛠️ 动手：8 分镜脚本 → 锁人物 → 逐镜生成(先 1 镜验证 480p) → 配乐 → 拼接。
+- 🎁 交付：**1 支完整短视频**。
+
+### Session 4 · AI 数字人
+- 🎯 目标：做一个照片级真人数字主播替你出镜（不用露脸也能天天出片）。
 - 📦 skill：Higgsfield（Seedance）
 - 📖 md：`tools/03-ai-avatar`
 - 🛠️ 动手：出人物参考图锁脸 → 生成一段数字人口播。
 - 🎁 交付：**你的数字主播 + 一段口播**。
 
-### Session 4 · AI PPT
+### Session 5 · AI PPT
 - 🎯 目标：做一页会卖的卖点页/汇报。
 - 📦 skill：Claude / AI PPT 工具
 - 📖 md：`tools/04-ai-ppt`
 - 🛠️ 动手：把内容结构排好 → 做一页品牌化卖点页。
 - 🎁 交付：**1 份卖点 PPT**。
 
-### Session 5 · AI 音乐
+### Session 6 · AI Music
 - 🎯 目标：给视频配有质感的背景乐。
 - 📦 skill：Suno
 - 📖 md：`tools/05-ai-music`
 - 🛠️ 动手：按情绪 prompt Suno，出一段无人声背景乐。
 - 🎁 交付：**1 段可商用背景乐**。
-
-### Session 6 · AI 影片
-- 🎯 目标：做出一支完整的口播短视频。
-- 📦 skill：Higgsfield（Seedance）· `script-to-video-prompt`
-- 📖 md：`tools/06-ai-video`
-- 🛠️ 动手：8 分镜脚本 → 锁人物 → 逐镜生成(先 1 镜验证 480p) → 配乐 → 拼接。
-- 🎁 交付：**1 支完整短视频（约 90 秒）**。
 
 > ⬆️ 到这里，6 个 AI 技能都学会，且**每个都有一件真产物**。下面开始把它们串成系统。
 
