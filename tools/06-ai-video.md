@@ -85,10 +85,49 @@
 - **配乐**：Suno 背景乐 ffmpeg 垫底轨、音量压低（见 `tools/05`）。
 - **音效**：在时间点混 SFX（转场声/点击声）→ ffmpeg `adelay` + `amix`。
 - **基础特效/转场**：淡入淡出、缩放推拉、文字动画（ffmpeg `fade` / `zoompan` / `drawtext`）。
-- 🔴 **复杂特效/花哨转场**（花字、贴纸、节奏卡点）仍靠剪映/CapCut，或下面的 Gemini。
+- 🔴 **复杂特效/花哨转场**（花字、贴纸、节奏卡点）→ 用下面的 **HyperFrames**，或剪映/CapCut。
 
-### 进阶（待试）：Gemini Omni 智能剪辑
-Gemini 这类**能"看懂"视频的多模态模型**，理论上能做更聪明的剪辑（自动找高光、配 B-roll、按内容加转场字幕），但要**给它清楚的剪辑指令**（节奏/风格/字幕样式）。要接进流程做「一句话剪片」，需要**连 Gemini 的 API/connector**（目前没接）——想试就先弄一个 Google AI/Gemini key，再把「视频 + 剪辑指令 → 成片」的流程搭起来试。
+---
+
+## 🔥 AI 剪辑进阶：HyperFrames（写 HTML → 渲染视频 · 免费商用 · 实测可用）
+
+CapCut 那种「动态字幕 / 花字 / 下三分标 / 卡点」，现在能**用代码做**——而且是 **AI agent 直接帮你写**。这是「一直人头、没包装」这个缺口的真解。
+
+**它是什么**：HeyGen 开源的框架（**Apache-2.0，免费商用**），把 HTML/CSS/动画渲染成**确定性**的 MP4（同样输入 → 同样结果，可重跑、可参数化批量出片）。自带 20 个 skills 给 Claude Code 用。
+
+**装（一次过）**：
+```bash
+npx skills add heygen-com/hyperframes --all --full-depth --yes   # 20 个 skills
+brew install ffmpeg                                              # 必需（Windows 用 winget/choco）
+npx hyperframes doctor                                           # ffmpeg / ffprobe / Chrome 要全绿
+```
+
+**对着现成口播片，最常用这三个**（先读路由 `/hyperframes`，它会帮你选）：
+
+| skill | 干什么 |
+| --- | --- |
+| `/talking-head-recut` | 给人头片加**动态标题 / 下三分标 / 数据 callout / 引言卡 / 画中画** —— 治「一直人头」 |
+| `/embedded-captions` | 只加字幕（原片不动），主体还能**挡住**字幕（有层次） |
+| `/motion-graphics` | 单独做 10 秒内的动态图形 / logo sting / **透明**下三分标（可叠进剪映） |
+
+### 🔴 中文三大坑（实测踩过，照抄解法就好）
+
+1. **自带字体没有中文** —— 它 bundle 的 6 个字体**全是 latin 子集**（`LXGWWenKaiTC-400-latin.woff2` 才 19KB，真中文字体是 5–20MB）。直接用 → **中文全变豆腐块 □□□**。
+   → **解法**：自己放一个中文字体（**Noto Sans SC**，开源 OFL 可商用）进 `public/fonts/`，用 `@font-face` 引用。别只写 `font-family`，它的静态分析器不认。
+2. **Whisper 默认模型是纯英文** —— `tiny.en / small.en / medium.en` 全带 `.en`。
+   → **中文必须** `--model large-v3 --language zh`（多语言的只有 large-v3，约 3GB，第一次会自动下）。
+3. **中文没空格 → word 级时间码直接躺平** —— whisper-cpp 会把 84 秒整段吐成**一个** word（`0.32 → 84.04`），卡片定时全废。
+   → **解法**：如果你的片是**分镜拼的**，用 ffmpeg **检测硬切点**拿真实分段，再套**你自己的脚本文字**（比 ASR 还准、零错字）：
+   ```bash
+   ffmpeg -i in.mp4 -filter:v "select='gt(scene,0.3)',showinfo" -f null - 2>&1 | grep -oE "pts_time:[0-9.]+"
+   ```
+   ✅ **校验法**：每段「**字数 ÷ 秒数**」应稳定在 **~6 字/秒**；某段偏太多 = 那个切点抓错了（B-roll 的横摇/动画会产生假切点，要剔掉）。
+
+**它不干的事**（别指望）：**不改原片本身** —— 重新剪节奏、换背景、调色、改音频 = NLE 剪辑，超出它范围。原片在底下**完整播**，它只在上面叠设计好的图层。
+
+## 其他两条路（实测结论，别浪费时间）
+- **Remotion**（用 React 写视频）：能力相当、中文渲染同样干净。⚠️ 但 **>3 人的营利公司商用要买 Company License**（remotion.pro）；**个人 / ≤3 人公司 / 非营利 / 评估期免费**。你是小团队就能白嫖。
+- **Gemini Omni**（Google）：能生成视频、也能「附参考片 + 原片」做风格迁移。**实测：效果不稳、不好用**，中文字幕也烧不干净。当玩具行，别当生产工具。
 
 ## 接进系统
 - 成品贴回你的内容表 + 归档：`[Stage]/[受众]/Video 素材/[命名]/[分镜 + 完整版]`。
