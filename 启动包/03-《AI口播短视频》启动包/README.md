@@ -1,6 +1,6 @@
 # Skill · AI 影片（工具：Higgsfield / Seedance）
 
-**在系统里的工位：** 把脚本变成完整口播短视频 —— 视频生产线的核心（数字人见 `03-ai-avatar.md`，音乐见 `05-ai-music.md`）。
+**在系统里的工位：** 把脚本变成完整口播短视频 —— 视频生产线的核心（数字人见 `启动包/05-《AI数字分身》启动包`，音乐见 `启动包/07-《AI品牌配乐》启动包`）。
 
 > 🔴 **先分两条路线**（跟院长 slide 一致，脚本角度完全不同）：
 > - **个人 IP / AI 数字人口播**：你（或数字分身）出镜讲观点/方法，建立个人影响力——台词是「你的主张」，靠持续 + 独特观点。
@@ -28,7 +28,7 @@
 ### 2. 真人感：照片级真人 + 会眨眼 + 眼珠会动（否则「卡通脸 / 木偶死眼」）
 - 🔴 **数字人必须「照片级真人」**（不是卡通、不是 3D avatar）：prompt 写死
   > `PHOTOREAL, REALISTIC HUMAN presenter talking to camera, a real-looking person, natural skin, NOT a cartoon, NOT a 3D avatar, NOT CGI.`
-  漏了这条第一版就会出卡通/塑料脸（详见 `03-ai-avatar.md`）。
+  漏了这条第一版就会出卡通/塑料脸（详见 `启动包/05-《AI数字分身》启动包`）。
 - prompt 再写活人细节：
   > `BLINKS naturally, EYES alive with the eyeballs MOVING via subtle micro-saccades, gaze shifts naturally, small head/eyebrow micro-movements, gentle breathing — a real living human, NOT a staring mannequin with dead eyes.`
 - 静态参考图 + 没写眼动 → 模型只动嘴、眼睛发呆。
