@@ -19,7 +19,7 @@
 
 ## 第 0 关 · 账号 + 地基
 
-- 🗣️ **Claude 会问**：这 5 个账号有了吗——Claude / Notion / Higgsfield / Suno / GitHub？你的生意做什么？有 logo（浅底+深底）和品牌色吗？
+- 🗣️ **Claude 会问**：这 6 个账号有了吗——Claude / Notion / Higgsfield / ChatCut / Suno / GitHub？你的生意做什么？有 logo（浅底+深底）和品牌色吗？
 - 🙋 **你答（SUMA 例子）**：卖「AI 内容营销课程」；品牌色 #28c2e7 青 / #0f75bc 蓝 / #fcb040 橙；logo 两版都有。
 - 👉 缺账号，Claude 会给你注册链接（一次过装好，之后不用再装）。
 

@@ -50,7 +50,7 @@ Session 0  喂地基（Feed · 原始资料库 + 八二法则）
 - 🎯 目标：把你的品牌/生意喂进系统，账号连好。
 - 📦 skill：记忆系统（auto-memory）· `ai-content-factory`（总览）
 - 📖 md：`02-从零搭建` · `03-SETUP-详细清单-装连喂` · `07-TEMPLATE`
-- 🛠️ 动手：连 Notion / Higgsfield / Suno；把品牌名/受众/品牌色/logo/合规红线喂进 memory。
+- 🛠️ 动手：连 Notion / Higgsfield / ChatCut / Suno；把品牌名/受众/品牌色/logo/合规红线喂进 memory。
 - 🎁 交付：**你的品牌地基 memory + 账号全连好**。
 
 ### Session 1 · AI 文案

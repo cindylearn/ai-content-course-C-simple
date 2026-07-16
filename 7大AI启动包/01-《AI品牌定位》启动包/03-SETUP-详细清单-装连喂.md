@@ -30,7 +30,8 @@
 | **Notion** | 读写内容矩阵数据库（立项/填文案/贴成品/改状态） | ✅ 必须 |
 | **Higgsfield（生成引擎 MCP）** | `generate_image` 出图 · `generate_video` 出视频/数字人 | ✅ 必须 |
 | **Google Drive**（connector 或 `rclone`） | 成品图/视频分文件夹归档 | ✅ 要归档就要 |
-| **GitHub** | 把 skill/SOP/memory push 上去做版本记录 | 建议 |
+| **GitHub** | 把 skill/SOP/memory push 上去做版本记录。🔴 **注册用 email + 密码，别用「Sign in with Google」** —— GitHub 对第三方登入很敏感，**用 Google 登入常常开不到账号**；email + 密码最稳 | 建议 |
+| **ChatCut** | 影片后期：字幕 / 花字 / 音效 / BGM —— **中文片唯一可行的 AI 剪辑路**（生成 ≠ 成品）。新用户送约 40 credit，够剪第一支 | ✅ 出视频就要 |
 | Suno | 背景音乐（网页，未必有 MCP，手动导出也行） | 视频要用 |
 | （可选）Gmail / Calendar / Canva 等 | 发送 / 排期 / 设计，按需 | 选用 |
 

@@ -45,7 +45,7 @@ AI 帮你生成图片和文案，**你只要 Approve，它就自动做下一个*
    > 帮我从这个链接安装这个 skill：https://github.com/cindylearn/ai-content-course-B-cmo
    >
    → Claude 会自动把它 clone 进你的 skills 目录，不用你手动下载解压。
-3. **注册账号**（一次过）：Claude / Notion / Higgsfield / Suno / GitHub —— 见 `03-SETUP`。
+3. **注册账号**（一次过）：Claude / Notion / Higgsfield / ChatCut / Suno / GitHub —— 见 `03-SETUP`。
 4. **发一句**，Claude（以 CMO 身份）就主动开始：先诊断你的生意，再带你搭系统：
    ```
    用 ai-marketing-agent-system skill 带我搭我自己的 AI 营销内容系统。
