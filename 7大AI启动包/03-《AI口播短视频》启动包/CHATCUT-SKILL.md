@@ -184,6 +184,38 @@ BGM: decibelAdjustment ≈ -1.4  +  duckDepthDb: -19
 
 **它叫你先看，就先看。**
 
+## 12.5 S3 直传的两个坑（走底层通道时）
+
+`import_media` 的正式通道被 WAF 挡（403，卡在 128KB）→ 只能走 `request_asset_upload_url` + S3 直传。
+
+| 坑 | 现象 | 解法 |
+|---|---|---|
+| 🔴 **`size` 必须是精确字节数** | 估一个 → **403**。预签名 URL **签了 `content-length`**，差一个字节签名就废 | 先 `ls -l` / `stat` 量准再报 |
+| 🟡 **S3 会瞬时 503** | 第一次 503，重试立刻 200 | **要有重试**（3 次 + 退避）|
+| 🔴 **这条路没有标点** | 底层通道不走正式 ingest → 转录**无标点** | 用 `manage_transcript fix` 补（见坑 #2）|
+
+## 12.6 多分镜可以直接排，不用先拼 —— 但通常不该这么做
+
+**实测**：`edit_item` 的 `alignTo:"track-end"` **自动首尾相接**，连 **24fps 源 → 30fps 项目**都自动换算。
+
+```json
+{"adds":[
+  {"type":"video","assetId":"...","trackId":"...","fromFrame":0},
+  {"type":"video","assetId":"...","trackId":"...","alignTo":"track-end"},   // → 自动 from=298
+  {"type":"video","assetId":"...","trackId":"...","alignTo":"track-end"}    // → 自动 from=596
+]}
+```
+
+**所以理论上能省掉 ffmpeg concat。但通常不划算：**
+
+| | 8 支直传 | 先拼成 1 支 |
+|---|---|---|
+| 转录 | **8 段** | 1 段 |
+| 补标点 | **×8**（最费工的一步）| ×1 |
+| 跨分镜的句子 | **会被切断**（一句话跨两个 shot → 字幕断开）| 完整 |
+
+**→ 先拼再传。** `alignTo` 留给「本来就要分开处理每段」的场景。
+
 ## 13. 先翻库，再手写 ⚠️ 今天最贵的时间
 
 `browse_library category=motion-graphics` = **210 个现成 MG**，含：
