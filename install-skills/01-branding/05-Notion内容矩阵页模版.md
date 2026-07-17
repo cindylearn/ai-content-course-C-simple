@@ -13,16 +13,17 @@
 
 | Status | 含义 | 🔴 这一步该做什么 |
 |---|---|---|
-| **Not Started** | 还没开始（刚开的空行）| 定这条的角度方向、照模版把立项页填起来 → 角度写好改 `Need Review Idea` |
-| **Need Review Idea** | 角度点子待审 | 审角度（Hook ＋ ❤️人性需求 ＋ 🧠NLP 对不对、贴不贴业务）；过 → `Checked`，不行 → `Need Modify` 或 `Rejected` |
-| **Checked** | 角度已审通过 | 开始产出文案 / 图 prompt / 脚本（照对应 skill 规则）→ 就绪可生成 → `Proceed to Generate` |
-| **Proceed to Generate** | 就绪，可以生成 | 🔴 去生成图 / 视频 / 数字人（**生成前先把 prompt ＋ 预计 credit 给用户确认再烧**）→ 出了成品 → `Need Review Poster/Video` |
-| **Need Review Poster/Video** | 成品出来了，待审 | 审成品（渲染对不对、乱码 / 外国脸 / 合规）；过 → **成品三落归档**（本地 ＋ Notion ＋ Drive）＋ 排期 → `Posted`；要改 → `Need Modify` |
-| **Need Modify** | 角度 / 成品要改 | 按反馈改（文案 / prompt / 重生成）→ 改好回到对应待审状态 |
+| **Not Started** | 还没开始（刚开的空行）| 定角度方向、照模版把立项页填起来 → 角度写好改 `Need Review Idea` |
+| **Need Review Idea** | 角度 / 想法待审 | 审角度（Hook ＋ ❤️人性需求 ＋ 🧠NLP、贴不贴业务）；过 → `Proceed to Generate`，不行 → `Need Modify` 或 `Rejected` |
+| **Proceed to Generate** | 已批准生产 | 写文案 / 图 prompt / 脚本（如还没写）＋ 🔴 去生成图 / 视频 / 数字人（**生成前先把 prompt ＋ 预计 credit 给用户确认再烧**）→ `Need Review Poster/Video` |
+| **Need Review Poster/Video** | 成品出来了，待审 | 审成品（渲染 / 乱码 / 外国脸 / 合规）；过 → **成品三落归档**（本地 ＋ Notion ＋ Drive）→ `Checked`；要改 → `Need Modify` |
+| **Checked** | ✅ **全部做完 ＋ 审过 ＋ 归档好，只差还没发** | 排期 / 等发；发出去 → `Posted` |
+| **Need Modify** | 角度 / 成品要改 | 按反馈改（文案 / prompt / 重生成）→ 改好回 `Need Review Poster/Video`（或对应待审）|
 | **Rejected** | 这条弃用 | 不再产出，留着当记录 / 教训 |
 | **Posted** | 已发布 | 回看数据表现，好的角度复用 |
 
 > 🔴 这 8 个 Status 是标准工作流值（可按业务微调），但**「先看 Status、Status 决定做什么、做完改 Status」这条铁律不变**。
+> 🔴🔴 **`Checked` ＝ 万事俱备、只差发布**（不是「角度审过」）—— 它在流程**倒数第二步**，别搞反。
 
 ---
 
