@@ -83,7 +83,8 @@ over-smoothed skin, no waxy look, no airbrushing, no over-saturation, no perfect
 - 品牌名 / CTA / 字幕 **全部后期（CapCut/Canva）加**，AI 生成保持干净无字。
 
 ### 2. 真人感：照片级真人 + 会眨眼 + 眼珠会动（否则「卡通脸 / 木偶死眼」）
-- 🔴 **数字人必须「照片级真人」**（不是卡通、不是 3D avatar）：prompt 写死
+> 🔴 **这条只管「AI 人」路线** —— 选了「卡通人」就跳过照片级真人，按你选的卡通风格出。（照片级真人 = 防止 **AI 人意外**变卡通/塑料脸，不是禁止你**故意**做卡通人。）
+- 🔴 **数字人（AI 人路线）必须「照片级真人」**（不是卡通、不是 3D avatar）：prompt 写死
   > `PHOTOREAL, REALISTIC HUMAN presenter talking to camera, a real-looking person, natural skin, NOT a cartoon, NOT a 3D avatar, NOT CGI.`
   漏了这条第一版就会出卡通/塑料脸（详见 `7大AI启动包/05-《AI数字分身》启动包`）。
 - prompt 再写活人细节：

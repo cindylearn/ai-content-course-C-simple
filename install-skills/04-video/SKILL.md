@@ -41,9 +41,15 @@ metadata:
 🔴 **主讲人只 mention：** 想全片同一个人 / 真人本尊 / 锁定特定 AI 脸 → 才去 `suma-ai-05-avatar`（自己样子的数字人 或 九宫格锁一个）。先 test 不用 05。
 🔴 **声音分开只有一处** = 05 的「自己样子的数字人」（克隆真人声）；04 的 AI 人、05 的九宫格数字人 = 画面+声音一起。
 
-🔴 **声音和画面「一起生成」，不分开：** 口播镜一次出「有声+对口型」——`seedance_2_0` · `generate_audio=true` · 脸参考图 · 台词写进 prompt · 带无字幕护栏那句。**默认不拆成「哑片+配音+合声」**（那是进阶重活，只有非要锁死克隆声+帧级口型才用）。B-roll 无脸镜才 `generate_audio=false`。
+🔴🔴 **每一镜 prompt 的硬规则（写死，漏了必出问题 —— 完整见 README「硬规则」段）：**
+- **无字幕护栏（必带）**：`ABSOLUTELY NO on-screen text, NO subtitles, NO captions, NO burned-in words…`（字幕后期加）。
+- **AI 人 = 照片级真人**：`PHOTOREAL, REALISTIC HUMAN … NOT a cartoon, NOT a 3D avatar` + 会眨眼眼珠动（`BLINKS… EYES alive…`）+ **真实感条款**（`candid photo… visible pores… NOT AI-generated…`）。🔴 **这条只管 AI 人；选了「卡通人」→ 不套照片级真人，按选定的卡通风格出。**
+- **B-roll = 无脸真实近景**（`generate_audio=false`）+ **快切** `FAST-PACED… HARD CUTS every ~1.2–1.5s`。
+- **prompt 绝不写 hex 色号 / 文字标签**（会烤成乱码）→ 写方向词 + `NO letters, NO numbers, NO words`。
+- **背景虚化无可读文字** `background softly out of focus, NO readable text`。
+- **参数：一律 480p + `mode fast`**；先验 1 镜（声音+无字幕+眨眼+脸）OK 再批量。
 
-流程照 `VIDEO-PROMPT-SKILL`（出片）→ `CHATCUT-SKILL`（剪片），规则以 `README.md` §4.5 为准。
+流程照 `VIDEO-PROMPT-SKILL`（出片）→ `CHATCUT-SKILL`（剪片），完整硬规则以 `README.md`「硬规则」段为准。
 
 ---
 
