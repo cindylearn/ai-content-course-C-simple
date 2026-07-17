@@ -1,6 +1,7 @@
 ---
 name: suma-ai-08-full
 description: >-
+  触发词：搭系统 / 搭整套系统 / 完整系统 / 一站式 / 全程带我 / 从头到尾 / capstone。
   课程 capstone 交付物：教学员把已学会的 6 个 AI skill（AI文案/图像/数字人/PPT/音乐/影片）
   串成「一站式 AI Marketing Agent System」——用 Notion 内容矩阵当大脑，6 个 AI skill 当双手，
   脚本+多agent当自动化，批量生产跨受众×漏斗层×钩子的图文与视频广告。
