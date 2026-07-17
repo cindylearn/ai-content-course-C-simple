@@ -8,24 +8,27 @@
 
 ## 一、database 属性（栏位）
 
+> 🔴 **栏位顺序 = Cindy 的 default view（下面从左到右就是 Notion 里的列顺序，Claude 建库照这个排）。**
+> 🔴 **Title（Aa 属性）= `内容角度`**（页面大标题就是那句角度整句），**不是**「命名标题」——「命名标题」是另一个文本属性（编号命名串）。
+
 | 栏位 | 类型 | 说明 / 示例值 |
 |---|---|---|
-| **命名标题** | 标题(Title) | `编号 Hook - Stage - 受众：一句话`，例：`06 学员见证 - MOFU - 内容创作者_In-house Marketer：搭了AI内容营销系统后产能提升、被看见` |
-| **主讲人** | Person | 谁出镜（可空） |
-| **内容角度** | 文本 | 这条内容的角度一句话 |
-| **Hook 类型** | Select | 学员见证 / 行业揭秘 / 痛点直击 / 对比反差 / 趋势警醒 …（按业务扩） |
+| **广告投放日期** | Date | 可空 |
+| **Status** | Select | Need Review Idea / Checked / 待拍 / 已产出 / 已发 …（工作流状态） |
 | **Stage** | Select | ToFu / MoFu / BoFu |
-| **Status** | Select | Need Review Idea / 待拍 / 已产出 / 已发 …（工作流状态） |
-| **❤️ 人性需求** | Select | 确定 / 新鲜 / 重要 / 爱与连接(Love & Connection) / 成长 / 贡献 |
-| **🧠 NLP技巧** | Select | social proof 社会认同 / 换框 / 锚定 / 未来预演 / 连续肯定 … |
+| **目标受众** | Select | 按用户受众（例：内容创作者_In-house Marketer / Freelance Marketer） |
+| **领域** | Select | 按用户领域（例：数字营销） |
+| **行业** | Select | 按用户行业（例：Marketer） |
+| **主讲人** | Person | 谁出镜（可空） |
+| **命名标题** | 文本 | `编号 Hook - Stage - 受众：一句话`，例：`06 学员见证 - MOFU - 内容创作者_In-house Marketer：搭了AI内容营销系统后产能提升、被看见` |
+| 🔴 **内容角度** | **标题(Title · Aa)** | 这条内容的角度**整句 = 页面标题本身**（例：「学员见证：从前一个人在公司加班到十点还追不完内容，搭了一套自己的AI内容营销系统后…」）。**这就是数据库的 Title 属性。** |
+| **Hook 类型** | Select | 学员见证 / 行业揭秘 / 痛点直击 / 对比反差 / 趋势警醒 …（按业务扩） |
 | **关联 AI 内容课** | Multi-select | AI图像 / AI文案 / AI数字人 / AI PPT / AI音乐 / AI影片 |
 | **媒体类型** | Select | 视频 / 图文 |
-| **目标受众** | Select | 按用户受众（例：内容创作者_In-house Marketer / Freelance Marketer） |
-| **行业** | Select | 按用户行业（例：Marketer） |
-| **领域** | Select | 按用户领域（例：数字营销） |
-| **📽️ Hook变体(A/B)** | 文本 | 前3秒评分 X/10 + 变体A（角度1）/ 变体B（角度2），用来 A/B 测钩子 |
 | **备注** | 文本 | 可空 |
-| **广告投放日期** | Date | 可空 |
+| **❤️ 人性需求** | Select | 确定 / 新鲜 / 重要 / 爱与连接(Love & Connection) / 成长 / 贡献 |
+| **🧠 NLP技巧** | Select | social proof 社会认同 / 换框 / 锚定 / 未来预演 / 连续肯定 … |
+| **📽️ Hook变体(A/B)** | 文本 | 前3秒评分 X/10 + 变体A（角度1）/ 变体B（角度2），用来 A/B 测钩子 |
 
 ---
 
