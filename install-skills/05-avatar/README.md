@@ -33,7 +33,48 @@
 3. **其他生图工具** — 用户已有的
 > 🔴 **说清每个要花谁的 credit / 额度**，让用户按自己有的选，别默认帮他花钱。
 
-**Q3.（AI 生成）九宫格选脸**：出 9 个不同的人 → 用户回号码 → 定妆照锁脸（机制见 `04-《AI口播短视频》启动包/README.md §0` 的九宫格/定妆照模板）。
+**Q3.（选了 AI 生成才做）九宫格选脸 + 定妆照锁脸** —— 两步，中间停下等用户选（这套模板 05 自带，不用翻别包）：
+
+**① 九宫格选人**（`generate_image`，1:1 正方，一张图 9 个不同的人）：
+```
+A single square 1:1 casting board arranged as a clean 3x3 grid of 9 passport-style
+headshots of 9 DIFFERENT [目标市场] [men/women], all [age range] with a [vibe] look.
+IMPORTANT: each of the 9 is a DIFFERENT individual with a DIFFERENT face — different
+face shape, eyes, nose, eyebrows, lips, jawline, skin tone and hairstyle. They must
+NOT look like the same person; do not reuse one face with different hair. Every cell:
+head-and-shoulders, front-facing, neutral friendly expression, pure white background,
+even soft lighting, consistent framing. Place a small clean number (1 to 9) in the
+TOP-LEFT corner of each cell.
+<真实感条款>
+The 9 people:
+1 — [脸1：脸型/眼/鼻/眉/唇/肤色/发型]
+2 — [脸2：…]   3 — […]   4 — […]   5 — […]   6 — […]   7 — […]   8 — […]   9 — […]
+```
+- 🔴 **9 个不同的人，不是同一张脸换 9 个发型** —— 最容易错。**先把五官写死再写头发**。
+- 🔴 **9 张脸清单写出来给用户看**，他才知道几号是谁。
+- ⏸️ **停。等用户回一个号码（1–9），只能选 1 个。**
+
+**② 定妆照锁脸**（拿到号码 → 把九宫格原图当参考图送回、prompt 点名号码）：
+```
+Using the attached 3x3 casting grid image as reference, recreate the EXACT same person
+shown in CELL NUMBER [N] (the headshot labelled "[N]" in its top-left corner). Keep that
+person's identity unchanged — same face shape, eyes, nose, eyebrows, lips, jawline, skin
+tone and hairstyle as cell [N]; do not blend with the other faces.
+[把 [N] 号那张脸的五官原样重述一遍] [气质] [服装]. Pure white background, front-facing,
+neutral friendly expression, head-and-shoulders framing.
+<真实感条款>
+```
+- 🔴 **不点名号码 = 9 张脸糊成「平均脸」**，跟选的不是同一人。
+- 建议再出**不同角度各一张**（正脸 / 侧一点 / 微笑）→ 凑够 3 张脸参考图。
+
+**`<真实感条款>`（① ② 都要带 —— 让脸像真实照片、不像 AI）：**
+```
+candid photo shot on a real camera (50mm, f/2.8), natural realistic skin texture with
+visible pores, fine lines and subtle imperfections, natural facial asymmetry, true-to-life
+natural lighting, slight film grain, documentary realism, looks like a real unretouched
+photo of a real person, NOT AI-generated, no CGI, no 3D render, no plastic or
+over-smoothed skin, no waxy look, no airbrushing, no over-saturation, no perfect symmetry.
+```
 
 🔴 **拿到锁定的参考图后**：这就是整支视频的脸。回 `04 AI口播` 生成。
 
