@@ -20,7 +20,7 @@
 | 05 | 05-avatar | `/suma-ai-05-avatar` | 帮我做一个数字人主播 |
 | 06 | 06-ppt | `/suma-ai-06-ppt` | 帮我做卖点 PPT |
 | 07 | 07-music | `/suma-ai-07-music` | 帮我做配乐／BGM |
-| 08 | 08-full | `/suma-ai-08-full` | 帮我搭整套系统，全程一步步带我 |
+| 08 | 08-full | `/suma-ai-08-full` | 帮我把做好的全部整理成一套完整系统（full set） |
 
 > **两种方式效果一样**：斜杠 = 直接点名；First Prompt = 打一句话，Claude 认出关键词自己进。
 > 想一个 skill 走完全程 → 用 **08**；想一步一步来 → 从 **00** 开始，00→01→…→07。
