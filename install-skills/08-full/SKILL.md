@@ -135,7 +135,7 @@ description: >-
 > 我们从**地基**开始。你先回我这三个（一次回一个就行）：
 > 1️⃣ **你的生意 / 品牌是做什么的？** 一句话就好。
 >   （例：SUMA 是「教人用 AI 做营销内容的课程」。）
-> 2️⃣ **这 7 个账号你有了吗？** Claude ✅ / Notion / Higgsfield / ChatCut / Suno / GitHub / **Google Drive**。缺哪个我给你注册链接。🔴 其中 **Notion · Higgsfield · ChatCut · Google Drive 还要在 Claude 里连 connector**；连好 Google Drive 后**给我你要存成品的 folder 链接**（之后成品自动同步存这）。
+> 2️⃣ **这 7 个账号你有了吗？** Claude ✅ / Notion / Higgsfield / ChatCut / Suno / GitHub / **Google Drive**。缺哪个我给你注册链接。🔴 其中 **Notion · Higgsfield · ChatCut · Google Drive · GitHub 还要在 Claude 里连 connector**（GitHub 装 skill 用）；连好 Google Drive 后**给我你要存成品的 folder 链接**（之后成品自动同步存这）。
 > 3️⃣ **有品牌 logo（浅底 + 深底）和品牌色吗？**
 >   （例：SUMA 品牌色是 #28c2e7 青 / #0f75bc 蓝 / #fcb040 橙。）
 >

@@ -31,7 +31,7 @@ metadata:
 
 ### 第 0 步 · 先定「落脚点」+ 连好账号（🔴 学生完全空白，先给他一个家）
 🔴🔴 **学生第一次来、啥都不会，你对他也一无所知 —— 别一上来问品牌，先把「工具连好 + 东西存哪」搞定**（一题一张选项卡）：
-1. **账号 + connector 连好没？** 🔴 **必连 4 个：Notion · Higgsfield · ChatCut · Google Drive**（缺 → 给注册链接、教他在 Claude 设置 → Connectors 里连）。Suno 没 connector（浏览器操作、课上教），GitHub 用来装 skill。
+1. **账号 + connector 连好没？** 🔴 **必连 5 个：Notion · Higgsfield · ChatCut · Google Drive · GitHub**（缺 → 给注册链接、教他在 Claude 设置 → Connectors 里连；🔴 GitHub 要连——装 skill 用）。Suno 没 connector（浏览器操作、课上教）。
 2. **电脑上开一个成品 folder** —— 图/视频/文案/业务 md 全存这（默认 `~/我的AI内容营销/<品牌名>`），你来建好。
 3. **哪个 Notion** —— 待会在里面帮他搭骨架。
 4. 🔴 **要他的 Google Drive folder 链接** —— 成品之后**自动同步存这**（如 `drive.google.com/…/folders/xxx`）；记进业务 md 的「Drive 链接」。
