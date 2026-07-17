@@ -11,17 +11,20 @@
 ## 怎么用好（核心：场景化 + 画面感）
 主视觉 = **该受众的真实日常场景**（照片级实拍 / documentary / NOT AI / 本地感），把痛点**可视化**，不是抽象排版。文字精简（headline + sub + 工具 pill + CTA 胶囊），让画面 carry。
 
-**Prompt 骨架（图文海报）：**
+**🔴🔴 标准 prompt 黄金模板（照这个逐行填 —— 这是产出好海报的结构，绝不缩水成一句场景）：**
+以 **A 战报证明风** 为例（换风格只换视觉，TOP/headline/banner/MIDDLE/checklist/CRITICAL 结构不变）：
 ```
-vertical 3:4 portrait poster, photoreal documentary real-camera, NOT AI, 本地感
-+ SCENE: [受众真实场景，人物+道具+情绪]
-+ 中文 headline / sub（用颜色词描述颜色，别贴 hex）
-+ 一行 6 工具 pill 标签
-+ 底部 CTA 胶囊
-+ 顶部/右上留空给 logo（后期合成）
-+ 🔴护栏：只渲染引号里的中文；色号不当文字；无假 logo/watermark；人物一律本地；无乱码
-+ 🔴🔴 海报要渲染大字！headline/pill/横幅的中文放引号里让 Higgsfield 渲染；**绝不写 `no text overlay`**（那是视频规则，海报要字）
+vertical 3:4 BOLD promo-style poster, Style A 战报证明风: chunky 3D-extruded/embossed outlined Chinese headline (thick black outline, [品牌色] gradient fill) + a solid colour-block banner strip + an icon-checklist feature list + a real photo grounding credibility.
+TOP: small kicker pill naming the audience: '[受众一句话，例:开中学补习班的你]'.
+Big chunky 3D-extruded outlined headline (the PAIN/contrast opener): '[痛点/反差主标题，例:教得再好，家长网上看不到你]'.
+Below headline: a solid [品牌深色] colour-block banner strip with bold white/yellow text stating the NAMED SOLUTION + a concrete moderate outcome: '[方案+温和成果，例:1天学会…自己做出…]'.
+MIDDLE: real photo (photoreal, authentic documentary-style candid photo, NOT a cutout) of [主角详细:本地人+年龄+气质，NOT auntie], [真实场景+道具+情绪], natural window light, real camera look NOT AI-looking, authentic [本地].
+Below the photo: an icon-checklist row, [N] small colourful circular icon badges with checkmarks and tiny labels: '✅[卖点]' × [N], small clean single row, must NOT dominate the poster.
+[可选·合规才放] a tiny price-hint line near the bottom: '[例:从 RMxxx 起]'.
+NO course-name capsule, NO sign-up button, NO specific outcome guarantee to an individual (no '保证/包你/一定能'). Keep top-right corner truly empty for a logo — do NOT render the word 'LOGO' or any placeholder.
+🔴 CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is the Chinese specified above, proofread character-by-character, no typos, no repeated/duplicated text blocks, no garbled characters; the person is a real local [本地] (photoreal, not cartoon/CGI).
 ```
+🔴 **结构必须齐**：① TOP 受众 pill ② 大字痛点标题(3D描边) ③ 色块横幅=方案+温和成果 ④ 中段真人纪实照(NOT cutout·NOT auntie·本地) ⑤ 一行图标打勾清单 ⑥ 起价小字(合规才放) ⑦ 右上 logo 空位 ⑧ **CRITICAL 只渲染引号里中文·proofread·no garbled·绝不出英文**。🔴 绝不写 `no text overlay`（海报要字）。
 
 ## 海报风格库（5 种可选风格 · 按受众挑，🔴 同批次别全用同一种）
 促销 / BoFu 海报可从这 5 种风格里挑，按你的行业 / 受众自由搭配：
