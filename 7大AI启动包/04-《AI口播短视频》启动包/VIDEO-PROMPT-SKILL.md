@@ -13,6 +13,9 @@ metadata:
 
 # Script → Video Prompt
 
+> 🔴 **底层三层（跟 SKILL.md 一致，本 skill 出的每样东西都套）：** ① 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）· ② 语言（NLP）· ③ 动机（6 大人性需求）。**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
+
+
 把一个 script 变成可以直接生成的 AI 口播视频。**这是视频生产线的前段。**
 
 ```
