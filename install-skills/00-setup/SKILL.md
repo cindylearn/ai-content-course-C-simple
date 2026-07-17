@@ -36,7 +36,11 @@ metadata:
 1. **账号 + connector 连好没？** 🔴 **必连 5 个：Notion · Higgsfield · ChatCut · Google Drive · GitHub**（缺 → 给注册链接、教他在 Claude 设置 → Connectors 里连；🔴 GitHub 要连——装 skill 用）。Suno 没 connector（浏览器操作、课上教）。
 2. **电脑上开一个成品 folder** —— 图/视频/文案/业务 md 全存这（默认 `~/我的AI内容营销/<品牌名>`），你来建好。
 3. **哪个 Notion** —— 待会在里面帮他搭骨架。
-4. 🔴 **要他的 Google Drive folder 链接** —— 成品之后**自动同步存这**（如 `drive.google.com/…/folders/xxx`）；记进业务 md 的「Drive 链接」。
+4. 🔴 **Google Drive 成品自动上传 —— 配好 rclone（一次性，别偷懒，不然成品传不进 Drive 只能手动拖）：**
+   - ① 要他的 Drive 成品 folder 链接（`drive.google.com/…/folders/xxx`）；🔴 `/folders/` 后那段 = **folder ID**，记进业务 md「Drive 链接 / folder ID」。
+   - ② 🔴 **带他配 rclone**（终端）：`rclone config` → `n`(新建) → 名字 `gdrive` → 存储选 `drive`（Google Drive）→ client_id/secret 留空回车 → scope 选 `1`(drive 完整) → `Edit advanced config? n` → `Use auto config? y`（弹浏览器登录授权 Google）→ `Configure this as a Shared Drive? n` → `y` 确认。
+   - ③ 验证：`rclone lsd gdrive:` 能列出他的 Drive = 配好了。
+   - 🔴 **配好前别开始出内容** —— 不然成品传不了，又变成"你自己拖"的烂体验。之后所有成品 `rclone copy "<本地成品>" gdrive: --drive-root-folder-id <folder ID>` 自动进 Drive。
 5. 账号连好 + 落脚点定了 → 写进业务 md（文件存放位置 / Drive 链接）→ 才进第 1 步。**没搞定，别往下问品牌。**
 
 ### 第 1 步 · 先问：新业务还是已有业务？（选项卡）

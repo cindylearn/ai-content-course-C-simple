@@ -30,6 +30,8 @@ metadata:
 > 2. **地基做了吗？** 有没有「业务 md」+ 品牌地基（品牌名/受众/红线/命名）？没有 → **先去 `suma-ai-00-setup`**，别在这开工。
 > 3. **Notion 骨架搭了吗？** dashboard + folder（品牌地基/内容矩阵/素材库/成品归档）+ 内容矩阵 database 建好没？没有 → 先回 00 搭。
 > 缺任何一条 → 停下，先补，别硬往下做。
+> 🔴🔴 **成品归档（做完必做，禁找借口）：** 每个成品（图/视频/音乐/PPT）做完，**三处都要落**：① 本地成品 folder；② Notion「成品归档」+ 对应立项页（改 Status）；③ 🔴 **用 `rclone copy` 自动传进用户的 Google Drive 成品 folder**。
+> 🔴 **绝不说「我传不了 / 浪费算力 / 你自己拖进 Drive」** —— Drive connector 传大图确实不行（base64 太大），但 **rclone 直传就行、多大都可以**（00 已帮学员配好 `gdrive` remote）。命令：`rclone copy "<本地成品>" gdrive: --drive-root-folder-id <Drive成品folder的ID>`（folder ID = Drive 链接 `/folders/` 后那段）。rclone 没配 → 先带学员配一次（见 `suma-ai-00-setup`），别跳过、别甩给用户手动。
 
 ---
 
