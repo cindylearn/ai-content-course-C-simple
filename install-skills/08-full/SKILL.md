@@ -26,6 +26,8 @@ description: >-
 
 > 两种效果一样：斜杠直接点名；First Prompt 打一句话，Claude 认关键词自己进。打不中就用斜杠。触发后一题一题问你。
 
+> 🔴🔴 **动手前必做：先 `Read` 本文件夹（含 `系统/` 和 `7大AI启动包/`）里相关的 `.md`** —— 每个 part 的完整框架/规则在那里，读进来再带学员做。
+
 
 # 一站式 AI Marketing Agent System · Ver B（CMO 战略版 · 任何行业都能用）
 

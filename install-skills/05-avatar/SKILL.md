@@ -33,6 +33,8 @@ metadata:
 
 ---
 
+> 🔴🔴 **动手前必做（第 0 件事）：先用 `Read` 把本文件夹里的每一个 `.md` 文件读一遍**（框架 / NLP / SOP / 模版 —— 完整规则在那里），读进来再开工。**别只看这份 SKILL.md 就动手 = 出烂成品。**
+
 🔴 生成视频前置：Notion 要有脚本。**Q1 二选一**：九宫格数字人（**声画一起** `generate_audio=true`）/ 自己样子的数字人（真人照片 + 语音样本克隆声 → **声音分开**，全系统唯一要拆的情况）。九宫格模板 05 自带（选人 → 定妆照锁脸，**prompt 点名号码防平均脸**）。
 🔴🔴 **prompt 硬规则（完整见 README）：**
 - **照片级真人**：`PHOTOREAL, REALISTIC HUMAN presenter, a real-looking [本地] person, NOT a cartoon, NOT a 3D avatar`（漏了出卡通/塑料脸）。
@@ -42,4 +44,4 @@ metadata:
 
 ---
 
-> 📄 **本文件夹的其他 md = 这一步的完整规则/框架**，做之前先读。改内容请改 SUMA 主 repo 的 `7大AI启动包`，再重生成。
+> 📄 **本文件夹的其他 md = 这一步的完整规则/框架**，务必先读。改内容请改 SUMA 主 repo 的 `7大AI启动包`，再重生成。
