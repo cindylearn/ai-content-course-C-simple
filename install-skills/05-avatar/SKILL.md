@@ -678,10 +678,10 @@ metadata:
 2. **语音样本（关键）** 一段干净录音 ~1 分钟（安静、近麦 ~15cm、无背景乐、连续说话）→ `create_voice_from_confirmed_audio` 克隆声音；样本脏 → 克隆薄带杂音。
 3. **可选·一小段说话视频（几秒）** 参考神态/口型习惯，更像本人。
 
-**Q2.（选 A 才问）用什么 model 出人物图？** 🔴🔴 **九宫格暂时首选 `GPT Image 2`（ChatGPT 图像）—— 目前出人脸最准、最一致**，用学生自己的 ChatGPT 额度。给选项时把 **GPT Image 2 放第一个（推荐）**；备选 Higgsfield `generate_image`（消耗 Higgsfield credit）/ 其他已有工具。🔴 **别默认帮用户花钱**，但九宫格锁脸这一步优先 GPT Image 2 因为最准。
+**Q2.（选 A 才问）用什么 model 出人物图？** 🔴🔴 **九宫格暂时首选 `GPT Image 2` —— 它是 Higgsfield `generate_image` 里可选的一个 model（不是另开 ChatGPT），目前出人脸最准、最一致**，消耗 Higgsfield credit。给选项时把 **GPT Image 2 放第一个（推荐）**；备选 Higgsfield 其他 model（soul_2 / nano_banana 等）/ 已有工具。🔴 MCP 走 `generate_image` 时 `model` 参数选 GPT Image 2 —— **id 别自己编，用 `models_explore` 查当前值；查不到就让学生在 Higgsfield 网页版的 model 下拉里选 GPT Image 2**。🔴 别默认帮用户花钱，但九宫格锁脸优先它因为最准。
 
 ## 🔴 Q3（选 A 才做）九宫格选脸 + 定妆照锁脸（两步，中间停下等号码）
-**① 九宫格选人**（🔴 用 Q2 选的 model 出 —— **优先 `GPT Image 2` 更准**；1:1 正方，一张图 9 个不同的人）：
+**① 九宫格选人**（🔴 用 Q2 选的 model 出 —— **优先 Higgsfield 里的 `GPT Image 2`（更准）**；1:1 正方，一张图 9 个不同的人）：
 ```
 A single square 1:1 casting board arranged as a clean 3x3 grid of 9 passport-style
 headshots of 9 DIFFERENT [目标市场] [men/women], all [age range] with a [vibe] look.
