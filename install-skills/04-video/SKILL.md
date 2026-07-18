@@ -552,6 +552,7 @@ metadata:
 ### 📹 视频类（媒体类型=视频）
 
 > 🔴🔴 **硬性比例：口播短视频一律 vertical 9:16（竖版）** —— 不用 16:9 / 1:1。
+> 🔴🔴 **省 credit（铁律）：视频一律 480p + fast 模式，绝不 720p / std**（480p-fast ≈ 720p-std 的 1/3 credit）。配合「先出 Shot 1 满意才继续」，别烧冤枉钱。
 
 正文顺序（🔴 **概念是概念、文案是文案、台词是台词 —— 三样分开，别塞一起**）：
 
@@ -682,7 +683,7 @@ metadata:
 - **B-roll = 无脸真实近景**（`generate_audio=false`）+ **快切** `FAST-PACED… HARD CUTS every ~1.2–1.5s`。
 - **prompt 绝不写 hex 色号 / 文字标签**（会烤成乱码）→ 写方向词 + `NO letters, NO numbers, NO words`。
 - **背景虚化无可读文字** `background softly out of focus, NO readable text`。
-- **参数：一律 480p + `mode fast`**；先验 1 镜（声音+无字幕+眨眼+脸）OK 再批量。
+- 🔴🔴 **省 credit 铁律：一律 480p + `mode fast`，绝不 720p / std**（480p-fast ≈ 720p-std 的 1/3 credit，一支 8 镜差很多）。配合上面「先出 Shot 1 满意才批量」，把冤枉钱挡在第一镜。
 
 🔴🔴 **每一镜 prompt 照本 skill 下方模版「📽️分镜脚本 · 视频黄金模板」整段完整写** —— 那才是标准长度。关键铁律：
 - 🔴🔴 **每个 shot = 完整一大段，含整段超详细 CHARACTER**（脸型/肤色/眼型/独特痣疤/发型/配饰/穿着/身形 —— 够细才锁得住脸），**8 shot 逐字重复同一段人物描述**（每 shot 独立生成、模型看不到上一 shot，不重复就每 shot 换脸）。
