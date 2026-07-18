@@ -537,9 +537,9 @@ metadata:
 ## 二、页面正文模版（每条立项页照填，别留空页）
 
 > 🔴🔴 **文案按这条的 `Stage` 走对应 SOP —— ToFu/MoFu/BoFu 卖的东西不一样，写法也不一样，别一套模板套三层：**
-> - **ToFu 觉醒**：戳痛点 / 趋势、让人「对，就是我」，**不硬卖、不放价**。9 拍：钩子标题 → 痛点场景 → 二次扎心 → 正名(不怪客户) → 后果/对比 → 换框 → 好消息=你的产品/服务 → 愿景 → CTA。字数 ≥250。
-> - **MoFu 考虑**：拆方法 / 给证据 / 讲 USP，证明「这方法/产品行」。9 拍：钩子(揭秘/见证) → 点破误区 → 方法一 → 方法二 → 证据(before→after) → 关键点 → 为什么选我 → 收口 → CTA。字数 ≥300。
-> - **BoFu 决策**：算账 ROI + 紧迫 + offer，推「现在就下手」。6 拍：钩子(算账/限时) → 算账对比 → offer 内容 → 消除顾虑 → 紧迫 → 愿景+CTA。字数 ≥200。
+> - **ToFu 觉醒**：戳痛点 / 趋势、让人「对，就是我」，**不硬卖、不放价**。9 拍：钩子标题 → 痛点场景 → 二次扎心 → 正名(不怪客户) → 后果/对比 → 换框 → 好消息=你的产品/服务 → 愿景 → CTA。🔴 字数 **250–400 字**（写完数一遍中文字数，不到下限就回去把某几拍展开更细再数，达标才输出）。
+> - **MoFu 考虑**：拆方法 / 给证据 / 讲 USP，证明「这方法/产品行」。9 拍：钩子(揭秘/见证) → 点破误区 → 方法一 → 方法二 → 证据(before→after) → 关键点 → 为什么选我 → 收口 → CTA。🔴 字数 **300–500 字**（同上，数够才输出）。
+> - **BoFu 决策**：算账 ROI + 紧迫 + offer，推「现在就下手」。6 拍：钩子(算账/限时) → 算账对比 → offer 内容 → 消除顾虑 → 紧迫 → 愿景+CTA。🔴 字数 **200–350 字**（同上，数够才输出）。
 > 🔴 三层都守：**卖自己产品/服务·AI 隐形 · 分段 + emoji(3–6) · NLP 按漏斗层挑 + 戳 ❤️需求**。完整三张节拍表 + 三行业示范在**本 skill 最前面「✍️ 文案框架」(02)**。🔴 **选错层 / 少了中段 / 字数不够 = 没 follow SOP，重写。**
 
 
@@ -553,7 +553,7 @@ metadata:
 `<角度类型（如 觉醒型ToFu）+ 用的 NLP：这条内容的「想法/角度」一句话 —— 跟图文的「概念」同一种，不是 caption>`
 
 **## 📱 视频社媒文案**（= 文案，发帖 caption）
-`<🔴 完整文案：照 02「§四 节拍表」填满每一拍（ToFu/MoFu 9 拍 · BoFu 6 拍）· **卖自己产品/服务，AI 全程隐形** · 字数达标（ToFu≥250 / MoFu≥300 / BoFu≥200 字）· 分段（每拍空行）+ 适当 emoji（3–6 个）· NLP 按漏斗层挑 + 戳 ❤️人性需求 · 参照 02「§五 示范」· + hashtags —— 绝不缩成 2 句 caption>`
+`<🔴 完整文案：照 02「§四 节拍表」填满每一拍（ToFu/MoFu 9 拍 · BoFu 6 拍）· **卖自己产品/服务，AI 全程隐形** · 字数达标（**ToFu 250–400 / MoFu 300–500 / BoFu 200–350 字**，🔴 写完数中文字数、不到下限展开再数，够了才输出）· 分段（每拍空行）+ 适当 emoji（3–6 个）· NLP 按漏斗层挑 + 戳 ❤️人性需求 · 参照 02「§五 示范」· + hashtags —— 绝不缩成 2 句 caption>`
 
 **## 📽️ 分镜脚本（8-shot）**（表格；里面的「台词」列 = 每 shot 主播讲的话，又是另一回事）
 分镜表格列（🔴 **`Higgsfield Prompt` 列宽 ≈ 562px** —— 这是曾定的标准列宽，够宽才看得全 prompt）：
@@ -625,7 +625,7 @@ metadata:
 
 | 画面构图 | Higgsfield Prompt（含图内文字与排版规格）| 文案 |
 |---|---|---|
-| `<一句画面描述>` | `<照上方黄金模板填：vertical 3:4、固定条款一字不动，只换 [风格]/[受众pill]/[痛点标题]/[方案+成果]/[主角+场景]/[卖点清单]/[起价]>` | `<🔴 完整文案：照 02「§四 节拍表」填满每一拍（ToFu/MoFu 9 拍 · BoFu 6 拍）· **卖自己产品/服务，AI 全程隐形** · 字数达标（ToFu≥250 / MoFu≥300 / BoFu≥200 字）· 分段（每拍空行）+ 适当 emoji（3–6 个）· NLP 按漏斗层挑 + 戳 ❤️人性需求 · 参照 02「§五 示范」· + hashtags —— 绝不缩成 2 句 caption>` |
+| `<一句画面描述>` | `<照上方黄金模板填：vertical 3:4、固定条款一字不动，只换 [风格]/[受众pill]/[痛点标题]/[方案+成果]/[主角+场景]/[卖点清单]/[起价]>` | `<🔴 完整文案：照 02「§四 节拍表」填满每一拍（ToFu/MoFu 9 拍 · BoFu 6 拍）· **卖自己产品/服务，AI 全程隐形** · 字数达标（**ToFu 250–400 / MoFu 300–500 / BoFu 200–350 字**，🔴 写完数中文字数、不到下限展开再数，够了才输出）· 分段（每拍空行）+ 适当 emoji（3–6 个）· NLP 按漏斗层挑 + 戳 ❤️人性需求 · 参照 02「§五 示范」· + hashtags —— 绝不缩成 2 句 caption>` |
 
 > 🔴 **`文案` = 这张图配的发帖 caption**（跟视频页「概念 → 📱视频社媒文案」对应）。图内的字在「图内文字层级」，发帖的字在这列，别混。
 
@@ -670,6 +670,14 @@ metadata:
 - **prompt 绝不写 hex 色号 / 文字标签**（会烤成乱码）→ 写方向词 + `NO letters, NO numbers, NO words`。
 - **背景虚化无可读文字** `background softly out of focus, NO readable text`。
 - **参数：一律 480p + `mode fast`**；先验 1 镜（声音+无字幕+眨眼+脸）OK 再批量。
+
+🔴🔴 **每一镜 prompt 黄金模板（照抄，固定条款一字不动，只换 `[中括号]` —— 这才是标准长度，不是一句话）：**
+```
+🔴 SPEECH STARTS IMMEDIATELY AT FRAME 1 — ZERO silence, ZERO pause before the first word.
+🔴 PACING (CRITICAL): speaks at a QUICK, CONFIDENT pace — noticeably brisker than slow relaxed conversation, energetic and forward-moving — BUT every single syllable stays CRISPLY ENUNCIATED and fully intelligible. NOT rushed to the point of blurring or slurring words together, NOT mumbling, NOT dropping syllables. Picture a professional bilingual news presenter reading a quick punchy segment: fast enough to feel snappy and energetic, but each word lands clearly and is easy to understand on first listen. Clarity and pace are equally non-negotiable — if forced to choose, prioritize clarity slightly over raw speed, but do not slow down into a leisurely or deliberate pace.
+vertical 9:16 UGC talking-head, handheld micro-movement + slow push-in, [主角：young local Malaysian Chinese …贴这条受众/行业] at [场景], speaking to camera from the first frame, natural [光] light, [背景道具] softly behind. [这一 shot 的动作/道具], direct confident hook. 🔴 NO subtitles / NO caption / NO burned-in text / NO on-screen CTA (CTA spoken only in Shot 8). Person blinks, pupils/eyes move, natural breathing & micro-expressions — not glass-eyed mannequin. Dynamic realistic cinematography, NOT locked static tripod. Digital-human = photoreal real human presenter, NOT cartoon/3D. Same person, consistent look across all 8 shots. Every person is a local Malaysian (Malaysian Chinese). realistic documentary footage, B-roll clear & sharp (not blurred), no garbled Chinese. Spoken in natural Malaysian Chinese (Mandarin, local accent, clean — no filler particles). Saying: "[这一 shot 的台词全文]"
+```
+🔴 **固定不动**：FRAME 1 开口 · 整段 PACING · 无字幕/caption/burned-in（CTA 只 Shot 8 口说）· 真人非卡通 · 8 shot 同一人 · 本地马来西亚华人 · natural Malaysian Chinese 无口头禅 · Saying:"台词"。🔴 **只换** `[主角(贴受众)]`/`[场景]`/`[动作道具]`/`[台词]`。🔴 **B-roll shot**（讲工具/数据）换对应空镜，但 **9:16 + 无字幕 + 清晰不虚** 照守。🔴 **硬性 9:16 竖版。**
 
 流程照 `VIDEO-PROMPT-SKILL`（出片）→ `CHATCUT-SKILL`（剪片），完整硬规则以 `README.md`「硬规则」段为准。
 
