@@ -543,6 +543,8 @@ metadata:
 
 ### 📹 视频类（媒体类型=视频）
 
+> 🔴🔴 **硬性比例：口播短视频一律 vertical 9:16（竖版）** —— 不用 16:9 / 1:1。
+
 正文顺序（🔴 **概念是概念、文案是文案、台词是台词 —— 三样分开，别塞一起**）：
 
 **## 概念**
@@ -554,9 +556,20 @@ metadata:
 **## 📽️ 分镜脚本（8-shot）**（表格；里面的「台词」列 = 每 shot 主播讲的话，又是另一回事）
 分镜表格列（🔴 **`Higgsfield Prompt` 列宽 ≈ 562px** —— 这是曾定的标准列宽，够宽才看得全 prompt）：
 
+> 🔴🔴 **每个 shot 的 Higgsfield/seedance prompt = 照下面这个黄金模板逐字填（这才是标准长度，不是一句话）。固定规则一字不动，只换 `[中括号]` 里 shot 专属的部分：**
+>
+> ```
+> 🔴 SPEECH STARTS IMMEDIATELY AT FRAME 1 — ZERO silence, ZERO pause before the first word.
+> 🔴 PACING (CRITICAL): speaks at a QUICK, CONFIDENT pace — noticeably brisker than slow relaxed conversation, energetic and forward-moving — BUT every single syllable stays CRISPLY ENUNCIATED and fully intelligible. NOT rushed to the point of blurring or slurring words together, NOT mumbling, NOT dropping syllables. Picture a professional bilingual news presenter reading a quick punchy segment: fast enough to feel snappy and energetic, but each word lands clearly and is easy to understand on first listen. Clarity and pace are equally non-negotiable — if forced to choose, prioritize clarity slightly over raw speed, but do not slow down into a leisurely or deliberate pace.
+> vertical 9:16 UGC talking-head, handheld micro-movement + slow push-in, [主角：young local Malaysian Chinese, mid-20s, business-casual —— 贴这条的受众/行业] at [场景：如 office desk/workstation], speaking to camera from the first frame, natural [光：如 office] light, [背景道具：如 brand collateral & dual monitors] softly behind. [这一 shot 的动作/道具：如 opens holding a printed campaign brief], direct confident hook. 🔴 NO subtitles / NO caption / NO burned-in text / NO on-screen CTA (CTA spoken only in Shot 8). Person blinks, pupils/eyes move, natural breathing & micro-expressions — not glass-eyed mannequin. Dynamic realistic cinematography, NOT locked static tripod. Digital-human = photoreal real human presenter, NOT cartoon/3D. Same person, consistent look across all 8 shots. Every person is a local Malaysian (Malaysian Chinese). realistic documentary footage, B-roll clear & sharp (not blurred), no garbled Chinese. Spoken in natural Malaysian Chinese (Mandarin, local accent, clean — no filler particles). Saying: "[这一 shot 的台词全文]"
+> ```
+> 🔴 **一字不动的固定条款**：SPEECH STARTS AT FRAME 1 · 整段 PACING · NO subtitles/caption/burned-in text（CTA 只在 Shot 8 口说）· 真人眨眼呼吸微表情非蜡像 · 动态运镜非死三脚架 · photoreal 真人非卡通/3D · 8 shot 同一个人 · 本地马来西亚华人 · natural Malaysian Chinese 无口头禅 · Saying:"台词"。
+> 🔴 **每个 shot 只换**：`[主角外形(贴受众)]` / `[场景]` / `[这 shot 的动作道具]` / `[台词全文]`。
+> 🔴 **B-roll shot**（讲工具/数据/成果时）：把 talking-head 换成对应**空镜**（如 screen recording of dashboard、产品特写），但 **9:16 + 无字幕 + 清晰不虚(不 blurred/不乱码)** 照守，别一直怼人头。
+
 | 画面构图 | Higgsfield Prompt（含图内文字与排版规格）| 台词 | 适用平台 | 🎯涉及的USP（独特卖点）|
 |---|---|---|---|---|
-| 口播开场，学员对镜头真诚自述 | `<纯英文 seedance/higgsfield prompt：人物+动作+无字幕护栏+真实感条款…>` | Shot 1 台词：… | 小红书 / IG / FB | <这一 shot 戳中的独特卖点，如「一人顶一队」/「方法论不是工具」> |
+| 口播开场，学员对镜头真诚自述 | `<照上方黄金模板填：固定条款一字不动，只换 [主角]/[场景]/[动作]/[台词]>` | Shot 1 台词：… | 小红书 / IG / FB | <这一 shot 戳中的独特卖点，如「一人顶一队」/「方法论不是工具」> |
 | …（共 8 行，一 shot 一行）| … | … | … | … |
 
 > 🔴 **台词 ≠ 文案，别混：** 这列是**台词**（每个 shot 主播嘴里讲的话）；**文案**（发帖 caption）是另一回事，在上面「概念 → 📱视频社媒文案」那段。台词是台词、文案是文案。
@@ -565,6 +578,8 @@ metadata:
 > 🔴 视频类台词/脚本 = 文案，**先套 CMO + 文案大师身份再写**（见 `02 AI文案`）；prompt 规则以 `04 AI口播短视频` 为准（声画一起生成、无字幕护栏、人物贴受众）。
 
 ### 🖼️ 图文类（媒体类型=图文）
+
+> 🔴🔴 **硬性比例：图 / 海报一律 vertical 3:4（竖版）** —— 不用 1:1 / 16:9。
 
 正文顺序照这个（比视频多「图内文字层级」和「素材」两段）：
 
