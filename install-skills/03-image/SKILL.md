@@ -156,7 +156,7 @@ NO course name capsule, NO sign-up button, NO specific outcome guarantee to an i
 
 ---
 
-## 📄 09-6大人性需求-内容角度更有方向.md
+## 📚 参考 · 6 大人性需求（内容角度）
 
 # 6 大人性需求 —— 让内容角度更有方向（通用，任何行业都能用）
 
@@ -230,7 +230,7 @@ NO course name capsule, NO sign-up button, NO specific outcome guarantee to an i
 
 ---
 
-## 📄 08-NLP营销技巧-让文案更有说服力.md
+## 📚 参考 · NLP 营销技巧
 
 # NLP 营销技巧 —— 让文案更有说服力（通用，任何行业都能用）
 
@@ -335,7 +335,7 @@ NO course name capsule, NO sign-up button, NO specific outcome guarantee to an i
 
 ---
 
-## 📄 04-文案框架-验证版-可直接喂Claude.md
+## 📚 参考 · 文案分层框架
 
 # 文案分层框架（验证版 · 可直接喂 Claude）
 
@@ -572,7 +572,7 @@ NO course name capsule, NO sign-up button, NO specific outcome guarantee to an i
 
 ---
 
-## 📄 05-Notion内容矩阵页模版.md
+## 📚 参考 · Notion 内容矩阵模版
 
 # Notion「内容矩阵」页模版（建库 + 每条立项页照这个填）
 
@@ -763,7 +763,7 @@ NO course name capsule, NO sign-up button, NO specific outcome guarantee to an i
 
 ---
 
-## 📄 README.md
+## 📚 参考 · 启动包说明
 
 # Skill · AI 图像（工具：Higgsfield / nano_banana）
 
