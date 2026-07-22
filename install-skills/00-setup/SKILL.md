@@ -1154,6 +1154,9 @@ brew install rclone # 然后 rclone config 授权你的 Google Drive
 
 ### 第 1 步 · 定落脚点（东西存哪 · 先给他一个家）
 1. **成品 folder** —— 图/视频/文案/业务 md 全存这（默认 `~/我的AI内容营销/<品牌名>`），你来建好。
+   > 🖱️ **要学员给「文件夹路径」时，教他这样复制（一律用这个，别叫他手打）：**
+   > - **Mac**：鼠标点选那个 folder → 按键盘 **`Option + Command + C`**（复制路径）→ 贴给你。
+   > - **Windows**：鼠标点选那个 folder → **右键 → `Copy as path`（复制为路径）** → 贴给你。
 2. **哪个 Notion** —— 待会在里面帮他搭骨架。
 3. **（可选 · 要「自动归档到 Drive」才做，起步可跳过）Google Drive 成品自动上传 —— 配好 rclone：**
  - ① 要他的 Drive 成品 folder 链接（`drive.google.com/…/folders/xxx`）；`/folders/` 后那段 = **folder ID**，记进业务 md「Drive 链接 / folder ID」。
