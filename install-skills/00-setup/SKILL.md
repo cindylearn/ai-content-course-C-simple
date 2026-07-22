@@ -648,10 +648,13 @@ metadata:
 
 ### 第 0 步 · 先定「落脚点」+ 连好账号（🔴 学生完全空白，先给他一个家）
 🔴🔴 **学生第一次来、啥都不会，你对他也一无所知 —— 别一上来问品牌，先把「工具连好 + 东西存哪」搞定**（一题一张选项卡）：
-1. **账号 + connector 连好没？** 🔴 **必连 5 个：Notion · Higgsfield · ChatCut · Google Drive · GitHub**（缺 → 给注册链接、教他在 Claude 设置 → Connectors 里连；🔴 GitHub 要连——装 skill 用）。Suno 没 connector（浏览器操作、课上教）。
+1. **🔴 先跑「无脑安装」= 装工具 + 连账号**（完整步骤 + 脚本见本文件夹 `00-无脑安装向导.md` / `setup-tools.sh` / `setup-tools.ps1`）：
+   - **1a · 自动装本地工具**（只有「合 logo / 拼视频 / rclone 归档」才要；连接器不要这些）：侦测系统 → Mac 跑 `bash setup-tools.sh`、Windows 跑 `powershell -ExecutionPolicy Bypass -File setup-tools.ps1` → 自动装 git / node / python + pillow / imageio-ffmpeg。🔴 **学员只需：同意你运行 +（Mac）输一次密码。绝不叫他去官网一个个下载。**（Windows 装完提醒重开终端让 PATH 生效。）
+   - **1b · 连账号（全是远程连接器，不用装任何东西，只点授权）：** **Notion**（Claude 设置 → 连接器 → 搜 Notion → 一键授权）· **Higgsfield**（添加自定义连接器 → 贴 `https://mcp.higgsfield.ai/mcp` → 授权）· **ChatCut**（贴 `https://api.chatcut.io/api/external-mcp/mcp` → 授权，要剪辑才连）。**Suno** 没连接器（浏览器手动）。**GitHub / Google Drive** 只在要「版本记录 / 自动归档」时才连——**学员起步可跳过**。
+   - 🔴 **唯一不能自动的**：学员自己「点 Authorize 授权」（要登录他自己账号，安全上替不了）。连完你逐个 test 一遍通不通，再往下。
 2. **电脑上开一个成品 folder** —— 图/视频/文案/业务 md 全存这（默认 `~/我的AI内容营销/<品牌名>`），你来建好。
 3. **哪个 Notion** —— 待会在里面帮他搭骨架。
-4. 🔴 **Google Drive 成品自动上传 —— 配好 rclone（一次性，别偷懒，不然成品传不进 Drive 只能手动拖）：**
+4. **（可选 · 学员要「自动归档到 Drive」才做，起步可跳过）Google Drive 成品自动上传 —— 配好 rclone：**
    - ① 要他的 Drive 成品 folder 链接（`drive.google.com/…/folders/xxx`）；🔴 `/folders/` 后那段 = **folder ID**，记进业务 md「Drive 链接 / folder ID」。
    - ② 🔴 **带他配 rclone**（终端）：`rclone config` → `n`(新建) → 名字 `gdrive` → 存储选 `drive`（Google Drive）→ client_id/secret 留空回车 → scope 选 `1`(drive 完整) → `Edit advanced config? n` → `Use auto config? y`（弹浏览器登录授权 Google）→ `Configure this as a Shared Drive? n` → `y` 确认。
    - ③ 验证：`rclone lsd gdrive:` 能列出他的 Drive = 配好了。
