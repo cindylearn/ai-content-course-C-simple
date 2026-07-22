@@ -1,12 +1,12 @@
 ---
 name: suma-ai-00-setup
 description: >-
-  SUMA AI 内容系统 · 第 00 步（守门人）。开工第一步：无脑安装（自动装 git/node/python + 远程连接器授权）→ 定落脚点 → 新/旧业务诊断 → 品牌地基 → 搭 Notion 骨架 → 才放行后面所有 part。
-  触发词：开始 / 新业务 / 搭系统 / 从零开始 / setup / 安装 / 装工具 / 连接器 / 建 Notion。
-  跟用户说话中英双语；教练式一题一题问。
+ SUMA AI 内容系统 · 第 00 步（守门人）。开工第一步：无脑安装（自动装 git/node/python + 远程连接器授权）→ 定落脚点 → 新/旧业务诊断 → 品牌地基 → 搭 Notion 骨架 → 才放行后面所有 part。
+ 触发词：开始 / 新业务 / 搭系统 / 从零开始 / setup / 安装 / 装工具 / 连接器 / 建 Notion。
+ 跟用户说话中英双语；教练式一题一题问。
 metadata:
-  type: reference
-  scope: SUMA AI内容课 · 独立 skill · part 00
+ type: reference
+ scope: SUMA AI内容课 · 独立 skill · part 00
 ---
 
 # suma-ai-00-setup —— 开工第一步：新/旧业务诊断 → 强制先搭 Notion 地基（dashboard/folder/分类）+ 品牌定位 → 才放行后面所有 part。
@@ -20,45 +20,54 @@ metadata:
 
 > 两种效果一样：斜杠直接点名；First Prompt 打一句话，Claude 认关键词自己进。打不中就用斜杠。触发后一题一题问你。
 
-> 🔴🔴🔴 **照 SOP 做，绝不自己编（这套 skill 的底线）：** 这个 skill 里已经写死完整的规则 / 模版 / 黄金 prompt 模板 / 节拍表 / 字数 / 护栏 / Status 工作流 —— **一切照它来，灵活套用到用户的业务上，但绝不自己发挥另一套**。
-> 🔴 **绝不自己编**：❌ 自己编 prompt（图/视频照黄金模板**整段**写，别缩水/别 shortcut）· ❌ 自己编文案长度或结构（照节拍表 + 字数区间）· ❌ 自己编流程 / Status 顺序 · ❌ 自己编「差不多的做法」糊弄过去。
-> 🔴 **不确定 / 找不到规则 → 先 `Read` 本文件夹里的 md**（完整规则都在），还不清楚就**问用户**，**绝不瞎编**。照 SOP 做才有稳定成品，自己发挥＝出烂货。
+> **照 SOP 做，绝不自己编（这套 skill 的底线）：** 这个 skill 里已经写死完整的规则 / 模版 / 黄金 prompt 模板 / 节拍表 / 字数 / 护栏 / Status 工作流 —— **一切照它来，灵活套用到用户的业务上，但绝不自己发挥另一套**。
+> **绝不自己编**：❌ 自己编 prompt（图/视频照黄金模板**整段**写，别缩水/别 shortcut）· ❌ 自己编文案长度或结构（照节拍表 + 字数区间）· ❌ 自己编流程 / Status 顺序 · ❌ 自己编「差不多的做法」糊弄过去。
+> **不确定 / 找不到规则 → 先 `Read` 本文件夹里的 md**（完整规则都在），还不清楚就**问用户**，**绝不瞎编**。照 SOP 做才有稳定成品，自己发挥＝出烂货。
 
-> 🔴 **交互铁律 · 统一提问格式（每个 skill、每一题都照这个）：** ① **一次只问 1 题**，绝不一次丢一堆；② 用**可点选项卡**（`AskUserQuestion`）让学生点、不打字；③ **每题 ≤4 个选项 +「其他」**；④ 每个选项＝**短标签＋一句说明**（例：`ToFu — 让还不认识你的人看到`）；⑤ 题干一句话问清「这步要你决定什么」；⑥ 只有真开放题（品牌名/产品名）才让打字；⑦ 答完这题才问下一题、答完一组才动手做。
-> 🔴🔴 **行动前先确认（无论哪个 skill、每一步都守）：** 真正动手做一件事 —— 建 / 改 Notion 页、生成图/视频/音乐、上传、发布、改 Status —— **之前**，先一句话说清「**我要做什么 + 会花什么（credit / 改哪里）**」，**确认一次再动**。🔴 别自作主张一路做完、别默认用户同意。
-> 🔴 **底层三层：** 出的每样东西都套 ① 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）· ② 语言（NLP）· ③ 动机（6 大人性需求）。说得出「用了哪个大师+哪个NLP+戳哪个需求」，说不出＝重来。
+> **交互铁律 · 统一提问格式（每个 skill、每一题都照这个）：**
+> - 一次只问 1 题，绝不一次丢一堆
+> - 用可点选项卡（`AskUserQuestion`）让学生点、不打字
+> - 每题 ≤4 个选项 +「其他」
+> - 每个选项 = 短标签 + 一句说明（例：`ToFu — 让还不认识你的人看到`）
+> - 题干一句话问清「这一步要你决定什么」
+> - 只有真开放题（品牌名 / 产品名）才让学生打字
+> - 答完这题才问下一题；答完一组才动手做
+>
+> **统一提问顺序（固定，别临时调换）：** 第一题 · 做哪个受众 → 第二题 · 哪个漏斗层（ToFu/MoFu/BoFu）→ 第三题起 · 本 skill 专属（也按固定顺序编号）。受众 / 漏斗层若在 `00` 立项时已选 → 一句确认、不重复问。
+> **行动前先确认（无论哪个 skill、每一步都守）：** 真正动手做一件事 —— 建 / 改 Notion 页、生成图/视频/音乐、上传、发布、改 Status —— **之前**，先一句话说清「**我要做什么 + 会花什么（credit / 改哪里）**」，**确认一次再动**。别自作主张一路做完、别默认用户同意。
+> **底层三层：** 出的每样东西都套 ① 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）· ② 语言（NLP）· ③ 动机（6 大人性需求）。说得出「用了哪个大师+哪个NLP+戳哪个需求」，说不出＝重来。
 
-> 🔴 **强制记录：** 全程把决定/产出记进用户的「业务 md」（`业务-<品牌名>.md`）——品牌地基、每条内容的角度/大师/需求、Notion 结构、产出链接。没有这个文件 → 先建。
+> **强制记录：** 全程把决定/产出记进用户的「业务 md」（`业务-<品牌名>.md`）——品牌地基、每条内容的角度/大师/需求、Notion 结构、产出链接。没有这个文件 → 先建。
 
-> 🔴🔴 **两套通用底层（每个产出都要套，不管这一步做的是文案/图/视频/数字人/PPT/音乐）：**
+> **两套通用底层（每个产出都要套，不管这一步做的是文案/图/视频/数字人/PPT/音乐）：**
 > - ❤️ **6 大人性需求**（确定 / 新鲜 / 重要 / 爱与连接 / 成长 / 贡献）= 内容动机的根 —— 每条内容先想「戳的是哪个需求」。
 > - 🧠 **NLP 说服技巧**（换框 / 未来预演 / 连续肯定 / 锚定 / 社会认同…）= 语言的说服力 —— 每条内容至少叠 1–2 个。
-> 🔴 **两套的完整全文，就在本 skill 最下方「📚 完整参考资料」里**（`09-6大人性需求…` + `08-NLP营销技巧…`）—— 动手前先读，做完自检：**这条戳了哪个人性需求？用了哪个 NLP 技巧？** 说不出＝没套底层，重来。
+> **两套的完整全文，就在本 skill 最下方「📚 完整参考资料」里**（`09-6大人性需求…` + `08-NLP营销技巧…`）—— 动手前先读，做完自检：**这条戳了哪个人性需求？用了哪个 NLP 技巧？** 说不出＝没套底层，重来。
 
-> 🚦🔴🔴 **开工前先看 Status（每个 skill、每一步都守）：** 动任何一条内容前，先读它在 Notion「内容矩阵」里的 `Status` —— **Status 决定这一步该做什么**：Not Started→定角度立项 · Need Review Idea→审角度 · Proceed to Generate→写文案+去生成(生成前先确认) · Need Review Poster/Video→审成品+三落归档 · Checked→**全部做完只差发**(排期等发) · Need Modify→按反馈改 · Rejected→弃用 · Posted→已发看数据（详见本 skill 下方模版「🚦 Status 工作流」）。🔴 **绝不不看 Status 就闷头产**；做完这一步**改 Status** 推进。🔴 `Checked`＝万事俱备只差发布，不是角度审过。
+> 🚦**开工前先看 Status（每个 skill、每一步都守）：** 动任何一条内容前，先读它在 Notion「内容矩阵」里的 `Status` —— **Status 决定这一步该做什么**：Not Started→定角度立项 · Need Review Idea→审角度 · Proceed to Generate→写文案+去生成(生成前先确认) · Need Review Poster/Video→审成品+三落归档 · Checked→**全部做完只差发**(排期等发) · Need Modify→按反馈改 · Rejected→弃用 · Posted→已发看数据（详见本 skill 下方模版「🚦 Status 工作流」）。**绝不不看 Status 就闷头产**；做完这一步**改 Status** 推进。`Checked`＝万事俱备只差发布，不是角度审过。
 
 
 ---
 
 ## 这是「守门人」——所有 part 之前必须先跑它
 
-> 🔴 **步骤顺序（照这个走，前面没齐别放行）：**
+> **步骤顺序（照这个走，前面没齐别放行）：**
 > **第 0 步** 无脑安装（装工具+连账号·每台机一次性）→ **第 1 步** 落脚点（东西存哪）→ **第 2 步** 新/旧业务？→ **第 3 步** 建业务 md → **第 4 步** 品牌地基 → **第 5 步** Notion 骨架 → **放行**：做第一条内容。
 
-### 第 0 步 · 无脑安装：装工具 + 连账号（🔴 每台电脑一次性，先搞定再问任何东西）
-🔴🔴 **学生第一次来啥都不会 —— 别一上来问品牌，先把工具装好、账号连好。**（完整步骤 + 脚本见本文件夹 `00-无脑安装向导.md` / `setup-tools.sh` / `setup-tools.ps1`）
-- **① 自动装本地工具**（只有「合 logo / 拼视频 / rclone 归档」才要；连接器不要这些）：侦测系统 → Mac 跑 `bash setup-tools.sh`、Windows 跑 `powershell -ExecutionPolicy Bypass -File setup-tools.ps1` → 自动装 git / node / python + pillow / imageio-ffmpeg。🔴 **学员只需：同意你运行 +（Mac）输一次密码。绝不叫他去官网一个个下载。**（Windows 装完提醒重开终端让 PATH 生效。）
+### 第 0 步 · 无脑安装：装工具 + 连账号（每台电脑一次性，先搞定再问任何东西）
+**学生第一次来啥都不会 —— 别一上来问品牌，先把工具装好、账号连好。**（完整步骤 + 脚本见本文件夹 `00-无脑安装向导.md` / `setup-tools.sh` / `setup-tools.ps1`）
+- **① 自动装本地工具**（只有「合 logo / 拼视频 / rclone 归档」才要；连接器不要这些）：侦测系统 → Mac 跑 `bash setup-tools.sh`、Windows 跑 `powershell -ExecutionPolicy Bypass -File setup-tools.ps1` → 自动装 git / node / python + pillow / imageio-ffmpeg。**学员只需：同意你运行 +（Mac）输一次密码。绝不叫他去官网一个个下载。**（Windows 装完提醒重开终端让 PATH 生效。）
 - **② 连账号（全是远程连接器，不用装任何东西，只点授权）：** **Notion**（Claude 设置 → 连接器 → 搜 Notion → 一键授权）· **Higgsfield**（添加自定义连接器 → 贴 `https://mcp.higgsfield.ai/mcp` → 授权）· **ChatCut**（贴 `https://api.chatcut.io/api/external-mcp/mcp` → 授权，要剪辑才连）。**Suno** 没连接器（浏览器手动）。**GitHub / Google Drive** 只在要「版本记录 / 自动归档」时才连——**学员起步可跳过**。
-- 🔴 **唯一不能自动的**：学员自己「点 Authorize 授权」（要登录他自己账号，安全上替不了）。连完你逐个 test 一遍通不通，再往下。
+- **唯一不能自动的**：学员自己「点 Authorize 授权」（要登录他自己账号，安全上替不了）。连完你逐个 test 一遍通不通，再往下。
 
-### 第 1 步 · 定落脚点（东西存哪 · 🔴 先给他一个家）
+### 第 1 步 · 定落脚点（东西存哪 · 先给他一个家）
 1. **成品 folder** —— 图/视频/文案/业务 md 全存这（默认 `~/我的AI内容营销/<品牌名>`），你来建好。
 2. **哪个 Notion** —— 待会在里面帮他搭骨架。
 3. **（可选 · 要「自动归档到 Drive」才做，起步可跳过）Google Drive 成品自动上传 —— 配好 rclone：**
-   - ① 要他的 Drive 成品 folder 链接（`drive.google.com/…/folders/xxx`）；🔴 `/folders/` 后那段 = **folder ID**，记进业务 md「Drive 链接 / folder ID」。
-   - ② 🔴 **带他配 rclone**（终端）：`rclone config` → `n`(新建) → 名字 `gdrive` → 存储选 `drive`（Google Drive）→ client_id/secret 留空回车 → scope 选 `1`(drive 完整) → `Edit advanced config? n` → `Use auto config? y`（弹浏览器登录授权 Google）→ `Configure this as a Shared Drive? n` → `y` 确认。
-   - ③ 验证：`rclone lsd gdrive:` 能列出他的 Drive = 配好了。
-   - 🔴 **配好前别开始出内容** —— 不然成品传不了。之后所有成品 `rclone copy "<本地成品>" gdrive: --drive-root-folder-id <folder ID>` 自动进 Drive。
+ - ① 要他的 Drive 成品 folder 链接（`drive.google.com/…/folders/xxx`）；`/folders/` 后那段 = **folder ID**，记进业务 md「Drive 链接 / folder ID」。
+ - ② **带他配 rclone**（终端）：`rclone config` → `n`(新建) → 名字 `gdrive` → 存储选 `drive`（Google Drive）→ client_id/secret 留空回车 → scope 选 `1`(drive 完整) → `Edit advanced config? n` → `Use auto config? y`（弹浏览器登录授权 Google）→ `Configure this as a Shared Drive? n` → `y` 确认。
+ - ③ 验证：`rclone lsd gdrive:` 能列出他的 Drive = 配好了。
+ - **配好前别开始出内容** —— 不然成品传不了。之后所有成品 `rclone copy "<本地成品>" gdrive: --drive-root-folder-id <folder ID>` 自动进 Drive。
 4. 落脚点定了 → 写进业务 md（文件存放位置 / Drive 链接）→ 才进下一步。
 
 ### 第 2 步 · 先问：新业务还是已有业务？（选项卡）
@@ -66,32 +75,32 @@ metadata:
 > - **已有业务** → 读它的业务 md，确认地基还在，直接放行去要做的 part。
 
 ### 第 3 步 · 强制建「业务 md」
-🔴 没有 `业务-<品牌名>.md` 就先建一个，之后每步都往里记。
+没有 `业务-<品牌名>.md` 就先建一个，之后每步都往里记。
 
 ### 第 4 步 · 品牌地基（新业务必做，一次一题问）
 品牌名 / 主打 / 受众(3-5个) / persona / 合规红线 / 命名格式 → 写进业务 md。（细节见本文件夹 `03-SETUP` + `07-TEMPLATE`）
 
 ### 第 5 步 · 强制搭 Notion 骨架（走文案之前必须先做）
-🔴🔴 **学生最容易跳过这步就去写文案 —— 不给跳。** 先用选项卡问「用推荐层级还是自定义」，把骨架搭好：
+**学生最容易跳过这步就去写文案 —— 不给跳。** 先用选项卡问「用推荐层级还是自定义」，把骨架搭好：
 ```
 📁 <品牌>（大脑）
-├── 🧱 品牌地基   ├── 📋 内容矩阵(database)   ├── 🎨 素材库   └── ✅ 成品归档
+├── 🧱 品牌地基 ├── 📋 内容矩阵(database) ├── 🎨 素材库 └── ✅ 成品归档
 ```
-再在「内容矩阵」里建 database —— 🔴 **照 `05-Notion内容矩阵页模版` 建全部属性列，顺序照那份的 default view**（广告投放日期/Status/Stage/目标受众/领域/行业/主讲人/命名标题/**内容角度(=Title Aa)**/Hook类型/**🏷️关联主题(按业务主题,不是「AI内容课」)**/媒体类型/备注/❤️人性需求/🧠NLP技巧/📽️Hook变体）。🔴 **Title 属性 = 内容角度，不是命名标题。**
-🔴🔴 **建库 = 只搭 database + 属性 + 空模版结构**（视频类=概念+8-shot表；图文类=概念+图内文字层级+素材+prompt表+成品海报）。🔴 **表格 `Higgsfield Prompt` 列宽≈562px**。**并教学员在 Notion 里「设为默认模版」**（API 设不了，手动点一次）。
+再在「内容矩阵」里建 database —— **照 `05-Notion内容矩阵页模版` 建全部属性列，顺序照那份的 default view**（广告投放日期/Status/Stage/目标受众/领域/行业/主讲人/命名标题/**内容角度(=Title Aa)**/Hook类型/**🏷️关联主题(按业务主题,不是「AI内容课」)**/媒体类型/备注/❤️人性需求/🧠NLP技巧/📽️Hook变体）。**Title 属性 = 内容角度，不是命名标题。**
+**建库 = 只搭 database + 属性 + 空模版结构**（视频类=概念+8-shot表；图文类=概念+图内文字层级+素材+prompt表+成品海报）。**表格 `Higgsfield Prompt` 列宽≈562px**。**并教学员在 Notion 里「设为默认模版」**（API 设不了，手动点一次）。
 
-🔴🔴🔴 **内容（文案 / 图 prompt / 台词）别在 00 随手填 —— 留给对应 skill 按规则写**：文案→`suma-ai-02-copy`（三层+骨架+大师+护栏）· 图 prompt→`suma-ai-03-image`（骨架+护栏）· 台词→`suma-ai-04-video`。真要放一条示范，也**必须套那个 skill 的完整规则、从这个业务自己的品牌地基长出来**。
-🔴🔴 **绝不照抄 SUMA / 模版里的角度、产品、卖点** —— 那些只是「长什么样」的形状参考。例：SUMA 卖「教你自己搭 AI 系统」；如果用户是**代运营 agency**（帮客户做=done-for-you）、**卖货**（推产品）、**服务店**（到店消费），角度/卖点**完全不同**，别把 SUMA 的「缺一套自己的 AI 系统」硬套上去。
+**内容（文案 / 图 prompt / 台词）别在 00 随手填 —— 留给对应 skill 按规则写**：文案→`suma-ai-02-copy`（三层+骨架+大师+护栏）· 图 prompt→`suma-ai-03-image`（骨架+护栏）· 台词→`suma-ai-04-video`。真要放一条示范，也**必须套那个 skill 的完整规则、从这个业务自己的品牌地基长出来**。
+**绝不照抄 SUMA / 模版里的角度、产品、卖点** —— 那些只是「长什么样」的形状参考。例：SUMA 卖「教你自己搭 AI 系统」；如果用户是**代运营 agency**（帮客户做=done-for-you）、**卖货**（推产品）、**服务店**（到店消费），角度/卖点**完全不同**，别把 SUMA 的「缺一套自己的 AI 系统」硬套上去。
 
-### 放行 → 直接进「做第一条内容」（🔴 绝不问「做文案还是图还是视频」——那是错的分法）
+### 放行 → 直接进「做第一条内容」（绝不问「做文案还是图还是视频」——那是错的分法）
 以上第 0–5 步齐了 → 说「地基 OK，我们来做第一条内容」，然后**一次一题**问（选项卡）：
 1. **做哪个受众？**（列品牌地基里定的受众）
 2. **哪个漏斗层？** ToFu 觉醒 / MoFu 考虑 / BoFu 决策。
 3. **配哪种成品？** 只两个选项：**【文案 + 图文海报】** 或 **【文案 + 口播视频】**。
-🔴🔴 **文案永远跟着图或视频成对做 —— 绝不单独做文案、也绝不做没有文案的图/视频**（一条内容 = 一句发帖 caption ＋ 一个视觉）。
+**文案永远跟着图或视频成对做 —— 绝不单独做文案、也绝不做没有文案的图/视频**（一条内容 = 一句发帖 caption ＋ 一个视觉）。
 → 选【文案+图文】：同一条立项页里 `02-copy` 写文案 ＋ `03-image` 出图。
 → 选【文案+视频】：同一条立项页里 `02-copy` 写文案/脚本 ＋ `04-video` 出片（要锁同一个人物再 `05`）。
-🔴 先照模版建这条立项页、填好、Status 走起，**再产出；进 02/03/04 一律自动套那个 skill 的完整 SOP**。🔴 数字人/PPT/配乐不是「主 part」——是视频/内容的配件，需要时在流程里带出，别当独立选项让学生选。**前面第 0–5 步没齐 → 不放行。**
+先照模版建这条立项页、填好、Status 走起，**再产出；进 02/03/04 一律自动套那个 skill 的完整 SOP**。数字人/PPT/配乐不是「主 part」——是视频/内容的配件，需要时在流程里带出，别当独立选项让学生选。**前面第 0–5 步没齐 → 不放行。**
 
 ---
 
@@ -103,7 +112,7 @@ metadata:
 
 ---
 
-# 🔴🔴 底层必读 · 先看这几套再动手（❤️人性需求 ＋ 🧠NLP ＝ 所有内容的根；✍️ 文案框架 ＝ 任何 skill 写文案/caption 都照它（节拍表/字数/AI隐形）；📋 内容矩阵模版 ＝ 每条内容的立项格式 ＋ 🚦Status 工作流）
+# 底层必读 · 先看这几套再动手（❤️人性需求 ＋ 🧠NLP ＝ 所有内容的根；✍️ 文案框架 ＝ 任何 skill 写文案/caption 都照它（节拍表/字数/AI隐形）；📋 内容矩阵模版 ＝ 每条内容的立项格式 ＋ 🚦Status 工作流）
 
 
 ---
@@ -112,7 +121,7 @@ metadata:
 
 # 6 大人性需求 —— 让内容角度更有方向（通用，任何行业都能用）
 
-> 🔴 **两条底盘规则（跟 SKILL.md / 本包 README 一致，做这一步也守）：** ① **交互**：问用户任何选择题 → 一题一题、一题一张可点选项卡（每题≤4 个+「其他」）、**绝不一次全倒**。② **底层三层**：出的每样东西都套 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）+ 语言（NLP）+ 动机（6 大人性需求），**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
+> **两条底盘规则（跟 SKILL.md / 本包 README 一致，做这一步也守）：** ① **交互**：问用户任何选择题 → 一题一题、一题一张可点选项卡（每题≤4 个+「其他」）、**绝不一次全倒**。② **底层三层**：出的每样东西都套 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）+ 语言（NLP）+ 动机（6 大人性需求），**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
 
 
 > 人做任何决定，背后都在满足 **6 种深层需求**（Tony Robbins 框架）。
@@ -186,7 +195,7 @@ metadata:
 
 # NLP 营销技巧 —— 让文案更有说服力（通用，任何行业都能用）
 
-> 🔴 **两条底盘规则（跟 SKILL.md / 本包 README 一致，做这一步也守）：** ① **交互**：问用户任何选择题 → 一题一题、一题一张可点选项卡（每题≤4 个+「其他」）、**绝不一次全倒**。② **底层三层**：出的每样东西都套 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）+ 语言（NLP）+ 动机（6 大人性需求），**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
+> **两条底盘规则（跟 SKILL.md / 本包 README 一致，做这一步也守）：** ① **交互**：问用户任何选择题 → 一题一题、一题一张可点选项卡（每题≤4 个+「其他」）、**绝不一次全倒**。② **底层三层**：出的每样东西都套 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）+ 语言（NLP）+ 动机（6 大人性需求），**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
 
 
 > **NLP（神经语言程序学）** 研究"语言怎么影响人的大脑和行为"。
@@ -291,7 +300,7 @@ metadata:
 
 # 文案分层框架（验证版 · 可直接喂 Claude）
 
-> 🔴 **两条底盘规则（跟 SKILL.md / 本包 README 一致，做这一步也守）：** ① **交互**：问用户任何选择题 → 一题一题、一题一张可点选项卡（每题≤4 个+「其他」）、**绝不一次全倒**。② **底层三层**：出的每样东西都套 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）+ 语言（NLP）+ 动机（6 大人性需求），**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
+> **两条底盘规则（跟 SKILL.md / 本包 README 一致，做这一步也守）：** ① **交互**：问用户任何选择题 → 一题一题、一题一张可点选项卡（每题≤4 个+「其他」）、**绝不一次全倒**。② **底层三层**：出的每样东西都套 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）+ 语言（NLP）+ 动机（6 大人性需求），**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
 
 
 > **用法：** 把这份**整个丢给 Claude**，说：「学习这份框架，以后我的广告文案都照这个写。」
@@ -307,8 +316,8 @@ metadata:
 > 同一个受众，两条路的文案**语气和目的完全不同**——先选定，再套下面的三层框架。
 
 ## 营销心法（贯穿所有内容，尤其个人IP）
-- 🔴 **持续 > 爆款**：坚持长期发（如每周 3 次）比偶尔一条爆款更重要——算法和信任都靠持续累积。
-- 🔴 **你的独特观点**：热度谁都能蹭，但爆款还得是「你」——内容要带你自己的视角/主张，不然换谁发都一样，做不出个人 IP。
+- **持续 > 爆款**：坚持长期发（如每周 3 次）比偶尔一条爆款更重要——算法和信任都靠持续累积。
+- **你的独特观点**：热度谁都能蹭，但爆款还得是「你」——内容要带你自己的视角/主张，不然换谁发都一样，做不出个人 IP。
 
 ---
 
@@ -316,16 +325,16 @@ metadata:
 
 **框架（下面的三层/8钩子）是骨架；大师是灵魂。** 只套骨架 = 泛泛；叠上大师 = 有说服力。每条文案至少用上 2–3 个：
 
-- 🔴 **为客户的处境正名（Blair Warren）—— SUMA 文案的灵魂，几乎每条都用**：他做不好**不是他的错**——是市场只教工具、没人教方法。把「共同的敌人」指向**错误的方法**，不贬低客户、不攻击真人。
-  > 例：「不是广告不投，是没人帮你把『为什么该找你』讲清楚。」
-- 🔴 **让客户自己说服自己（Self-Persuasion）—— 最强的说服是他自己得出的结论**：用「你是不是也…？」「算算你一年花多少…？」让他**自己**发现问题、自己算账，比你喊一百遍都管用。
-- **LF8 生命原动力（Drew Whitman）**：8 大本能——生存 / 免于恐惧 / 被认同 / 优越感 / 舒适 / 爱护家人 / 被接纳 / 性。🔴 **钩子戳的是本能，不是戳「功能」**（「怕被淘汰」比「工具很强」有力得多）。
+- **为客户的处境正名（Blair Warren）—— SUMA 文案的灵魂，几乎每条都用**：他做不好**不是他的错**——是市场只教工具、没人教方法。把「共同的敌人」指向**错误的方法**，不贬低客户、不攻击真人。
+ > 例：「不是广告不投，是没人帮你把『为什么该找你』讲清楚。」
+- **让客户自己说服自己（Self-Persuasion）—— 最强的说服是他自己得出的结论**：用「你是不是也…？」「算算你一年花多少…？」让他**自己**发现问题、自己算账，比你喊一百遍都管用。
+- **LF8 生命原动力（Drew Whitman）**：8 大本能——生存 / 免于恐惧 / 被认同 / 优越感 / 舒适 / 爱护家人 / 被接纳 / 性。**钩子戳的是本能，不是戳「功能」**（「怕被淘汰」比「工具很强」有力得多）。
 - **结构套 AIDA 或 PAS**：**PAS**（问题→痛点放大→方案）最适合 ToFu；**AIDA**（注意→兴趣→欲望→行动）适合 BoFu。选一个当骨架，别乱。
 - **Cialdini 影响力六原则**：互惠 / 承诺一致 / **社会认同** / 权威 / 喜好 / **稀缺**。一条挑 1–2 个用——社会认同＝学员见证；稀缺＝名额有限。
 - **Before vs After 巨大反差 + 卖 ROI 不卖功能（Belfort 语调传确定感）**：讲**结果的反差**（「有人烧钱换沉默，有人一条内容带来排队询盘」），不列产品参数。
 - **客户是英雄，你是向导（Duarte）**：文案里**客户是主角**，你（品牌）是那个递地图的人，不是站 C 位的救世主。
 
-> 🔴 **每条文案 Claude 都要能说出「这条用了哪 2–3 个大师、哪个钩子、戳哪个人性需求」** —— 说不出，就是只套了骨架没套灵魂，重写。
+> **每条文案 Claude 都要能说出「这条用了哪 2–3 个大师、哪个钩子、戳哪个人性需求」** —— 说不出，就是只套了骨架没套灵魂，重写。
 
 ---
 
@@ -349,44 +358,44 @@ metadata:
 
 ### ToFu（觉醒层）
 1. **痛点直击** — 直接戳最痛的**那一个**点，情绪共鸣，再给方向。
-   > 开头：「你是不是也…（那个具体的痛）？」
+ > 开头：「你是不是也…（那个具体的痛）？」
 2. **对比反差** — 同一件事，A(普通/没用 AI) vs B(用 AI)，差距一眼看见。
-   > 开头：「同样是…，为什么有人…有人却…？」
+ > 开头：「同样是…，为什么有人…有人却…？」
 3. **趋势警醒** — 行业/买家行为变了，不跟上就掉客/被淘汰。
-   > 开头：「2026 年，…已经变了，还在…的人正在…」
+ > 开头：「2026 年，…已经变了，还在…的人正在…」
 
 ### MoFu（考虑层）
 4. **行业揭秘** — 拆解「高手/TOP 玩家的完整打法」，给方法框架。
-   > 开头：「拆解一下：那些…的人，到底怎么做到的？」
+ > 开头：「拆解一下：那些…的人，到底怎么做到的？」
 5. **实操演示** — 现场演示「怎么做」，短时间出成品。
-   > 开头：「我现场做一次给你看，X 分钟出一套…」
+ > 开头：「我现场做一次给你看，X 分钟出一套…」
 6. **学员见证** — 学员的 before → after 结果故事。
-   > 开头：「她以前…，学完当天…，结果…」
+ > 开头：「她以前…，学完当天…，结果…」
 
 ### BoFu（决策层）
 7. **算账 ROI** — 算外包/时间成本 vs 学会自己做，讲回本逻辑。
-   > 开头：「算算你一年花多少钱在…上？」
+ > 开头：「算算你一年花多少钱在…上？」
 8. **招生 CTA** — 日期 + 名额有限 + 当天出成品 + 报名。
-   > 开头：「X 月 X 日 · 名额有限 · 当天做出成品带回家」
+ > 开头：「X 月 X 日 · 名额有限 · 当天做出成品带回家」
 
 ---
 
 ## 三、写作护栏（每条都要守 — 这些是踩坑换来的）
 
-- 🔴 **价格 / 优惠 / 名额 = 按你自己的生意来**（该报价就报价、该做限时就做限时，那是你的商业决定）。⚠️ **只有 SUMA 自己招生的文案**才守房规：ToFu 不写价、不写「免费」、不写具体名额数字（用「名额有限」）—— 那是 SUMA 的合规策略，**别套到学员自己的生意上**。
-- 🔴 **完整品牌名一字不差**，每条出现 1 次（常放 CTA）。
-- 🔴 **卖方法论，不卖工具**：强调「怎样用 AI 有效做出东西」，不是工具本身。
-- 🔴 **带出工具组**：图文每条带全套工具；视频台词**自然聚焦**相关的几个（全套由 caption + 标签承载，别硬塞清单）。
-- 🔴 **Persona 贴行业 + 人物一律本地**（图/视频里的人）。
-- 🔴 **视频台词不用口头禅**（不要「咯/啦」），要多要实、节奏快。
-- 🔴 **图海报要场景化**（真实日常场景、画面感），不是抽象排版。
+- **价格 / 优惠 / 名额 = 按你自己的生意来**（该报价就报价、该做限时就做限时，那是你的商业决定）。⚠️ **只有 SUMA 自己招生的文案**才守房规：ToFu 不写价、不写「免费」、不写具体名额数字（用「名额有限」）—— 那是 SUMA 的合规策略，**别套到学员自己的生意上**。
+- **完整品牌名一字不差**，每条出现 1 次（常放 CTA）。
+- **卖方法论，不卖工具**：强调「怎样用 AI 有效做出东西」，不是工具本身。
+- **带出工具组**：图文每条带全套工具；视频台词**自然聚焦**相关的几个（全套由 caption + 标签承载，别硬塞清单）。
+- **Persona 贴行业 + 人物一律本地**（图/视频里的人）。
+- **视频台词不用口头禅**（不要「咯/啦」），要多要实、节奏快。
+- **图海报要场景化**（真实日常场景、画面感），不是抽象排版。
 
 ---
 
-## 四、每层节拍表（骨架升级版 —— 🔴 每拍绑「作用 ＋ 套哪个大师/NLP/❤️需求 ＋ 范例句」，填满自然达字数）
+## 四、每层节拍表（骨架升级版 —— 每拍绑「作用 ＋ 套哪个大师/NLP/❤️需求 ＋ 范例句」，填满自然达字数）
 
-> 🔴🔴 **这不是填几个空 —— 是填满每一拍，每拍展开成 1–2 句真内容（不是一个词）。拍填满，字数自然到下限。字数不够＝有拍没填/没展开，回去补，别缩。**
-> 🔴🔴 **「好消息」那拍 ＝ 带出你自己的产品/服务怎么解决顾客的痛，AI 全程隐形**（顾客不在乎你用什么做的内容）。**只有当你的生意本身就是卖 AI / 内容代运营**，这拍才带出工具组。别 import「教你用 AI 做内容」这种别人（SUMA）的角度。
+> **这不是填几个空 —— 是填满每一拍，每拍展开成 1–2 句真内容（不是一个词）。拍填满，字数自然到下限。字数不够＝有拍没填/没展开，回去补，别缩。**
+> **「好消息」那拍 ＝ 带出你自己的产品/服务怎么解决顾客的痛，AI 全程隐形**（顾客不在乎你用什么做的内容）。**只有当你的生意本身就是卖 AI / 内容代运营**，这拍才带出工具组。别 import「教你用 AI 做内容」这种别人（SUMA）的角度。
 
 ### ToFu 节拍表（目标 250–400 字 · 觉醒、不硬卖）
 
@@ -395,7 +404,7 @@ metadata:
 | 1 | 钩子标题 | 3 秒让对的人「这是我」 | LF8 戳本能 | 【你有多久没好好看看你家狗狗了？🐾】|
 | 2 | 痛点场景 | 痛＝具体画面，不是形容词 | 自我说服「你有没有…」/❤️确定 | 上班加班赶回家，你发现狗狗的毛打结、指甲长到打滑 |
 | 3 | 二次扎心 | 补一刀更细的细节＋情绪 | 细节真实感 | 它不会说话，只能默默忍着痒，还是每天摇尾巴等你 |
-| 4 | **正名（灵魂）**| 敌人指向处境，不怪客户 | 🔴Blair Warren 正名 | 不是你不爱它，是你真的太忙了 |
+| 4 | **正名（灵魂）**| 敌人指向处境，不怪客户 | Blair Warren 正名 | 不是你不爱它，是你真的太忙了 |
 | 5 | 后果/对比 | 不处理会怎样 | 后果放大 | 拖久了打结要剃光、皮肤闷出病，更心疼更花钱 |
 | 6 | **换框** | 把「麻烦」换成「其实简单」 | 🧠NLP 换框 | 其实帮它好好打理一次，没你想的那么麻烦 |
 | 7 | **好消息＝你的产品/服务** | 你的服务怎么解决（AI 隐形）| 未来预演/❤️爱与连接 | 洗澡修毛剪指甲清耳朵，专业做一次，它舒服一整个月 |
@@ -407,7 +416,7 @@ metadata:
 | # | 节拍 | 作用 | 套（大师/NLP/❤️）| 范例句 |
 |---|---|---|---|---|
 | 1 | 钩子（揭秘/见证）| 勾起「怎么做到的」 | 好奇/对比反差 | 【同样补习，为什么有的孩子越补越怕，有的越补越敢举手？】|
-| 2 | 点破误区 | 打掉大家的错法 | 🔴正名 | 不是你孩子不够聪明，是他一直在「背答案」不是「懂」 |
+| 2 | 点破误区 | 打掉大家的错法 | 正名 | 不是你孩子不够聪明，是他一直在「背答案」不是「懂」 |
 | 3 | 方法·第一步 | 给具体怎么做 | 拆方法 | 第一堂课，先找出他到底卡在哪一个概念 |
 | 4 | 方法·第二步 | 继续拆，可视化 | 拆方法/未来预演 | 用他听得懂的方式重讲，当场做一题验证，懂了才往下 |
 | 5 | 证据 | before → after 真结果 | Belfort 反差＋Cialdini 社会认同 | 上个月一个孩子数学从 40 到 72，敢举手了 |
@@ -429,9 +438,9 @@ metadata:
 
 ---
 
-## 五、示范（🔴 三层各一个**不同行业** · 卖自己产品给自己顾客 · **AI 全程隐形** · 都真数过字达标）
+## 五、示范（三层各一个**不同行业** · 卖自己产品给自己顾客 · **AI 全程隐形** · 都真数过字达标）
 
-> 🔴 下面就是**成品文案本身长什么样**（节拍怎么分见 §四；这里不挂节拍标签）。换你的行业时，把生意/受众/产品换掉，**长度、AI 隐形、分段照守**。
+> 下面就是**成品文案本身长什么样**（节拍怎么分见 §四；这里不挂节拍标签）。换你的行业时，把生意/受众/产品换掉，**长度、AI 隐形、分段照守**。
 
 ### ① ToFu ·〔宠物美容店 → 宠物主人〕痛点直击（约 330 字 · 达标区间 250–400）
 
@@ -456,7 +465,7 @@ metadata:
 > <你的品牌名> · <预约方式>
 > 👉 <链接>　#宠物美容 #狗狗护理 #吉隆坡宠物
 >
-> 🧩 **套了谁**（🧠NLP｜🎓大师｜❤️需求，按漏斗层挑对）：🧠**先同频再带走**（「你有没有…」一路带到解决）＋ **对比框**（同行 vs 你）｜🎓**Blair Warren 正名**（不是你不爱它）＋ **LF8 爱护家人**｜❤️**爱与连接**（把狗当家人）。🔴 **全程没提一个 AI 字**。
+> 🧩 **套了谁**（🧠NLP｜🎓大师｜❤️需求，按漏斗层挑对）：🧠**先同频再带走**（「你有没有…」一路带到解决）＋ **对比框**（同行 vs 你）｜🎓**Blair Warren 正名**（不是你不爱它）＋ **LF8 爱护家人**｜❤️**爱与连接**（把狗当家人）。**全程没提一个 AI 字**。
 
 ### ② MoFu ·〔补习中心 → 家长〕行业揭秘/拆方法（约 430 字 · 达标区间 300–500）
 
@@ -481,7 +490,7 @@ metadata:
 > <你的品牌名> 👉 现在可以预约一堂免费试听，先让孩子体验一次「弄懂」的感觉。
 > #补习 #SPM #家长必看
 >
-> 🧩 **套了谁**（🧠NLP｜🎓大师｜❤️需求）：🧠**故事**（学员 before→after）＋ **换框**（多做题→打通那一环）｜🎓**Blair Warren 正名**（不是不够聪明）＋ **Belfort 反差**（40→72）＋ **Cialdini 社会认同**（见证）｜❤️**成长**。🔴 **全程没提一个 AI 字**。
+> 🧩 **套了谁**（🧠NLP｜🎓大师｜❤️需求）：🧠**故事**（学员 before→after）＋ **换框**（多做题→打通那一环）｜🎓**Blair Warren 正名**（不是不够聪明）＋ **Belfort 反差**（40→72）＋ **Cialdini 社会认同**（见证）｜❤️**成长**。**全程没提一个 AI 字**。
 
 ### ③ BoFu ·〔美容院 → 爱美顾客〕算账＋限时配套（约 310 字 · 达标区间 200–350）
 
@@ -501,18 +510,18 @@ metadata:
 > <你的品牌名> · 名额有限
 > 👉 <预约链接>　#美容院 #护肤 #吉隆坡美容
 >
-> 🧩 **套了谁**（🧠NLP｜🎓大师｜❤️需求）：🧠**未来预演**（三个月后谢谢自己）＋ **锚定**（单次 vs 配套价）｜🎓**Belfort ROI** ＋ **Cialdini 稀缺**（月底/名额）＋ **承诺一致**（先体验不勉强）｜❤️**确定**（先体验不踩雷、看肤质排方案）。🔴 **价格/名额是这家美容院自己的商业决定，不是 SUMA 房规；全程没提 AI**。
+> 🧩 **套了谁**（🧠NLP｜🎓大师｜❤️需求）：🧠**未来预演**（三个月后谢谢自己）＋ **锚定**（单次 vs 配套价）｜🎓**Belfort ROI** ＋ **Cialdini 稀缺**（月底/名额）＋ **承诺一致**（先体验不勉强）｜❤️**确定**（先体验不踩雷、看肤质排方案）。**价格/名额是这家美容院自己的商业决定，不是 SUMA 房规；全程没提 AI**。
 
 ---
 
-> 🔴🔴 **输出要求（每条都守，否则重写）：**
-> - 🔴 **卖你自己的产品/服务给你自己的顾客，AI 全程隐形** —— 除非你的生意就是卖 AI/代运营，否则一个 AI 字都别出现。**绝不 import 别人（SUMA）的角度。**
-> - 🔴 **照 §四 节拍表填满每一拍**（ToFu/MoFu 各 9 拍、BoFu 6 拍），每拍展开成 1–2 句真内容，不是一个词。**成品文案不挂节拍标签**（像上面示范那样干净）。
-> - 🔴🔴 **字数硬达标：ToFu ≥250 / MoFu ≥300 / BoFu ≥200 字。写完自己数一遍中文字数，不到下限就回去把某几拍展开得更细，数到达标才输出** —— 这条**一直被忽略**，这次必须守：骨架要填满、示范也是这个量。
-> - 🔴 **分段**：每拍之间空一行；真换行，别写 `\n` / `nn`。
-> - 🔴 **适当 emoji**：标题 1 个 ＋ 关键处点缀，全文 3–6 个。
-> - 🔴 **说得出每部分套了哪个大师/NLP/❤️需求**（像示范结尾的 🧩），说不出＝没套灵魂，重写。
-> - 🔴 **NLP 按漏斗层挑**（ToFu:先同频再带走/对比框/模式打断 · MoFu:故事/换框/连续认同 · BoFu:未来预演/预设/锚定/因为）；**❤️6 大需求轮着来**，一批内容别每条都戳同一个需求（详见本 skill 最前面两套底层 md）。
+> **输出要求（每条都守，否则重写）：**
+> - **卖你自己的产品/服务给你自己的顾客，AI 全程隐形** —— 除非你的生意就是卖 AI/代运营，否则一个 AI 字都别出现。**绝不 import 别人（SUMA）的角度。**
+> - **照 §四 节拍表填满每一拍**（ToFu/MoFu 各 9 拍、BoFu 6 拍），每拍展开成 1–2 句真内容，不是一个词。**成品文案不挂节拍标签**（像上面示范那样干净）。
+> - **字数硬达标：ToFu ≥250 / MoFu ≥300 / BoFu ≥200 字。写完自己数一遍中文字数，不到下限就回去把某几拍展开得更细，数到达标才输出** —— 这条**一直被忽略**，这次必须守：骨架要填满、示范也是这个量。
+> - **分段**：每拍之间空一行；真换行，别写 `\n` / `nn`。
+> - **适当 emoji**：标题 1 个 ＋ 关键处点缀，全文 3–6 个。
+> - **说得出每部分套了哪个大师/NLP/❤️需求**（像示范结尾的 🧩），说不出＝没套灵魂，重写。
+> - **NLP 按漏斗层挑**（ToFu:先同频再带走/对比框/模式打断 · MoFu:故事/换框/连续认同 · BoFu:未来预演/预设/锚定/因为）；**❤️6 大需求轮着来**，一批内容别每条都戳同一个需求（详见本 skill 最前面两套底层 md）。
 > - 进 Notion「文案」列的＝这段完整全文（含分段与 emoji）。
 
 ## 一句话
@@ -528,37 +537,37 @@ metadata:
 
 # Notion「内容矩阵」页模版（建库 + 每条立项页照这个填）
 
-> 🔴 这是内容矩阵 database 的**标准模版**。00 守门人建库时照「一、属性」建栏位；之后**每建一条立项页，正文照「二、正文」填成这个样子**（Claude 建页时就填好，别留空页）。
-> 🔴🔴🔴 下面的具体值（学员见证/内容创作者/数字营销/「一个人扛全公司」/「AI营销系统」…）**全是 SUMA 示例——只是「长什么样」的形状参考，绝不照抄它的角度/产品/卖点**。内容（内容角度/文案/图prompt/台词）必须**从这个业务自己的品牌地基长出来**（它卖什么、卖给谁、怎么交付）：代运营 agency=「交给我们做」· 卖货=「产品解决你什么」· 服务店=「来店体验」，跟 SUMA「教你自己搭系统」完全不同。
-> 🔴 **每格的文案/图prompt/台词 = 现场套对应 skill 规则真写**（文案→02 · 图→03 · 台词→04），别在建库时随手填、别套模版例子当真内容。
-> 🔴 **「Notion 默认模版」API 设不了** —— 见「三、设为默认」，教学员手动点一次。
+> 这是内容矩阵 database 的**标准模版**。00 守门人建库时照「一、属性」建栏位；之后**每建一条立项页，正文照「二、正文」填成这个样子**（Claude 建页时就填好，别留空页）。
+> 下面的具体值（学员见证/内容创作者/数字营销/「一个人扛全公司」/「AI营销系统」…）**全是 SUMA 示例——只是「长什么样」的形状参考，绝不照抄它的角度/产品/卖点**。内容（内容角度/文案/图prompt/台词）必须**从这个业务自己的品牌地基长出来**（它卖什么、卖给谁、怎么交付）：代运营 agency=「交给我们做」· 卖货=「产品解决你什么」· 服务店=「来店体验」，跟 SUMA「教你自己搭系统」完全不同。
+> **每格的文案/图prompt/台词 = 现场套对应 skill 规则真写**（文案→02 · 图→03 · 台词→04），别在建库时随手填、别套模版例子当真内容。
+> **「Notion 默认模版」API 设不了** —— 见「三、设为默认」，教学员手动点一次。
 
 ---
 
-## 🚦 Status 工作流（🔴 Status 决定这一步该做什么 —— 开工前先看它）
+## 🚦 Status 工作流（Status 决定这一步该做什么 —— 开工前先看它）
 
-> 🔴🔴 **动任何一条内容前，先读它的 `Status`；Status 决定这一步做什么，别不看 Status 就闷头产出。做完这一步就把 Status 推进到下一状态。**
+> **动任何一条内容前，先读它的 `Status`；Status 决定这一步做什么，别不看 Status 就闷头产出。做完这一步就把 Status 推进到下一状态。**
 
-| Status | 含义 | 🔴 这一步该做什么 |
+| Status | 含义 | 这一步该做什么 |
 |---|---|---|
 | **Not Started** | 还没开始（刚开的空行）| 定角度方向、照模版把立项页填起来 → 角度写好改 `Need Review Idea` |
 | **Need Review Idea** | 角度 / 想法待审 | 审角度（Hook ＋ ❤️人性需求 ＋ 🧠NLP、贴不贴业务）；过 → `Proceed to Generate`，不行 → `Need Modify` 或 `Rejected` |
-| **Proceed to Generate** | 已批准生产 | 写文案 / 图 prompt / 脚本（如还没写）＋ 🔴 去生成图 / 视频 / 数字人（**生成前先把 prompt ＋ 预计 credit 给用户确认再烧**）→ `Need Review Poster/Video` |
+| **Proceed to Generate** | 已批准生产 | 写文案 / 图 prompt / 脚本（如还没写）＋ 去生成图 / 视频 / 数字人（**生成前先把 prompt ＋ 预计 credit 给用户确认再烧**）→ `Need Review Poster/Video` |
 | **Need Review Poster/Video** | 成品出来了，待审 | 审成品（渲染 / 乱码 / 外国脸 / 合规）；过 → **成品三落归档**（本地 ＋ Notion ＋ Drive）→ `Checked`；要改 → `Need Modify` |
 | **Checked** | ✅ **全部做完 ＋ 审过 ＋ 归档好，只差还没发** | 排期 / 等发；发出去 → `Posted` |
 | **Need Modify** | 角度 / 成品要改 | 按反馈改（文案 / prompt / 重生成）→ 改好回 `Need Review Poster/Video`（或对应待审）|
 | **Rejected** | 这条弃用 | 不再产出，留着当记录 / 教训 |
 | **Posted** | 已发布 | 回看数据表现，好的角度复用 |
 
-> 🔴 这 8 个 Status 是标准工作流值（可按业务微调），但**「先看 Status、Status 决定做什么、做完改 Status」这条铁律不变**。
-> 🔴🔴 **`Checked` ＝ 万事俱备、只差发布**（不是「角度审过」）—— 它在流程**倒数第二步**，别搞反。
+> 这 8 个 Status 是标准工作流值（可按业务微调），但**「先看 Status、Status 决定做什么、做完改 Status」这条铁律不变**。
+> **`Checked` ＝ 万事俱备、只差发布**（不是「角度审过」）—— 它在流程**倒数第二步**，别搞反。
 
 ---
 
 ## 一、database 属性（栏位）
 
-> 🔴 **建 database 时，属性就按这个表从上到下的顺序建**（= Notion 里从左到右的列顺序，照做就行）。
-> 🔴 **Title（Aa 属性）= `内容角度`**（页面大标题就是那句角度整句），**不是**「命名标题」（命名标题是另一个文本属性 = 编号命名串）。
+> **建 database 时，属性就按这个表从上到下的顺序建**（= Notion 里从左到右的列顺序，照做就行）。
+> **Title（Aa 属性）= `内容角度`**（页面大标题就是那句角度整句），**不是**「命名标题」（命名标题是另一个文本属性 = 编号命名串）。
 
 | 栏位 | 类型 | 说明 / 示例值 |
 |---|---|---|
@@ -570,9 +579,9 @@ metadata:
 | **行业** | Select | 按用户行业（例：Marketer） |
 | **主讲人** | Person | 谁出镜（可空） |
 | **命名标题** | 文本 | `编号 Hook - Stage - 受众：一句话`，例：`06 学员见证 - MOFU - 内容创作者_In-house Marketer：搭了AI内容营销系统后产能提升、被看见` |
-| 🔴 **内容角度** | **标题(Title · Aa)** | 这条内容的角度**整句 = 页面标题本身**（例：「学员见证：从前一个人在公司加班到十点还追不完内容，搭了一套自己的AI内容营销系统后…」）。**这就是数据库的 Title 属性。** |
+| **内容角度** | **标题(Title · Aa)** | 这条内容的角度**整句 = 页面标题本身**（例：「学员见证：从前一个人在公司加班到十点还追不完内容，搭了一套自己的AI内容营销系统后…」）。**这就是数据库的 Title 属性。** |
 | **Hook 类型** | Select | 学员见证 / 行业揭秘 / 痛点直击 / 对比反差 / 趋势警醒 …（按业务扩） |
-| **🏷️ 关联主题** | Multi-select | 🔴 **按业务自己的内容主题/系列**（例：客户见证 / 行业干货 / 产品展示 / 优惠活动…）。⚠️ **不是「AI内容课」**——那是 SUMA 自己的字段；通用业务一律用自己的主题。 |
+| **🏷️ 关联主题** | Multi-select | **按业务自己的内容主题/系列**（例：客户见证 / 行业干货 / 产品展示 / 优惠活动…）。⚠️ **不是「AI内容课」**——那是 SUMA 自己的字段；通用业务一律用自己的主题。 |
 | **媒体类型** | Select | 视频 / 图文 |
 | **备注** | 文本 | 可空 |
 | **❤️ 人性需求** | Select | 确定 / 新鲜 / 重要 / 爱与连接(Love & Connection) / 成长 / 贡献 |
@@ -583,75 +592,75 @@ metadata:
 
 ## 二、页面正文模版（每条立项页照填，别留空页）
 
-> 🔴🔴 **文案按这条的 `Stage` 走对应 SOP —— ToFu/MoFu/BoFu 卖的东西不一样，写法也不一样，别一套模板套三层：**
-> - **ToFu 觉醒**：戳痛点 / 趋势、让人「对，就是我」，**不硬卖、不放价**。9 拍：钩子标题 → 痛点场景 → 二次扎心 → 正名(不怪客户) → 后果/对比 → 换框 → 好消息=你的产品/服务 → 愿景 → CTA。🔴 字数 **250–400 字**（写完数一遍中文字数，不到下限就回去把某几拍展开更细再数，达标才输出）。
-> - **MoFu 考虑**：拆方法 / 给证据 / 讲 USP，证明「这方法/产品行」。9 拍：钩子(揭秘/见证) → 点破误区 → 方法一 → 方法二 → 证据(before→after) → 关键点 → 为什么选我 → 收口 → CTA。🔴 字数 **300–500 字**（同上，数够才输出）。
-> - **BoFu 决策**：算账 ROI + 紧迫 + offer，推「现在就下手」。6 拍：钩子(算账/限时) → 算账对比 → offer 内容 → 消除顾虑 → 紧迫 → 愿景+CTA。🔴 字数 **200–350 字**（同上，数够才输出）。
-> 🔴 三层都守：**卖自己产品/服务·AI 隐形 · 分段 + emoji(3–6) · NLP 按漏斗层挑 + 戳 ❤️需求**。完整三张节拍表 + 三行业示范在**本 skill 最前面「✍️ 文案框架」(02)**。🔴 **选错层 / 少了中段 / 字数不够 = 没 follow SOP，重写。**
+> **文案按这条的 `Stage` 走对应 SOP —— ToFu/MoFu/BoFu 卖的东西不一样，写法也不一样，别一套模板套三层：**
+> - **ToFu 觉醒**：戳痛点 / 趋势、让人「对，就是我」，**不硬卖、不放价**。9 拍：钩子标题 → 痛点场景 → 二次扎心 → 正名(不怪客户) → 后果/对比 → 换框 → 好消息=你的产品/服务 → 愿景 → CTA。字数 **250–400 字**（写完数一遍中文字数，不到下限就回去把某几拍展开更细再数，达标才输出）。
+> - **MoFu 考虑**：拆方法 / 给证据 / 讲 USP，证明「这方法/产品行」。9 拍：钩子(揭秘/见证) → 点破误区 → 方法一 → 方法二 → 证据(before→after) → 关键点 → 为什么选我 → 收口 → CTA。字数 **300–500 字**（同上，数够才输出）。
+> - **BoFu 决策**：算账 ROI + 紧迫 + offer，推「现在就下手」。6 拍：钩子(算账/限时) → 算账对比 → offer 内容 → 消除顾虑 → 紧迫 → 愿景+CTA。字数 **200–350 字**（同上，数够才输出）。
+> 三层都守：**卖自己产品/服务·AI 隐形 · 分段 + emoji(3–6) · NLP 按漏斗层挑 + 戳 ❤️需求**。完整三张节拍表 + 三行业示范在**本 skill 最前面「✍️ 文案框架」(02)**。**选错层 / 少了中段 / 字数不够 = 没 follow SOP，重写。**
 
 
 ### 📹 视频类（媒体类型=视频）
 
-> 🔴🔴 **硬性比例：口播短视频一律 vertical 9:16（竖版）** —— 不用 16:9 / 1:1。
-> 🔴🔴 **省 credit（铁律）：视频一律 480p + fast 模式，绝不 720p / std**（480p-fast ≈ 720p-std 的 1/3 credit）。配合「先出 Shot 1 满意才继续」，别烧冤枉钱。
+> **硬性比例：口播短视频一律 vertical 9:16（竖版）** —— 不用 16:9 / 1:1。
+> **省 credit（铁律）：视频一律 480p + fast 模式，绝不 720p / std**（480p-fast ≈ 720p-std 的 1/3 credit）。配合「先出 Shot 1 满意才继续」，别烧冤枉钱。
 
-正文顺序（🔴 **概念是概念、文案是文案、台词是台词 —— 三样分开，别塞一起**）：
+正文顺序（**概念是概念、文案是文案、台词是台词 —— 三样分开，别塞一起**）：
 
 **## 概念**
 `<角度类型（如 觉醒型ToFu）+ 用的 NLP：这条内容的「想法/角度」一句话 —— 跟图文的「概念」同一种，不是 caption>`
 
 **## 📱 视频社媒文案**（= 文案，发帖 caption）
-`<🔴 完整文案：照 02「§四 节拍表」填满每一拍（ToFu/MoFu 9 拍 · BoFu 6 拍）· **卖自己产品/服务，AI 全程隐形** · 字数达标（**ToFu 250–400 / MoFu 300–500 / BoFu 200–350 字**，🔴 写完数中文字数、不到下限展开再数，够了才输出）· 分段（每拍空行）+ 适当 emoji（3–6 个）· NLP 按漏斗层挑 + 戳 ❤️人性需求 · 参照 02「§五 示范」· + hashtags —— 绝不缩成 2 句 caption>`
+`<完整文案：照 02「§四 节拍表」填满每一拍（ToFu/MoFu 9 拍 · BoFu 6 拍）· **卖自己产品/服务，AI 全程隐形** · 字数达标（**ToFu 250–400 / MoFu 300–500 / BoFu 200–350 字**，写完数中文字数、不到下限展开再数，够了才输出）· 分段（每拍空行）+ 适当 emoji（3–6 个）· NLP 按漏斗层挑 + 戳 ❤️人性需求 · 参照 02「§五 示范」· + hashtags —— 绝不缩成 2 句 caption>`
 
 **## 📽️ 分镜脚本（8-shot）**（表格；里面的「台词」列 = 每 shot 主播讲的话，又是另一回事）
-分镜表格列（🔴 **`Higgsfield Prompt` 列宽 ≈ 562px** —— 这是曾定的标准列宽，够宽才看得全 prompt）：
+分镜表格列（**`Higgsfield Prompt` 列宽 ≈ 562px** —— 这是曾定的标准列宽，够宽才看得全 prompt）：
 
-> 🔴🔴 **每个 shot 的 Higgsfield/seedance prompt = 照下面黄金模板【整段完整写】（这才是标准长度）。🔴🔴 每个 shot 都把整段（含整段超详细 CHARACTER 人物描述）逐字重写一遍 —— 每个 shot 是【独立生成】的，模型看不到「上一个 shot」，只有每 shot 都重复同一段超详细人物特征，8 个 shot 才会是同一个人。🔴 绝不写「同上固定条款 / same as above / only change: …」这种偷懒 shortcut（那样每 shot 会换脸）。每 shot 只有 `[动作/道具]` 和 `[台词]` 不同，其余逐字一样：**
+> **每个 shot 的 Higgsfield/seedance prompt = 照下面黄金模板【整段完整写】（这才是标准长度）。每个 shot 都把整段（含整段超详细 CHARACTER 人物描述）逐字重写一遍 —— 每个 shot 是【独立生成】的，模型看不到「上一个 shot」，只有每 shot 都重复同一段超详细人物特征，8 个 shot 才会是同一个人。绝不写「同上固定条款 / same as above / only change: …」这种偷懒 shortcut（那样每 shot 会换脸）。每 shot 只有 `[动作/道具]` 和 `[台词]` 不同，其余逐字一样：**
 >
 > ```
-> 🔴 SPEECH STARTS IMMEDIATELY AT FRAME 1 — ZERO silence, ZERO pause before the first word.
-> 🔴 PACING (CRITICAL): speaks at a QUICK, CONFIDENT pace — noticeably brisker than slow relaxed conversation, energetic and forward-moving — BUT every single syllable stays CRISPLY ENUNCIATED and fully intelligible. NOT rushed to the point of blurring or slurring words together, NOT mumbling, NOT dropping syllables. Picture a professional bilingual news presenter reading a quick punchy segment: fast enough to feel snappy and energetic, but each word lands clearly and is easy to understand on first listen. Clarity and pace are equally non-negotiable — if forced to choose, prioritize clarity slightly over raw speed, but do not slow down into a leisurely or deliberate pace.
-> CHARACTER (🔴 keep 100% IDENTICAL in every one of the 8 shots — a down-to-earth [受众身份，如 e-commerce seller / tuition teacher], NOT a glossy model): [🔴 超详细本地人物，够细 + 带独特辨识点才锁得住脸：a local Malaysian Chinese [性别], [年龄], [脸型 e.g. square-ish oval face, slightly strong jaw], [肤色 e.g. warm medium-tan skin], [眼型 e.g. single-eyelid slightly hooded eyes], [眉/鼻/唇 e.g. low flat brows, small flat nose, natural lips no lipstick], [独特标记 e.g. a tiny dark mole at the right corner of the mouth, a faint acne scar on the left cheek], [发型 e.g. straight black hair in a messy bun with a clip, a few frizzy strands], [配饰 e.g. thin round-frame glasses, a black elastic hair-tie on the wrist], [穿着 e.g. a plain oversized grey cotton tee, sleeves pushed up], [气色+身形 e.g. no makeup, slightly tired but sharp eyes, short bare nails, practical stocky build]].
-> [🔴 这一 shot 的动作/道具：如 her hand pauses on a half-sealed courier bag, she looks up at camera and lowers her voice like leaking a secret], [场景：如 cramped packing corner with stacked boxes, daylight]. photoreal real-camera look, NOT AI, no CGI, natural skin texture, shallow depth of field, authentic documentary vibe. realistic believable documentary photo, NO sci-fi, NO energy/glow, NOT exaggerated.
-> 🔴 NO subtitles, NO caption bar, NO burned-in spoken text, NO on-screen captions, NO course-name/CTA capsule on screen (the CTA is only SPOKEN in the final shot).
-> 🔴 The person (incl. an AI digital-human presenter) is a REAL LIVING human with natural micro-motion: BLINKS naturally, eyes and pupils MOVE and track/shift gaze, natural breathing and subtle facial micro-expressions — alive, NOT a frozen stare, NOT motionless glassy eyes, NOT a lifeless mannequin/3D avatar.
-> 🔴 运镜/cinematography: dynamic real camera, NOT a static locked-off frame. Talking-head shots = subtle handheld UGC motion with a slow push-in and natural reframing; B-roll shots = motivated camera moves (slow pan/tilt/dolly push-in, rack focus, close-up insert cuts). Movement is smooth and natural, never robotic or jittery.
+> SPEECH STARTS IMMEDIATELY AT FRAME 1 — ZERO silence, ZERO pause before the first word.
+> PACING (CRITICAL): speaks at a QUICK, CONFIDENT pace — noticeably brisker than slow relaxed conversation, energetic and forward-moving — BUT every single syllable stays CRISPLY ENUNCIATED and fully intelligible. NOT rushed to the point of blurring or slurring words together, NOT mumbling, NOT dropping syllables. Picture a professional bilingual news presenter reading a quick punchy segment: fast enough to feel snappy and energetic, but each word lands clearly and is easy to understand on first listen. Clarity and pace are equally non-negotiable — if forced to choose, prioritize clarity slightly over raw speed, but do not slow down into a leisurely or deliberate pace.
+> CHARACTER (keep 100% IDENTICAL in every one of the 8 shots — a down-to-earth [受众身份，如 e-commerce seller / tuition teacher], NOT a glossy model): [超详细本地人物，够细 + 带独特辨识点才锁得住脸：a local Malaysian Chinese [性别], [年龄], [脸型 e.g. square-ish oval face, slightly strong jaw], [肤色 e.g. warm medium-tan skin], [眼型 e.g. single-eyelid slightly hooded eyes], [眉/鼻/唇 e.g. low flat brows, small flat nose, natural lips no lipstick], [独特标记 e.g. a tiny dark mole at the right corner of the mouth, a faint acne scar on the left cheek], [发型 e.g. straight black hair in a messy bun with a clip, a few frizzy strands], [配饰 e.g. thin round-frame glasses, a black elastic hair-tie on the wrist], [穿着 e.g. a plain oversized grey cotton tee, sleeves pushed up], [气色+身形 e.g. no makeup, slightly tired but sharp eyes, short bare nails, practical stocky build]].
+> [这一 shot 的动作/道具：如 her hand pauses on a half-sealed courier bag, she looks up at camera and lowers her voice like leaking a secret], [场景：如 cramped packing corner with stacked boxes, daylight]. photoreal real-camera look, NOT AI, no CGI, natural skin texture, shallow depth of field, authentic documentary vibe. realistic believable documentary photo, NO sci-fi, NO energy/glow, NOT exaggerated.
+> NO subtitles, NO caption bar, NO burned-in spoken text, NO on-screen captions, NO course-name/CTA capsule on screen (the CTA is only SPOKEN in the final shot).
+> The person (incl. an AI digital-human presenter) is a REAL LIVING human with natural micro-motion: BLINKS naturally, eyes and pupils MOVE and track/shift gaze, natural breathing and subtle facial micro-expressions — alive, NOT a frozen stare, NOT motionless glassy eyes, NOT a lifeless mannequin/3D avatar.
+> 运镜/cinematography: dynamic real camera, NOT a static locked-off frame. Talking-head shots = subtle handheld UGC motion with a slow push-in and natural reframing; B-roll shots = motivated camera moves (slow pan/tilt/dolly push-in, rack focus, close-up insert cuts). Movement is smooth and natural, never robotic or jittery.
 > Spoken in natural Malaysian Chinese (Mandarin, local accent, clean — no filler particles). Saying: "[这一 shot 的台词全文]"
 > ```
-> 🔴 **B-roll shot**（讲工具/数据/成果）：人物换成对应**空镜**（screen recording of a dashboard、产品特写、打包桌近景…），但 CHARACTER 以外的固定条款（9:16 · 无字幕 · REAL LIVING/运镜 · 清晰不虚不乱码）**照样整段重写**，别一直怼人头。
-> 🔴🔴 **B-roll 也有台词、也有声音 —— 台词绝不中断**：8 shot 的台词是**一整段连贯口播**，B-roll 只换画面、**声音不能停**。prompt 照写 `Saying: "[这一 shot 的台词]"`，并加一句 **`VOICEOVER narration over the b-roll — NO person speaking on camera in this shot`**（画面无人说话、旁白继续讲）。🔴 **绝不把 B-roll 做成静音空档**；模型旁白不行也要后期（ChatCut）补上旁白，不许留哑段。
-> 🔴🔴 **禁 shortcut**：`同上` / `same as above` / `only change` 一律不行。**每个 shot 的 prompt 都是完整一大段。**
+> **B-roll shot**（讲工具/数据/成果）：人物换成对应**空镜**（screen recording of a dashboard、产品特写、打包桌近景…），但 CHARACTER 以外的固定条款（9:16 · 无字幕 · REAL LIVING/运镜 · 清晰不虚不乱码）**照样整段重写**，别一直怼人头。
+> **B-roll 也有台词、也有声音 —— 台词绝不中断**：8 shot 的台词是**一整段连贯口播**，B-roll 只换画面、**声音不能停**。prompt 照写 `Saying: "[这一 shot 的台词]"`，并加一句 **`VOICEOVER narration over the b-roll — NO person speaking on camera in this shot`**（画面无人说话、旁白继续讲）。**绝不把 B-roll 做成静音空档**；模型旁白不行也要后期（ChatCut）补上旁白，不许留哑段。
+> **禁 shortcut**：`同上` / `same as above` / `only change` 一律不行。**每个 shot 的 prompt 都是完整一大段。**
 
 | 画面构图 | Higgsfield Prompt（含图内文字与排版规格）| 台词 | 适用平台 | 🎯涉及的USP（独特卖点）|
 |---|---|---|---|---|
-| 口播开场，学员对镜头真诚自述 | `<🔴 整段完整写：照上面黄金模板逐字（含整段 CHARACTER），只 [动作/道具]+[台词] 不同；绝不写「同上/only change」—— 每 shot 一大段>` | Shot 1 台词：… | 小红书 / IG / FB | <这一 shot 戳中的独特卖点，如「一人顶一队」/「方法论不是工具」> |
+| 口播开场，学员对镜头真诚自述 | `<整段完整写：照上面黄金模板逐字（含整段 CHARACTER），只 [动作/道具]+[台词] 不同；绝不写「同上/only change」—— 每 shot 一大段>` | Shot 1 台词：… | 小红书 / IG / FB | <这一 shot 戳中的独特卖点，如「一人顶一队」/「方法论不是工具」> |
 | …（共 8 行，一 shot 一行）| … | … | … | … |
 
-> 🔴 **台词 ≠ 文案，别混：** 这列是**台词**（每个 shot 主播嘴里讲的话）；**文案**（发帖 caption）是另一回事，在上面「概念 → 📱视频社媒文案」那段。台词是台词、文案是文案。
-> 🔴 **`🎯涉及的USP` = 这一 shot 卖的「独特卖点/独特销售主张」**（不是用了哪个 AI skill —— 这条属于哪个主题在页面属性「关联主题」里）。每个 shot 挂它主打的 USP，方便看整支片有没有把卖点讲全。
+> **台词 ≠ 文案，别混：** 这列是**台词**（每个 shot 主播嘴里讲的话）；**文案**（发帖 caption）是另一回事，在上面「概念 → 📱视频社媒文案」那段。台词是台词、文案是文案。
+> **`🎯涉及的USP` = 这一 shot 卖的「独特卖点/独特销售主张」**（不是用了哪个 AI skill —— 这条属于哪个主题在页面属性「关联主题」里）。每个 shot 挂它主打的 USP，方便看整支片有没有把卖点讲全。
 
-> 🔴 视频类台词/脚本 = 文案，**先套 CMO + 文案大师身份再写**（见 `02 AI文案`）；prompt 规则以 `04 AI口播短视频` 为准（声画一起生成、无字幕护栏、人物贴受众）。
+> 视频类台词/脚本 = 文案，**先套 CMO + 文案大师身份再写**（见 `02 AI文案`）；prompt 规则以 `04 AI口播短视频` 为准（声画一起生成、无字幕护栏、人物贴受众）。
 
 ### 🖼️ 图文类（媒体类型=图文）
 
-> 🔴🔴 **硬性比例：图 / 海报一律 vertical 3:4（竖版）** —— 不用 1:1 / 16:9。
+> **硬性比例：图 / 海报一律 vertical 3:4（竖版）** —— 不用 1:1 / 16:9。
 
 正文顺序照这个（比视频多「图内文字层级」和「素材」两段）：
 
 **## 概念**
 `<角度类型（如 觉醒型ToFu）+ 用的 NLP：这条内容的角度一句话说明>`
 
-**## 📱 社媒文案**（= 发帖 caption，🔴 完整一整段放这里，**别拆进下面表格**）
-`<🔴 完整文案：照 02「§四 节拍表」填满每一拍（ToFu/MoFu 9 拍 · BoFu 6 拍）· 卖自己产品/服务·AI 全程隐形 · 字数达标（ToFu 250–400 / MoFu 300–500 / BoFu 200–350 字，写完数中文字数够了才输出）· 分段（每拍空行）+ emoji（3–6）· NLP 按漏斗层挑 + 戳 ❤️需求 · 参照 02「§五 示范」· + hashtags —— 绝不缩成 2 句 caption>`
+**## 📱 社媒文案**（= 发帖 caption，完整一整段放这里，**别拆进下面表格**）
+`<完整文案：照 02「§四 节拍表」填满每一拍（ToFu/MoFu 9 拍 · BoFu 6 拍）· 卖自己产品/服务·AI 全程隐形 · 字数达标（ToFu 250–400 / MoFu 300–500 / BoFu 200–350 字，写完数中文字数够了才输出）· 分段（每拍空行）+ emoji（3–6）· NLP 按漏斗层挑 + 戳 ❤️需求 · 参照 02「§五 示范」· + hashtags —— 绝不缩成 2 句 caption>`
 
 **## 🖼️ 图内文字层级**（海报上要出现的字，分层 —— 就是 poster 三层分工）
-- 🔴 **顶部受众 pill**：<受众一句话，如「在公司做 Marketing 的你」>
+- **顶部受众 pill**：<受众一句话，如「在公司做 Marketing 的你」>
 - 🟠 **立体描边大标题**（黑色粗描边 + 品牌渐变）：<最痛/最爽一句，如「一个人，扛全公司的内容」>
 - 🟥 **色块横幅**（品牌深色底，白/黄字）：<解决方案一句>
 - ⚪ **底部技能/卖点打勾清单一行**：✅… ✅…（按业务，别太多字）
-- ⚪ **起价小字（可选 · 合规才放）**：<如「从 RMxxx 起」——🔴 ToFu 只暗示、BoFu 才明码；不合规就不放>
+- ⚪ **起价小字（可选 · 合规才放）**：<如「从 RMxxx 起」——ToFu 只暗示、BoFu 才明码；不合规就不放>
 - ⚪ **右上角留 logo 位**
-> 🔴 **分层铁律**：ToFu 只戳痛点、字要少；BoFu 才放 offer/价（跟海报 SOP 一致）。
+> **分层铁律**：ToFu 只戳痛点、字要少；BoFu 才放 offer/价（跟海报 SOP 一致）。
 
 **## 🖼️ 已生成图片**
 `待生成`（生成后把图贴这）
@@ -660,10 +669,10 @@ metadata:
 - ① **素材图**：<真实场景描述 —— 人物一律本地人、真实办公/生活场景>
 - ② **风格参考**：<文档感 / 光线 / 「一个人 vs 一整间公司」压力对比 / 负空间多、字少>
 
-**## 表格：画面构图 | Higgsfield Prompt**（🔴 只两列 —— 发帖文案在上面「📱 社媒文案」段，别塞进表格）
-🔴 **`Higgsfield Prompt` 列宽 ≈ 562px**（跟视频表同一标准列宽）。
+**## 表格：画面构图 | Higgsfield Prompt**（只两列 —— 发帖文案在上面「📱 社媒文案」段，别塞进表格）
+**`Higgsfield Prompt` 列宽 ≈ 562px**（跟视频表同一标准列宽）。
 
-> 🔴🔴 **每张图的出图 prompt = 照下面这个黄金模板逐行填（这才是标准长度，不是一句话）。硬锁 vertical 3:4，固定条款一字不动，只换 `[中括号]` 里的行业/受众专属部分：**
+> **每张图的出图 prompt = 照下面这个黄金模板逐行填（这才是标准长度，不是一句话）。硬锁 vertical 3:4，固定条款一字不动，只换 `[中括号]` 里的行业/受众专属部分：**
 >
 > ```
 > vertical 3:4 BOLD promo-style poster, Style [A 战报证明风 —— 按受众从 5 种风格挑，见 03]: chunky 3D-extruded/embossed outlined Chinese headline (thick black outline, [品牌色] gradient fill) + a solid colour-block banner strip + an icon-checklist feature list + a real photo grounding credibility.
@@ -674,23 +683,23 @@ metadata:
 > Below the photo: an icon-checklist row, [N] small colourful circular icon badges with checkmarks and tiny labels: '✅[卖点]' … , small clean single row, must NOT dominate the poster.
 > [可选·合规才放] A tiny price-hint line near the bottom: '[如 从 RMxxx 起]'.
 > NO course-name capsule, NO sign-up button, NO specific outcome guarantee to an individual (no '保证/包你/一定能'). Keep top-right corner truly empty for a logo — do NOT render the word 'LOGO' or any placeholder. Any phone/screen content in the photo must be blurred abstract colour blocks with NO legible text/characters at all.
-> 🔴 CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is the Chinese specified above, proofread character-by-character, no typos, no repeated/duplicated text blocks, no garbled characters, the person is a real local Malaysian (photoreal, not cartoon/CGI).
+> CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is the Chinese specified above, proofread character-by-character, no typos, no repeated/duplicated text blocks, no garbled characters, the person is a real local Malaysian (photoreal, not cartoon/CGI).
 > ```
-> 🔴 **一字不动的固定条款**：vertical 3:4 · 结构(pill→3D描边大标题→色块横幅=方案+温和成果→中段真人纪实照 NOT cutout/NOT split → icon 打勾清单 → 起价小字[合规才放] → 右上留 logo 位不写'LOGO') · 手机/屏幕内容 blurred abstract 无可读字 · 整段 CRITICAL(NO English/逐字校对/no garbled/真人本地非卡通)。
-> 🔴 **只换**：`[风格]` / `[受众 pill]` / `[痛点标题]` / `[方案+成果]` / `[主角外形+场景+动作]` / `[卖点清单]` / `[起价]`。🔴 引号里就是要渲染进图的中文（对应「图内文字层级」），**绝不写 `no text overlay`**（那是视频规则，海报要字）。
+> **一字不动的固定条款**：vertical 3:4 · 结构(pill→3D描边大标题→色块横幅=方案+温和成果→中段真人纪实照 NOT cutout/NOT split → icon 打勾清单 → 起价小字[合规才放] → 右上留 logo 位不写'LOGO') · 手机/屏幕内容 blurred abstract 无可读字 · 整段 CRITICAL(NO English/逐字校对/no garbled/真人本地非卡通)。
+> **只换**：`[风格]` / `[受众 pill]` / `[痛点标题]` / `[方案+成果]` / `[主角外形+场景+动作]` / `[卖点清单]` / `[起价]`。引号里就是要渲染进图的中文（对应「图内文字层级」），**绝不写 `no text overlay`**（那是视频规则，海报要字）。
 
 | 画面构图 | Higgsfield Prompt（含图内文字与排版规格）|
 |---|---|
 | `<一句画面描述>` | `<照上方黄金模板填：vertical 3:4、固定条款一字不动，只换 [风格]/[受众pill]/[痛点标题]/[方案+成果]/[主角+场景]/[卖点清单]/[起价]>` |
 
-> 🔴 **发帖 caption 在上面「📱 社媒文案」段（完整一整段）**；图内的字在「图内文字层级」；表格只放 画面构图 + prompt，**别把 caption 拆进表格**。
+> **发帖 caption 在上面「📱 社媒文案」段（完整一整段）**；图内的字在「图内文字层级」；表格只放 画面构图 + prompt，**别把 caption 拆进表格**。
 
 **## 成品海报（最终标准版：真人脸 + 真实场景 + 大字）**
 `<合 logo 后的成品图贴这>`
 
 ---
 
-## 三、🔴 设为默认模版（Notion API 做不到，手动一次 · Claude 教学员点）
+## 三、设为默认模版（Notion API 做不到，手动一次 · Claude 教学员点）
 
 建完库、填好一条示例页后，让 Claude **一步步教学员**在 Notion 里把它设成默认（之后每次 **New** 自动套）：
 
@@ -708,7 +717,7 @@ metadata:
 
 ---
 
-> 🔴🔴 **动手前必做（第 0 件事）：先用 `Read` 把本文件夹里的每一个 `.md` 文件读一遍**（框架 / NLP / SOP / 模版 —— 完整规则在那里），读进来再开工。**别只看这份 SKILL.md 就动手 = 出烂成品。**
+> **动手前必做（第 0 件事）：先用 `Read` 把本文件夹里的每一个 `.md` 文件读一遍**（框架 / NLP / SOP / 模版 —— 完整规则在那里），读进来再开工。**别只看这份 SKILL.md 就动手 = 出烂成品。**
 
 # 📚 完整参考资料（已全部收进本 skill · 按序号排 —— 下面就是各 md 全文，不用再翻别的文件）
 
@@ -746,7 +755,7 @@ metadata:
 | **任务优先级** | **ICE 评分**（影响力·信心·难易度）→ 帮用户决定执行顺序 |
 | **受众洞察** | **定位理论（Positioning）** + **RFM 模型**（最近消费·频率·金额）→ 高净值用户分层 |
 
-## 二·五、🔴 底层三层 —— 贯穿全部输出（不分 skill）
+## 二·五、底层三层 —— 贯穿全部输出（不分 skill）
 
 上面的战略框架（AARRR/5A/RACE/ICE/RFM）是**宏观诊断**；下面这三层是**每一条内容都要套的底盘**——无论文案、图、视频、PPT、配乐：
 
@@ -756,7 +765,7 @@ metadata:
 | **② 语言（NLP）** | reframe · future pacing · yes-set · anchoring · storytelling…（挑 1–2 个植入） | `02-《AI爆款文案》启动包/08-NLP营销技巧` |
 | **③ 动机（人性需求）** | 确定 / 新鲜 / 重要 / 爱与连接 / 成长 / 贡献 | `01-《AI品牌定位》启动包/09-6大人性需求` |
 
-🔴🔴 **验收铁律**：任何一件产物（图/视频/PPT/配乐也算），都要能说出「**这套了哪个大师 + 哪个 NLP + 戳哪个人性需求**」。说不出 = 只做了表面，重来。
+**验收铁律**：任何一件产物（图/视频/PPT/配乐也算），都要能说出「**这套了哪个大师 + 哪个 NLP + 戳哪个人性需求**」。说不出 = 只做了表面，重来。
 
 ## 三、目标与使命（Purpose & Goals）
 
@@ -769,7 +778,7 @@ metadata:
 
 ### 步骤 1 · 深度诊断与信息对齐
 
-> 🔴🔴 **一次只问一题，用可点选项卡（`AskUserQuestion`），等答完再问下一题——绝不把下面几题一次全倒给用户。** 能做成选项的题（行业/痛点/KPI/受众）就做选项卡（给 3–4 个最常见 +「其他」），只有「生意一句话介绍」这种开放题才让他打字。
+> **一次只问一题，用可点选项卡（`AskUserQuestion`），等答完再问下一题——绝不把下面几题一次全倒给用户。** 能做成选项的题（行业/痛点/KPI/受众）就做选项卡（给 3–4 个最常见 +「其他」），只有「生意一句话介绍」这种开放题才让他打字。
 
 按这个顺序，**一题一张卡**：
 1. **行业？**（选项卡：给几个常见行业 + 其他）
@@ -804,9 +813,9 @@ metadata:
 
 ```
 角色设定(本篇) → 步骤1 诊断(AARRR/5A) → 步骤2 规划(RACE/ICE)
-     → 【执行层 = Ver A】Session 0 地基 → 1–6 学 6 技能 → 7–10 串系统+自动化
-     → 步骤3 数据优化(A/B·Cohort·归因) → 步骤4 专业汇报(粗体/bullet/抛问题)
-     ↺ 优化后回到「步骤1 诊断」，持续迭代
+ → 【执行层 = Ver A】Session 0 地基 → 1–6 学 6 技能 → 7–10 串系统+自动化
+ → 步骤3 数据优化(A/B·Cohort·归因) → 步骤4 专业汇报(粗体/bullet/抛问题)
+ ↺ 优化后回到「步骤1 诊断」，持续迭代
 ```
 
 > 铁律照旧：**先诊断再规划 · 一次一步 · 花钱前先用户点头(标 Proceed) · 先跑通 1 条再放量 · 所有输出用粗体/bullet/标题 + 结尾抛问题。**
@@ -824,13 +833,13 @@ metadata:
 
 ---
 
-## 🔴 第 0 步 · 先装 skill 包，再连账户，再叫出来
+## 第 0 步 · 先装 skill 包，再连账户，再叫出来
 
 这份系统本身就是一个 **skill**（`ai-marketing-agent-system`）。用它 = 三步：
 
 1. **装 skill 包** —— 下载这个 GitHub repo（右上角 **Code → Download ZIP** 解压，或 `git clone`）→ **整个文件夹丢进 `~/.claude/skills/`**。
 2. **连账户** —— 照下面全景对照表连 connector（最小 4 个：Claude · Notion · Higgsfield · Suno）。
-3. **定落脚点 + 喂地基** —— 🔴 学生第一次啥都不会：**先给他一个「家」** —— 开一个成品 folder（图/视频/文案存这，默认 `~/我的AI内容营销/<品牌>`）+ 定用哪个 Notion；再把品牌名 / 受众 / 红线 / 品牌色 写进 memory + 业务 md。之后每次开工 Claude 先读它。
+3. **定落脚点 + 喂地基** —— 学生第一次啥都不会：**先给他一个「家」** —— 开一个成品 folder（图/视频/文案存这，默认 `~/我的AI内容营销/<品牌>`）+ 定用哪个 Notion；再把品牌名 / 受众 / 红线 / 品牌色 写进 memory + 业务 md。之后每次开工 Claude 先读它。
 
 **怎么「叫出来」这个 skill（Call Out）：**
 
@@ -840,7 +849,7 @@ metadata:
 | **点名调用** | 「用 `ai-marketing-agent-system` 带我搭系统」 |
 | **斜杠**（若客户端支持） | `/ai-marketing-agent-system` |
 
-> 🔴 **关键在 `SKILL.md` 的 `description`** —— Claude 靠它判断「什么时候该用这个 skill」。写清触发词 + When to use，才容易被自动叫出来。
+> **关键在 `SKILL.md` 的 `description`** —— Claude 靠它判断「什么时候该用这个 skill」。写清触发词 + When to use，才容易被自动叫出来。
 
 ---
 
@@ -877,9 +886,9 @@ metadata:
 # 图片合 logo + 视频拼接
 pip install pillow imageio-ffmpeg
 # 记录用
-git --version        # 没有就装 git
+git --version # 没有就装 git
 # 归档用（可选）
-brew install rclone  # 然后 rclone config 授权你的 Google Drive
+brew install rclone # 然后 rclone config 授权你的 Google Drive
 ```
 
 **准备素材：** 品牌 logo（浅底版 + 深底版各一张）· 品牌色/字体 · CTA 落地页链接 · 合规红线清单。
@@ -889,13 +898,13 @@ brew install rclone  # 然后 rclone config 授权你的 Google Drive
 ## 阶段 2 · 建大脑（Notion 内容矩阵）
 
 1. Notion 新建 database，加这些列：
-   `目标受众 · 领域 · 行业 · 漏斗层(ToFu/MoFu/BoFu) · Hook · 人性需求(6大需求) · NLP手法 · 媒体(图文/视频) · 内容角度(标题) · 文案 · Higgsfield Prompt · 工具标签 · 成品 · Status`
-   > 「人性需求」戳哪个（确定感/新鲜感/重要感/爱与连接/成长/贡献，见 09）、「NLP手法」用哪个（见 08）——先标了，产出就有方向。
+ `目标受众 · 领域 · 行业 · 漏斗层(ToFu/MoFu/BoFu) · Hook · 人性需求(6大需求) · NLP手法 · 媒体(图文/视频) · 内容角度(标题) · 文案 · Higgsfield Prompt · 工具标签 · 成品 · Status`
+ > 「人性需求」戳哪个（确定感/新鲜感/重要感/爱与连接/成长/贡献，见 09）、「NLP手法」用哪个（见 08）——先标了，产出就有方向。
 2. **Status** 用这几个值（这就是流水线开关）：
-   `Need Review Idea → Proceed to Generate → Need Review Poster/Video → Checked → Posted`
+ `Need Review Idea → Proceed to Generate → Need Review Poster/Video → Checked → Posted`
 3. **把 Notion 连给 Claude**：
-   - 起步：用官方 Notion connector（授权即可）。
-   - 进阶自动化：用 Notion 内部 API（`token_v2` cookie），能批量枚举/批量写/建页。
+ - 起步：用官方 Notion connector（授权即可）。
+ - 进阶自动化：用 Notion 内部 API（`token_v2` cookie），能批量枚举/批量写/建页。
 
 ---
 
@@ -973,7 +982,7 @@ brew install rclone  # 然后 rclone config 授权你的 Google Drive
 
 # 从零复现这套系统 — 我到底 install / connect / feed 了什么（详细版）
 
-> 🔴 **两条底盘规则（跟 SKILL.md / 本包 README 一致，做这一步也守）：** ① **交互**：问用户任何选择题 → 一题一题、一题一张可点选项卡（每题≤4 个+「其他」）、**绝不一次全倒**。② **底层三层**：出的每样东西都套 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）+ 语言（NLP）+ 动机（6 大人性需求），**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
+> **两条底盘规则（跟 SKILL.md / 本包 README 一致，做这一步也守）：** ① **交互**：问用户任何选择题 → 一题一题、一题一张可点选项卡（每题≤4 个+「其他」）、**绝不一次全倒**。② **底层三层**：出的每样东西都套 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）+ 语言（NLP）+ 动机（6 大人性需求），**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
 
 
 > 这份是**最细节**的复现清单：把 Cindy 一路上实际做的「装什么 skill、连什么 connector、
@@ -1006,7 +1015,7 @@ brew install rclone  # 然后 rclone config 授权你的 Google Drive
 | **Notion** | 读写内容矩阵数据库（立项/填文案/贴成品/改状态） | ✅ 必须 |
 | **Higgsfield（生成引擎 MCP）** | `generate_image` 出图 · `generate_video` 出视频/数字人 | ✅ 必须 |
 | **Google Drive**（connector 或 `rclone`） | 成品图/视频分文件夹归档 | ✅ 要归档就要 |
-| **GitHub** | 把 skill/SOP/memory push 上去做版本记录。🔴 **注册用 email + 密码，别用「Sign in with Google」** —— GitHub 对第三方登入很敏感，**用 Google 登入常常开不到账号**；email + 密码最稳 | 建议 |
+| **GitHub** | 把 skill/SOP/memory push 上去做版本记录。**注册用 email + 密码，别用「Sign in with Google」** —— GitHub 对第三方登入很敏感，**用 Google 登入常常开不到账号**；email + 密码最稳 | 建议 |
 | **ChatCut** | 影片后期：字幕 / 花字 / 音效 / BGM —— **中文片唯一可行的 AI 剪辑路**（生成 ≠ 成品）。新用户送约 40 credit，够剪第一支 | ✅ 出视频就要 |
 | Suno | 背景音乐（网页，未必有 MCP，手动导出也行） | 视频要用 |
 | （可选）Gmail / Calendar / Canva 等 | 发送 / 排期 / 设计，按需 | 选用 |
@@ -1084,7 +1093,7 @@ brew install rclone  # 然后 rclone config 授权你的 Google Drive
 
 ---
 
-## 🔴 常见问题：Claude 问我问题时，没有「可以点的选项卡」怎么办？
+## 常见问题：Claude 问我问题时，没有「可以点的选项卡」怎么办？
 
 教练模式本该用**可点击的选项卡**让你点选（不用打字）。如果你看到的只是文字「1. 2. 3.」，按下面排查：
 
@@ -1109,7 +1118,7 @@ brew install rclone  # 然后 rclone config 授权你的 Google Drive
 
 # 我的 AI Marketing Agent System — 定制模板（填空版）
 
-> 🔴 **两条底盘规则（跟 SKILL.md / 本包 README 一致，做这一步也守）：** ① **交互**：问用户任何选择题 → 一题一题、一题一张可点选项卡（每题≤4 个+「其他」）、**绝不一次全倒**。② **底层三层**：出的每样东西都套 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）+ 语言（NLP）+ 动机（6 大人性需求），**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
+> **两条底盘规则（跟 SKILL.md / 本包 README 一致，做这一步也守）：** ① **交互**：问用户任何选择题 → 一题一题、一题一张可点选项卡（每题≤4 个+「其他」）、**绝不一次全倒**。② **底层三层**：出的每样东西都套 说服（大师：**Blair Warren 为处境正名**/自我说服/LF8/AIDA·PAS/Cialdini/Duarte）+ 语言（NLP）+ 动机（6 大人性需求），**说得出「用了哪个大师 + 哪个 NLP + 戳哪个需求」，说不出＝重来。**
 
 
 > 用法：把下面每个 `<...>` 换成你自己生意的内容。填完这张表，你就有了一份属于自己品牌的
@@ -1168,7 +1177,7 @@ brew install rclone  # 然后 rclone config 授权你的 Google Drive
 - 我选：`<________>`
 
 归档目录：`[Stage]/[受众]/文件名`（图文）；`[Stage]/[受众]/Video 素材/[命名]/[分镜 + 完整版].mp4`（视频）。
-🔴 文件名里的 `/` → 全角 `／`（否则被当路径切分）。
+文件名里的 `/` → 全角 `／`（否则被当路径切分）。
 
 ## G. 生产参数（照抄，按需改）
 - 海报：`3:4` 竖版 · 生成后 Read 图人工审 · logo 用顶部 header 带合成
