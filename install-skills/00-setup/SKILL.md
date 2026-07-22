@@ -1196,7 +1196,6 @@ brew install rclone # 然后 rclone config 授权你的 Google Drive
 
 ---
 
-> 📄 **本文件夹的其他 md = 这一步的完整规则/框架**，务必先读。改内容请改 SUMA 主 repo 的 `7大AI启动包`，再重生成。
 
 
 ---
