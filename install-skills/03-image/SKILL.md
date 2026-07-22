@@ -64,6 +64,93 @@ metadata:
 > 🔴🔴 **生成前必停确认（绝不自动烧 credit）：** 调用 `generate_image` / `generate_video` / 生成音乐 **之前**，先把**最终 prompt ＋ 数量 / 规格（如 3:4、时长）＋ 预计 credit** 摆给用户看，明确问一句「**要我 proceed 生成吗？**」。🔴 **等用户说「生成 / proceed / go」才真正调生成 API**；用户要改就改完再确认。**绝不**没问就自动生图 / 生视频 / 生成音乐 —— 那是在替用户烧钱。
 > 🔴🔴 **先出 1 个、满意才批量（别一次烧全部 credit）：** 多镜口播视频 / 数字人 —— **先只生成 Shot 1** → 给用户看 → **满意才继续 Shot 2–8**；Shot 1 不满意就改 prompt 重出 Shot 1（换脸/乱码/不像本人都在这一步挡掉）。🔴 多张海报 / 多段音乐同理：**先出 1 个确认满意，再批量出其余**。绝不一口气把 8 shot / 整批 credit 烧完才发现要重做。
 
+
+---
+
+## 第一步：先跟用户敲定海报风格（5 选 1，一题一张卡问）
+促销 / BoFu 海报从这 5 种里挑，按行业 / 受众搭配，🔴 同批次别整批用同一种：
+- **A｜战报证明风**：立体描边大标题 + 实心横幅放一个**温和**成果/转变陈述（不写离谱金额、不做个人结果保证）+ 圆形 icon 打勾清单 + 真人合照压底做背书。→ 需强背书行业（电商、招生、补习、小生意老板）。
+- **B｜信息流悬浮 UI 风**：深色背景真人拿手机/电脑，周围悬浮半透明发光 UI 卡片（内容一律抽象色块、**无可读文字**），标题带光效。→ 科技/年轻潮流（美妆、服装、副业人）。
+- **C｜导师权威风**：深色科技背景，自信真人张开双臂"掌控"数据面板，一个**放大的数字/徽章**当视觉核心。→ 专业权威（保险、顾问、Marketer、打工人）。
+- **D｜赛博游戏化风（🔴慎用）**：高度风格化人物 + 霓虹 + 能量特效 + "LEVEL UP"式用语。最花哨，只在受众明显年轻/游戏化时用，**默认不选**。
+- **E｜扁平色块对角风（最稳/保底）**：对角撞色色块 + 立体描边大标题 + icon 打勾清单 + 真人 + 真 logo。→ 补习/才艺班/克制的顾问型个人 IP。
+
+## 🔴🔴 图文海报 = 要渲染大字！别当成没字的场景照
+**图文海报 ≠ 视频镜头。** 海报要 Higgsfield **把「图内文字层级」的中文大字渲染进图**（headline / 受众 pill / 色块横幅 / 清单，中文放**引号**里）。
+- 🔴 **绝不写 `no text overlay`** —— 那是 04 视频的无字幕规则！海报**要字**，写了就出一张没字的空场景照（烂成品）。
+- 🔴 护栏是「**只渲染引号里的中文** + `NO garbled text`」（防乱码），不是"不要字"。
+- 🔴 prompt 里必须带上你在「图内文字层级」写好的那几句中文（headline/pill/横幅/清单），不是只写场景。
+
+## 🔴🔴 标准 prompt 黄金模板（照这个逐行填 —— 好海报的结构，绝不缩水成一句场景）
+以 **A 战报证明风** 为例（换风格只换视觉，TOP/headline/banner/MIDDLE/checklist/CRITICAL 结构不变）：
+```
+vertical 3:4 BOLD promo-style poster, Style A 战报证明风: chunky 3D-extruded/embossed outlined Chinese headline (thick black outline, [品牌色] gradient fill) + a solid colour-block banner strip + an icon-checklist feature list + a real photo grounding credibility.
+TOP: small kicker pill naming the audience: '[受众一句话]'.
+Big chunky 3D-extruded outlined headline (the PAIN/contrast opener): '[痛点/反差主标题]'.
+Below headline: a solid [品牌深色] colour-block banner strip with bold white/yellow text stating the NAMED SOLUTION + a concrete moderate outcome: '[方案+温和成果]'.
+MIDDLE: real photo (photoreal, authentic documentary-style candid photo, NOT a cutout) of [主角详细:本地人+年龄+气质,NOT auntie], [真实场景+道具+情绪], natural window light, real camera look NOT AI-looking, authentic [本地] — a single candid photo, NOT a split screen.
+Below the photo: an icon-checklist row, [N] small colourful circular icon badges with checkmarks and tiny labels: '✅[卖点]' × [N], small clean single row, must NOT dominate the poster.
+[可选·合规才放] a tiny price-hint line near the bottom: '[从 RMxxx 起]'.
+NO course-name capsule, NO sign-up button, NO specific outcome guarantee (no '保证/包你/一定能'). Keep top-right corner truly empty for a logo — do NOT render the word 'LOGO' or any placeholder. Any phone/screen content in the photo must be blurred abstract colour blocks with NO legible text/characters at all.
+🔴 CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is the Chinese specified above, proofread character-by-character, no typos, no repeated/duplicated text blocks, no garbled characters; the person is a real local [本地] (photoreal, not cartoon/CGI).
+```
+🔴 **结构必须齐**：① TOP 受众 pill ② 大字痛点标题(3D描边) ③ 色块横幅=方案+成果 ④ 中段真人纪实照(NOT cutout·NOT auntie·本地) ⑤ 一行图标打勾清单 ⑥ 起价小字(合规才放) ⑦ 右上 logo 空位 ⑧ **CRITICAL 只渲染引号中文·proofread·no garbled·绝不出英文**。
+🔴 人脸锁定：`generate_image` 传 `medias:[{value:<media_id>, role:"image"}]` + `the person's face MUST match the reference exactly`；屏幕内容 `abstract blurred colour blocks, NO legible text`。
+
+## 图内文字层级（画面 carry，文字精简）
+① 受众 pill（顶部小标签，点名"就是你"）② 大标题 headline（立体描边、全图最大、戳痛点/给结果）③ 色块横幅/sub（一行成果或时间陈述，温和可信）④ 技能/工具清单（圆形 icon 打勾）⑤ logo 位（右上/顶部纯色留空，绝不让 AI 画）。
+
+## 通用海报硬规则（哪种风格都套）
+- 🔴🔴 **平常图文/海报出图 default model = `nano_banana_pro`**（Higgsfield 里的 model，擅长把**中文字渲染进图** + 高清，海报首选）。`generate_image` 的 `model` 传 `nano_banana_pro`；要换别的 model 先跟用户说一声。
+- 🔴 **ToFu 不放价格**（价格是 BoFu 专属）：ToFu 用温和时间型 hero 巨字（例：「1 天」渐变/发光）当钩子。
+- 🔴 **真实纪实场景 + 悬浮科技元素混搭**，不要纯棚拍/纯抠图；人物在行业相关真实场景里（例：电商打包桌、老师画室），科技只点缀。
+- 🔴 **不 overpromise**：不写夸张金额、不写「保证/包你/一定能」。
+- 🔴 **同批不同受众分不同风格**，别整批一样。
+- **光效按漏斗层**：BoFu/促销可酌情用；ToFu 纪实软钩子风 + 所有 MoFu **禁 sci-fi/glow**。
+
+## 🔴 踩坑（每个都花过时间）
+- 🔴 **色号别贴着要渲染的文字**：写 `#28C2E7 sub '文字'` 会把 `#28C2E7` 印进图。颜色用**词**描述，色号只结尾单列 + 写「hex 只是样式、绝不渲染成文字」。
+- 🔴 **别写字体规格标注**（例 `Source Han Sans 60px` 会被印进图）。
+- 🔴 **人物一律本地 + 贴行业气质**：连屏幕里/模特/背景都本地人（例：美妆老板娘=年轻好皮肤、不要 aunty）。
+- 🔴 **对比图/split-screen**：写 `full-bleed，这就是海报本身，NOT 印刷海报立街边/白框`，否则画「海报中的海报」。
+- 🔴 **比例统一 3:4 竖版**。
+- 🔴 **生成后一定 Read 图人工审**：色号泄漏 / 乱码 / 外国脸 / 撞 logo，任一命中就重出。
+
+## Logo 合成（PIL 后期，别靠 prompt 留白）
+prompt「留白」不可靠且会出假 logo。做法：**成图最上方叠一条纯色 header 带**，logo 放带内右侧，带色**自适应**（顶部浅→白带+深 logo，深→深带+白 logo），原图缩到留出带位、保持 3:4 → logo 永远有干净空位、不撞标题。
+
+## 📌 完整实例（SUMA 真实产出 · 照抄结构，换成你的行业/受众/卖点）
+```
+vertical 3:4 BOLD promo-style poster, Style A 战报证明风: chunky 3D-extruded/embossed outlined Chinese headline (thick black outline, orange-to-yellow gradient fill) + a solid colour-block banner strip + an icon-checklist feature list + a real photo grounding credibility.
+TOP: small kicker pill naming the audience: '开中学补习班的你'.
+Big chunky 3D-extruded outlined headline (the PAIN/contrast opener): '教得再好，家长网上看不到你'.
+Below headline: a solid red/deep-orange colour-block banner strip with bold white/yellow text stating the NAMED SOLUTION + a concrete moderate outcome: '1 天学会 AI内容营销系统，自己做出招生内容'.
+MIDDLE: real photo (photoreal, authentic documentary-style candid photo, NOT a cutout) of a young Malaysian secondary-school (SPM) tuition teacher (around 30, sharp and professional, good skin light makeup, NOT an auntie) sitting alone at dusk in her bright classroom, a whiteboard still full of handwritten SPM-level questions (algebra equations, chemistry formulas), a row of empty student chairs beside her, textbooks and exam papers on the desk, her phone lying silent with no new enquiry, quietly waiting, a little worried, honest calm moment, natural window light, real camera look NOT AI-looking, authentic Malaysian.
+Below the photo: an icon-checklist row, 6 small colourful circular icon badges with checkmarks and tiny labels: '✅AI文案', '✅AI图像', '✅AI数字人', '✅AI PPT', '✅AI音乐', '✅AI影片', small clean single row, must NOT dominate the poster.
+A tiny price-hint line near the bottom: '从 RM500/人起'.
+NO course name capsule, NO sign-up button, NO specific outcome guarantee to an individual (no '保证/包你/一定能'). Keep top-right corner truly empty for a logo — do NOT render the word 'LOGO' or any placeholder.
+🔴 CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is Chinese as specified, proofread character-by-character, no typos, no repeated/duplicated text blocks, no garbled characters, the person is a real local Malaysian (photoreal, not cartoon/CGI), young professional teacher, never an auntie.
+```
+🔴 换行业时：受众 pill / 痛点标题 / 方案+成果 / 主角 / 卖点清单 全换成你业务的；**8 块结构 + CRITICAL 那段一字不动照搬**。
+
+## 接进系统 + 归档（🔴 三处都要落，一处都不能跳）
+出图 → PIL 合 logo → **成品三落**（见顶部「成品归档」铁律，别找借口）：
+1. 本地成品 folder。
+2. 🔴 **贴进 Notion 立项页「成品海报」块**：本地 PNG 没公开 URL → `media_upload`(成品.png) PUT 上传 → `media_confirm` → `show_medias` 取公开 URL → `notion-create-attachment` 的 `source_url` 喂它 → 拿 `markdown_source` → `notion-update-page`(insert_content) 贴进「成品海报」块（🔴 1 小时内贴完）。免费版 ≤5MiB，超了先压。
+3. 🔴 **`rclone copy "<成品.png>" gdrive: --drive-root-folder-id <Drive成品folder ID>` 传进 Drive**。
+🔴 **绝不说「图太大 / 传不了 Notion / 传不了 Drive / 你自己上传 / 你自己拖」** —— Notion 走 source_url、Drive 走 rclone，两条都跑得通。
+> 📌 附：你（开发者 Cindy）自己用 token 直连 Notion API 时，附件要归 image 块自己（record.id=新建 image 块 id，否则渲染 Error 400）+ `getSignedFileUrls` GET=200 验证 —— 那是内部脚本路径，**学生用 connector 走上面 source_url 那套**。
+
+---
+
+> 📄 **本文件夹的其他 md = 这一步的完整规则/框架**，务必先读。改内容请改 SUMA 主 repo 的 `7大AI启动包`，再重生成。
+
+
+---
+
+
+---
+
 # 🔴🔴 底层必读 · 先看这几套再动手（❤️人性需求 ＋ 🧠NLP ＝ 所有内容的根；✍️ 文案框架 ＝ 任何 skill 写文案/caption 都照它（节拍表/字数/AI隐形）；📋 内容矩阵模版 ＝ 每条内容的立项格式 ＋ 🚦Status 工作流）
 
 
@@ -670,87 +757,6 @@ metadata:
 ---
 
 > 🔴🔴 **动手前必做（第 0 件事）：先用 `Read` 把本文件夹里的每一个 `.md` 文件读一遍**（框架 / NLP / SOP / 模版 —— 完整规则在那里），读进来再开工。**别只看这份 SKILL.md 就动手 = 出烂成品。**
-
-## 第一步：先跟用户敲定海报风格（5 选 1，一题一张卡问）
-促销 / BoFu 海报从这 5 种里挑，按行业 / 受众搭配，🔴 同批次别整批用同一种：
-- **A｜战报证明风**：立体描边大标题 + 实心横幅放一个**温和**成果/转变陈述（不写离谱金额、不做个人结果保证）+ 圆形 icon 打勾清单 + 真人合照压底做背书。→ 需强背书行业（电商、招生、补习、小生意老板）。
-- **B｜信息流悬浮 UI 风**：深色背景真人拿手机/电脑，周围悬浮半透明发光 UI 卡片（内容一律抽象色块、**无可读文字**），标题带光效。→ 科技/年轻潮流（美妆、服装、副业人）。
-- **C｜导师权威风**：深色科技背景，自信真人张开双臂"掌控"数据面板，一个**放大的数字/徽章**当视觉核心。→ 专业权威（保险、顾问、Marketer、打工人）。
-- **D｜赛博游戏化风（🔴慎用）**：高度风格化人物 + 霓虹 + 能量特效 + "LEVEL UP"式用语。最花哨，只在受众明显年轻/游戏化时用，**默认不选**。
-- **E｜扁平色块对角风（最稳/保底）**：对角撞色色块 + 立体描边大标题 + icon 打勾清单 + 真人 + 真 logo。→ 补习/才艺班/克制的顾问型个人 IP。
-
-## 🔴🔴 图文海报 = 要渲染大字！别当成没字的场景照
-**图文海报 ≠ 视频镜头。** 海报要 Higgsfield **把「图内文字层级」的中文大字渲染进图**（headline / 受众 pill / 色块横幅 / 清单，中文放**引号**里）。
-- 🔴 **绝不写 `no text overlay`** —— 那是 04 视频的无字幕规则！海报**要字**，写了就出一张没字的空场景照（烂成品）。
-- 🔴 护栏是「**只渲染引号里的中文** + `NO garbled text`」（防乱码），不是"不要字"。
-- 🔴 prompt 里必须带上你在「图内文字层级」写好的那几句中文（headline/pill/横幅/清单），不是只写场景。
-
-## 🔴🔴 标准 prompt 黄金模板（照这个逐行填 —— 好海报的结构，绝不缩水成一句场景）
-以 **A 战报证明风** 为例（换风格只换视觉，TOP/headline/banner/MIDDLE/checklist/CRITICAL 结构不变）：
-```
-vertical 3:4 BOLD promo-style poster, Style A 战报证明风: chunky 3D-extruded/embossed outlined Chinese headline (thick black outline, [品牌色] gradient fill) + a solid colour-block banner strip + an icon-checklist feature list + a real photo grounding credibility.
-TOP: small kicker pill naming the audience: '[受众一句话]'.
-Big chunky 3D-extruded outlined headline (the PAIN/contrast opener): '[痛点/反差主标题]'.
-Below headline: a solid [品牌深色] colour-block banner strip with bold white/yellow text stating the NAMED SOLUTION + a concrete moderate outcome: '[方案+温和成果]'.
-MIDDLE: real photo (photoreal, authentic documentary-style candid photo, NOT a cutout) of [主角详细:本地人+年龄+气质,NOT auntie], [真实场景+道具+情绪], natural window light, real camera look NOT AI-looking, authentic [本地] — a single candid photo, NOT a split screen.
-Below the photo: an icon-checklist row, [N] small colourful circular icon badges with checkmarks and tiny labels: '✅[卖点]' × [N], small clean single row, must NOT dominate the poster.
-[可选·合规才放] a tiny price-hint line near the bottom: '[从 RMxxx 起]'.
-NO course-name capsule, NO sign-up button, NO specific outcome guarantee (no '保证/包你/一定能'). Keep top-right corner truly empty for a logo — do NOT render the word 'LOGO' or any placeholder. Any phone/screen content in the photo must be blurred abstract colour blocks with NO legible text/characters at all.
-🔴 CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is the Chinese specified above, proofread character-by-character, no typos, no repeated/duplicated text blocks, no garbled characters; the person is a real local [本地] (photoreal, not cartoon/CGI).
-```
-🔴 **结构必须齐**：① TOP 受众 pill ② 大字痛点标题(3D描边) ③ 色块横幅=方案+成果 ④ 中段真人纪实照(NOT cutout·NOT auntie·本地) ⑤ 一行图标打勾清单 ⑥ 起价小字(合规才放) ⑦ 右上 logo 空位 ⑧ **CRITICAL 只渲染引号中文·proofread·no garbled·绝不出英文**。
-🔴 人脸锁定：`generate_image` 传 `medias:[{value:<media_id>, role:"image"}]` + `the person's face MUST match the reference exactly`；屏幕内容 `abstract blurred colour blocks, NO legible text`。
-
-## 图内文字层级（画面 carry，文字精简）
-① 受众 pill（顶部小标签，点名"就是你"）② 大标题 headline（立体描边、全图最大、戳痛点/给结果）③ 色块横幅/sub（一行成果或时间陈述，温和可信）④ 技能/工具清单（圆形 icon 打勾）⑤ logo 位（右上/顶部纯色留空，绝不让 AI 画）。
-
-## 通用海报硬规则（哪种风格都套）
-- 🔴🔴 **平常图文/海报出图 default model = `nano_banana_pro`**（Higgsfield 里的 model，擅长把**中文字渲染进图** + 高清，海报首选）。`generate_image` 的 `model` 传 `nano_banana_pro`；要换别的 model 先跟用户说一声。
-- 🔴 **ToFu 不放价格**（价格是 BoFu 专属）：ToFu 用温和时间型 hero 巨字（例：「1 天」渐变/发光）当钩子。
-- 🔴 **真实纪实场景 + 悬浮科技元素混搭**，不要纯棚拍/纯抠图；人物在行业相关真实场景里（例：电商打包桌、老师画室），科技只点缀。
-- 🔴 **不 overpromise**：不写夸张金额、不写「保证/包你/一定能」。
-- 🔴 **同批不同受众分不同风格**，别整批一样。
-- **光效按漏斗层**：BoFu/促销可酌情用；ToFu 纪实软钩子风 + 所有 MoFu **禁 sci-fi/glow**。
-
-## 🔴 踩坑（每个都花过时间）
-- 🔴 **色号别贴着要渲染的文字**：写 `#28C2E7 sub '文字'` 会把 `#28C2E7` 印进图。颜色用**词**描述，色号只结尾单列 + 写「hex 只是样式、绝不渲染成文字」。
-- 🔴 **别写字体规格标注**（例 `Source Han Sans 60px` 会被印进图）。
-- 🔴 **人物一律本地 + 贴行业气质**：连屏幕里/模特/背景都本地人（例：美妆老板娘=年轻好皮肤、不要 aunty）。
-- 🔴 **对比图/split-screen**：写 `full-bleed，这就是海报本身，NOT 印刷海报立街边/白框`，否则画「海报中的海报」。
-- 🔴 **比例统一 3:4 竖版**。
-- 🔴 **生成后一定 Read 图人工审**：色号泄漏 / 乱码 / 外国脸 / 撞 logo，任一命中就重出。
-
-## Logo 合成（PIL 后期，别靠 prompt 留白）
-prompt「留白」不可靠且会出假 logo。做法：**成图最上方叠一条纯色 header 带**，logo 放带内右侧，带色**自适应**（顶部浅→白带+深 logo，深→深带+白 logo），原图缩到留出带位、保持 3:4 → logo 永远有干净空位、不撞标题。
-
-## 📌 完整实例（SUMA 真实产出 · 照抄结构，换成你的行业/受众/卖点）
-```
-vertical 3:4 BOLD promo-style poster, Style A 战报证明风: chunky 3D-extruded/embossed outlined Chinese headline (thick black outline, orange-to-yellow gradient fill) + a solid colour-block banner strip + an icon-checklist feature list + a real photo grounding credibility.
-TOP: small kicker pill naming the audience: '开中学补习班的你'.
-Big chunky 3D-extruded outlined headline (the PAIN/contrast opener): '教得再好，家长网上看不到你'.
-Below headline: a solid red/deep-orange colour-block banner strip with bold white/yellow text stating the NAMED SOLUTION + a concrete moderate outcome: '1 天学会 AI内容营销系统，自己做出招生内容'.
-MIDDLE: real photo (photoreal, authentic documentary-style candid photo, NOT a cutout) of a young Malaysian secondary-school (SPM) tuition teacher (around 30, sharp and professional, good skin light makeup, NOT an auntie) sitting alone at dusk in her bright classroom, a whiteboard still full of handwritten SPM-level questions (algebra equations, chemistry formulas), a row of empty student chairs beside her, textbooks and exam papers on the desk, her phone lying silent with no new enquiry, quietly waiting, a little worried, honest calm moment, natural window light, real camera look NOT AI-looking, authentic Malaysian.
-Below the photo: an icon-checklist row, 6 small colourful circular icon badges with checkmarks and tiny labels: '✅AI文案', '✅AI图像', '✅AI数字人', '✅AI PPT', '✅AI音乐', '✅AI影片', small clean single row, must NOT dominate the poster.
-A tiny price-hint line near the bottom: '从 RM500/人起'.
-NO course name capsule, NO sign-up button, NO specific outcome guarantee to an individual (no '保证/包你/一定能'). Keep top-right corner truly empty for a logo — do NOT render the word 'LOGO' or any placeholder.
-🔴 CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is Chinese as specified, proofread character-by-character, no typos, no repeated/duplicated text blocks, no garbled characters, the person is a real local Malaysian (photoreal, not cartoon/CGI), young professional teacher, never an auntie.
-```
-🔴 换行业时：受众 pill / 痛点标题 / 方案+成果 / 主角 / 卖点清单 全换成你业务的；**8 块结构 + CRITICAL 那段一字不动照搬**。
-
-## 接进系统 + 归档（🔴 三处都要落，一处都不能跳）
-出图 → PIL 合 logo → **成品三落**（见顶部「成品归档」铁律，别找借口）：
-1. 本地成品 folder。
-2. 🔴 **贴进 Notion 立项页「成品海报」块**：本地 PNG 没公开 URL → `media_upload`(成品.png) PUT 上传 → `media_confirm` → `show_medias` 取公开 URL → `notion-create-attachment` 的 `source_url` 喂它 → 拿 `markdown_source` → `notion-update-page`(insert_content) 贴进「成品海报」块（🔴 1 小时内贴完）。免费版 ≤5MiB，超了先压。
-3. 🔴 **`rclone copy "<成品.png>" gdrive: --drive-root-folder-id <Drive成品folder ID>` 传进 Drive**。
-🔴 **绝不说「图太大 / 传不了 Notion / 传不了 Drive / 你自己上传 / 你自己拖」** —— Notion 走 source_url、Drive 走 rclone，两条都跑得通。
-> 📌 附：你（开发者 Cindy）自己用 token 直连 Notion API 时，附件要归 image 块自己（record.id=新建 image 块 id，否则渲染 Error 400）+ `getSignedFileUrls` GET=200 验证 —— 那是内部脚本路径，**学生用 connector 走上面 source_url 那套**。
-
----
-
-> 📄 **本文件夹的其他 md = 这一步的完整规则/框架**，务必先读。改内容请改 SUMA 主 repo 的 `7大AI启动包`，再重生成。
-
-
----
 
 # 📚 完整参考资料（已全部收进本 skill · 按序号排 —— 下面就是各 md 全文，不用再翻别的文件）
 
