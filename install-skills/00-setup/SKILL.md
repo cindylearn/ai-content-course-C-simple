@@ -1,8 +1,8 @@
 ---
 name: suma-ai-00-setup
 description: >-
-  SUMA AI 内容系统 · 第 00 步。开工第一步：新/旧业务诊断 → 强制先搭 Notion 地基（dashboard/folder/分类）+ 品牌定位 → 才放行后面所有 part。
-  触发词：开始 / 新业务 / 搭系统 / 从零开始 / setup / 建 Notion。
+  SUMA AI 内容系统 · 第 00 步（守门人）。开工第一步：无脑安装（自动装 git/node/python + 远程连接器授权）→ 定落脚点 → 新/旧业务诊断 → 品牌地基 → 搭 Notion 骨架 → 才放行后面所有 part。
+  触发词：开始 / 新业务 / 搭系统 / 从零开始 / setup / 安装 / 装工具 / 连接器 / 建 Notion。
   跟用户说话中英双语；教练式一题一题问。
 metadata:
   type: reference

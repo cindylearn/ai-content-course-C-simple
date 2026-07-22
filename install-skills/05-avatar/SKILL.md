@@ -38,7 +38,7 @@ metadata:
 > 🚦🔴🔴 **开工前先看 Status（每个 skill、每一步都守）：** 动任何一条内容前，先读它在 Notion「内容矩阵」里的 `Status` —— **Status 决定这一步该做什么**：Not Started→定角度立项 · Need Review Idea→审角度 · Proceed to Generate→写文案+去生成(生成前先确认) · Need Review Poster/Video→审成品+三落归档 · Checked→**全部做完只差发**(排期等发) · Need Modify→按反馈改 · Rejected→弃用 · Posted→已发看数据（详见本 skill 下方模版「🚦 Status 工作流」）。🔴 **绝不不看 Status 就闷头产**；做完这一步**改 Status** 推进。🔴 `Checked`＝万事俱备只差发布，不是角度审过。
 
 > 🔴🔴 **前置闸门（先查再做，缺了就挡）：**
-> 1. **connector 连好没？** 🔴 **Notion + Google Drive + GitHub 必连**（Notion 建大脑、Drive 存成品、GitHub 装 skill）；出图/视频还要 Higgsfield、剪片要 ChatCut。缺 → 让她去 Claude 设置 → Connectors 连，或回 `suma-ai-00-setup`。🔴 **还要她的 Google Drive folder 链接**（成品同步存这），没有先要。
+> 1. **connector 连好没？** 🔴 **必连（远程连接器·只授权、不用装东西）：Notion**（大脑）· **Higgsfield**（出图/视频）· **ChatCut**（剪片才要）。**Google Drive / GitHub 可选**（要自动归档 / 版本记录才连，起步可跳过）。缺 → 回 `suma-ai-00-setup` 跑无脑安装向导，或去 Claude 设置 → Connectors 授权。（若要自动归档到 Drive，另要她的 Drive folder 链接。）
 > 2. **地基做了吗？** 有没有「业务 md」+ 品牌地基（品牌名/受众/红线/命名）？没有 → **先去 `suma-ai-00-setup`**，别在这开工。
 > 3. **Notion 骨架搭了吗？** dashboard + folder（品牌地基/内容矩阵/素材库/成品归档）+ 内容矩阵 database 建好没？没有 → 先回 00 搭。
 > 缺任何一条 → 停下，先补，别硬往下做。
