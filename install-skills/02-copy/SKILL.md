@@ -618,7 +618,7 @@ metadata:
 > **硬性比例：口播短视频一律 vertical 9:16（竖版）** —— 不用 16:9 / 1:1。
 > **省 credit（铁律）：视频一律 480p + fast 模式，绝不 720p / std**（480p-fast ≈ 720p-std 的 1/3 credit）。配合「先出 Shot 1 满意才继续」，别烧冤枉钱。
 
-> **写台词/脚本前先问语言（一题一张卡，别默认英文）：** 🇲🇾 **马来西亚华语／中文（默认）** · Bahasa Malaysia（马来文）· English · 中英混 Rojak ·（方言走「其他」）。选的语言 = **台词语言 + 视频配音语言**，全片统一；每 shot prompt 的 `Spoken in …` 那句照选的语言写（默认 `Spoken in natural Malaysian Chinese (Mandarin, local accent)`；马来文→`Spoken in natural Malaysian Malay`；英文→`Spoken in Malaysian-accented English`）。
+> **写台词/脚本前先问语言（一题一张卡，别默认英文）：** 🇲🇾 **马来西亚华语／中文（默认）** · Bahasa Malaysia（马来文）· English · 中英混 Rojak ·（方言走「其他」）。选的语言 = **台词语言 + 视频配音语言**，全片统一；每 shot prompt 的 `Spoken in …` 那句照选的语言写（默认 `Spoken in NATURAL MALAYSIAN MANDARIN (本地马来西亚华语, NOT standard/Beijing Mandarin, NO erhua, flatter relaxed retroflex, casual local rhythm)`；马来文→`Spoken in natural Malaysian Malay`；英文→`Spoken in Malaysian-accented English`）。
 
 正文顺序（**概念是概念、文案是文案、台词是台词 —— 三样分开，别塞一起**）：
 
@@ -641,7 +641,7 @@ metadata:
 > NO subtitles, NO caption bar, NO burned-in spoken text, NO on-screen captions, NO course-name/CTA capsule on screen (the CTA is only SPOKEN in the final shot).
 > The person (incl. an AI digital-human presenter) is a REAL LIVING human with natural micro-motion: BLINKS naturally, eyes and pupils MOVE and track/shift gaze, natural breathing and subtle facial micro-expressions — alive, NOT a frozen stare, NOT motionless glassy eyes, NOT a lifeless mannequin/3D avatar.
 > 运镜/cinematography: dynamic real camera, NOT a static locked-off frame. Talking-head shots = subtle handheld UGC motion with a slow push-in and natural reframing; B-roll shots = motivated camera moves (slow pan/tilt/dolly push-in, rack focus, close-up insert cuts). Movement is smooth and natural, never robotic or jittery.
-> Spoken in natural Malaysian Chinese (Mandarin, local accent, clean — no filler particles). Saying: "[这一 shot 的台词全文]"
+> Spoken in NATURAL MALAYSIAN MANDARIN / 本地马来西亚华语 — as spoken by an everyday local Malaysian Chinese, NOT Mainland/Beijing/CCTV standard Mandarin: NO erhua (无儿化音), relaxed & flatter retroflex (zh/ch/sh softened toward z/c/s), casual local rhythm and intonation, warm conversational tone, clean — no filler particles. Saying: "[这一 shot 的台词全文]"
 > ```
 > **B-roll shot**（讲工具/数据/成果）：人物换成对应**空镜**（screen recording of a dashboard、产品特写、打包桌近景…），但 CHARACTER 以外的固定条款（9:16 · 无字幕 · REAL LIVING/运镜 · 清晰不虚不乱码）**照样整段重写**，别一直怼人头。
 > **B-roll 也有台词、也有声音 —— 台词绝不中断**：8 shot 的台词是**一整段连贯口播**，B-roll 只换画面、**声音不能停**。prompt 照写 `Saying: "[这一 shot 的台词]"`，并加一句 **`VOICEOVER narration over the b-roll — NO person speaking on camera in this shot`**（画面无人说话、旁白继续讲）。**绝不把 B-roll 做成静音空档**；模型旁白不行也要后期（ChatCut）补上旁白，不许留哑段。

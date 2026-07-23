@@ -618,7 +618,7 @@ metadata:
 > **硬性比例：口播短视频一律 vertical 9:16（竖版）** —— 不用 16:9 / 1:1。
 > **省 credit（铁律）：视频一律 480p + fast 模式，绝不 720p / std**（480p-fast ≈ 720p-std 的 1/3 credit）。配合「先出 Shot 1 满意才继续」，别烧冤枉钱。
 
-> **写台词/脚本前先问语言（一题一张卡，别默认英文）：** 🇲🇾 **马来西亚华语／中文（默认）** · Bahasa Malaysia（马来文）· English · 中英混 Rojak ·（方言走「其他」）。选的语言 = **台词语言 + 视频配音语言**，全片统一；每 shot prompt 的 `Spoken in …` 那句照选的语言写（默认 `Spoken in natural Malaysian Chinese (Mandarin, local accent)`；马来文→`Spoken in natural Malaysian Malay`；英文→`Spoken in Malaysian-accented English`）。
+> **写台词/脚本前先问语言（一题一张卡，别默认英文）：** 🇲🇾 **马来西亚华语／中文（默认）** · Bahasa Malaysia（马来文）· English · 中英混 Rojak ·（方言走「其他」）。选的语言 = **台词语言 + 视频配音语言**，全片统一；每 shot prompt 的 `Spoken in …` 那句照选的语言写（默认 `Spoken in NATURAL MALAYSIAN MANDARIN (本地马来西亚华语, NOT standard/Beijing Mandarin, NO erhua, flatter relaxed retroflex, casual local rhythm)`；马来文→`Spoken in natural Malaysian Malay`；英文→`Spoken in Malaysian-accented English`）。
 
 正文顺序（**概念是概念、文案是文案、台词是台词 —— 三样分开，别塞一起**）：
 
@@ -641,7 +641,7 @@ metadata:
 > NO subtitles, NO caption bar, NO burned-in spoken text, NO on-screen captions, NO course-name/CTA capsule on screen (the CTA is only SPOKEN in the final shot).
 > The person (incl. an AI digital-human presenter) is a REAL LIVING human with natural micro-motion: BLINKS naturally, eyes and pupils MOVE and track/shift gaze, natural breathing and subtle facial micro-expressions — alive, NOT a frozen stare, NOT motionless glassy eyes, NOT a lifeless mannequin/3D avatar.
 > 运镜/cinematography: dynamic real camera, NOT a static locked-off frame. Talking-head shots = subtle handheld UGC motion with a slow push-in and natural reframing; B-roll shots = motivated camera moves (slow pan/tilt/dolly push-in, rack focus, close-up insert cuts). Movement is smooth and natural, never robotic or jittery.
-> Spoken in natural Malaysian Chinese (Mandarin, local accent, clean — no filler particles). Saying: "[这一 shot 的台词全文]"
+> Spoken in NATURAL MALAYSIAN MANDARIN / 本地马来西亚华语 — as spoken by an everyday local Malaysian Chinese, NOT Mainland/Beijing/CCTV standard Mandarin: NO erhua (无儿化音), relaxed & flatter retroflex (zh/ch/sh softened toward z/c/s), casual local rhythm and intonation, warm conversational tone, clean — no filler particles. Saying: "[这一 shot 的台词全文]"
 > ```
 > **B-roll shot**（讲工具/数据/成果）：人物换成对应**空镜**（screen recording of a dashboard、产品特写、打包桌近景…），但 CHARACTER 以外的固定条款（9:16 · 无字幕 · REAL LIVING/运镜 · 清晰不虚不乱码）**照样整段重写**，别一直怼人头。
 > **B-roll 也有台词、也有声音 —— 台词绝不中断**：8 shot 的台词是**一整段连贯口播**，B-roll 只换画面、**声音不能停**。prompt 照写 `Saying: "[这一 shot 的台词]"`，并加一句 **`VOICEOVER narration over the b-roll — NO person speaking on camera in this shot`**（画面无人说话、旁白继续讲）。**绝不把 B-roll 做成静音空档**；模型旁白不行也要后期（ChatCut）补上旁白，不许留哑段。
@@ -2221,7 +2221,7 @@ ffmpeg -i in.mp4 -filter:v "select='gt(scene,0.15)',showinfo" -f null - 2>&1 \
 
 **② 你自己的真人样子 —— 先锁脸，声音看 Step 1 选的 a 还是 b**
 - **锁脸（两条路都要）：** 照片 3+ 张清晰正脸/多角度（正脸·侧一点·微笑）→ 锁脸；可选再给一小段说话视频 → 更像本人。
-- **a) 生成马来西亚中文配音（不用录音）** → 逐句用 Higgsfield `generate_audio` 出 TTS（台词写 `natural Malaysian Chinese, local accent`）当声音。⚠️ **Higgsfield 没有「马来西亚中文」这个下拉档位** —— 语言/口音是靠台词文字 + 描述词去推，出来是标准华语底、本地腔不保证。要地道本地味 → 走 b。
+- **a) 生成马来西亚中文配音（不用录音）** → 逐句用 Higgsfield `generate_audio` 出 TTS 当声音。⚠️ **没有「马来西亚中文」下拉档位，口音只能靠 prompt 逼** —— 描述词写狠一点：`NATURAL MALAYSIAN MANDARIN / 本地马来西亚华语, spoken by an everyday local Malaysian Chinese, NOT Mainland/Beijing/CCTV standard Mandarin, NO erhua (无儿化音), relaxed & flatter retroflex (zh/ch/sh softened toward z/c/s), casual local rhythm and intonation`。即便如此出来仍是标准华语底、**本地腔不保证**（多生几次挑最像的）。要 100% 地道本地味 → 走 b 克隆自己声音。
 - **b) 录一段自己的声音克隆（最贴脸）** → 你录 **~1 分钟干净录音**（安静·近麦·无背景乐）→ `create_voice_from_confirmed_audio` 克隆成你的声（样本脏 → 克隆带杂音）；这才是**真正你本人的马来西亚口音**。
 → 出视频「声音分开」：静音生成 + 逐句 TTS（a 用模型声 / b 用你的克隆声）+ 按 PTS 合声对口型（唯一要拆的情况）。
 
