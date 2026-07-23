@@ -934,7 +934,7 @@ metadata:
 
 ## STEP 3 — 逐镜 prompt
 
-一镜一段，**可直接生成**。
+一镜一段。**顺序（别跳）：先把每 shot 的 prompt 逐条写进 Notion 分镜表 → 停下、通知用户去 Notion 检查 → 用户说 OK 才生成（先 Shot 1）。绝不直接开生成、绝不没检查就烧 credit。**
 
 > 🔒 每一镜都带：锁定的人物（重述）· 选定的地点 · 9:16 · **真实感条款**（见 README「真实感条款」段）· **无字幕护栏**（README §1）· **照片级真人 + 眨眼**（README §2）
 
@@ -972,7 +972,7 @@ Aspect ratio 9:16.
 - **每镜重述锁定人物**（或提醒带参考图）→ 脸不跑样。
 - 特效写精确（"speed ramp (deceleration)"、"slow-motion ~25% speed"、"rack focus"），别只写 "slow-mo"。**台词镜保持干净**，嘴型才读得出来。
 - 做**对比**；点出**一个 signature shot**（标 `← SIGNATURE SHOT`）。收尾干净（通常 产品 / logo / CTA）。
-- **先跑 1 镜验证**（480p）：确认「声音 + 无字幕 + 眨眼 + 脸」→ OK 才批量。**别一次跑完 8 镜。**
+- **Notion 检查通过后，才先跑 Shot 1 验证**（480p）：确认「声音 + 无字幕 + 眨眼 + 脸」→ 满意才批量 Shot 2–8。**别没检查就生成、别一次跑完 8 镜。**
 
 **特效词汇：** speed ramp (accel/decel) · slow-motion (给 %) · whip pan · motion-blur smear · rack/focus pull · digital zoom · zoom pump · frame rotation (给 °) · white bloom flash · match cut · gimbal tracking · push-in / pull-back
 
@@ -2181,18 +2181,23 @@ ffmpeg -i in.mp4 -filter:v "select='gt(scene,0.15)',showinfo" -f null - 2>&1 \
 
 ---
 
-### Step 2 · 走流水线（脚本 → 锁人 → 逐镜生成 → 配乐 → 拼接）
+### Step 2 · 走流水线（脚本 → 锁人 → 写 prompt 进 Notion → 停下通知检查 → OK 才生成 → 拼接）
 ```
-✅ 完整脚本(Notion) + 角色参考图 → seedance 逐镜生成
- → 抽帧验证 → 拼接完整版 → 后期剪辑(字幕/音效/BGM)
+✅ 完整脚本(Notion) + 角色参考图 → ④逐镜写 prompt（先只写、不生成）
+ → ⑤写进 Notion 分镜表 → 🔴⑥停下、通知用户去 Notion 检查
+ → ⑦OK 才问「生成 Shot 1 看看?」→ 满意才批量 Shot 2–8
+ → ⑧抽帧验证 → 拼接完整版 → ⑨后期剪辑(字幕/音效/BGM)
 ```
 1. **脚本已在 Notion 表**（上面的硬闸门已确认）：镜号/类型 · Prompt · 台词 · 平台。整支约 60–100s。
 2. **人物参考图**：有真人 → 他 3 张脸参考图；没真人 → 按 Step 3 九宫格选脸锁定。
 3. **锁人物（口播镜）**：用 **3 张脸参考图**（正脸+不同角度更稳）当 `image_references`，每个真人镜 prompt **重复完整 persona 描述** → 全片同一个人。
-4. **逐镜生成**：`seedance_2_0` · `9:16` · 每镜 4–15s。🔴 **每一镜都要有声音（含 B-roll）：** 口播镜 `generate_audio=true`（人讲话、声画一起，AI 声音路径）—— 真人样子选 b 用克隆声 → 改静音生成 + `audio_references` 合声（见「选声」）；**B-roll 也不能静音** —— 照写 `Saying:"这一 shot 的台词"` + 加 `VOICEOVER narration over the b-roll — NO person speaking on camera`（画面无人说话、旁白继续讲）。模型旁白不行 → ChatCut 后期补上。
+4. **逐镜写 prompt（先只写、不生成）**：照黄金模板每 shot 写完整 prompt（`seedance_2_0` · `9:16` · 每镜 4–15s）。🔴 **每一镜都要有声音（含 B-roll）：** 口播镜按「台词镜两条路」（AI 声音 `generate_audio=true` 声画一起／克隆声静音 + `audio_references` 合声）；**B-roll 也不能静音** —— 照写 `Saying:"该 shot 台词"` + `VOICEOVER narration over the b-roll — NO person speaking on camera`（模型旁白不行 → ChatCut 补）。
+5. **写进 Notion**：把每 shot 的 prompt **逐条填进内容矩阵的分镜表（Prompt 列）** —— 别散在对话里、别只写在这里。
+6. **🔴 停下来，通知用户去 Notion 检查（关键闸门）**：prompt 全进表后，**停**，明确告诉用户「**prompt 已写进 Notion 分镜表，请你去检查一遍**」，等用户回「没问题 / OK」。**没得到 OK，绝不生成、绝不烧 credit。**
+7. **检查通过 → 才问「要不要生成 Shot 1 看看？」**：先只生成 **Shot 1**（480p/fast）给用户看 → 满意才继续 Shot 2–8；不满意就改 Shot 1 的 prompt 重出（换脸/乱码/不像本人都在这挡掉）。**绝不一次跑完 8 镜。**
 > ✅ **每镜头尾有 1–2 秒静音缓冲是正常的**（生成必然带），**ChatCut 后期剪掉多余头尾、让整段台词接连贯**即可 —— 要避免的是**整段 B-roll 没旁白/哑掉**，不是纠结那 1–2 秒。
-5. **验证 + 拼接**：抽帧检查（无 ffmpeg 用 `imageio_ffmpeg`）→ 统一参数 → concat 完整版。
-6. **后期剪辑**：字幕 / 花字 / 音效 / BGM → 见「AI 剪片」段 + 本包两份配套文档。
+8. **验证 + 拼接**：抽帧检查（无 ffmpeg 用 `imageio_ffmpeg`）→ 统一参数 → concat 完整版。
+9. **后期剪辑**：字幕 / 花字 / 音效 / BGM → 见「AI 剪片」段 + 本包两份配套文档。
 
 ---
 
