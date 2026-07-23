@@ -745,7 +745,7 @@ metadata:
 **每一镜 prompt 的硬规则（写死，漏了必出问题 —— 完整见 README「硬规则」段）：**
 - **无字幕护栏（必带）**：`ABSOLUTELY NO on-screen text, NO subtitles, NO captions, NO burned-in words…`（字幕后期加）。
 - **AI 人 = 照片级真人**：`PHOTOREAL, REALISTIC HUMAN … NOT a cartoon, NOT a 3D avatar` + 会眨眼眼珠动（`BLINKS… EYES alive…`）+ **真实感条款**（`candid photo… visible pores… NOT AI-generated…`）。**这条只管 AI 人；选了「卡通人」→ 不套照片级真人，按选定的卡通风格出。**
-- **B-roll 也要台词、也要声音（台词绝不中断）**：8 个 shot 的台词是**一整段连贯口播**，B-roll 只是换画面，**声音不能停**。做法：`generate_audio=true` + 照写 `Saying: "[这一 shot 的台词]"`，prompt 里写成 **VOICEOVER**（`VOICEOVER narration over the b-roll — NO person speaking on camera in this shot`）＝ 画面是无脸空镜、但旁白继续讲。**绝不 `generate_audio=false` 把 B-roll 做成静音空档**；万一模型旁白效果差，也必须在 ChatCut 后期把那段旁白补上，**不许留哑段**。
+- **B-roll 也要台词、也要声音（台词绝不中断）**：8 个 shot 的台词是**一整段连贯口播**，B-roll 只是换画面，**声音不能停**。做法：`generate_audio=true` + 照写 `Saying: "[这一 shot 的台词]"`，prompt 里写成 **VOICEOVER**（`VOICEOVER narration over the b-roll — NO person speaking on camera in this shot`）＝ 画面是无脸空镜、但旁白继续讲。**绝不 `generate_audio=false` 把 B-roll 做成静音空档**；万一模型旁白效果差，也必须在 ChatCut 后期把那段旁白补上。（每镜头尾 1–2 秒静音缓冲正常，ChatCut 剪掉即可；**要避免的是整段 B-roll 哑掉**，不是那 1–2 秒。）
 - **B-roll 画面 = 无脸真实近景** + **快切** `FAST-PACED… HARD CUTS every ~1.2–1.5s`。
 - **prompt 绝不写 hex 色号 / 文字标签**（会烤成乱码）→ 写方向词 + `NO letters, NO numbers, NO words`。
 - **背景虚化无可读文字** `background softly out of focus, NO readable text`。
@@ -2180,7 +2180,8 @@ ffmpeg -i in.mp4 -filter:v "select='gt(scene,0.15)',showinfo" -f null - 2>&1 \
 1. **脚本已在 Notion 表**（上面的硬闸门已确认）：镜号/类型 · Prompt · 台词 · 平台。整支约 60–100s。
 2. **人物参考图**：有真人 → 他 3 张脸参考图；没真人 → 按 Step 3 九宫格选脸锁定。
 3. **锁人物（口播镜）**：用 **3 张脸参考图**（正脸+不同角度更稳）当 `image_references`，每个真人镜 prompt **重复完整 persona 描述** → 全片同一个人。
-4. **逐镜生成**：`seedance_2_0` · `9:16` · 每镜 4–15s。🔴 **每一镜都要有声音（含 B-roll）：** 口播镜 `generate_audio=true`（人讲话、声画一起）；**B-roll 也不能静音** —— 照写 `Saying:"这一 shot 的台词"` + 加 `VOICEOVER narration over the b-roll — NO person speaking on camera`（画面无人说话、旁白继续讲）。模型旁白不行 → ChatCut 后期补上，**绝不留静音空档**。
+4. **逐镜生成**：`seedance_2_0` · `9:16` · 每镜 4–15s。🔴 **每一镜都要有声音（含 B-roll）：** 口播镜 `generate_audio=true`（人讲话、声画一起）；**B-roll 也不能静音** —— 照写 `Saying:"这一 shot 的台词"` + 加 `VOICEOVER narration over the b-roll — NO person speaking on camera`（画面无人说话、旁白继续讲）。模型旁白不行 → ChatCut 后期补上。
+> ✅ **每镜头尾有 1–2 秒静音缓冲是正常的**（生成必然带），**ChatCut 后期剪掉多余头尾、让整段台词接连贯**即可 —— 要避免的是**整段 B-roll 没旁白/哑掉**，不是纠结那 1–2 秒。
 5. **验证 + 拼接**：抽帧检查（无 ffmpeg 用 `imageio_ffmpeg`）→ 统一参数 → concat 完整版。
 6. **后期剪辑**：字幕 / 花字 / 音效 / BGM → 见「AI 剪片」段 + 本包两份配套文档。
 
