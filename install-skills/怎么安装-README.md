@@ -16,7 +16,7 @@
 | 01 | 01-branding | `/suma-ai-01-branding` | 帮我定品牌定位、受众、红线 |
 | 02 | 02-copy | `/suma-ai-02-copy` | 帮我写广告文案 |
 | 03 | 03-image | `/suma-ai-03-image` | 帮我出海报／产品图 |
-| 04 | 04-video | `/suma-ai-04-video` | 帮我做口播短视频（含数字人：AI人／真人样子／卡通人）|
+| 04 | 04-video-avatar | `/suma-ai-04-video-avatar` | 帮我做口播短视频（含数字人：AI人／真人样子／卡通人）|
 | 05 | 05-ppt | `/suma-ai-05-ppt` | 帮我做卖点 PPT |
 | 06 | 06-music | `/suma-ai-06-music` | 帮我做配乐／BGM |
 | 07 | 07-full | `/suma-ai-07-full` | 帮我把做好的全部整理成一套完整系统（full set） |
