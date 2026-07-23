@@ -2286,7 +2286,7 @@ over-smoothed skin, no waxy look, no airbrushing, no over-saturation, no perfect
 ### 5. 选声（按数字人性别）
 - **默认走 preset，按数字人性别挑**：男→男声、女→女声。`list_voices` 看全部（男/女各约 20 把）+ `preview_url` 试听；用 `voice_type='preset'` + `voice_id`。
 - **想更像某个真人本尊** → 才克隆（`create_voice_from_confirmed_audio`，干净样本：安静、近麦 ~15cm、无背景乐、连续讲 ~1 分钟；样本脏 → 克隆薄+带杂音）。
-- ⚠️ preset 偏英语训练，**中文/其他语口播可能带点口音**；在意腔调就试听后定，或用克隆。
+- ⚠️ preset 偏英语训练，**中文口播出来要么标准华语腔、要么带股怪洋腔 —— 两种都不是马来西亚华语**。要本地味：台词/prompt 的 `Spoken in…` 描述词照「马来西亚华语公式」写狠（无儿化 / 翘舌 zh·ch·sh 放平往 z·c·s / 语调平 / 语速松），先试听挑最像的；要 100% 地道 → 用克隆（真人路径 b）。
 - B-roll 旁白用同一把声保持一致。
 
 ### 6. 台词
