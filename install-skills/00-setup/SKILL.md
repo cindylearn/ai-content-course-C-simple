@@ -767,6 +767,13 @@ metadata:
 - Logo 文件：浅底版 `<light-logo.png>` + 深底版 `<white-logo.png>`
 - 紧迫感用词（不给死数字）：`名额有限 / 报满即止 / 先到先得`
 
+## B.5 落脚点 / 目的地（东西存哪 —— 🎯 任何 skill 单独跑，都靠这几个链接连回）
+- 本地成品 folder（图/视频/文案/业务 md 都存这）：`~/我的AI内容营销/<品牌>`
+- Notion 大脑 dashboard 链接：`<https://notion.so/...>`
+- **Notion 内容矩阵 database 链接 / id**：`<https://notion.so/...?v=...>`（产出/立项/改 Status 都在这个库）
+- **Drive 成品 folder 链接 / folder ID**：`<https://drive.google.com/…/folders/xxxx>` → folder ID = `xxxx`（rclone 归档用）
+> 这几样 = 00 第 1 步 + 第 5 步定好后**写回这里**；之后每个 skill 开工「前置闸门第 4 条」就来这读，连回 Notion + Drive。
+
 ## C. 合规红线（你的「绝不」清单）
 - ❌ 不写：`<价格 / 免费 / 具体名额数字 / …你的行业禁忌>`
 - ✅ 必带：`<完整品牌名 / 你的核心卖点 / …>`
@@ -1193,6 +1200,8 @@ brew install rclone # 然后 rclone config 授权你的 Google Drive
 ```
 再在「内容矩阵」里建 database —— **照 `05-Notion内容矩阵页模版` 建全部属性列，顺序照那份的 default view**（广告投放日期/Status/Stage/目标受众/领域/行业/主讲人/命名标题/**内容角度(=Title Aa)**/Hook类型/**🏷️关联主题(按业务主题,不是「AI内容课」)**/媒体类型/备注/❤️人性需求/🧠NLP技巧/📽️Hook变体）。**Title 属性 = 内容角度，不是命名标题。**
 **建库 = 只搭 database + 属性 + 空模版结构**（视频类=概念+8-shot表；图文类=概念+图内文字层级+素材+prompt表+成品海报）。**表格 `Higgsfield Prompt` 列宽≈562px**。**并教学员在 Notion 里「设为默认模版」**（API 设不了，手动点一次）。
+
+> 🎯 **搭好后必做 —— 把目的地写回业务 md：** 把「**内容矩阵 database 的链接 / id**」+ dashboard 链接写进业务 md，跟第 1 步的「**Drive 成品 folder ID**」放一起，这几样 = 这个业务的**「落脚点 / 目的地」**。**之后任何 skill 无论顺着 00→07 跑、还是单独跑，都靠业务 md 这几个链接连回 Notion + Drive** —— 没记进去 = 单独跑时找不到家、每次重问。
 
 **内容（文案 / 图 prompt / 台词）别在 00 随手填 —— 留给对应 skill 按规则写**：文案→`suma-ai-02-copy`（三层+骨架+大师+护栏）· 图 prompt→`suma-ai-03-image`（骨架+护栏）· 台词→`suma-ai-04-video-avatar`。真要放一条示范，也**必须套那个 skill 的完整规则、从这个业务自己的品牌地基长出来**。
 **绝不照抄 SUMA / 模版里的角度、产品、卖点** —— 那些只是「长什么样」的形状参考。例：SUMA 卖「教你自己搭 AI 系统」；如果用户是**代运营 agency**（帮客户做=done-for-you）、**卖货**（推产品）、**服务店**（到店消费），角度/卖点**完全不同**，别把 SUMA 的「缺一套自己的 AI 系统」硬套上去。
