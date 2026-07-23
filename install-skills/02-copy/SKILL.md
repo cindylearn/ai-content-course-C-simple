@@ -823,11 +823,12 @@ metadata:
 
 > 🚦**开工前先看 Status（每个 skill、每一步都守）：** 动任何一条内容前，先读它在 Notion「内容矩阵」里的 `Status` —— **Status 决定这一步该做什么**：Not Started→定角度立项 · Need Review Idea→审角度 · Proceed to Generate→写文案+去生成(生成前先确认) · Need Review Poster/Video→审成品+三落归档 · Checked→**全部做完只差发**(排期等发) · Need Modify→按反馈改 · Rejected→弃用 · Posted→已发看数据（详见本 skill 下方模版「🚦 Status 工作流」）。**绝不不看 Status 就闷头产**；做完这一步**改 Status** 推进。`Checked`＝万事俱备只差发布，不是角度审过。
 
-> **前置闸门（先查再做，缺了就挡）：**
-> 1. **connector 连好没？** **必连（远程连接器·只授权、不用装东西）：Notion**（大脑）· **Higgsfield**（出图/视频）· **ChatCut**（剪片才要）。**Google Drive / GitHub 可选**（要自动归档 / 版本记录才连，起步可跳过）。缺 → 回 `suma-ai-00-setup` 跑无脑安装向导，或去 Claude 设置 → Connectors 授权。（若要自动归档到 Drive，另要她的 Drive folder 链接。）
+> **前置闸门（先查再做，缺了就挡 —— 顺着 00→07 跑、还是单独跑这个 skill，都先过这道）：**
+> 1. **connector 连好没？** **必连（远程连接器·只授权、不用装东西）：Notion**（大脑）· **Higgsfield**（出图/视频）· **ChatCut**（剪片才要）。**Google Drive / GitHub 可选**（要自动归档 / 版本记录才连，起步可跳过）。缺 → 回 `suma-ai-00-setup` 跑无脑安装向导，或去 Claude 设置 → Connectors 授权。
 > 2. **地基做了吗？** 有没有「业务 md」+ 品牌地基（品牌名/受众/红线/命名）？没有 → **先去 `suma-ai-00-setup`**，别在这开工。
 > 3. **Notion 骨架搭了吗？** dashboard + folder（品牌地基/内容矩阵/素材库/成品归档）+ 内容矩阵 database 建好没？没有 → 先回 00 搭。
-> 缺任何一条 → 停下，先补，别硬往下做。
+> 4. 🎯 **连上目的地（这次的东西存哪，单独跑尤其要做这步）：** 读「业务 md」拿到落脚点 —— **哪个 Notion 内容矩阵（DB 链接/id）＋ 哪个 Drive 成品 folder（folder ID）**，本次所有产出 / 归档都往这两处落。业务 md 没记 → **问用户一次、并补写回业务 md**（别每次重问）；真找不到 → 回 `suma-ai-00-setup` 定落脚点。
+> 缺任何一条 → 停下先补，别硬往下做。**顺着跑：前面 00 已弄好，一句确认即可；单独跑 / 中途接着跑：缺啥补啥、先连上目的地，才进本 skill 流程。**
 > **成品归档（做完必做，禁找任何借口）：** 每个成品（图/视频/音乐/PPT）做完，**三处都要落，一处都不能跳**：① 本地成品 folder；② **贴进 Notion**（对应立项页的「成品」块 + 改 Status）；③ **`rclone copy` 传进用户 Google Drive 成品 folder**。**②③ 只要有一处没做，就是没做完 —— 绝不说「传不了 / 太大 / 浪费算力 / 你自己上传 / 你自己拖」这类借口。**
 >
 > **② 贴进 Notion（学生用 Notion connector，真能跑的路径 —— 别再卡在这找借口）：**
