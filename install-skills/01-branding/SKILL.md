@@ -618,6 +618,8 @@ metadata:
 > **硬性比例：口播短视频一律 vertical 9:16（竖版）** —— 不用 16:9 / 1:1。
 > **省 credit（铁律）：视频一律 480p + fast 模式，绝不 720p / std**（480p-fast ≈ 720p-std 的 1/3 credit）。配合「先出 Shot 1 满意才继续」，别烧冤枉钱。
 
+> **写台词/脚本前先问语言（一题一张卡，别默认英文）：** 🇲🇾 **马来西亚华语／中文（默认）** · Bahasa Malaysia（马来文）· English · 中英混 Rojak ·（方言走「其他」）。选的语言 = **台词语言 + 视频配音语言**，全片统一；每 shot prompt 的 `Spoken in …` 那句照选的语言写（默认 `Spoken in natural Malaysian Chinese (Mandarin, local accent)`；马来文→`Spoken in natural Malaysian Malay`；英文→`Spoken in Malaysian-accented English`）。
+
 正文顺序（**概念是概念、文案是文案、台词是台词 —— 三样分开，别塞一起**）：
 
 **## 概念**
