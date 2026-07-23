@@ -747,7 +747,7 @@ metadata:
 **每一镜 prompt 的硬规则（写死，漏了必出问题 —— 完整见 README「硬规则」段）：**
 - **无字幕护栏（必带）**：`ABSOLUTELY NO on-screen text, NO subtitles, NO captions, NO burned-in words…`（字幕后期加）。
 - **AI 人 = 照片级真人**：`PHOTOREAL, REALISTIC HUMAN … NOT a cartoon, NOT a 3D avatar` + 会眨眼眼珠动（`BLINKS… EYES alive…`）+ **真实感条款**（`candid photo… visible pores… NOT AI-generated…`）。**这条只管 AI 人；选了「卡通人」→ 不套照片级真人，按选定的卡通风格出。**
-- **B-roll 也要台词、也要声音（台词绝不中断）**：8 个 shot 的台词是**一整段连贯口播**，B-roll 只是换画面，**声音不能停**。做法：`generate_audio=true` + 照写 `Saying: "[这一 shot 的台词]"`，prompt 里写成 **VOICEOVER**（`VOICEOVER narration over the b-roll — NO person speaking on camera in this shot`）＝ 画面是无脸空镜、但旁白继续讲。**绝不 `generate_audio=false` 把 B-roll 做成静音空档**；万一模型旁白效果差，也必须在 ChatCut 后期把那段旁白补上。（每镜头尾 1–2 秒静音缓冲正常，ChatCut 剪掉即可；**要避免的是整段 B-roll 哑掉**，不是那 1–2 秒。）
+- **B-roll 也要台词、也要声音（台词绝不中断）**：8 个 shot 的台词是**一整段连贯口播**，B-roll 只换画面、**声音不能停**。做法按路走 —— **AI 声音路径**：`generate_audio=true` + 照写 `Saying: "[台词]"` + `VOICEOVER narration over the b-roll — NO person speaking on camera`（模型用同把声继续念）；**克隆声路径**：B-roll 静音生成、旁白用该句克隆声后期（ChatCut）铺上。模型旁白不行也要 ChatCut 补，**绝不整段哑掉**（头尾 1–2s 缓冲正常，ChatCut 剪掉即可）。
 - **B-roll 画面 = 无脸真实近景** + **快切** `FAST-PACED… HARD CUTS every ~1.2–1.5s`。
 - **prompt 绝不写 hex 色号 / 文字标签**（会烤成乱码）→ 写方向词 + `NO letters, NO numbers, NO words`。
 - **背景虚化无可读文字** `background softly out of focus, NO readable text`。
@@ -827,13 +827,13 @@ metadata:
 > - **真实感条款** 模板（每镜都带）；**选人/锁脸在 Step 3（锁定出镜的人），（选人/锁脸见 Step 3）**
 > - **§1** 强制无字幕（漏了必烤字幕）
 > - **§2** 照片级真人 + 眨眼 + 眼珠会动
-> - **§4** B-roll 规则 · **§4.5** 口播镜声画一起生成（`generate_audio=true`，不分开）
+> - **§4** B-roll 规则 · **§4.5** 口播镜：AI 声音声画一起（`generate_audio=true`+无字幕护栏）／克隆声才静音合声
 > - **§5** 选声 · **§6** 台词 · **§7** 背景 · **§8** 合规红线
 > - **参数**：480p + `mode fast`
 >
 > **为什么分开：** 规则会随实测更新（已经改过好几轮），流程不会。两边都写 = 改一处另一处变旧 = 你教课时拿到过期那份。
 
-> ⚠️ **2026-06 的旧版已作废**（`_archive/`）。它教「每镜结尾 `Saying:` 用原生讲话」——实测那样**必烤字幕、声音每镜会飘**。真人口播镜一律走 README §4.5：`generate_audio=true` 声画一起生成（不分开）。
+> ⚠️ **2026-06 的旧版已作废**（`_archive/`）。它教「每镜结尾 `Saying:` 原生讲话」但没写死无字幕护栏——实测那样**必烤字幕、声音每镜飘**。现行：**AI 声音口播镜走 `generate_audio=true` 声画一起 + 无字幕护栏（§1）**；只有**用自己的克隆声**才 `generate_audio=false` + `audio_references` 合声（见「台词镜」两条路）。
 
 ---
 
@@ -940,17 +940,21 @@ metadata:
 
 **分镜时长：每镜 4–15s。** 台词太长塞不进 15s → **拆成两镜**。
 
-### 台词镜 — 走「静音生成 + 合声」
+### 台词镜 — 看声音来源分两条路
 
-> **不要用原生讲话。** 详见 README §4.5。原生 `generate_audio=true` 会**烤字幕 + 声音每镜飘**。
+> **要不要「声音分开」只取决于一件事：画面要不要对上「某条特定音频」。**
 >
-> 正解：**先 TTS 出这句的音频 → `generate_audio=false` + `audio_references=<该句TTS>` + 脸参考 → `duration = round(音频秒数)`**。
+> **① AI 声音**（AI人 / 卡通 / 九宫格 / 真人样子选 a 的 AI 马来西亚中文）**→ 声画一起：** `generate_audio=true` + 台词写进 prompt + **无字幕护栏**（§1）→ 声音画面同一次生成、天然同步，**不用后期合声**。
 >
-> **`round`，不是 `ceil`** —— ceil 会把嘴型摊长，越到后面越拖（实测 12.23s 设 13 就飘，设 12 就准）。
+> **② 自己录的克隆声**（真人样子选 b）**→ 才声音分开：** 先出这句克隆声音频 → `generate_audio=false` + `audio_references=<该句音频>` + 脸参考 → `duration = round(音频秒数)`（**`round` 不是 `ceil`**，ceil 把嘴型摊长越拖越飘：实测 12.23s 设 13 飘、设 12 准）→ 后期按 PTS 合声对嘴。
 
 ### B-roll 镜
 
-**无脸真实近景**，show 那句台词点名的东西本身。不放主播、不要口型（画面 `generate_audio=false` 静音生成）—— **但这句台词的旁白照样连续覆盖上去（真人路径用该句 TTS、AI 路径直接 VOICEOVER），台词绝不中断、不留哑段**。详见 README §4。
+**无脸真实近景**，show 那句台词点名的东西本身。不放主播、不要口型。**旁白不中断，按路走：**
+- **AI 声音路径** → B-roll 也 `generate_audio=true` + `Saying:"该句台词"` + `VOICEOVER narration over the b-roll — NO person speaking on camera`（模型在空镜上用**同一把声**继续念）；模型旁白不行 → ChatCut 后期补。
+- **克隆声路径** → B-roll `generate_audio=false` 静音生成，旁白 = 该句克隆声音频后期（ChatCut）铺上。
+
+两条都：**台词绝不中断、不留哑段**（头尾 1–2s 缓冲正常，ChatCut 剪）。详见 README §4。
 
 ### 每镜模板
 
@@ -988,7 +992,7 @@ Aspect ratio 9:16.
 - script 里有的别再问
 - 脸参考图从真人 or Step 3（锁定出镜的人） 拿（**选人/锁脸见 Step 3**）；备齐 3 张再开拍
 - **规则以 README 为准** —— 这份只管流程
-- 口播镜**声画一起**（`generate_audio=true`）；**B-roll 也有旁白、声音不停（台词绝不中断）**，绝不做成静音空档
+- 口播镜：**AI 声音声画一起**（`generate_audio=true`+无字幕护栏）／**克隆声才静音合声**（`audio_references` 对嘴）；**B-roll 旁白不停（台词绝不中断）**，绝不整段哑掉
 - **先验 1 镜再批量**；480p + fast
 
 
@@ -2185,7 +2189,7 @@ ffmpeg -i in.mp4 -filter:v "select='gt(scene,0.15)',showinfo" -f null - 2>&1 \
 1. **脚本已在 Notion 表**（上面的硬闸门已确认）：镜号/类型 · Prompt · 台词 · 平台。整支约 60–100s。
 2. **人物参考图**：有真人 → 他 3 张脸参考图；没真人 → 按 Step 3 九宫格选脸锁定。
 3. **锁人物（口播镜）**：用 **3 张脸参考图**（正脸+不同角度更稳）当 `image_references`，每个真人镜 prompt **重复完整 persona 描述** → 全片同一个人。
-4. **逐镜生成**：`seedance_2_0` · `9:16` · 每镜 4–15s。🔴 **每一镜都要有声音（含 B-roll）：** 口播镜 `generate_audio=true`（人讲话、声画一起）；**B-roll 也不能静音** —— 照写 `Saying:"这一 shot 的台词"` + 加 `VOICEOVER narration over the b-roll — NO person speaking on camera`（画面无人说话、旁白继续讲）。模型旁白不行 → ChatCut 后期补上。
+4. **逐镜生成**：`seedance_2_0` · `9:16` · 每镜 4–15s。🔴 **每一镜都要有声音（含 B-roll）：** 口播镜 `generate_audio=true`（人讲话、声画一起，AI 声音路径）—— 真人样子选 b 用克隆声 → 改静音生成 + `audio_references` 合声（见「选声」）；**B-roll 也不能静音** —— 照写 `Saying:"这一 shot 的台词"` + 加 `VOICEOVER narration over the b-roll — NO person speaking on camera`（画面无人说话、旁白继续讲）。模型旁白不行 → ChatCut 后期补上。
 > ✅ **每镜头尾有 1–2 秒静音缓冲是正常的**（生成必然带），**ChatCut 后期剪掉多余头尾、让整段台词接连贯**即可 —— 要避免的是**整段 B-roll 没旁白/哑掉**，不是纠结那 1–2 秒。
 5. **验证 + 拼接**：抽帧检查（无 ffmpeg 用 `imageio_ffmpeg`）→ 统一参数 → concat 完整版。
 6. **后期剪辑**：字幕 / 花字 / 音效 / BGM → 见「AI 剪片」段 + 本包两份配套文档。
@@ -2221,9 +2225,8 @@ ffmpeg -i in.mp4 -filter:v "select='gt(scene,0.15)',showinfo" -f null - 2>&1 \
 
 **② 你自己的真人样子 —— 先锁脸，声音看 Step 1 选的 a 还是 b**
 - **锁脸（两条路都要）：** 照片 3+ 张清晰正脸/多角度（正脸·侧一点·微笑）→ 锁脸；可选再给一小段说话视频 → 更像本人。
-- **a) 生成马来西亚中文配音（不用录音）** → 逐句用 Higgsfield `generate_audio` 出 TTS 当声音。⚠️ **没有「马来西亚中文」下拉档位，口音只能靠 prompt 逼** —— 描述词写狠一点：`NATURAL MALAYSIAN MANDARIN / 本地马来西亚华语, spoken by an everyday local Malaysian Chinese, NOT Mainland/Beijing/CCTV standard Mandarin, NO erhua (无儿化音), relaxed & flatter retroflex (zh/ch/sh softened toward z/c/s), casual local rhythm and intonation`。即便如此出来仍是标准华语底、**本地腔不保证**（多生几次挑最像的）。要 100% 地道本地味 → 走 b 克隆自己声音。
-- **b) 录一段自己的声音克隆（最贴脸）** → 你录 **~1 分钟干净录音**（安静·近麦·无背景乐）→ `create_voice_from_confirmed_audio` 克隆成你的声（样本脏 → 克隆带杂音）；这才是**真正你本人的马来西亚口音**。
-→ 出视频「声音分开」：静音生成 + 逐句 TTS（a 用模型声 / b 用你的克隆声）+ 按 PTS 合声对口型（唯一要拆的情况）。
+- **a) 生成马来西亚中文配音（不用录音）→ 声画一起：** 脸用你的 3 张照片当 `image_references` 锁住，声音让模型自己念 —— `generate_audio=true` + 台词进 prompt + 无字幕护栏，**一次出、不用合声**（没有特定音频要对，就走声画一起）。⚠️ **没有「马来西亚中文」下拉档位，口音只能靠 prompt 逼** —— 描述词写狠一点：`NATURAL MALAYSIAN MANDARIN / 本地马来西亚华语, spoken by an everyday local Malaysian Chinese, NOT Mainland/Beijing/CCTV standard Mandarin, NO erhua (无儿化音), relaxed & flatter retroflex (zh/ch/sh softened toward z/c/s), casual local rhythm and intonation`。即便如此出来仍是标准华语底、**本地腔不保证**（多生几次挑最像的）。要 100% 地道本地味 → 走 b 克隆自己声音。
+- **b) 录一段自己的声音克隆（最贴脸）→ 声音分开：** 你录 **~1 分钟干净录音**（安静·近麦·无背景乐）→ `create_voice_from_confirmed_audio` 克隆成你的声（样本脏 → 克隆带杂音）；这才是**真正你本人的马来西亚口音**。因为画面要对上这条特定音频 → **静音生成 + 逐句克隆声 `audio_references` + 按 PTS 合声对口型（唯一要拆的情况）**。
 
 **③ 卡通人 —— 生成一张角色图锁定**
 按选的风格（2D 扁平 / 3D 皮克斯感 / 手绘 / 其他）用 Higgsfield 生成一张角色图当参考，走同套「锁人 → 逐镜」，把真实感条款换成该卡通风格的一致性描述。
@@ -2274,12 +2277,12 @@ over-smoothed skin, no waxy look, no airbrushing, no over-saturation, no perfect
 - **prompt 绝不写 hex 色号 / 文字标签**（会被烤成乱码文字，跟海报「别写字体规格」同一个坑）；改写方向词（如 `blue-and-white palette`）+ **纯图标/纯抽象**，并加死 `NO letters, NO numbers, NO words, NO labels of ANY kind`。
 - 屏幕内容一律 **soft/out of focus，无可读文字**。
 
-### 4.5 口播镜：声音和画面「一起生成」，不分开
+### 4.5 口播镜：AI 声音「声画一起」，克隆声才分开
 **口播视频 = 一个脚本长出来的一段「会说话 + 有声」的画面 —— 不是先出哑片再配音。** 真人口播镜一次到位：
 1. **一次生成**：`seedance_2_0` · `generate_audio=true` · 9:16 · 脸参考图当 `image_references` · 台词写进 prompt → 直接出「有声、对口型」的口播镜。**声音和画面同一次生成、天然同步**，不用后期合声、不用对时间轴。
 2. **无字幕护栏必带**（§1 那句 `ABSOLUTELY NO on-screen text…`）—— 原生配音会想烤字幕，把这句写死就干净（已验证）。
 3. **一把声**：同一主角所有口播镜用**同一 voice preset / 同一套声音参数**（§5），全片一把声、语言 = 上面第 2 步选的语言。
-4. **B-roll 无脸镜**：不需口型也不需人声 → `generate_audio=false`、不给 `audio_references`（旁白后期加）。
+4. **B-roll 无脸镜**：不对口型 → `generate_audio=false`、不给 `audio_references`；**但旁白不中断** —— AI 声音路径让模型用 `VOICEOVER` 同把声继续念（不行就 ChatCut 补）／克隆声路径把该句克隆声后期铺上（§4）。
 
 > 🟡 **唯一要「声音分开」的情况 = 真人样子路径选 b（克隆真人本尊声音）**→ 才走「静音生成 + 逐句 TTS + PTS 合声」那套。**其它全部声画一起**：AI 人、九宫格数字人，都是 `generate_audio=true` 一次出。
 
