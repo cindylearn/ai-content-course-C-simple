@@ -842,7 +842,8 @@ metadata:
 > **强制：先看 Status → 照模版立项（单独跑这个 skill 也一样，绝不跳过）：** 动手写 / 生成**之前**：
 > ① 🚦 **先读这条内容的 `Status`，Status 决定这一步做什么** —— Not Started→定角度 · Need Review Idea→审角度 · Proceed to Generate→写文案+去生成 · Need Review Poster/Video→审成品+归档 · Checked→做完只差发 · Need Modify→改 · Rejected→弃 · Posted→已发看数据（详见下方模版「🚦 Status 工作流」）。**别不看 Status 就闷头做。**
 > ② 在 Notion「内容矩阵」database **New / 打开这条立项页**，正文**照 `05-Notion内容矩阵页模版` 填**（按媒体类型选对应结构：概念 / 文案 / 图内文字层级 / prompt 表 / 台词…）。
-> ③ 产出完**回填**（文案进「文案」列、成品图贴「成品」块）＋ **改 Status**（推进到下一状态）。
+> ③ 🔴 **brainstorm 完先落 Notion、再问人（关键闸门 —— 每个 skill 都守）：** 想好的东西（内容角度 / 文案 / 图·视频 prompt / 台词）**先逐条写进这页立项页，别散在对话里**；然后**停下、通知用户「已写进 Notion，请去检查」**，等用户回「OK / 没问题」——**没得到 OK：绝不生成、绝不烧 credit、绝不推进 Status**。
+> ④ 用户 OK 后**才生成/产出 → 回填**（文案进「文案」列、成品图贴「成品」块）＋ **改 Status**（推进到下一状态）。
 > **绝不**：不看 Status 闷头做、不建页就直接产出、建空白页、内容散在对话里。**每一条内容 ＝ 内容矩阵一行 ＋ 照模版填好的立项页**。没有「内容矩阵」database？先回 `suma-ai-00-setup` 建。模版全文见下方「底层必读」。
 
 
