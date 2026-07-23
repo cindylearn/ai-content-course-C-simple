@@ -947,7 +947,7 @@ metadata:
 
 ### B-roll 镜
 
-**无脸真实近景**，show 那句台词点名的东西本身。不放主播、不要口型（`generate_audio=false`，不给 `audio_references`）。详见 README §4。
+**无脸真实近景**，show 那句台词点名的东西本身。不放主播、不要口型（画面 `generate_audio=false` 静音生成）—— **但这句台词的旁白照样连续覆盖上去（真人路径用该句 TTS、AI 路径直接 VOICEOVER），台词绝不中断、不留哑段**。详见 README §4。
 
 ### 每镜模板
 
@@ -985,7 +985,7 @@ Aspect ratio 9:16.
 - script 里有的别再问
 - 脸参考图从真人 or Step 3（锁定出镜的人） 拿（**选人/锁脸见 Step 3**）；备齐 3 张再开拍
 - **规则以 README 为准** —— 这份只管流程
-- 口播镜**声画一起生成**（`generate_audio=true`），不分开；B-roll 无脸镜 `generate_audio=false`
+- 口播镜**声画一起**（`generate_audio=true`）；**B-roll 也有旁白、声音不停（台词绝不中断）**，绝不做成静音空档
 - **先验 1 镜再批量**；480p + fast
 
 
@@ -2180,7 +2180,7 @@ ffmpeg -i in.mp4 -filter:v "select='gt(scene,0.15)',showinfo" -f null - 2>&1 \
 1. **脚本已在 Notion 表**（上面的硬闸门已确认）：镜号/类型 · Prompt · 台词 · 平台。整支约 60–100s。
 2. **人物参考图**：有真人 → 他 3 张脸参考图；没真人 → 按 Step 3 九宫格选脸锁定。
 3. **锁人物（口播镜）**：用 **3 张脸参考图**（正脸+不同角度更稳）当 `image_references`，每个真人镜 prompt **重复完整 persona 描述** → 全片同一个人。
-4. **逐镜生成**：`seedance_2_0` · `9:16` · 每镜 4–15s。**口播镜 `generate_audio=true`（声音、画面一起出，不分开）**；B-roll 无脸镜 `generate_audio=false`。
+4. **逐镜生成**：`seedance_2_0` · `9:16` · 每镜 4–15s。🔴 **每一镜都要有声音（含 B-roll）：** 口播镜 `generate_audio=true`（人讲话、声画一起）；**B-roll 也不能静音** —— 照写 `Saying:"这一 shot 的台词"` + 加 `VOICEOVER narration over the b-roll — NO person speaking on camera`（画面无人说话、旁白继续讲）。模型旁白不行 → ChatCut 后期补上，**绝不留静音空档**。
 5. **验证 + 拼接**：抽帧检查（无 ffmpeg 用 `imageio_ffmpeg`）→ 统一参数 → concat 完整版。
 6. **后期剪辑**：字幕 / 花字 / 音效 / BGM → 见「AI 剪片」段 + 本包两份配套文档。
 
