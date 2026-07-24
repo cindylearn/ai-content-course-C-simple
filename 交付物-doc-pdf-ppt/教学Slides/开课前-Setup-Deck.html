@@ -1,0 +1,284 @@
+<title>开课前 · 今晚 4 步（详细版 Setup Deck）</title>
+<style>
+  :root{
+    --ground:#eef3f7; --stage:#ffffff; --ink:#0c1a27; --muted:#54677a; --faint:#8395a4;
+    --line:#dbe4ec; --card:#f5f8fb; --card2:#eaf1f7;
+    --cyan:#12a7d4; --blue:#0f75bc; --amber:#e08a10; --green:#1c9160; --red:#c33f2d; --violet:#7b6ef0;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,"Cascadia Code",monospace;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --ground:#060d14; --stage:#0c1722; --ink:#eaf3fa; --muted:#9db0c0; --faint:#67798a;
+    --line:#20303d; --card:#122130; --card2:#0e1b28;
+    --cyan:#34c6ef; --blue:#3f9fe0; --amber:#f0aa3f; --green:#3ec489; --red:#e8715f; --violet:#9a8ff5;
+  }}
+  :root[data-theme="light"]{--ground:#eef3f7;--stage:#ffffff;--ink:#0c1a27;--muted:#54677a;--faint:#8395a4;--line:#dbe4ec;--card:#f5f8fb;--card2:#eaf1f7;--cyan:#12a7d4;--blue:#0f75bc;--amber:#e08a10;--green:#1c9160;--red:#c33f2d;--violet:#7b6ef0;}
+  :root[data-theme="dark"]{--ground:#060d14;--stage:#0c1722;--ink:#eaf3fa;--muted:#9db0c0;--faint:#67798a;--line:#20303d;--card:#122130;--card2:#0e1b28;--cyan:#34c6ef;--blue:#3f9fe0;--amber:#f0aa3f;--green:#3ec489;--red:#e8715f;--violet:#9a8ff5;}
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--ground);font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;overflow:hidden;}
+  .deck{position:fixed;inset:0;display:grid;place-items:center;padding:16px;}
+  .stage{position:relative;aspect-ratio:16/9;width:min(100%,calc((100vh - 32px)*16/9));
+    background:var(--stage);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    container-type:size;box-shadow:0 18px 60px rgba(6,20,32,.22);}
+
+  .slide{position:absolute;inset:0;padding:6cqh 5.5cqw 7.5cqh;display:flex;flex-direction:column;justify-content:center;
+    opacity:0;visibility:hidden;transform:translateY(1.2cqh);transition:opacity .38s ease,transform .38s ease;}
+  .slide.active{opacity:1;visibility:visible;transform:none;}
+  @media (prefers-reduced-motion:reduce){.slide,.frag{transition:none !important;transform:none !important;}}
+  .slide::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1.1cqw;background:var(--sec,var(--cyan));}
+  .slide.s-claude{--sec:var(--violet);} .slide.s-git{--sec:var(--red);} .slide.s-acc{--sec:var(--blue);} .slide.s-mcp{--sec:var(--cyan);} .slide.s-open{--sec:var(--cyan);} .slide.s-done{--sec:var(--green);} .slide.s-class{--sec:var(--amber);}
+
+  .frag{opacity:0;transform:translateY(1.1cqh);transition:opacity .35s ease,transform .35s ease;}
+  .frag.shown{opacity:1;transform:none;}
+
+  .eye{display:flex;align-items:center;gap:1.3cqw;margin-bottom:1.8cqh;flex-wrap:wrap;}
+  .fw{font-family:var(--mono);font-size:1.45cqw;font-weight:700;letter-spacing:.05em;padding:.6cqh 1.2cqw;border-radius:99px;color:#fff;}
+  .fw.pay{background:var(--amber);} .fw.free{background:var(--green);} .fw.app{background:linear-gradient(90deg,var(--cyan),var(--blue));} .fw.git{background:var(--red);}
+  .kick{font-size:1.5cqw;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);}
+  .step{font-family:var(--mono);font-size:1.6cqw;font-weight:800;letter-spacing:.05em;color:var(--sec,var(--cyan));}
+
+  h1{font-size:5cqw;line-height:1.08;font-weight:850;letter-spacing:-.01em;text-wrap:balance;}
+  h2{font-size:3.7cqw;line-height:1.14;font-weight:820;letter-spacing:-.01em;text-wrap:balance;}
+  .sub{font-size:2.1cqw;color:var(--muted);margin-top:1.6cqh;max-width:85cqw;line-height:1.5;font-weight:500;} .sub b{color:var(--ink);font-weight:750;}
+  .cap{font-size:1.75cqw;color:var(--muted);margin-top:1.3cqh;max-width:85cqw;line-height:1.5;} .cap b{color:var(--ink);}
+
+  .link{display:flex;align-items:center;gap:1.2cqw;background:var(--card2);border:1px solid var(--line);border-radius:.9cqw;
+    padding:1.15cqh 1.5cqw;margin-top:1.1cqh;max-width:88cqw;}
+  .link .lb{flex:none;font-family:var(--mono);font-size:1.3cqw;font-weight:800;color:var(--faint);min-width:5.5cqw;}
+  .link code{flex:1;font-family:var(--mono);font-size:1.65cqw;color:var(--blue);overflow-x:auto;white-space:nowrap;font-weight:600;}
+  .copy{flex:none;font-family:var(--sans);font-size:1.25cqw;font-weight:700;color:var(--muted);background:var(--stage);border:1px solid var(--line);border-radius:.6cqw;padding:.55cqh 1.1cqw;cursor:pointer;}
+  .copy:hover{border-color:var(--cyan);color:var(--cyan);} .copy.done{color:var(--green);border-color:var(--green);}
+
+  .steps{display:flex;flex-direction:column;gap:.85cqh;margin-top:1.5cqh;}
+  .st{display:flex;gap:1.2cqw;align-items:baseline;font-size:1.85cqw;font-weight:560;line-height:1.35;}
+  .st .sn{font-family:var(--mono);font-weight:800;color:#fff;background:var(--sec,var(--cyan));font-size:1.35cqw;flex:none;width:2.4cqw;height:2.4cqw;border-radius:50%;display:flex;align-items:center;justify-content:center;align-self:flex-start;margin-top:.2cqh;}
+  .st b{color:var(--ink);font-weight:800;} .st code{font-family:var(--mono);font-size:1.55cqw;background:var(--card2);padding:.12cqh .55cqw;border-radius:.35cqw;color:var(--blue);}
+  .st .ok{color:var(--green);font-weight:800;}
+
+  .why{margin-top:1.5cqh;font-size:1.6cqw;color:var(--muted);line-height:1.5;background:var(--card2);border-left:.5cqw solid var(--sec);border-radius:.5cqw;padding:1.2cqh 1.6cqw;max-width:88cqw;} .why b{color:var(--ink);}
+  .pill{display:inline-block;font-size:1.4cqw;font-weight:700;color:var(--green);background:color-mix(in srgb,var(--green) 13%,var(--card));border:1px solid color-mix(in srgb,var(--green) 34%,var(--line));border-radius:99px;padding:.45cqh 1.2cqw;margin-top:1.1cqh;}
+
+  .todo{display:flex;flex-direction:column;gap:.85cqh;margin-top:1.6cqh;}
+  .trow{display:flex;align-items:center;gap:1.3cqw;background:var(--card);border:1px solid var(--line);border-left:.4cqw solid var(--ac,var(--cyan));border-radius:.8cqw;padding:1.05cqh 1.5cqw;}
+  .trow .ck{flex:none;width:2cqw;height:2cqw;border-radius:.45cqw;background:var(--ac);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.25cqw;font-weight:900;font-family:var(--mono);}
+  .trow .nm{font-size:1.75cqw;font-weight:750;flex:none;min-width:12cqw;}
+  .trow .ds{font-size:1.5cqw;color:var(--muted);flex:1;line-height:1.3;} .trow .ds code{font-family:var(--mono);font-size:1.35cqw;color:var(--blue);}
+  .trow .tg{flex:none;font-family:var(--mono);font-size:1.2cqw;font-weight:800;padding:.3cqh .9cqw;border-radius:99px;white-space:nowrap;}
+  .tg.pay{color:var(--amber);background:color-mix(in srgb,var(--amber) 14%,var(--card));} .tg.free{color:var(--green);background:color-mix(in srgb,var(--green) 14%,var(--card));}
+  .trow.cl{--ac:var(--violet);} .trow.g{--ac:var(--red);} .trow.p{--ac:var(--amber);} .trow.f{--ac:var(--green);} .trow.m{--ac:var(--cyan);} .trow.a{--ac:var(--blue);}
+
+  .slide.cover{justify-content:center;}
+  .cover .wm{font-family:var(--mono);font-size:1.75cqw;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:2cqh;}
+  .cover h1{font-size:6.4cqw;line-height:1.05;}
+  .cover .grad{background:linear-gradient(96deg,var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .cover .tl{font-size:2.3cqw;color:var(--muted);margin-top:2cqh;font-weight:600;max-width:85cqw;line-height:1.45;} .cover .tl b{color:var(--ink);}
+  .cover .meta{display:flex;gap:1.2cqw;margin-top:3cqh;flex-wrap:wrap;}
+  .cover .chip{font-size:1.5cqw;font-weight:700;padding:.85cqh 1.5cqw;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--muted);} .cover .chip b{color:var(--ink);}
+
+  .prepnote{display:none;margin-top:1.5cqh;font-size:1.45cqw;line-height:1.5;color:var(--violet);
+    background:color-mix(in srgb,var(--violet) 8%,var(--card2));border:1px dashed color-mix(in srgb,var(--violet) 42%,var(--line));border-radius:.8cqw;padding:1.1cqh 1.6cqw;max-width:88cqw;}
+  #stage.presenter .prepnote{display:block;} .prepnote .tag{font-weight:800;color:var(--violet);margin-right:.6cqw;} .prepnote b{color:var(--ink);}
+
+  .bar{position:absolute;left:0;right:0;bottom:0;height:4.6cqh;display:flex;align-items:center;justify-content:space-between;padding:0 3cqw;font-family:var(--mono);font-size:1.3cqw;color:var(--faint);border-top:1px solid var(--line);background:var(--stage);z-index:6;} .bar .wm b{color:var(--blue);}
+  .bar .noteBtn{font-family:var(--mono);font-size:1.2cqw;color:var(--faint);background:transparent;border:1px solid var(--line);border-radius:99px;padding:.35cqh 1cqw;cursor:pointer;} #stage.presenter .bar .noteBtn{color:var(--violet);border-color:var(--violet);}
+  .prog{position:absolute;left:0;bottom:4.6cqh;height:.42cqh;background:var(--sec,var(--cyan));width:0;transition:width .4s ease;z-index:7;}
+  .nav{position:absolute;top:0;bottom:4.6cqh;width:26%;z-index:8;cursor:pointer;background:transparent;border:none;} .nav.prev{left:0;} .nav.next{right:0;left:auto;}
+  .nav svg{position:absolute;top:50%;transform:translateY(-50%);width:3cqw;height:3cqw;opacity:0;transition:opacity .2s;color:var(--faint);} .nav.prev svg{left:1.4cqw;} .nav.next svg{right:1.4cqw;} .nav:hover svg{opacity:.55;}
+  .hint{position:absolute;top:2cqh;right:3cqw;font-family:var(--mono);font-size:1.25cqw;color:var(--faint);z-index:6;transition:opacity .3s;}
+</style>
+
+<div class="deck">
+ <div class="stage" id="stage">
+
+  <!-- 1 封面 -->
+  <section class="slide cover active s-open">
+    <div class="wm">SUMA College · School of AI Content</div>
+    <h1>开课前 · 今晚<br><span class="grad">4 步</span>弄好（跟着一步步做）</h1>
+    <div class="tl frag">同学们，为了明天顺利，<b>今晚</b>按顺序做好：<b>① 装 Claude → ② 装 git → ③ 注册账号 → ④ 接 MCP</b>。每一步都有<b>完整链接</b>和<b>操作步骤</b>。（skill <b>明天上课当天才给</b>，今晚不装。）</div>
+    <div class="meta frag">
+      <span class="chip">共 <b>4 步</b></span>
+      <span class="chip">花费 <b>约 US$35/月</b>（可退订）</span>
+      <span class="chip">每条链接可<b>一键复制</b></span>
+      <span class="chip"><b>N</b> = 讲师备注</span>
+    </div>
+  </section>
+
+  <!-- 2 总览 -->
+  <section class="slide s-open">
+    <div class="eye"><span class="kick">今晚 · 4 步 · 按顺序</span></div>
+    <h2>照这个顺序，一步步来</h2>
+    <div class="todo">
+      <div class="trow cl frag"><span class="ck">1</span><span class="nm">装 Claude</span><span class="ds">下载电脑 App + 注册 + 订阅 $20/月</span><span class="tg pay">$20·可退</span></div>
+      <div class="trow g frag"><span class="ck">2</span><span class="nm">装 git 🔴</span><span class="ds">装完 Claude 的<b>第一件事</b>（Mac / Windows 都有链接，跟着装）</span><span class="tg free">免费</span></div>
+      <div class="trow p frag"><span class="ck">3</span><span class="nm">注册账号</span><span class="ds">Notion · Higgsfield · Suno · ChatCut · GitHub · Drive</span><span class="tg pay">2 付费</span></div>
+      <div class="trow m frag"><span class="ck">4</span><span class="nm">接 MCP</span><span class="ds">在 Claude 里点授权连上账号</span><span class="tg free">点一下</span></div>
+    </div>
+    <div class="why frag">📦 <b>skill 明天上课当天才给</b> —— 今晚不用装，把上面 4 步弄好就行。</div>
+    <div class="prepnote"><span class="tag">🎤 讲师</span>发群当总清单。顺序：Claude → git（第一件事）→ 注册 → MCP。skill 当天统一发。卡住明天早到。</div>
+  </section>
+
+  <!-- 3 step1 claude -->
+  <section class="slide s-claude">
+    <div class="eye"><span class="step">第 1 步</span><span class="fw app">下载 App</span><span class="fw pay">订阅 $20/月</span></div>
+    <h2>① 装 Claude（明天全程用它）</h2>
+    <div class="link frag"><span class="lb">链接</span><code>https://claude.com/download</code><button class="copy" data-c="https://claude.com/download">复制</button></div>
+    <div class="steps frag">
+      <div class="st"><span class="sn">1</span><span>打开链接 → <b>下载电脑版 App</b>（Mac / Windows 各自的安装包）</span></div>
+      <div class="st"><span class="sn">2</span><span>安装到电脑 → 打开 → <b>注册 / 登入账号</b></span></div>
+      <div class="st"><span class="sn">3</span><span>订阅 <b>US$20/月 方案</b>（Monthly Plan）—— 明天生成才有额度</span></div>
+    </div>
+    <div class="pill frag">💡 课后不想续 → 随时可 Unsubscribe 退订</div>
+    <div class="prepnote"><span class="tag">🎤 讲师</span>务必装<b>电脑版 App</b>（不是只用网页）。$20 方案今晚订好。装好登入 → 进第 2 步装 git。</div>
+  </section>
+
+  <!-- 4 step2 git · Mac -->
+  <section class="slide s-git">
+    <div class="eye"><span class="step">第 2 步 · 装完 Claude 第一件事</span><span class="fw git">🔴 最重要</span></div>
+    <h2>② 装 git —— 🍎 Mac（两种任选一）</h2>
+    <div class="link frag"><span class="lb">方法 A</span><code>xcode-select --install</code><button class="copy" data-c="xcode-select --install">复制</button></div>
+    <div class="link frag"><span class="lb">方法 B</span><code>https://git-scm.com/install/mac</code><button class="copy" data-c="https://git-scm.com/install/mac">复制</button></div>
+    <div class="steps frag">
+      <div class="st"><span class="sn">1</span><span><b>方法 A（推荐）：</b>打开「终端 / Terminal」→ 贴 <code>xcode-select --install</code> → Enter</span></div>
+      <div class="st"><span class="sn">2</span><span>弹出窗口 → 点「<b>安装 / Install</b>」→ 等它装完（几分钟）</span></div>
+      <div class="st"><span class="sn">3</span><span><b>方法 B：</b>装不了就开方法 B 链接，按页面下载安装</span></div>
+      <div class="st"><span class="sn">4</span><span>验证：终端贴 <code>git --version</code> → <span class="ok">出版本号 = 成功 ✅</span></span></div>
+    </div>
+    <div class="prepnote"><span class="tag">🎤 讲师</span>让全场现在跑方法 A。弹系统框点安装等完。<b>一定要看到 git --version 出版本号再往下。</b>装不了才用方法 B 链接。</div>
+  </section>
+
+  <!-- 5 step2 git · Windows -->
+  <section class="slide s-git">
+    <div class="eye"><span class="step">第 2 步 · 装 git（续）</span><span class="fw git">🔴 最重要</span></div>
+    <h2>② 装 git —— 🪟 Windows</h2>
+    <div class="link frag"><span class="lb">链接</span><code>https://git-scm.com/install/windows</code><button class="copy" data-c="https://git-scm.com/install/windows">复制</button></div>
+    <div class="steps frag">
+      <div class="st"><span class="sn">1</span><span>打开链接 → 下载 <b>Git for Windows</b> 安装包</span></div>
+      <div class="st"><span class="sn">2</span><span>双击安装 → <b>一路 Next</b>（默认选项就好）→ 装完</span></div>
+      <div class="st"><span class="sn">3</span><span><b>重开一次终端</b>（PowerShell / CMD）让它生效</span></div>
+      <div class="st"><span class="sn">4</span><span>验证：贴 <code>git --version</code> → <span class="ok">出版本号 = 成功 ✅</span></span></div>
+    </div>
+    <div class="why frag">🔴 <b>为什么第一件事就装 git？</b>没它，明天装 skill / 让 Claude 干活都会卡。今晚装好、验证出版本号，明天才顺。</div>
+    <div class="prepnote"><span class="tag">🎤 讲师</span>Windows 一路 Next 即可，装完务必重开终端再验证。git 这步卡了明天全卡，多花时间盯。</div>
+  </section>
+
+  <!-- 6 step3 accounts · paid/download -->
+  <section class="slide s-acc">
+    <div class="eye"><span class="step">第 3 步 · a</span><span class="fw app">下载/订阅</span></div>
+    <h2>③ 注册账号（1）Notion + Higgsfield</h2>
+    <div class="link frag"><span class="lb">Notion</span><code>https://www.notion.com/desktop</code><button class="copy" data-c="https://www.notion.com/desktop">复制</button></div>
+    <div class="st frag" style="margin-top:.6cqh"><span class="sn">·</span><span><b>下载电脑版 App</b> 装到电脑 → 注册账号（<b>免费版够</b>）</span></div>
+    <div class="link frag"><span class="lb">Higgsfield</span><code>https://higgsfield.ai/</code><button class="copy" data-c="https://higgsfield.ai/">复制</button></div>
+    <div class="st frag" style="margin-top:.6cqh"><span class="sn">·</span><span>注册账号 → 订阅 <b>US$15/月 方案</b>（出图/视频/数字人的引擎）<span style="color:var(--green);font-weight:700"> · 可退订</span></span></div>
+    <div class="prepnote"><span class="tag">🎤 讲师</span>Notion 装电脑版 App、免费。Higgsfield $15 今晚订好，明天才有额度。可退订。</div>
+  </section>
+
+  <!-- 7 step3 accounts · free -->
+  <section class="slide s-acc">
+    <div class="eye"><span class="step">第 3 步 · b</span><span class="fw free">全免费 · 注册就好</span></div>
+    <h2>③ 注册账号（2）这 4 个免费</h2>
+    <div class="link frag"><span class="lb">Suno</span><code>https://suno.com/</code><button class="copy" data-c="https://suno.com/">复制</button></div>
+    <div class="link frag"><span class="lb">ChatCut</span><code>https://chatcut.io/</code><button class="copy" data-c="https://chatcut.io/">复制</button><span style="font-size:1.3cqw;color:var(--green);font-weight:700;margin-left:.8cqw">送 15 credit</span></div>
+    <div class="link frag"><span class="lb">GitHub</span><code>https://github.com/</code><button class="copy" data-c="https://github.com/">复制</button></div>
+    <div class="link frag"><span class="lb">Drive</span><code>https://drive.google.com/</code><button class="copy" data-c="https://drive.google.com/">复制</button></div>
+    <div class="why frag">🔴 <b>GitHub 用 email + 密码注册，别用「Sign in with Google」</b>。　📁 <b>Google Drive：开一个文件夹</b>（Folder），例如「AI 内容成品」，空的就行。</div>
+    <div class="prepnote"><span class="tag">🎤 讲师</span>四个纯注册。ChatCut 送 15 credit。GitHub 别用 Google 登入。Drive 开个空 folder。</div>
+  </section>
+
+  <!-- 8 step4 mcp -->
+  <section class="slide s-mcp">
+    <div class="eye"><span class="step">第 4 步</span><span class="fw app">在 Claude 里 · 各点一次允许</span></div>
+    <h2>④ 接 MCP 连接器</h2>
+    <div class="sub frag" style="margin-top:1cqh">打开 Claude App → <b>设置 → Connectors（连接器）</b> → 逐个点授权（浏览器点「允许」，一次就永久）：</div>
+    <div class="todo" style="margin-top:1.1cqh">
+      <div class="trow m frag"><span class="ck">·</span><span class="nm">Notion</span><span class="ds">目录搜「Notion」→ Connect → 允许</span></div>
+      <div class="trow m frag"><span class="ck">·</span><span class="nm">Higgsfield</span><span class="ds">加自定义连接器 → 贴 <code>https://mcp.higgsfield.ai/mcp</code></span></div>
+      <div class="trow m frag"><span class="ck">·</span><span class="nm">ChatCut</span><span class="ds">加自定义连接器 → 贴 <code>https://api.chatcut.io/api/external-mcp/mcp</code></span></div>
+      <div class="trow m frag"><span class="ck">·</span><span class="nm">Drive·GitHub</span><span class="ds">目录搜 → Connect → 允许</span></div>
+    </div>
+    <div class="why frag">💡 各点一次「允许」= 授权 Claude 用你的账号（必须本人点，一次永久）。<b>Suno 没连接器</b>，浏览器直接用。</div>
+    <div class="prepnote"><span class="tag">🎤 讲师</span>投影示范连 Notion 一次。Higgsfield/ChatCut 的 URL 让他们从这页复制。连完今晚就齐了。</div>
+  </section>
+
+  <!-- 9 skill = class day -->
+  <section class="slide s-class">
+    <div class="eye"><span class="kick">明天 · 上课当天</span></div>
+    <h2>📦 那套 skill，明天课上才给</h2>
+    <div class="sub frag">今晚<b>不用装 skill</b> —— 明天上课我们<b>当场统一发链接、一起装</b>（版本一致、现场有人带）。</div>
+    <div class="cap frag">你今晚把 <b>① Claude + ② git + ③ 账号 + ④ MCP</b> 弄好，明天来装上 skill、叫守门人，就直接做内容。</div>
+    <div class="prepnote"><span class="tag">🎤 讲师</span>明确：今晚别自己找 skill 装。当天你发链接、带全班一起装 + 叫守门人开工。</div>
+  </section>
+
+  <!-- 10 done -->
+  <section class="slide cover s-done">
+    <div class="wm">✅ 今晚 4 步弄好</div>
+    <h1>明天来，<span class="grad">装上 skill 就开工</span></h1>
+    <div class="tl frag">① Claude ✓　② git ✓（出版本号）　③ 账号 ✓　④ MCP ✓ —— <b>今晚到这就够了</b>。skill 明天课上给。</div>
+    <div class="meta frag">
+      <span class="chip">花费 <b>Claude $20 + Higgsfield $15 ≈ $35/月</b></span>
+      <span class="chip"><b>都可随时退订</b></span>
+      <span class="chip">卡住？<b>明天早 15 分钟到，助教帮你</b></span>
+    </div>
+    <div class="prepnote"><span class="tag">🎤 讲师</span>收尾：今晚只到「Claude+git+账号+MCP」，skill 当天给。git 出版本号是过关标志。发群置顶。</div>
+  </section>
+
+  <div class="prog" id="prog"></div>
+  <button class="nav prev" id="prev" aria-label="上一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button class="nav next" id="next" aria-label="下一页"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+  <div class="hint" id="hint">← → 翻页 · N 备注</div>
+  <div class="bar">
+    <span class="wm">SUMA<b> · AI</b> 内容课 · 开课前作业</span>
+    <span style="display:flex;gap:1.4cqw;align-items:center;"><button class="noteBtn" id="noteBtn">🎤 讲师备注 (N)</button><span id="counter">1 / 10</span></span>
+  </div>
+
+ </div>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var counter=document.getElementById('counter'),prog=document.getElementById('prog'),
+      hint=document.getElementById('hint'),stage=document.getElementById('stage'),i=0;
+  function frags(s){return [].slice.call(s.querySelectorAll('.frag'));}
+  function render(){
+    slides.forEach(function(s,k){s.classList.toggle('active',k===i);});
+    counter.textContent=(i+1)+' / '+slides.length;
+    prog.style.width=((i+1)/slides.length*100)+'%';
+    prog.style.background=getComputedStyle(slides[i]).getPropertyValue('--sec')||'var(--cyan)';
+    hint.style.opacity=i>0?'0':'';
+  }
+  function next(){
+    var f=frags(slides[i]).filter(function(x){return !x.classList.contains('shown');})[0];
+    if(f){f.classList.add('shown');return;}
+    if(i<slides.length-1){i++;frags(slides[i]).forEach(function(x){x.classList.remove('shown');});render();}
+  }
+  function prev(){
+    var sh=frags(slides[i]).filter(function(x){return x.classList.contains('shown');});
+    var f=sh[sh.length-1];
+    if(f){f.classList.remove('shown');return;}
+    if(i>0){i--;frags(slides[i]).forEach(function(x){x.classList.add('shown');});render();}
+  }
+  function toggleNotes(){stage.classList.toggle('presenter');}
+  document.getElementById('next').addEventListener('click',next);
+  document.getElementById('prev').addEventListener('click',prev);
+  document.getElementById('noteBtn').addEventListener('click',function(e){e.stopPropagation();toggleNotes();});
+  addEventListener('keydown',function(e){
+    if(['ArrowRight','PageDown',' '].indexOf(e.key)>=0){e.preventDefault();next();}
+    else if(['ArrowLeft','PageUp'].indexOf(e.key)>=0){e.preventDefault();prev();}
+    else if(e.key==='n'||e.key==='N'){toggleNotes();}
+    else if(e.key==='Home'){i=0;frags(slides[0]).forEach(function(x){x.classList.remove('shown');});render();}
+    else if(e.key==='End'){i=slides.length-1;frags(slides[i]).forEach(function(x){x.classList.add('shown');});render();}
+  });
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(e){e.stopPropagation();
+      var t=b.getAttribute('data-c');
+      if(navigator.clipboard)navigator.clipboard.writeText(t);
+      var o=b.textContent;b.textContent='已复制 ✓';b.classList.add('done');
+      setTimeout(function(){b.textContent=o;b.classList.remove('done');},1300);});
+  });
+  var sx=null;
+  addEventListener('touchstart',function(e){sx=e.changedTouches[0].clientX;},{passive:true});
+  addEventListener('touchend',function(e){if(sx===null)return;var d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40){d<0?next():prev();}sx=null;},{passive:true});
+  render();
+})();
+</script>
