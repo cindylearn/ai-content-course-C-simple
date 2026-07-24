@@ -1153,20 +1153,20 @@ rclone config create gdrive drive scope=drive # 自动弹浏览器授权 Google 
 ## 这是「守门人」——所有 part 之前必须先跑它
 
 > **步骤顺序（照这个走，前面没齐别放行）：**
-> **第 0 步** 无脑安装（装工具+连账号·每台机一次性）→ **第 1 步** 落脚点（东西存哪）→ **第 2 步** 新/旧业务？→ **第 3 步** 建业务 md → **第 4 步** 品牌地基 → **第 5 步** Notion 骨架 → **放行**：做第一条内容。
+> **第 0 步** 底座（课前：装 Claude App → 装 git → 注册账号 → 接 MCP；skill 课上才装）→ **第 1 步** 落脚点（东西存哪）→ **第 2 步** 新/旧业务？→ **第 3 步** 建业务 md → **第 4 步** 品牌地基 → **第 5 步** Notion 骨架 → **放行**：做第一条内容。
 
-### 第 0 步 · 无脑安装：装工具 + 连账号（每台电脑一次性，先搞定再问任何东西）
-**学生第一次来啥都不会 —— 别一上来问品牌，先把工具装好、账号连好。**（完整步骤 + 脚本见本文件夹 `00-无脑安装向导.md` / `setup-tools.sh` / `setup-tools.ps1`）
-- 🔴 **⓪-a 最最先装 git（Mac 尤其关键 —— 连装 Homebrew、Claude 检测/操作 repo 都要它；没 git，Mac 常弹系统框把终端卡住，感觉「打不了字、什么都做不了」）：**
-  - **Mac**：终端跑 `xcode-select --install` → 弹窗点「安装」等它装完（这套 Command Line Tools 就含 git）；装不了 / 想直接装 → 从 **https://git-scm.com/install/mac** 装。
-  - **Windows**：从 **https://git-scm.com/install/windows** 下载安装（或有 winget 就 `winget install Git.Git`）。
-  - 验证：终端跑 `git --version` 出版本号 = OK。**这条 Claude 也帮不了（它可能正被缺 git 卡着），学员先自己把 git 弄好。**
-- 🔴 **⓪-b 再装 Claude Code 本体：** Mac 终端贴 `curl -fsSL https://claude.ai/install.sh | bash`；Windows（PowerShell）贴 `irm https://claude.ai/install.ps1 | iex`。**原生安装、不用先有 Node**（以官网最新命令为准）。装好、打开、登入 Claude 账号 → 才有下面这些。
-  - ✅ **打消疑虑：** 有了 git + 原生 Claude Code，**打开就能直接打字/发消息**。Homebrew / node / rclone 是**之后 Claude 自己装**、只给「合图/拼视频/归档」用，**跟「能不能跟 Claude 讲话」无关**。
-- **① Claude 自动装其余本地工具**（Homebrew / node / python / rclone + pillow / imageio-ffmpeg —— 给「合 logo / 拼视频 / rclone 归档」用；**git 已在 ⓪-a 装好，这步不重复**；连接器也不要这些）：侦测系统 → Mac 跑 `bash setup-tools.sh`、Windows 跑 `powershell -ExecutionPolicy Bypass -File setup-tools.ps1` → 全自动装好（学员不用去官网下载）。**学员只需：同意你运行 +（Mac）输一次密码。**（Windows 装完提醒重开终端让 PATH 生效。）
-  - ⚠️ **脚本只「装程序」；rclone 连 Google Drive 还要跑一次 `rclone config` 授权**（见下方第 3 步）—— 那一步是 OAuth，出于安全只能学员自己点浏览器「允许」，不能全自动。
-- **② 连账号（全是远程连接器，不用装任何东西，只点授权）：** **Notion**（Claude 设置 → 连接器 → 搜 Notion → 一键授权）· **Higgsfield**（添加自定义连接器 → 贴 `https://mcp.higgsfield.ai/mcp` → 授权）· **ChatCut**（贴 `https://api.chatcut.io/api/external-mcp/mcp` → 授权，要剪辑才连）。**Suno** 没连接器（浏览器手动）。**GitHub / Google Drive** 只在要「版本记录 / 自动归档」时才连——**学员起步可跳过**。
-- **唯一不能自动的**：学员自己「点 Authorize 授权」（要登录他自己账号，安全上替不了）。连完你逐个 test 一遍通不通，再往下。
+### 第 0 步 · 底座（课前学员按顺序弄好；整套 skill 上课当天才装）
+🔴 **顺序写死：① 装 Claude → ② 装 git（第一件事）→ ③ 注册账号 → ④ 接 MCP。** 这些学员**课前**完成（发课前 slides / PDF 带做）。**整套 skill（00-07）上课当天才统一装**——课前只先给 `00-setup` 这一个当引导。（完整脚本见本文件夹 `00-无脑安装向导.md` / `setup-tools.sh` / `setup-tools.ps1`）
+
+- **① 装 Claude 桌面 App：** 去 **https://claude.com/download** 下载电脑版装好 → 注册 → 订阅 **US$20/月**（Monthly，可退订）。⚠️ 要装**桌面 App**（不是只用网页）。学员能调用到 00 = Claude 已装好 ✓。
+- 🔴 **② 装 git（装完 Claude 第一件事 · 学员手动 · 最重要）：**
+  - **Mac**：终端跑 `xcode-select --install` → 弹窗点「安装」等完；或从 **https://git-scm.com/install/mac** 装。
+  - **Windows**：从 **https://git-scm.com/install/windows** 下载安装 → 重开终端。
+  - 验证：`git --version` 出版本号 = OK。🔴 **没 git，后面装 skill / 让 Claude 干活都会卡 —— 先弄好、看到版本号再往下。**
+- **③ 注册要用的账号：** Notion（**https://www.notion.com/desktop** 下载 App + 注册，免费）· Higgsfield（**https://higgsfield.ai/** 注册 + 订阅 **US$15/月**·可退）· Suno（suno.com）· ChatCut（chatcut.io·**免费送 15 credit**）· GitHub（github.com·🔴 **用 email 注册，别用 Google 登入**）· Google Drive（开一个成品 folder）。
+- **④ 接 MCP 连接器**（Claude 设置 → Connectors，各点一次授权，一次永久）：**Notion**（目录搜「Notion」→ Connect → 允许）· **Higgsfield**（加自定义连接器 → 贴 `https://mcp.higgsfield.ai/mcp`）· **ChatCut**（贴 `https://api.chatcut.io/api/external-mcp/mcp`，剪片才连）· **Google Drive / GitHub**（要归档 / 装 skill 才连）。**Suno** 没连接器（浏览器用）。
+- **⑤ 装本地工具（Homebrew / node / python / rclone —— 上课当天 / 需要时 Claude 自动装，不用课前弄）：** 装好 skill 后学员说「帮我把工具装好」→ Claude 跑 `setup-tools.sh`（Mac）/ `.ps1`（Windows）装齐（合图 / 拼视频 / rclone 归档用；**git 已在 ②**）。rclone 连 Drive 再跑一次 `rclone config create gdrive drive scope=drive` → 浏览器点「允许」。
+- 🔴 **⑥ 整套 skill 上课当天统一装：** 链接 `github.com/cindylearn/ai-content-course-C-simple/tree/main/install-skills` → 说「帮我从这个链接把全部 skill 装好」/ 或 Download ZIP 丢 `~/.claude/skills/` → 重开 Claude。**课前只装了 `00-setup` 这一个 → 跑到「放行」发现 01-07 没装是正常的（它们不会自动装）——告诉学员『其余明天课上装』，别卡住。**
 
 ### 第 1 步 · 定落脚点（东西存哪 · 先给他一个家）
 1. **成品 folder** —— 图/视频/文案/业务 md 全存这（默认 `~/我的AI内容营销/<品牌名>`），你来建好。
