@@ -1159,7 +1159,7 @@ rclone config create gdrive drive scope=drive # 自动弹浏览器授权 Google 
 **学生第一次来啥都不会 —— 别一上来问品牌，先把工具装好、账号连好。**（完整步骤 + 脚本见本文件夹 `00-无脑安装向导.md` / `setup-tools.sh` / `setup-tools.ps1`）
 - 🔴 **⓪-a 最最先装 git（Mac 尤其关键 —— 连装 Homebrew、Claude 检测/操作 repo 都要它；没 git，Mac 常弹系统框把终端卡住，感觉「打不了字、什么都做不了」）：**
   - **Mac**：终端跑 `xcode-select --install` → 弹窗点「安装」等它装完（这套 Command Line Tools 就含 git）；装不了 / 想直接装 → 从 **https://git-scm.com/install/mac** 装。
-  - **Windows**：从 **https://git-scm.com/download/win** 下载安装（或有 winget 就 `winget install Git.Git`）。
+  - **Windows**：从 **https://git-scm.com/install/windows** 下载安装（或有 winget 就 `winget install Git.Git`）。
   - 验证：终端跑 `git --version` 出版本号 = OK。**这条 Claude 也帮不了（它可能正被缺 git 卡着），学员先自己把 git 弄好。**
 - 🔴 **⓪-b 再装 Claude Code 本体：** Mac 终端贴 `curl -fsSL https://claude.ai/install.sh | bash`；Windows（PowerShell）贴 `irm https://claude.ai/install.ps1 | iex`。**原生安装、不用先有 Node**（以官网最新命令为准）。装好、打开、登入 Claude 账号 → 才有下面这些。
   - ✅ **打消疑虑：** 有了 git + 原生 Claude Code，**打开就能直接打字/发消息**。Homebrew / node / rclone 是**之后 Claude 自己装**、只给「合图/拼视频/归档」用，**跟「能不能跟 Claude 讲话」无关**。
