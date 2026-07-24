@@ -1158,6 +1158,7 @@ rclone config create gdrive drive scope=drive # 自动弹浏览器授权 Google 
 ### 第 0 步 · 无脑安装：装工具 + 连账号（每台电脑一次性，先搞定再问任何东西）
 **学生第一次来啥都不会 —— 别一上来问品牌，先把工具装好、账号连好。**（完整步骤 + 脚本见本文件夹 `00-无脑安装向导.md` / `setup-tools.sh` / `setup-tools.ps1`）
 - 🔴 **⓪ 先装 Claude Code 本体（唯一学员要自己先跑的一条命令 —— 没有它，根本没法「叫 Claude 做事」，别的都无从谈起）：** Mac 终端贴 `curl -fsSL https://claude.ai/install.sh | bash`；Windows（PowerShell）贴 `irm https://claude.ai/install.ps1 | iex`。**原生安装、不用先有 Node**（以官网最新命令为准）。装好、打开、登入 Claude 账号 → 才有下面这些。**这一步 Claude 帮不了（它还没装上），必须学员自己贴这条命令。**
+  - ✅ **打消一个常见疑虑：** Claude Code 原生安装是**自带运行环境的独立程序**，**装完打开就能直接打字/发消息**——不用先有 Homebrew/Node。Homebrew 那些是**之后 Claude 自己装**、只给「合图/拼视频/归档」用，**跟「能不能跟 Claude 讲话」完全无关**。（会有这担忧多半是见过 `npm install` 那种要先 Node 的装法——我们故意用原生安装避开它。）
 - **① 自动装本地工具**（Homebrew / git / node / python / rclone + pillow / imageio-ffmpeg —— 这些是给「合 logo / 拼视频 / rclone 归档」用的，**不是**跟 Claude 沟通用的；连接器也不要这些）：侦测系统 → Mac 跑 `bash setup-tools.sh`、Windows 跑 `powershell -ExecutionPolicy Bypass -File setup-tools.ps1` → 全自动装好（学员不用去官网下载）。**学员只需：同意你运行 +（Mac）输一次密码。**（Windows 装完提醒重开终端让 PATH 生效。）
   - ⚠️ **脚本只「装程序」；rclone 连 Google Drive 还要跑一次 `rclone config` 授权**（见下方第 3 步）—— 那一步是 OAuth，出于安全只能学员自己点浏览器「允许」，不能全自动。
 - **② 连账号（全是远程连接器，不用装任何东西，只点授权）：** **Notion**（Claude 设置 → 连接器 → 搜 Notion → 一键授权）· **Higgsfield**（添加自定义连接器 → 贴 `https://mcp.higgsfield.ai/mcp` → 授权）· **ChatCut**（贴 `https://api.chatcut.io/api/external-mcp/mcp` → 授权，要剪辑才连）。**Suno** 没连接器（浏览器手动）。**GitHub / Google Drive** 只在要「版本记录 / 自动归档」时才连——**学员起步可跳过**。
