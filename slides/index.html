@@ -1,0 +1,50 @@
+<!doctype html><html lang="zh"><head>
+<meta charset="utf8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>SUMA · AI 内容课 · 教学 Slides</title>
+<style>
+  :root{--bg:#eef3f7;--card:#fff;--ink:#0c1a27;--mut:#54677a;--line:#dbe4ec;--cyan:#12a7d4;--blue:#0f75bc;--amber:#e08a10;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",-apple-system,sans-serif;}
+  @media(prefers-color-scheme:dark){:root{--bg:#060d14;--card:#0c1722;--ink:#eaf3fa;--mut:#9db0c0;--line:#20303d;--cyan:#34c6ef;--blue:#3f9fe0;--amber:#f0aa3f;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;gap:8px;}
+  .wm{font-family:ui-monospace,Menlo,monospace;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);}
+  h1{font-size:clamp(26px,5vw,40px);font-weight:850;letter-spacing:-.01em;margin:6px 0 4px;text-align:center;}
+  h1 .g{background:linear-gradient(96deg,var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .sub{color:var(--mut);font-size:15px;margin-bottom:22px;text-align:center;max-width:44ch;line-height:1.6;}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:100%;max-width:760px;}
+  @media(max-width:640px){.cards{grid-template-columns:1fr;}}
+  a.card{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;padding:26px 24px;transition:transform .15s,border-color .15s,box-shadow .15s;position:relative;overflow:hidden;}
+  a.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--ac);}
+  a.card:hover{transform:translateY(-3px);border-color:var(--ac);box-shadow:0 14px 38px rgba(6,20,32,.16);}
+  a.card.setup{--ac:var(--cyan);} a.card.class{--ac:var(--amber);}
+  .ic{font-size:34px;}
+  .k{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin:14px 0 6px;}
+  .t{font-size:21px;font-weight:800;letter-spacing:-.01em;}
+  .d{font-size:14px;color:var(--mut);margin-top:8px;line-height:1.55;}
+  .go{margin-top:16px;font-size:14px;font-weight:800;color:var(--ac);}
+  footer{margin-top:26px;color:var(--mut);font-size:12px;opacity:.7;text-align:center;}
+</style></head><body>
+  <div class="wm">SUMA College · School of AI Content</div>
+  <h1>AI 内容课 · <span class="g">教学 Slides</span></h1>
+  <div class="sub">点开就放映。<b>← →</b> 翻页 · <b>N</b> 看讲师备注 · 命令 / 链接一键复制。</div>
+  <div class="cards">
+    <a class="card setup" href="setup.html">
+      <div class="ic">🚀</div>
+      <div class="k">课前 · 发给学生</div>
+      <div class="t">开课前 Setup（今晚 4 步）</div>
+      <div class="d">装 Claude → 装 git → 注册账号 → 接 MCP。skill 上课当天才给。</div>
+      <div class="go">打开放映 →</div>
+    </a>
+    <a class="card class" href="class.html">
+      <div class="ic">🎬</div>
+      <div class="k">当天 · 讲师用</div>
+      <div class="t">上课当天 · 教学 Deck</div>
+      <div class="d">Ver C 教学主 deck（含讲师备注、体验 5 招、价值演示）。按 N 开备注。</div>
+      <div class="go">打开放映 →</div>
+    </a>
+  </div>
+  <footer>SUMA College · 内部教学材料 · 链接勿外传</footer>
+</body></html>
