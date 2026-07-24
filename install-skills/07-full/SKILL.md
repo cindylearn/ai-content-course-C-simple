@@ -194,10 +194,10 @@ description: >-
   - **本地工具**（合图 / 拼视频 / rclone 归档用的 Homebrew·git·node·python·rclone）—— 跑过 00 就已自动装好；**没跑过 00（直接全程带她的）→ 我先帮她跑 `bash setup-tools.sh`（Mac）/ `setup-tools.ps1`（Windows）装好**，别等到 03 合 logo、04 拼片才发现缺。
 - 缺哪个账号 → 给注册链接，让她注册 + 连 connector：
  - **要付费订阅**：**Claude**（claude.ai · **US$19/月**）· **Higgsfield**（higgsfield.ai · **US$20/月**）——合计约 **US$39/月**，这两个是真正动手用的引擎，**别说成免费**。
- - ✂️ **剪辑用 ChatCut**（chatcut.io）——**新用户送免费 credit（约 40）**，够课上剪出第一支；用完再看要不要订阅。生成 ≠ 成品，中文片一定要它做后期。
+ - ✂️ **剪辑用 ChatCut**（chatcut.io）——**新用户免费送 15 credit**，够课上剪出第一支；用完再看要不要订阅。生成 ≠ 成品，中文片一定要它做后期。
  - ✅ **免费 / 送免费额度（先不用给钱）**：
  - **Notion**（notion.so）—— **免费版应该够用**，之后要不要升级她自己决定。
- - **ChatCut**（chatcut.io）—— 新用户**送约 40 credit**，够剪第一支；用完再看要不要订阅。
+ - **ChatCut**（chatcut.io）—— 新用户**免费送 15 credit**，够剪第一支；用完再看要不要订阅。
  - **Suno**（suno.com）—— 免费版可起步。
  - **GitHub**（github.com）—— **一定要用 email + 密码注册，别用「Sign in with Google」那种第三方登入**：GitHub 对第三方登入很敏感，**用 Google 登入常常开不到账号**，email + 密码最稳。
  - 💡 她嫌贵/犹豫 → **先上课学方法和系统，课后再订阅来练习**，一样能学；别逼她当场买。
@@ -295,7 +295,7 @@ description: >-
 | 🤖 **编排大脑** | **Claude（Claude Code）** | **US$19/月 · 需订阅** | 写文案、读写数据库、批量生产、多 agent 编排——把 6 个 skill 串起来的那只手 |
 | 🎨 **生成引擎（图+视频）** | **Higgsfield** | **US$20/月 · 需订阅** | 出海报图（nano_banana）、出口播视频（seedance，含数字人/影片） |
 | 🧠 **内容大脑** | **Notion** | ✅ 免费版应该够用（之后自己决定要不要升级） | 一张数据库表存/查/批改所有内容页 |
-| ✂️ **剪辑引擎（后期）** | **ChatCut**（chatcut.io） | ✅ 新用户送约 40 credit · 之后自己决定要不要订阅 | 给生成好的素材上字幕/花字/音效/BGM——**中文片唯一可行的 AI 剪辑路**（实测：HyperFrames 等工具的字体是 latin 子集、匹配器是 ASCII，中文字幕出豆腐块，是设计假设不是配置问题）。生成 ≠ 成品，后期这一层才是「广告片」和「AI 生成视频」的分界线 |
+| ✂️ **剪辑引擎（后期）** | **ChatCut**（chatcut.io） | ✅ 新用户免费送 15 credit · 之后自己决定要不要订阅 | 给生成好的素材上字幕/花字/音效/BGM——**中文片唯一可行的 AI 剪辑路**（实测：HyperFrames 等工具的字体是 latin 子集、匹配器是 ASCII，中文字幕出豆腐块，是设计假设不是配置问题）。生成 ≠ 成品，后期这一层才是「广告片」和「AI 生成视频」的分界线 |
 | 🎵 **音乐** | **Suno** | ✅ 免费版可起步 | 视频背景乐（AI 音乐 skill） |
 | 🗂️ **版本记录 / 交付** | **GitHub** | ✅ 免费 · 用 email+密码注册（用 Google 登入常开不到账号） | 存 skill + SOP + template，做版本记录、跨设备/给学员 |
 | 🛠️ **本地小工具** | **Python + Pillow(PIL) + imageio_ffmpeg** | ✅ 免费 | 合成 logo（顶部 header 带）、拼接视频完整版 |
