@@ -4,6 +4,14 @@
 set -e
 echo "▶ 开始装本地工具（中途会问你一次 Mac 密码）..."
 
+# 0) 先确认 git —— Homebrew 自己也要 Command Line Tools/git；没有就先停下让学员装
+if ! command -v git >/dev/null 2>&1; then
+  echo "✋ 还没装 git（Homebrew 也要它）。先装 git 再重跑本脚本："
+  echo "   Mac：终端跑  xcode-select --install  （弹窗点「安装」，装完再重跑）"
+  echo "   或从  https://git-scm.com/install/mac  直接装。"
+  exit 1
+fi
+
 # 1) Homebrew
 if ! command -v brew >/dev/null 2>&1; then
   echo "▶ 装 Homebrew..."
