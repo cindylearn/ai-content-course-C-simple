@@ -11,7 +11,7 @@
 
 ## 已完成 · 无脑 Setup（Mac + Windows）
 学员手动只剩「装 Claude Code + 同意运行脚本 +（Mac）输次密码 + 点几下授权」，其余全自动。
-- [`install-skills/00-setup/00-无脑安装向导.md`](install-skills/00-setup/00-无脑安装向导.md) ← 向导主文件
+- [`00-setup/00-无脑安装向导.md`](00-setup/00-无脑安装向导.md) ← 向导主文件
 - `setup-tools.sh`（Mac）/ `setup-tools.ps1`（Windows）← 自动装 git / node / python
 - 连接器全是**远程 OAuth**（Notion 一键；Higgsfield / ChatCut 贴 link 授权）→ 不用装 Git/Node/Python 来跑它们
 - 装本地工具只为「Python 合 logo / 拼视频」这类生产功能

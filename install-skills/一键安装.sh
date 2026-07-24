@@ -11,4 +11,4 @@ for d in "$HERE"/*/; do
   cp -R "$d" "$DEST/$name"
   echo "✅ 装好: $name"
 done
-echo "全部 9 个 skill 已装进 ~/.claude/skills/ —— 重开 Claude 就能用。第一次调 suma-ai-00-setup。"
+echo "01-07 共 7 个 skill 已装进 ~/.claude/skills/ —— 重开 Claude 就能用。（00-setup 在仓库根目录，课前单独装；没装的先装它再调 suma-ai-00-setup。）"

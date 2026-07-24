@@ -1166,7 +1166,10 @@ rclone config create gdrive drive scope=drive # 自动弹浏览器授权 Google 
 - **③ 注册要用的账号：** Notion（**https://www.notion.com/desktop** 下载 App + 注册，免费）· Higgsfield（**https://higgsfield.ai/** 注册 + 订阅 **US$15/月**·可退）· Suno（suno.com）· ChatCut（chatcut.io·**免费送 15 credit**）· GitHub（github.com·🔴 **用 email 注册，别用 Google 登入**）· Google Drive（开一个成品 folder）。
 - **④ 接 MCP 连接器**（Claude 设置 → Connectors，各点一次授权，一次永久）：**Notion**（目录搜「Notion」→ Connect → 允许）· **Higgsfield**（加自定义连接器 → 贴 `https://mcp.higgsfield.ai/mcp`）· **ChatCut**（贴 `https://api.chatcut.io/api/external-mcp/mcp`，剪片才连）· **Google Drive / GitHub**（要归档 / 装 skill 才连）。**Suno** 没连接器（浏览器用）。
 - **⑤ 装本地工具（Homebrew / node / python / rclone —— 上课当天 / 需要时 Claude 自动装，不用课前弄）：** 装好 skill 后学员说「帮我把工具装好」→ Claude 跑 `setup-tools.sh`（Mac）/ `.ps1`（Windows）装齐（合图 / 拼视频 / rclone 归档用；**git 已在 ②**）。rclone 连 Drive 再跑一次 `rclone config create gdrive drive scope=drive` → 浏览器点「允许」。
-- 🔴 **⑥ 整套 skill 上课当天统一装：** 链接 `github.com/cindylearn/ai-content-course-C-simple/tree/main/install-skills` → 说「帮我从这个链接把全部 skill 装好」/ 或 Download ZIP 丢 `~/.claude/skills/` → 重开 Claude。**课前只装了 `00-setup` 这一个 → 跑到「放行」发现 01-07 没装是正常的（它们不会自动装）——告诉学员『其余明天课上装』，别卡住。**
+- 🔴 **⑥ skill 分两批装（00 在仓库根目录、01-07 在 install-skills）：**
+  - **课前**：只装 `00-setup`（仓库根目录，就是你现在跑的这个守门人）—— 链接 `github.com/cindylearn/ai-content-course-C-simple/tree/main/00-setup`。
+  - **上课当天**：装 `install-skills`（01-07）—— 链接 `…/tree/main/install-skills` →「帮我从这个链接把全部 skill 装好」/ 或 Download ZIP 丢 `~/.claude/skills/` → 重开 Claude。
+  - **课前只有 00-setup 时，跑到「放行」发现 01-07 没装是正常的**（它们各自独立、不会自动装）——告诉学员『其余明天课上装』，别卡住。
 
 ### 第 1 步 · 定落脚点（东西存哪 · 先给他一个家）
 1. **成品 folder** —— 图/视频/文案/业务 md 全存这（默认 `~/我的AI内容营销/<品牌名>`），你来建好。
