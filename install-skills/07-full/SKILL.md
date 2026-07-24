@@ -189,6 +189,9 @@ description: >-
 
 ### Step 1 · 账号 + 装好（一次过，之后每个 Session 都不用再装）
 > 先跟她讲清楚：**东西是一次过装好的，不是每节装。** 之后每个 Session 只是"用"，不再装任何东西。
+- 🔴 **先确认底座（别跳，不然后面 03/04 会卡）：**
+  - **Claude Code 本体** —— 她**能调用到我 = 已经装好了 ✓**（不用再装；如果是全新电脑还没有，先让她跑 Mac `curl -fsSL https://claude.ai/install.sh | bash` / Windows `irm https://claude.ai/install.ps1 | iex`，原生安装不用 Node）。
+  - **本地工具**（合图 / 拼视频 / rclone 归档用的 Homebrew·git·node·python·rclone）—— 跑过 00 就已自动装好；**没跑过 00（直接全程带她的）→ 我先帮她跑 `bash setup-tools.sh`（Mac）/ `setup-tools.ps1`（Windows）装好**，别等到 03 合 logo、04 拼片才发现缺。
 - 缺哪个账号 → 给注册链接，让她注册 + 连 connector：
  - **要付费订阅**：**Claude**（claude.ai · **US$19/月**）· **Higgsfield**（higgsfield.ai · **US$20/月**）——合计约 **US$39/月**，这两个是真正动手用的引擎，**别说成免费**。
  - ✂️ **剪辑用 ChatCut**（chatcut.io）——**新用户送免费 credit（约 40）**，够课上剪出第一支；用完再看要不要订阅。生成 ≠ 成品，中文片一定要它做后期。
