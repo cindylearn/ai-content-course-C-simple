@@ -888,8 +888,8 @@ metadata:
 pip install pillow imageio-ffmpeg
 # 记录用
 git --version # 没有就装 git
-# 归档用（可选）—— setup-tools.sh 已自动装 rclone，这里不用再手动装
-rclone config # 只剩这一步：授权你的 Google Drive（浏览器点「允许」，只能你自己点）
+# 归档用（可选）—— setup-tools.sh 已自动装 rclone；一条命令预填好，只剩浏览器点「允许」
+rclone config create gdrive drive scope=drive # 自动弹浏览器授权 Google Drive，学员只点「允许」
 ```
 
 **准备素材：** 品牌 logo（浅底版 + 深底版各一张）· 品牌色/字体 · CTA 落地页链接 · 合规红线清单。
@@ -1170,7 +1170,11 @@ rclone config # 只剩这一步：授权你的 Google Drive（浏览器点「允
 2. **哪个 Notion** —— 待会在里面帮他搭骨架。
 3. **（可选 · 要「自动归档到 Drive」才做，起步可跳过）Google Drive 成品自动上传 —— 配好 rclone：**
  - ① 要他的 Drive 成品 folder 链接（`drive.google.com/…/folders/xxx`）；`/folders/` 后那段 = **folder ID**，记进业务 md「Drive 链接 / folder ID」。
- - ② **带他配 rclone**（终端）：`rclone config` → `n`(新建) → 名字 `gdrive` → 存储选 `drive`（Google Drive）→ client_id/secret 留空回车 → scope 选 `1`(drive 完整) → `Edit advanced config? n` → `Use auto config? y`（弹浏览器登录授权 Google）→ `Configure this as a Shared Drive? n` → `y` 确认。
+ - ② **一条命令配好 rclone（Claude 直接替他跑，所有答案已预填，他只需最后点浏览器「允许」）：**
+   ```
+   rclone config create gdrive drive scope=drive
+   ```
+   这条 = 名字 `gdrive` + 类型 Google Drive + 完整权限，全预填好 → **自动弹浏览器 → 学员登入 Google、点「允许」** → 完成（Shared/Team Drive 默认否，不用管）。**别再叫他一问一答走 `rclone config` 那 10 步。**（万一浏览器没弹：命令行会打印一条授权链接，复制到浏览器打开点「允许」即可。）
  - ③ 验证：`rclone lsd gdrive:` 能列出他的 Drive = 配好了。
  - **配好前别开始出内容** —— 不然成品传不了。之后所有成品 `rclone copy "<本地成品>" gdrive: --drive-root-folder-id <folder ID>` 自动进 Drive。
 4. 落脚点定了 → 写进业务 md（文件存放位置 / Drive 链接）→ 才进下一步。

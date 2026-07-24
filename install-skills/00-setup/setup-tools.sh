@@ -20,4 +20,4 @@ echo "▶ 装 Python 依赖..."
 python3 -m pip install --user pillow imageio-ffmpeg
 
 echo "✅ 程序都装好：git / node / python / rclone 就绪。"
-echo "ℹ️  rclone 只是「装好程序」；要连你的 Google Drive，还要跑一次 'rclone config' 授权（Claude 会带你，出于安全那一步只能你自己点浏览器「允许」）。"
+echo "ℹ️  rclone 只是「装好程序」；要连你的 Google Drive，还要跑一次授权命令「rclone config create gdrive drive scope=drive」（Claude 会带你，出于安全那一步只能你自己点浏览器「允许」）。"
