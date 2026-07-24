@@ -888,8 +888,8 @@ metadata:
 pip install pillow imageio-ffmpeg
 # 记录用
 git --version # 没有就装 git
-# 归档用（可选）
-brew install rclone # 然后 rclone config 授权你的 Google Drive
+# 归档用（可选）—— setup-tools.sh 已自动装 rclone，这里不用再手动装
+rclone config # 只剩这一步：授权你的 Google Drive（浏览器点「允许」，只能你自己点）
 ```
 
 **准备素材：** 品牌 logo（浅底版 + 深底版各一张）· 品牌色/字体 · CTA 落地页链接 · 合规红线清单。
@@ -1157,7 +1157,8 @@ brew install rclone # 然后 rclone config 授权你的 Google Drive
 
 ### 第 0 步 · 无脑安装：装工具 + 连账号（每台电脑一次性，先搞定再问任何东西）
 **学生第一次来啥都不会 —— 别一上来问品牌，先把工具装好、账号连好。**（完整步骤 + 脚本见本文件夹 `00-无脑安装向导.md` / `setup-tools.sh` / `setup-tools.ps1`）
-- **① 自动装本地工具**（只有「合 logo / 拼视频 / rclone 归档」才要；连接器不要这些）：侦测系统 → Mac 跑 `bash setup-tools.sh`、Windows 跑 `powershell -ExecutionPolicy Bypass -File setup-tools.ps1` → 自动装 git / node / python + pillow / imageio-ffmpeg。**学员只需：同意你运行 +（Mac）输一次密码。绝不叫他去官网一个个下载。**（Windows 装完提醒重开终端让 PATH 生效。）
+- **① 自动装本地工具**（只有「合 logo / 拼视频 / rclone 归档」才要；连接器不要这些）：侦测系统 → Mac 跑 `bash setup-tools.sh`、Windows 跑 `powershell -ExecutionPolicy Bypass -File setup-tools.ps1` → 自动装 **git / node / python / rclone + pillow / imageio-ffmpeg**（Homebrew/winget + rclone 程序全自动，学员不用去官网下载）。**学员只需：同意你运行 +（Mac）输一次密码。**（Windows 装完提醒重开终端让 PATH 生效。）
+  - ⚠️ **脚本只「装程序」；rclone 连 Google Drive 还要跑一次 `rclone config` 授权**（见下方第 3 步）—— 那一步是 OAuth，出于安全只能学员自己点浏览器「允许」，不能全自动。
 - **② 连账号（全是远程连接器，不用装任何东西，只点授权）：** **Notion**（Claude 设置 → 连接器 → 搜 Notion → 一键授权）· **Higgsfield**（添加自定义连接器 → 贴 `https://mcp.higgsfield.ai/mcp` → 授权）· **ChatCut**（贴 `https://api.chatcut.io/api/external-mcp/mcp` → 授权，要剪辑才连）。**Suno** 没连接器（浏览器手动）。**GitHub / Google Drive** 只在要「版本记录 / 自动归档」时才连——**学员起步可跳过**。
 - **唯一不能自动的**：学员自己「点 Authorize 授权」（要登录他自己账号，安全上替不了）。连完你逐个 test 一遍通不通，再往下。
 
