@@ -773,7 +773,7 @@ metadata:
 - Notion 大脑 dashboard 链接：`<https://notion.so/...>`
 - **Notion 内容矩阵 database 链接 / id**：`<https://notion.so/...?v=...>`（产出/立项/改 Status 都在这个库）
 - **Drive 成品 folder 链接 / folder ID**：`<https://drive.google.com/…/folders/xxxx>` → folder ID = `xxxx`（rclone 归档用）
-> 这几样 = 00 第 1 步 + 第 5 步定好后**写回这里**；之后每个 skill 开工「前置闸门第 4 条」就来这读，连回 Notion + Drive。
+> 这几样 = **01 先打地基时**（定落脚点＋搭好 Notion 大脑）定好后**写回这里**；之后每个 skill 开工「前置闸门第 4 条」就来这读，连回 Notion + Drive。
 
 ## C. 合规红线（你的「绝不」清单）
 - ❌ 不写：`<价格 / 免费 / 具体名额数字 / …你的行业禁忌>`
