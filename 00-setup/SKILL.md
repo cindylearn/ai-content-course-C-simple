@@ -1,7 +1,7 @@
 ---
 name: suma-ai-00-setup
 description: >-
- SUMA AI 内容系统 · 第 00 步（课前 · 纯装机）。就干一件事＝帮我安装：装 Claude/git → 注册账号 → 授权远程连接器（Notion / Higgsfield / ChatCut）→ 装好 01-07 skill 包（+ setup-tools 装本地工具、配 rclone）。装好即放行 —— 「从零搭系统／打地基」不在这里做，由 01-branding 开始（定落脚点／建业务档案／搭 Notion 大脑／品牌地基全在 01）。
+ SUMA AI 内容系统 · 第 00 步（课前 · 纯装机）。就干一件事＝帮我安装：装 Claude/git → 注册账号 → 授权远程连接器（Notion / Higgsfield / ChatCut）→ setup-tools 装本地工具、配 rclone。（🔴 01-07 skill 整包是**另外一步**：从 install-skills 链接说「帮我从这个链接把 skill 都装好」，不是 00 装的。）装好即放行 —— 「从零搭系统／打地基」也不在这里，由 01-branding 开始（定落脚点／建业务档案／搭 Notion 大脑／品牌地基全在 01）。
  触发词：安装 / 装工具 / setup / 连接器 / 授权 / 装 skill / 配环境。
  跟用户说话中英双语；教练式一题一题问。
 metadata:
@@ -9,7 +9,7 @@ metadata:
  scope: SUMA AI内容课 · 独立 skill · part 00
 ---
 
-# suma-ai-00-setup —— 课前 · 纯装机：装 Claude/git + 注册账号 + 授权远程连接器 + 装好 01-07 skill 包。装好就放行；打地基（定落脚点／建业务档案／搭 Notion 大脑／品牌地基）在 **01-branding** 做，不在这里。
+# suma-ai-00-setup —— 课前 · 纯装机：装 Claude/git + 注册账号 + 授权远程连接器 + 配本地工具/rclone。（🔴 01-07 skill 整包**另外**从 install-skills 链接装「帮我从这个链接把 skill 都装好」，不是 00 装的。）装好就放行；打地基（定落脚点／建业务档案／搭 Notion 大脑／品牌地基）在 **01-branding** 做，不在这里。
 
 ## 🔑 怎么触发这个 skill（两种方式，任选一个）
 
