@@ -421,7 +421,7 @@ description: >-
 5. **接自动化**：脚本读写 database + 状态当开关 + 人审守关键关卡。
 
 ### 8B · agency / 接单：给每个 client 复制一套 dashboard（学生最常问的）
-每来一个新 client，做一次（就是把 `00` 那套地基对这个 client 重跑一遍）：
+每来一个新 client，做一次（就是把 `01` 那套地基对这个 client 重跑一遍；`00` 只是装机、一次性）：
 1. **建 client 档案** — 跑一次品牌地基（受众/persona/红线/命名/品牌色/logo）→ 存成 `业务-<client名>.md`（**一个 client 一个文件**）。
 2. **建 client 的 Notion 大脑** — 两种架构挑一个：
    - **方式 A（推荐·client 多）**：每个 client 一个独立 folder + 一个「内容矩阵」database（干净隔离）。
