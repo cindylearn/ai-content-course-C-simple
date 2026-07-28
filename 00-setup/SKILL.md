@@ -20,6 +20,17 @@ metadata:
 
 > 两种效果一样：斜杠直接点名；First Prompt 打一句话，Claude 认关键词自己进。打不中就用斜杠。触发后一题一题问你。
 
+---
+
+## 🔴 对小白「说人话」—— 本 skill 最高铁律（装机每一步都守，压过下面所有细节）
+
+> 学员是**完全不懂技术**的人。整个装机你（Claude）这样带 —— 违反任何一条就是把小白劝退：
+> 1. **绝不报技术名词** —— `Homebrew` / `node` / `python` / `pillow` / `ffmpeg` / `sudo` / `PATH` 这些词学员**不用知道、别出现在你对他说的话里**。要提就说「我帮你把需要的工具装好」。
+> 2. **绝不甩命令给学员自己跑** —— 尤其 `curl … | bash` 这种，**一律不许**。工具**由你（Claude）跑本地脚本自动装**：`bash ~/.claude/skills/00-setup/setup-tools.sh`（Windows：`powershell -ExecutionPolicy Bypass -File ~/.claude/skills/00-setup/setup-tools.ps1`）。**别叫他去「终端」自己打、别 `curl` 网上的脚本、别把脚本内容念出来解释。**
+> 3. **一次只讲一步、做完再下一步** —— 别一次把好几步全倒给他；每步做完帮他确认「✓ 好了，下一步」。
+> 4. **学员亲手做的只有 3 件**（每样一句大白话）：① 点「同意运行」让你跑命令；②（装工具中途弹出时）打一次电脑密码 —— 就说「等下会弹出要你打**电脑开机密码**，打一下按 Enter；**打的时候屏幕不显示字是正常的**」；③ 点几下浏览器「允许」授权连接器。**其余全你自动。**
+> 5. **别解释原理** —— 不问就别讲「为什么要装这个」。他要的是「照做就成」，不是技术课。
+
 
 ---
 
@@ -1165,7 +1176,7 @@ rclone config create gdrive drive scope=drive # 自动弹浏览器授权 Google 
   - 验证：`git --version` 出版本号 = OK。🔴 **没 git，后面装 skill / 让 Claude 干活都会卡 —— 先弄好、看到版本号再往下。**
 - **③ 注册要用的账号：** Notion（**https://www.notion.com/desktop** 下载 App + 注册，免费）· Higgsfield（**https://higgsfield.ai/** 注册 + 订阅 **US$15/月**·可退）· Suno（suno.com）· ChatCut（chatcut.io·**免费送 15 credit**）· GitHub（github.com·🔴 **用 email 注册，别用 Google 登入**）· Google Drive（开一个成品 folder）。
 - **④ 接 MCP 连接器**（Claude 设置 → Connectors，各点一次授权，一次永久）：**Notion**（目录搜「Notion」→ Connect → 允许）· **Higgsfield**（加自定义连接器 → 贴 `https://mcp.higgsfield.ai/mcp`）· **ChatCut**（贴 `https://api.chatcut.io/api/external-mcp/mcp`，剪片才连）· **Google Drive / GitHub**（要归档 / 装 skill 才连）。**Suno** 没连接器（浏览器用）。
-- **⑤ 装本地工具（Homebrew / node / python / rclone —— 上课当天 / 需要时 Claude 自动装，不用课前弄）：** 装好 skill 后学员说「帮我把工具装好」→ Claude 跑 `setup-tools.sh`（Mac）/ `.ps1`（Windows）装齐（合图 / 拼视频 / rclone 归档用；**git 已在 ②**）。rclone 连 Drive 再跑一次 `rclone config create gdrive drive scope=drive` → 浏览器点「允许」。
+- **⑤ 装本地工具（Claude 自动装，学员不碰命令）：** 学员说「帮我把工具装好」→ **你（Claude）自己跑本地脚本**：`bash ~/.claude/skills/00-setup/setup-tools.sh`（Windows：`powershell -ExecutionPolicy Bypass -File ~/.claude/skills/00-setup/setup-tools.ps1`）。🔴 **照「说人话」铁律**：跟学员只说「我帮你把需要的工具装好，中途会弹一次要你打**电脑密码**，打一下按 Enter（不显示字正常）」——**别报 Homebrew/node/python 这些名字、别甩 `curl`、别念脚本内容**。（这些工具是「合图 / 拼视频 / 归档」用；`git` 已在 ②。）rclone 连 Drive（可选·要归档才做）：你替他跑 `rclone config create gdrive drive scope=drive` → 只让他在**弹出的浏览器点「允许」**。
 - 🔴 **⑥ skill 分两批装（00 在仓库根目录、01-07 在 install-skills）：**
   - **课前**：只装 `00-setup`（仓库根目录，就是你现在跑的这个安装助手）—— 链接 `github.com/cindylearn/ai-content-course-C-simple/tree/main/00-setup`。
   - **上课当天**：装 `install-skills`（01-07）—— 链接 `…/tree/main/install-skills` →「帮我从这个链接把全部 skill 装好」/ 或 Download ZIP 丢 `~/.claude/skills/` → 重开 Claude。
