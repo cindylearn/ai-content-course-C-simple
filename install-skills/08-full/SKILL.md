@@ -1,5 +1,5 @@
 ---
-name: suma-ai-07-full
+name: suma-ai-08-full
 description: >-
  触发词：整理成系统 / full set / 组装成系统 / 收尾 / 整套整理 / capstone / 全程带我 / 一站式。
  课程 capstone 交付物：教学员把已学会的 5 个 AI skill（AI 文案 / 图像 / 口播视频含数字人 / PPT / 音乐）
@@ -21,7 +21,7 @@ description: >-
 
 | 方式 | 打什么 |
 |---|---|
-| ① 斜杠（最稳·直接点名）| `/suma-ai-07-full` |
+| ① 斜杠（最稳·直接点名）| `/suma-ai-08-full` |
 | ② First Prompt（说一句话）| 「帮我把做好的全部整理成一套完整系统（full set）」 |
 
 > 两种都能触发：斜杠直接点名；说一句话 Claude 认关键词自己进。**🔴 刚装好这个 skill，若打斜杠 `/suma-ai-…` 显示「Unknown command」= 斜杠还没注册进去 —— 重开一次 Claude 再打就行；或直接打那句话（自然语言触发，不用等重开、立刻通）。** 触发后一题一题问你。
