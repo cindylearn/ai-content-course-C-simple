@@ -659,7 +659,7 @@ metadata:
 
 ### 🖼️ 图文类（媒体类型=图文）
 
-> **硬性比例：图 / 海报一律 vertical 3:4（竖版）** —— 不用 1:1 / 16:9。
+> **比例：默认 vertical 3:4（竖版）**；也可按投放位选 **1:1**（FB/IG feed · WhatsApp 缩图）· **4:5**（IG feed 最占屏）· **9:16**（Story / Reels 封面）。**见下方「📐 尺寸库」**——同一条内容可出多尺寸；不确定就用 3:4。
 
 正文顺序照这个（比视频多「图内文字层级」和「素材」两段）：
 
@@ -692,7 +692,7 @@ metadata:
 
 > 🔴 **风格 ≠ 版式，两个轴分开：** `风格`（A–E）只管**颜色 / 画风 / 字体感**；`版式`管**构图骨架**（主体怎么摆、破不破框、抠不抠图、3D 不 3D）。以前只有一套骨架（版式①），所以再多风格也长一个样。现在**先选版式（下面 5 选 1）× 再套风格色**，才有变化。
 
-**通用条款（5 种版式都照带，一字不动）：** vertical 3:4 · **只渲染引号里指定的中文，render NO English words/letters anywhere，逐字校对、no typos / no garbled / no duplicated text** · 人物 / 模特 / 手机里的人一律**真实本地马来西亚人（photoreal, NOT cartoon/CGI）** · **右上角留 logo 空位**（do NOT render the word 'LOGO' or any placeholder）· 画面里手机/屏幕内容 blurred abstract、无可读字 · 品牌色用**该风格的色**（`[品牌色]`）· **绝不写 `no text overlay`**（那是视频规则，海报要字）。
+**通用条款（5 种版式都照带，一字不动）：** 比例默认 vertical 3:4（可按「📐尺寸库」选 1:1/4:5/9:16）· **只渲染引号里指定的中文，render NO English words/letters anywhere（品牌名/工具名等必须的英文除外，且要逐字拼对），逐字校对、no typos / no garbled / no duplicated text** · 人物 / 模特 / 手机里的人一律**真实本地马来西亚人（photoreal, NOT cartoon/CGI）** · **右上角留 logo 空位**（do NOT render the word 'LOGO' or any placeholder）· 画面里手机/屏幕内容 blurred abstract、无可读字 · 品牌色用**该风格的色**（`[品牌色]`）· **绝不写 `no text overlay`**（那是视频规则，海报要字）。
 
 | # | 版式 | 什么主体用它 | 构图骨架 | 关键英文（塞进 prompt 开头，替原「BOLD promo-style poster…」那句）|
 |---|---|---|---|---|
@@ -704,6 +704,33 @@ metadata:
 
 > **怎么选（自动挑 + 给学员一张卡可改）：** 🔴 skill **先按主体类型自动挑推荐版式** —— **实物产品 → ②抠图 或 ④3D**；**人物/服务 → ①纪实 或 ③破框**；**信息多/清单/对比 → ⑤拼贴**。然后用**一张选项卡**把推荐那个**排第一、标「推荐」**给学员点，可改（跟统一提问格式一样，一题一张卡）。🔴 **批量出多张时轮着用不同版式**（同一批别整批同一个骨架）——这就是解决"排版单一"的关键。选定后，把版式记进这条的 Notion 立项页「图内文字层级」上面。
 > **套法：** 每个版式都 = **通用条款（上）＋ 这个版式的关键英文（表格第 5 列，替换黄金模板开头那句 `BOLD promo-style poster…`）＋ 按骨架换结构块**。①真人纪实的完整范例就是下面这套黄金模板；②③④⑤ 结构更简（主体+大字+卖点+起价即可，不必硬塞满 8 块），别硬套①的"真实场景真人照"。
+
+## 🧩 设计元素库 + ✨ 特效库 + 📐 尺寸（照实战广告提炼）
+
+> 🔴 **这些是从大量高转化「AI × 数码营销课」实战广告里提炼的通用设计语言**（受众 pill / 大数字 hero / 打勾 pill 排 / 紧迫 ribbon / 悬浮 UI / 前后对比…）。**学的是版式 + 元素 + 特效的通用模式，不抄任何一张具体竞品**；图内文字、主张、价格、品牌一律 **SUMA 自己的 + 守合规红线**。搭法：**版式（骨架）× 风格（颜色画风）× 下面的元素/特效（零件质感）× 尺寸（画布）**，按内容自由组合，别每张都一样。
+
+**🧩 元素库（往版式骨架里加零件 · prompt 关键英文）**
+
+| 元素 | 什么时候用 | prompt 关键英文（塞进对应位置）|
+|---|---|---|
+| **超大发光数字/词 hero** | 有强钩子数字：`1天`/`60分钟`/`90天`/`3个月`/`RM5000+`/`7个技能` | `an OVERSIZED glowing 3D-extruded number/word as the hero focal point, neon rim-light, the single biggest element` |
+| **受众 kicker pill** | 点名"这是给谁的" | `a small rounded pill label at the very top naming the audience: '[受众]'` |
+| **实心色块横幅** | 放方案句/反差句 | `a solid [品牌色] banner strip with bold white/yellow contrasting text: '[一句]'` |
+| **技能打勾 pill 排**（你那张底部那样）| 秀"一套全给你" | `a bottom row of rounded pills, each with a green check + short label: '✅AI文案' '✅AI图像' '✅AI数字人' '✅AI PPT' '✅AI音乐' '✅AI影片'` |
+| **icon 打勾清单** | 列卖点/课程内容 | `a clean row/column of circular icon badges with checkmarks + tiny labels, must NOT dominate` |
+| **紧迫感 ribbon/爆炸标**（LAST CALL/急招）| BoFu 催单 | `a bold red-and-yellow urgency burst/ribbon badge: '名额有限' / 'LAST CALL'` 🔴 **合规：用「名额有限」，绝不写具体名额数字（不写"最后10位/招10个"）** |
+| **价格/收入锚** | BoFu 才放 | `a large figure badge as a value anchor: '[如 RM5,000+ 项目收入 / 起价]'`（ToFu 不放价）|
+| **AI 工具 logo 条** | 秀"用真 AI 工具" | 画面留一条浅色 strip 位；🔴 **真 logo 后期合成贴，prompt 别让模型画**（会乱码）——prompt 写 `a light strip reserved for tool logos, leave blank (logos composited later)` |
+| **学员合照拼贴（社证）** | 招生/BoFu 信任 | `a small collage/grid of authentic local cohort group photos as social proof` 🔴 真照片后期贴，别让模型编人脸 |
+| **HRDC/认证徽章** | 合规卖点 | 留徽章位、真徽章后期贴（别让模型画认证标）|
+| **悬浮霓虹 UI**（图表/通知/对话泡）| 科技感/"AI 帮你做" | `floating holographic UI cards around the subject — line charts, notification bells, chat bubbles, up-arrows — all abstract glowing shapes, NO legible text` |
+| **前后对比分屏** | "挣扎↔自信"/"6小时→60分钟" | `a vertical split-screen contrast: dim desaturated 'before' (struggling) on the left | bright vivid 'after' (confident, AI-powered) on the right` |
+
+**✨ 特效库（质感 · 按漏斗层用）**：霓虹发光 rim-light · 3D 立体描边/浮雕 3D-extruded/embossed · 全息 UI holographic · 闪电/能量 energy sparks · 渐变景深 gradient + depth-of-field · 投影 drop shadow。🔴 **ToFu 纪实软钩子风 + 所有 MoFu 仍禁 sci-fi/glow**；发光/3D/全息只在 **BoFu 或科技风（版式②④、风格 B/C/D）** 用。
+
+**📐 尺寸库（画布 · 按投放位选，同内容可出多尺寸）**：**3:4**（默认，最百搭 feed/贴文）· **1:1**（FB/IG feed 方图 · WhatsApp 缩图）· **4:5**（IG feed 最占屏）· **9:16**（Story / Reels / 竖屏封面）。prompt 开头把 `vertical 3:4` 换成选中的比例即可，其余照旧。
+
+> 🔴 **反例（别出这种）**：简笔画 / 卡通占位 / 抽象排版 / 一句话糊出来的图（像"这是我做的海报图"那种简笔电脑小人）——永远**照片级 + 具体元素 + 大字清晰**，宁可元素少也要精致。
 
 **## 版式① · 真人纪实 —— 完整黄金模板（人物/服务默认款）**
 
