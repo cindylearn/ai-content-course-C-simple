@@ -402,7 +402,7 @@ metadata:
 - **带出工具组**：图文每条带全套工具；视频台词**自然聚焦**相关的几个（全套由 caption + 标签承载，别硬塞清单）。
 - **Persona 贴行业 + 人物一律本地**（图/视频里的人）。
 - **视频台词不用口头禅**（不要「咯/啦」），要多要实、节奏快。
-- **图海报要场景化**（真实日常场景、画面感），不是抽象排版。
+- **图海报要场景化**（真实日常场景、画面感），不是抽象排版。（这是**版式①·纪实**默认；产品/科技类可选 ②抠图 / ④3D / ③破框 / ⑤拼贴，见「🎨 版式库」。）
 
 ---
 
@@ -688,7 +688,26 @@ metadata:
 **## 表格：画面构图 | Higgsfield Prompt**（只两列 —— 发帖文案在上面「📱 社媒文案」段，别塞进表格）
 **`Higgsfield Prompt` 列宽 ≈ 562px**（跟视频表同一标准列宽）。
 
-> **每张图的出图 prompt = 照下面这个黄金模板逐行填（这才是标准长度，不是一句话）。硬锁 vertical 3:4，固定条款一字不动，只换 `[中括号]` 里的行业/受众专属部分：**
+## 🎨 版式库（构图 5 选 · 先定版式，再填 prompt）
+
+> 🔴 **风格 ≠ 版式，两个轴分开：** `风格`（A–E）只管**颜色 / 画风 / 字体感**；`版式`管**构图骨架**（主体怎么摆、破不破框、抠不抠图、3D 不 3D）。以前只有一套骨架（版式①），所以再多风格也长一个样。现在**先选版式（下面 5 选 1）× 再套风格色**，才有变化。
+
+**通用条款（5 种版式都照带，一字不动）：** vertical 3:4 · **只渲染引号里指定的中文，render NO English words/letters anywhere，逐字校对、no typos / no garbled / no duplicated text** · 人物 / 模特 / 手机里的人一律**真实本地马来西亚人（photoreal, NOT cartoon/CGI）** · **右上角留 logo 空位**（do NOT render the word 'LOGO' or any placeholder）· 画面里手机/屏幕内容 blurred abstract、无可读字 · 品牌色用**该风格的色**（`[品牌色]`）· **绝不写 `no text overlay`**（那是视频规则，海报要字）。
+
+| # | 版式 | 什么主体用它 | 构图骨架 | 关键英文（塞进 prompt 开头，替原「BOLD promo-style poster…」那句）|
+|---|---|---|---|---|
+| ① | **真人纪实**（默认）| 人物 / 服务：老师·顾问·打工人·教练·招生 | pill → 3D 描边大字 → 色块横幅 → **真实场景真人照** → 打勾清单 → 起价 | 见下方**黄金模板**（就是这一版）· `real photo grounding credibility, authentic documentary candid, NOT a cutout, NOT a split screen` |
+| ② | **抠图主体·电商风** | 实物产品：美妆瓶·服装·食品·商品；也可人物半身 | 大字标题（可破框）→ **抠图主体**居中/偏侧悬浮 → 一行卖点 pill → 起价 | `studio cut-out subject/product knocked-out on a clean solid-to-[品牌色] gradient background, e-commerce hero, soft realistic drop shadow, floating, generous negative space` |
+| ③ | **破框 crop-out** | 要张力/冲击：反差痛点·"差十倍"对比·活动冲击 | 圆角色块框 + **主体或超大字冲出框/压边** → 卖点 → CTA | `subject and/or an oversized headline BREAKING OUT of and overlapping a rounded [品牌色] color-block frame, breaking the border, bold diagonal energy, layered depth, part of the subject spills beyond the frame edge` |
+| ④ | **3D 悬浮·产品台** | 科技/高级感：AI 工具·课程·SaaS·高客单 | 大字 → **产品/主物放 3D 台座** + 悬浮 3D 元素 → 卖点 | `the key product/object on a 3D rendered podium/pedestal, floating 3D geometric shapes and glossy icons around it, soft studio gradient lighting, shallow depth of field, premium 3D render, cast shadows` |
+| ⑤ | **拼贴/大字杂志** | 信息多/编辑感：多卖点·before-after·清单干货 | 超大字排版主导 **或** 多图拼贴 | `bold editorial magazine layout — an oversized typographic headline dominating, modular grid / collage of small candid photos and cut-out stickers, torn-paper & tape accents, mixed scale, high information density` |
+
+> **怎么选（自动挑 + 给学员一张卡可改）：** 🔴 skill **先按主体类型自动挑推荐版式** —— **实物产品 → ②抠图 或 ④3D**；**人物/服务 → ①纪实 或 ③破框**；**信息多/清单/对比 → ⑤拼贴**。然后用**一张选项卡**把推荐那个**排第一、标「推荐」**给学员点，可改（跟统一提问格式一样，一题一张卡）。🔴 **批量出多张时轮着用不同版式**（同一批别整批同一个骨架）——这就是解决"排版单一"的关键。选定后，把版式记进这条的 Notion 立项页「图内文字层级」上面。
+> **套法：** 每个版式都 = **通用条款（上）＋ 这个版式的关键英文（表格第 5 列，替换黄金模板开头那句 `BOLD promo-style poster…`）＋ 按骨架换结构块**。①真人纪实的完整范例就是下面这套黄金模板；②③④⑤ 结构更简（主体+大字+卖点+起价即可，不必硬塞满 8 块），别硬套①的"真实场景真人照"。
+
+**## 版式① · 真人纪实 —— 完整黄金模板（人物/服务默认款）**
+
+> **每张图的出图 prompt = 照下面这个黄金模板逐行填（这才是标准长度，不是一句话）。硬锁 vertical 3:4，固定条款一字不动，只换 `[中括号]` 里的行业/受众专属部分（②③④⑤ 见上「版式库」骨架，套法同理）：**
 >
 > ```
 > vertical 3:4 BOLD promo-style poster, Style [A 战报证明风 —— 按受众从 5 种风格挑，见 03]: chunky 3D-extruded/embossed outlined Chinese headline (thick black outline, [品牌色] gradient fill) + a solid colour-block banner strip + an icon-checklist feature list + a real photo grounding credibility.
@@ -701,7 +720,8 @@ metadata:
 > NO course-name capsule, NO sign-up button, NO specific outcome guarantee to an individual (no '保证/包你/一定能'). Keep top-right corner truly empty for a logo — do NOT render the word 'LOGO' or any placeholder. Any phone/screen content in the photo must be blurred abstract colour blocks with NO legible text/characters at all.
 > CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is the Chinese specified above, proofread character-by-character, no typos, no repeated/duplicated text blocks, no garbled characters, the person is a real local Malaysian (photoreal, not cartoon/CGI).
 > ```
-> **一字不动的固定条款**：vertical 3:4 · 结构(pill→3D描边大标题→色块横幅=方案+温和成果→中段真人纪实照 NOT cutout/NOT split → icon 打勾清单 → 起价小字[合规才放] → 右上留 logo 位不写'LOGO') · 手机/屏幕内容 blurred abstract 无可读字 · 整段 CRITICAL(NO English/逐字校对/no garbled/真人本地非卡通)。
+> **版式①（真人纪实）的固定条款**：vertical 3:4 · 结构(pill→3D描边大标题→色块横幅=方案+温和成果→中段真人纪实照 NOT cutout/NOT split → icon 打勾清单 → 起价小字[合规才放] → 右上留 logo 位不写'LOGO') · 手机/屏幕内容 blurred abstract 无可读字 · 整段 CRITICAL(NO English/逐字校对/no garbled/真人本地非卡通)。
+> 🔴 **`NOT cutout / NOT split` 只对版式①**（纪实要真实场景）—— **版式②本来就要抠图、④本来就要 3D，别把这句带进 ②④**；②③④⑤ 只保留「通用条款」（3:4 / 只出中文无英文 / 真人本地 / logo 空位 / 品牌色），结构换成各自版式库里的骨架。
 > **只换**：`[风格]` / `[受众 pill]` / `[痛点标题]` / `[方案+成果]` / `[主角外形+场景+动作]` / `[卖点清单]` / `[起价]`。引号里就是要渲染进图的中文（对应「图内文字层级」），**绝不写 `no text overlay`**（那是视频规则，海报要字）。
 
 | 画面构图 | Higgsfield Prompt（含图内文字与排版规格）|
@@ -840,7 +860,10 @@ metadata:
 **在系统里的工位：** 出海报 / 成品图 —— 图文生产线的核心。
 
 ## 怎么用好（核心：场景化 + 画面感）
-主视觉 = **该受众的真实日常场景**（照片级实拍 / documentary / NOT AI / 本地感），把痛点**可视化**，不是抽象排版。文字精简（headline + sub + 工具 pill + CTA 胶囊），让画面 carry。
+
+> 🔴 **作用域：本段（"真实场景 / 8 块结构必须齐 / 不纯抠图"）＝ 版式①·真人纪实的规矩。** 选了上面「🎨 版式库」的 **②抠图 / ③破框 / ④3D / ⑤拼贴** 时，以版式库为准 —— 那几款**本来就要**抠图 / 3D / 破框 / 大字，不受本段"必须真实场景、NOT cutout"限制。下面这套是①的用法。
+
+主视觉（**版式①**）= **该受众的真实日常场景**（照片级实拍 / documentary / NOT AI / 本地感），把痛点**可视化**，不是抽象排版。文字精简（headline + sub + 工具 pill + CTA 胶囊），让画面 carry。
 
 **标准 prompt 黄金模板（照这个逐行填 —— 这是产出好海报的结构，绝不缩水成一句场景）：**
 以 **A 战报证明风** 为例（换风格只换视觉，TOP/headline/banner/MIDDLE/checklist/CRITICAL 结构不变）：
@@ -855,7 +878,8 @@ Below the photo: an icon-checklist row, [N] small colourful circular icon badges
 NO course-name capsule, NO sign-up button, NO specific outcome guarantee to an individual (no '保证/包你/一定能'). Keep top-right corner truly empty for a logo — do NOT render the word 'LOGO' or any placeholder.
 CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is the Chinese specified above, proofread character-by-character, no typos, no repeated/duplicated text blocks, no garbled characters; the person is a real local [本地] (photoreal, not cartoon/CGI).
 ```
-**结构必须齐**：① TOP 受众 pill ② 大字痛点标题(3D描边) ③ 色块横幅=方案+温和成果 ④ 中段真人纪实照(NOT cutout·NOT auntie·本地) ⑤ 一行图标打勾清单 ⑥ 起价小字(合规才放) ⑦ 右上 logo 空位 ⑧ **CRITICAL 只渲染引号里中文·proofread·no garbled·绝不出英文**。绝不写 `no text overlay`（海报要字）。
+**（版式①·纪实）结构必须齐**：① TOP 受众 pill ② 大字痛点标题(3D描边) ③ 色块横幅=方案+温和成果 ④ 中段真人纪实照(NOT cutout·NOT auntie·本地) ⑤ 一行图标打勾清单 ⑥ 起价小字(合规才放) ⑦ 右上 logo 空位 ⑧ **CRITICAL 只渲染引号里中文·proofread·no garbled·绝不出英文**。绝不写 `no text overlay`（海报要字）。
+> 🔴 **版式②③④⑤ 不必凑齐这 8 块**：主体 + 大字标题 + 一行卖点 +（合规才放）起价即可，结构照「🎨 版式库」各自骨架；**通用条款照带**（3:4 / 只出中文无英文 / 真人本地 / logo 空位 / 品牌色）。
 
 ## 海报风格库（5 种可选风格 · 按受众挑，同批次别全用同一种）
 促销 / BoFu 海报可从这 5 种风格里挑，按你的行业 / 受众自由搭配：
@@ -869,7 +893,7 @@ CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is th
 1. **人物用真人脸参考锁定身份**：`generate_image` 传 `medias:[{value:<media_id>, role:"image"}]` + prompt 写 `the person's face/identity MUST match the reference image exactly`，别让模型生成陌生脸。
 2. **同批次不同受众分配不同风格**，别整批长一样。
 3. **ToFu 不放价格**（价格是 BoFu 专属）：ToFu 改用一个**温和可信的时间型 hero 大字**（如「1 天」）做成渐变/发光巨字当视觉钩子，配小字呼应该行业产出。
-4. **画面 = 真实纪实场景 + 悬浮科技元素混搭**，不要纯棚拍/纯深色抠图 —— 人物必须在跟行业相关的**真实场景**里（电商打包桌、老师画室…），科技元素只做点缀。
+4. **（仅版式①·纪实）画面 = 真实纪实场景 + 悬浮科技元素混搭**，不要纯棚拍/纯深色抠图 —— 人物必须在跟行业相关的**真实场景**里（电商打包桌、老师画室…），科技元素只做点缀。🔴 **版式②抠图 / ④3D / ③破框 / ⑤拼贴不套这条**（它们就是要棚拍抠图 / 3D 台 / 破框 / 拼贴，见「版式库」）。
 5. **屏幕内容** `abstract blurred colour blocks, NO legible text`（防乱码假 UI）。
 6. **右上留 logo 位** + prompt 写 `do NOT render the word 'LOGO'`（防占位字）。
 7. **不 overpromise**：不写夸张金额结果、不写「保证/包你/一定能」；可用温和时间框架（如「1 天学会」）。
@@ -997,7 +1021,7 @@ Below the photo: an icon-checklist row, [N] small colourful circular icon badges
 NO course-name capsule, NO sign-up button, NO specific outcome guarantee (no '保证/包你/一定能'). Keep top-right corner truly empty for a logo — do NOT render the word 'LOGO' or any placeholder. Any phone/screen content in the photo must be blurred abstract colour blocks with NO legible text/characters at all.
 CRITICAL: render NO English words/letters anywhere; the ONLY rendered text is the Chinese specified above, proofread character-by-character, no typos, no repeated/duplicated text blocks, no garbled characters; the person is a real local [本地] (photoreal, not cartoon/CGI).
 ```
-**8 块必须齐**：① TOP 受众 pill ② 大字痛点标题(3D描边) ③ 色块横幅=方案+成果 ④ 中段真人纪实照(NOT cutout·NOT auntie·本地) ⑤ 一行 icon 打勾清单 ⑥ 起价小字(合规才放) ⑦ 右上 logo 空位 ⑧ CRITICAL(只渲染引号中文·proofread·no garbled·绝不出英文)。
+**（版式①·纪实）8 块必须齐**：① TOP 受众 pill ② 大字痛点标题(3D描边) ③ 色块横幅=方案+成果 ④ 中段真人纪实照(NOT cutout·NOT auntie·本地) ⑤ 一行 icon 打勾清单 ⑥ 起价小字(合规才放) ⑦ 右上 logo 空位 ⑧ CRITICAL(只渲染引号中文·proofread·no garbled·绝不出英文)。🔴 **版式②③④⑤ 不套这 8 块**（照「🎨 版式库」各自骨架，只带通用条款）。
 
 ### Step 4 · 生成（先出 1 张 · 满意才批量）
 - default model = **`nano_banana_pro`**（中文渲染强、高清，海报首选）；换 model 先跟用户说。
@@ -1021,7 +1045,7 @@ prompt「留白」不可靠、会出假 logo。做法：成图最上方叠一条
 
 ### 📋 通用海报硬规则（哪种风格都套）
 - **ToFu 不放价格**（价格是 BoFu 专属）；ToFu 用温和时间型 hero 巨字（例「1 天」渐变）当钩子。
-- **真实纪实场景 + 悬浮科技元素混搭**，不纯棚拍/纯抠图；人物在行业相关真实场景（电商打包桌/老师画室），科技只点缀。
+- **（仅版式①）真实纪实场景 + 悬浮科技元素混搭**，不纯棚拍/纯抠图；人物在行业相关真实场景（电商打包桌/老师画室），科技只点缀。🔴 版式②抠图/③破框/④3D/⑤拼贴不套此条，见「版式库」。
 - **不 overpromise**：不写夸张金额、不写「保证/包你/一定能」。
 - **同批不同受众用不同风格**，别整批一样。
 - **光效按漏斗层**：BoFu/促销可酌情用；ToFu 软钩子 + 所有 MoFu 禁 sci-fi/glow。
