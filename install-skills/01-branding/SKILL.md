@@ -896,7 +896,8 @@ metadata:
 > │         └─ <序号>-<STAGE>-<受众>-<标题>.<后缀>   ← 编码文件名（图/视频/文案靠后缀 + 编号区分，同层放一起）
 > ```
 > 例：`BoFu/补习中心/001-BoFu-补习中心-一天出片.mp4`。
-> 🔴 **01 打地基时只一次建好顶层 ToFu / MoFu / BoFu 三个 folder**；「行业受众 / campaign」层是动态的，**各 skill 归档时按上面结构自动建（没有就建、名字照写死格式），别乱放**。🔴 **Drive 成品 folder 里 rclone 归档也建同一套结构**（镜像）。
+> 🔴 **01 打地基时只一次建好顶层 ToFu / MoFu / BoFu 三个 folder**；「行业受众 / campaign」层是动态的，**各 skill 归档时按上面结构自动建（没有就建、名字照写死格式），别乱放**。
+> 🔴 **这套 folder 结构只用在「本地 + Drive」**（Drive 用 rclone 建同一套结构镜像）。🔴 **Notion 不建 folder！** Notion 是数据库 —— 成品**直接 attach 到内容矩阵里「对应那条内容」的子页**（那条立项页的「成品」块里），靠 database 属性（漏斗层 / 受众 / Status）分类，**不靠文件夹**。即：**Drive = 开 folder 存文件；Notion = attach 去对应子页**。
 
 **② 新业务 or 已有业务？（选项卡）** 新 → 从零建；已有 → 读它的业务 md、确认地基还在，直接去要做的 part。
 
