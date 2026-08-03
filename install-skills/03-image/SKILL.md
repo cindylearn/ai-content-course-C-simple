@@ -725,6 +725,13 @@ metadata:
 | **HRDC/认证徽章** | 合规卖点 | 留徽章位、真徽章后期贴（别让模型画认证标）|
 | **悬浮霓虹 UI**（图表/通知/对话泡）| 科技感/"AI 帮你做" | `floating holographic UI cards around the subject — line charts, notification bells, chat bubbles, up-arrows — all abstract glowing shapes, NO legible text` |
 | **前后对比分屏** | "挣扎↔自信"/"6小时→60分钟" | `a vertical split-screen contrast: dim desaturated 'before' (struggling) on the left | bright vivid 'after' (confident, AI-powered) on the right` |
+| **手机+悬浮内容卡** | 卖"生成内容/带货视频"（Suria 30秒款）| `a phone mockup with floating short-video / Reels / post cards popping out around it, small play buttons, glow` |
+| **产品/软件 mockup 拼贴** | 卖数字产品/课程/软件（$27 款）| `a fanned collage of product screenshots — laptop + phone + tablet mockups bursting outward from center` 🔴 真截图后期贴 |
+| **环绕 icon 徽章圈** | 秀"一套 N 个技能/功能"（SUMA 7技能款）| `glowing circular icon badges arranged in a ring around the subject, each badge = one skill/feature with tiny label` |
+| **星爆价格徽章** | BoFu 促单 | `a starburst / seal badge with a bold price: '今天 $XX'` 🔴 **合规：价只 BoFu 放，ToFu 绝不放** |
+| **webinar 报名按钮** | 分享会/webinar | `a big rounded CTA button '报名 / 立即报名' with a zoom / calendar icon` |
+| **平台 icon 条** | 秀"全平台"（FB/IG/TikTok/小红书）| `a row of platform logos` 🔴 真 logo 后期贴、prompt 别画 |
+| **案例缩略图网格** | 社证/真实案例 | `a grid of real case-study video thumbnails (IG/小红书/FB card style)` 🔴 真截图后期贴 |
 
 **✨ 特效库（质感 · 按漏斗层用）**：霓虹发光 rim-light · 3D 立体描边/浮雕 3D-extruded/embossed · 全息 UI holographic · 闪电/能量 energy sparks · 渐变景深 gradient + depth-of-field · 投影 drop shadow。🔴 **ToFu 纪实软钩子风 + 所有 MoFu 仍禁 sci-fi/glow**；发光/3D/全息只在 **BoFu 或科技风（版式②④、风格 B/C/D）** 用。
 
@@ -747,6 +754,9 @@ metadata:
 | **概念联名** | 版式③/④ × 风格B × [动词概念标题＋mega数字＋主体＋悬浮icon收集感] × 3:4 | 要记忆点（换自有代言人/学姐AI，别抄真明星）|
 | **紧迫催单（合规版）** | 版式⑤ × [紧迫ribbon用「名额有限」＋合照＋价格锚] × 1:1 | BoFu 催单——🔴 绝不写具体名额/免费 |
 | **服务成效证明款** ⭐ | 版式④/⑤ × 深色高级 × [**成效 dashboard 截图**＋手机展**作品样本**＋悬浮服务卡片（细分服务）＋底部 benefit 条＋价格/月锚＋WhatsApp CTA] × 3:4 或 9:16 | **卖服务/代运营/顾问/自由职业**（agency·freelancer·SUMA 自己）——用**结果 + 作品**证明我做得到，主体是"我的服务"不是买家的产品（beauty_aesthetic_media 那张就是这款）|
+| **Webinar 报名款** | 版式③/④ × 风格B/D × [mega 数字/词＋主体(人/手机)＋**环绕 icon 徽章圈**＋平台 icon 条＋**报名按钮**] × 3:4 | **ToFu/MoFu 拉新报名**（SUMA「集齐7个AI技能」「30秒生成」款）🔴 ToFu 不放价 |
+| **数字产品/课程款** | 版式⑤ × [大字主张＋**产品/软件 mockup 拼贴**＋**星爆价格徽章**＋testimonial 截图＋CTA] × 3:4 或 1:1 | **BoFu 卖课/软件/模板**（$27 款）🔴 SUMA 价只 BoFu |
+| **案例+价格款** | 版式⑤ × [mega 成果数字＋平台 icon 条＋**案例缩略图网格**＋价格/Trial＋benefit 打勾＋CTA] × 3:4 | **BoFu 卖服务/套餐**（个人IP RM3500 款）|
 
 ## 🧭 出图提问清单（固定顺序 · 每张图都照这个问 · 教学统一）
 
@@ -794,6 +804,12 @@ metadata:
 > 💡 **credit 速记**：Nano Banana Pro 2cr/张、GPT Image 2 4cr/张（1k；2k/4k 更贵）。批量前先 1 张，省 credit。
 
 ---
+
+> 🎯 **版式 × 漏斗层（🔴 同一漏斗层排版统一：定好该层骨架，之后只换文字+图/主体，排版不变——教学一致、批量好认）：**
+> - **ToFu（拉新 · 只戳痛点、不放价、不放 offer）** → 版式 ③破框 / ①纪实 · 元素：大痛点标题＋受众 pill＋悬浮UI/前后对比。🔴 不放价、不放报名。
+> - **MoFu（培育 · 给方法/证据/技能）** → 版式 ⑤拼贴 / ④3D · 元素：**环绕 icon 徽章圈**（N 个技能/功能）＋案例缩略图＋before/after。可放 webinar 报名。
+> - **BoFu（成交 · 给 offer）** → 版式 ②抠图 / ④3D / ⑤拼贴 · 元素：**星爆价格徽章**＋产品 mockup 拼贴＋紧迫 ribbon(名额有限)＋CTA 按钮＋服务成效 dashboard。价/offer 只在这层放。
+> 🔴 出图第 3 题「漏斗层」定了 → 就按这层的骨架来，**同层同排版**。
 
 **## 版式① · 真人纪实 —— 完整黄金模板（人物/服务默认款）**
 
