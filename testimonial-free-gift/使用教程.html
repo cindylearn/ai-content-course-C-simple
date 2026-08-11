@@ -1,0 +1,120 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<title>《AI 一键落地页》使用教程</title>
+<style>
+@page{size:A4;margin:14mm 14mm 16mm;}
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--b1:#28c2e7;--b2:#0f75bc;--acc:#fcb040;--ink:#0f1b2a;--mut:#5b6b7c;--line:#e2e9f0;--bg:#f6f9fc;--ok:#16a34a;--danger:#dc2626;}
+body{font-family:'Noto Sans SC','PingFang SC','Hiragino Sans GB',sans-serif;color:var(--ink);line-height:1.7;font-size:11pt;}
+h1,h2,h3{line-height:1.25;}
+.cover{background:linear-gradient(135deg,#0a1628,#0f2440);color:#fff;border-radius:14px;padding:34px 32px;margin-bottom:22px;}
+.cover .kick{color:var(--b1);font-weight:800;letter-spacing:.14em;font-size:9pt;text-transform:uppercase;}
+.cover h1{font-size:26pt;font-weight:900;margin:10px 0 8px;}
+.cover h1 em{color:var(--acc);font-style:normal;}
+.cover p{color:rgba(255,255,255,.78);font-size:11pt;max-width:88%;}
+.cover .tag{display:inline-block;margin-top:14px;background:rgba(40,194,231,.18);border:1px solid rgba(40,194,231,.5);color:#bfeeff;font-size:9pt;font-weight:700;padding:5px 14px;border-radius:999px;}
+h2{font-size:15pt;font-weight:850;margin:22px 0 12px;padding-left:12px;border-left:5px solid var(--b1);}
+h2 .n{color:var(--b1);font-family:monospace;margin-right:8px;}
+h3{font-size:12pt;font-weight:800;margin:14px 0 6px;color:var(--b2);}
+p{margin:6px 0;color:#26333f;}
+.lead{color:var(--mut);}
+ul,ol{margin:6px 0 6px 22px;}
+li{margin:4px 0;}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0;break-inside:avoid;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.callout{border-radius:12px;padding:14px 16px;margin:12px 0;break-inside:avoid;font-size:10.5pt;}
+.callout.ok{background:#eafaf1;border:1px solid #b9ecca;}
+.callout.warn{background:#fff4e6;border:1px solid #ffd9a8;}
+.callout.red{background:#fdecec;border:1px solid #f7bcbc;}
+.callout b{color:var(--ink);}
+.step{display:flex;gap:12px;align-items:flex-start;margin:10px 0;break-inside:avoid;}
+.step .num{flex:none;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:12pt;}
+.step .body{flex:1;}
+.step .body b{font-size:11.5pt;}
+.chk{list-style:none;margin-left:0;}
+.chk li{padding-left:26px;position:relative;}
+.chk li::before{content:'☐';position:absolute;left:0;color:var(--b1);font-size:13pt;top:-1px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:10pt;break-inside:avoid;}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
+th{background:#eef4fa;font-weight:800;color:var(--b2);}
+code{font-family:'SF Mono',monospace;background:#eef4fa;color:var(--b2);padding:2px 7px;border-radius:5px;font-size:9.5pt;font-weight:700;}
+.pill{display:inline-block;background:#eef4fa;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:9pt;font-weight:700;color:var(--b2);}
+.pagebreak{break-before:page;}
+.foot{margin-top:24px;padding-top:12px;border-top:1px solid var(--line);color:var(--mut);font-size:9pt;text-align:center;}
+</style></head><body>
+
+<div class="cover">
+  <div class="kick">SUMA College · 现场赠礼</div>
+  <h1>《AI 一键落地页》<em>使用教程</em></h1>
+  <p>答几题选择题，做出一个会成交的销售单页 —— 不用懂 code，成交结构已经帮你装好。</p>
+  <span class="tag">🎁 录视频见证 · 现场领取</span>
+</div>
+
+<p class="lead">这份 skill 是你在【AI 内容营销课】现场录视频见证换到的大礼。它帮你把「做落地页」这件事变成<strong>答题</strong>：你选、你答，页面的说服力和排版它来负责。</p>
+
+<h2><span class="n">01</span>你会得到什么</h2>
+<div class="two">
+  <div class="card"><h3>🅰️ AutoCRM 片段版</h3><p>一段 HTML，直接<strong>贴进 AutoCRM 后台</strong>，接上原生表单收 lead。跟 SUMA 官网落地页一样的贴法。</p></div>
+  <div class="card"><h3>🅱️ 独立页版</h3><p>一个完整网页，<strong>双击就能开、也能上线</strong>。按钮直接导去你的 WhatsApp 或报名表。</p></div>
+</div>
+<div class="callout ok">✅ <b>一次生成，两版都给你</b> —— 想放后台就用 A 版，想发链接就用 B 版。</div>
+
+<h2><span class="n">02</span>开始前 · 先准备素材（重要）</h2>
+<p class="lead">页面好看，靠的是<strong>图片</strong>。开工前先把这些准备好（有就好，没有下面教你处理）：</p>
+<ul class="chk">
+  <li><b>Logo</b> —— PNG，透明底最好（没有就用文字品牌名）</li>
+  <li><b>主视觉</b> —— 一张首屏大图，或一支短视频链接</li>
+  <li><b>卖点图 3–6 张</b> —— 每个卖点/产品一张</li>
+  <li><b>你自己/团队的照片 1–4 张</b> —— 服务型、个人品牌特别重要</li>
+  <li><b>真实客户好评</b> —— 截图，或「名字 + 一句话」</li>
+</ul>
+<div class="callout warn">💡 <b>上过课的你</b>：品牌名、颜色、logo、受众如果已经在你的<strong>品牌档案（01-branding 建的）</strong>里，skill 会自动读出来，<strong>不重复问你</strong>。</div>
+
+<h2><span class="n">03</span>三步走</h2>
+<div class="step"><div class="num">1</div><div class="body"><b>启动它</b><br>打 <code>/ai-onepage-lp</code>，或直接说一句「<strong>帮我做一个落地页</strong>」。</div></div>
+<div class="step"><div class="num">2</div><div class="body"><b>跟着答题</b><br>它会<strong>一题一题</strong>问你，大多是<strong>点选</strong>（见下页），只有产品名、价格、见证要打字。</div></div>
+<div class="step"><div class="num">3</div><div class="body"><b>拿两版页面</b><br>答完，它自动做出 A/B 两版，并告诉你哪个贴哪里、按钮怎么接、图怎么换。</div></div>
+
+<h2><span class="n">04</span>它会问你什么（心里有数）</h2>
+<p class="lead">标 <span class="pill">读档案</span> 的，如果你有品牌档案就自动读、不问你。</p>
+<table>
+<tr><th>会问什么</th><th>怎么答</th></tr>
+<tr><td>先收素材（Logo <span class="pill">读档案</span>、主视觉、卖点图、你的照片、好评）</td><td>有就丢给它；没有 → 见第 05 节</td></tr>
+<tr><td>你做哪个<b>行业</b></td><td>点选（电商 / 美妆 / 补习 / 服装 / 保险…）</td></tr>
+<tr><td>产品/服务<b>名</b></td><td>打字</td></tr>
+<tr><td>卖给<b>谁</b> <span class="pill">读档案</span></td><td>点选（老板 / 打工人 / 宝妈…）</td></tr>
+<tr><td>他们最<b>痛</b>什么</td><td>勾 2–3 个（按你行业自动列）</td></tr>
+<tr><td>你靠什么<b>解决</b> / <b>包含</b>什么</td><td>点选 / 多选</td></tr>
+<tr><td><b>价格</b> / 原价 / 优惠</td><td>打数字</td></tr>
+<tr><td><b>紧迫感</b>（名额 / 限时 / 早鸟…）</td><td>点选</td></tr>
+<tr><td>按钮点了<b>去哪</b></td><td>点选（WhatsApp / 表单 / AutoCRM 表单）</td></tr>
+<tr><td><b>配色</b> <span class="pill">读档案</span></td><td>读档案 / 选主题 / 自填色号</td></tr>
+</table>
+
+<h2><span class="n">05</span>没有图片怎么办？</h2>
+<p>任何一样图「没有」时，它会问你：</p>
+<ul>
+  <li>① <b>用 AI（Higgsfield）帮你生成</b> —— 适合背景图、场景图、氛围图</li>
+  <li>② 用<b>占位/纯文字</b>先顶着，之后再补</li>
+  <li>③ 之后自己补</li>
+</ul>
+<div class="callout red">🚫 <b>红线：这些不能用 AI 假造</b> —— 你的<strong>真实产品照</strong>、<strong>你本人的脸</strong>、<strong>客户见证的头像/见证内容</strong>。假见证会砸招牌，绝对不碰。</div>
+
+<h2><span class="n">06</span>拿到页面后 · 怎么用</h2>
+<div class="two">
+  <div class="card"><h3>🅰️ 贴进 AutoCRM</h3><ol><li>复制 A 版整段 HTML</li><li>贴进 AutoCRM 的 HTML 区块</li><li>在页尾的表单位置，插入 AutoCRM <b>原生表单</b> → lead 直接进后台</li></ol></div>
+  <div class="card"><h3>🅱️ 用独立页</h3><ol><li>双击 B 版文件就能看</li><li>按钮已连到你的 <b>WhatsApp</b>（或表单）</li><li>要上线？丢上任何免费托管即可</li></ol></div>
+</div>
+<div class="callout ok">✅ 图片已<b>压缩内嵌</b>在页面里 —— 两版都<strong>加载快、不裂图</strong>，不用另外找图床。</div>
+
+<h2><span class="n">07</span>守住 3 条红线</h2>
+<ul>
+  <li>✅ 你<b>自己生意</b>的价格、优惠、限时 —— 你说了算，放心写。</li>
+  <li>🚫 <b>不编</b>假见证、假数字、假成果、假名额（没有就别写数字）。</li>
+  <li>🚫 <b>不承诺</b>做不到的结果。</li>
+</ul>
+
+<h2><span class="n">08</span>下一步</h2>
+<div class="callout warn">这份 skill 做的是<strong>静态销售页</strong>，够你开始收单了。<br>想要<strong>后台 dashboard、自动跟进、把它变成一台会自己转的机器</strong>？—— 那是 <b>Jared 的 AI Business 课（Vibe Coding）</b>。</div>
+
+<div class="foot">SUMA College · School of AI Content　|　《AI 一键落地页》使用教程　|　现场录视频见证换取</div>
+</body></html>
