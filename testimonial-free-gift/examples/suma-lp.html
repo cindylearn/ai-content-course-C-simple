@@ -1,0 +1,810 @@
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0f1a;color:#f9fafb;font-family:'Noto Sans SC','Inter',sans-serif;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+.alert-bar{background:#dc2626;color:#fff;text-align:center;padding:10px 16px;font-size:0.9rem;font-weight:600;position:sticky;top:0;z-index:100;}
+.hero{background:linear-gradient(180deg,#0a1628 0%,#0a0f1a 100%);padding:48px 20px 48px;text-align:center;}
+.hero-logo{margin-bottom:24px;}
+.hero-logo img{height:52px;width:auto;margin:0 auto;display:block;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(40,194,231,0.4);border-radius:999px;padding:6px 18px;font-size:0.82rem;color:#28c2e7;margin-bottom:24px;}
+.hero-badge span{width:8px;height:8px;border-radius:50%;background:#28c2e7;animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.2;margin-bottom:16px;}
+.hero h1 em{color:#28c2e7;font-style:normal;}
+.hero h1 strong{color:#fcb040;}
+.hero-sub{font-size:1rem;color:rgba(249,250,251,0.7);max-width:640px;margin:0 auto 32px;}
+.hero-info{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 24px;margin-bottom:32px;font-size:0.9rem;color:rgba(249,250,251,0.8);}
+.hero-info span{display:flex;align-items:center;gap:6px;}
+.hero-info span.hl{background:rgba(252,176,64,0.15);border:1px solid rgba(252,176,64,0.45);color:#fcb040;font-weight:800;font-size:1rem;padding:6px 16px;border-radius:999px;}
+.countdown-wrap{margin-bottom:32px;}
+.countdown-label{font-size:0.82rem;color:rgba(249,250,251,0.5);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.1em;}
+.countdown{display:flex;justify-content:center;gap:12px;}
+.cd-box{background:rgba(255,255,255,0.06);border:1px solid rgba(40,194,231,0.2);border-radius:12px;padding:12px 20px;min-width:72px;text-align:center;}
+.cd-num{font-size:2rem;font-weight:800;color:#28c2e7;display:block;line-height:1;}
+.cd-label{font-size:0.7rem;color:rgba(249,250,251,0.5);margin-top:4px;}
+.cd-sep{font-size:2rem;font-weight:800;color:#28c2e7;display:flex;align-items:center;padding-bottom:16px;}
+.spot-bar{max-width:440px;margin:0 auto 32px;}
+.spot-text{display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:8px;}
+.spot-text .taken{color:#ef4444;font-weight:700;}
+.spot-text .left{color:#28c2e7;font-weight:700;}
+.spot-track{background:rgba(255,255,255,0.08);border-radius:999px;height:8px;overflow:hidden;}
+.spot-fill{background:linear-gradient(90deg,#28c2e7,#0f75bc);height:100%;border-radius:999px;transition:width 1s;}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#fcb040,#f97316);color:#fff;font-size:1.1rem;font-weight:800;padding:18px 40px;border-radius:999px;cursor:pointer;border:none;box-shadow:0 8px 32px rgba(252,176,64,0.35);transition:transform 0.2s,box-shadow 0.2s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(252,176,64,0.5);}
+.hero-note{font-size:0.8rem;color:rgba(249,250,251,0.4);margin-top:14px;}
+.section{padding:64px 20px;}
+.section-inner{max-width:1000px;margin:0 auto;}
+.section-title{text-align:center;margin-bottom:40px;}
+.section-title h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:8px;}
+.section-title h2 em{color:#28c2e7;font-style:normal;}
+.section-title p{color:rgba(249,250,251,0.6);font-size:0.95rem;}
+.benefits{background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:32px 20px;}
+.benefits-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:24px 48px;}
+.benefit-item{display:flex;align-items:center;gap:12px;}
+.benefit-icon{font-size:1.8rem;}
+.benefit-text strong{display:block;font-size:1rem;color:#f9fafb;}
+.benefit-text span{font-size:0.82rem;color:rgba(249,250,251,0.55);}
+.vsl-section{background:linear-gradient(180deg,#0a0f1a,#0d1525,#0a0f1a);padding:64px 20px;}
+.vsl-inner{max-width:860px;margin:0 auto;}
+.vsl-label{text-align:center;margin-bottom:20px;}
+.vsl-label p{font-size:0.85rem;color:rgba(249,250,251,0.5);text-transform:uppercase;letter-spacing:0.1em;}
+.vsl-label h2{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin-top:8px;}
+.video-wrap{position:relative;width:100%;padding-top:56.25%;background:#0d1525;border-radius:16px;overflow:hidden;border:1px solid rgba(40,194,231,0.2);box-shadow:0 0 60px rgba(40,194,231,0.1);}
+.video-wrap iframe,.video-wrap video{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.video-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,15,26,0.9);}
+.play-btn{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#28c2e7,#0f75bc);display:flex;align-items:center;justify-content:center;font-size:2rem;cursor:pointer;margin-bottom:16px;box-shadow:0 0 40px rgba(40,194,231,0.4);}
+.video-placeholder p{color:rgba(249,250,251,0.6);font-size:0.9rem;}
+.audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:20px;}
+.audience-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;}
+.audience-card h3{font-size:1rem;font-weight:700;color:#f9fafb;margin-bottom:4px;}
+.audience-card .role{font-size:0.78rem;color:#28c2e7;margin-bottom:12px;font-weight:600;}
+.audience-card ul{list-style:none;padding:0;}
+.audience-card ul li{font-size:0.84rem;color:rgba(249,250,251,0.6);padding:4px 0;padding-left:16px;position:relative;}
+.audience-card ul li::before{content:'·';position:absolute;left:0;color:#28c2e7;}
+.audience-tag{display:inline-block;margin-top:12px;font-size:0.75rem;background:rgba(40,194,231,0.1);color:#28c2e7;border:1px solid rgba(40,194,231,0.2);border-radius:999px;padding:3px 12px;}
+.pain-section{background:rgba(255,255,255,0.02);}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:20px;}
+.pain-card{border-radius:16px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(239,68,68,0.2);transition:transform 0.3s,box-shadow 0.3s;}
+.pain-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(239,68,68,0.15);}
+.pain-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:#0f1626;position:relative;}
+.pain-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.85);}
+.pain-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(10,15,26,0.8),transparent);}
+.pain-body{padding:18px 20px 22px;}
+.pain-body h3{color:#f87171;font-size:1rem;font-weight:700;margin:0 0 10px 0;line-height:1.4;}
+.pain-body p{color:rgba(249,250,251,0.55);font-size:0.84rem;line-height:1.75;margin:0;}
+.ba-container{container-type:inline-size;container-name:ba;}
+.ba-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;margin-bottom:48px;}
+.ba-card{border-radius:16px;padding:24px 28px;background:rgba(15,23,42,0.6);}
+.ba-card.before{border:1px solid rgba(239,68,68,0.3);}
+.ba-card.after{border:1px solid rgba(40,194,231,0.3);}
+.ba-label{font-size:0.78rem;font-weight:700;margin-bottom:12px;letter-spacing:0.08em;text-transform:uppercase;}
+.ba-label.before{color:#ef4444;}
+.ba-label.after{color:#28c2e7;}
+.ba-list{list-style:none;}
+.ba-list li{font-size:0.95rem;line-height:1.7;margin-bottom:6px;}
+.ba-list li::before{display:inline-block;width:1.4em;}
+.ba-list.before li::before{content:'✗ ';color:#ef4444;}
+.ba-list.after li::before{content:'✓ ';color:#22c55e;}
+.ba-arrow{display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fcb040;}
+@container ba (max-width:500px){.ba-grid{grid-template-columns:1fr;}.ba-arrow{display:none;}}
+.money-callout{max-width:760px;margin:0 auto 48px;background:linear-gradient(135deg,rgba(252,176,64,0.12),rgba(40,194,231,0.06));border:1px solid rgba(252,176,64,0.35);border-radius:16px;padding:22px 26px;text-align:center;}
+.money-callout p{font-size:1.05rem;font-weight:800;color:#f9fafb;line-height:1.6;}
+.money-callout p em{color:#f87171;font-style:normal;text-decoration:line-through;}
+.money-callout p strong{color:#28c2e7;}
+.money-callout span{display:block;margin-top:8px;font-size:0.85rem;font-weight:500;color:rgba(249,250,251,0.6);}
+.modules-container{container-type:inline-size;container-name:mod;}
+.modules-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@container mod (max-width:500px){.modules-grid{grid-template-columns:1fr;}}
+.module-card{background:rgba(255,255,255,0.04);border-radius:16px;border:1px solid rgba(40,194,231,0.15);overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;}
+.module-card:hover{box-shadow:0 12px 40px rgba(40,194,231,0.2);transform:translateY(-6px);}
+.module-card.hook{border:2px solid rgba(252,176,64,0.55);}
+.module-video{position:relative;width:100%;padding-top:75%;background:#0a0f1a;}
+.module-video video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center center;}
+.module-video video.pos-custom{object-position:center 35%;}
+.module-tag{position:absolute;top:10px;left:10px;z-index:2;background:#fcb040;color:#0a0f1a;font-size:0.7rem;font-weight:800;padding:3px 10px;border-radius:999px;}
+.module-body{padding:20px;}
+.module-num{font-size:0.72rem;font-weight:700;color:#28c2e7;letter-spacing:0.1em;margin-bottom:6px;text-transform:uppercase;}
+.module-body h4{font-size:1rem;color:#fff;margin-bottom:8px;}
+.module-body p{font-size:0.85rem;color:rgba(249,250,251,0.6);line-height:1.6;}
+.system-callout{max-width:760px;margin:40px auto 0;background:linear-gradient(135deg,rgba(40,194,231,0.1),rgba(252,176,64,0.06));border:1px solid rgba(40,194,231,0.3);border-radius:16px;padding:24px 28px;text-align:center;}
+.system-callout h3{font-size:1.15rem;font-weight:800;color:#f9fafb;margin-bottom:8px;}
+.system-callout h3 em{color:#fcb040;font-style:normal;}
+.system-callout p{font-size:0.9rem;color:rgba(249,250,251,0.7);line-height:1.7;}
+.instructor-section{background:rgba(255,255,255,0.02);}
+.instructor-wrap{display:flex;gap:40px;align-items:center;max-width:900px;margin:0 auto;}
+.instructor-photo{width:200px;height:200px;border-radius:50%;overflow:hidden;flex-shrink:0;border:3px solid rgba(40,194,231,0.3);background:#1a2a3a;}
+.instructor-photo img{width:100%;height:100%;object-fit:cover;}
+.instructor-info h3{font-size:1.4rem;font-weight:800;margin-bottom:4px;}
+.instructor-info .title{color:#28c2e7;font-size:0.9rem;margin-bottom:16px;}
+.instructor-info p{font-size:0.9rem;color:rgba(249,250,251,0.65);line-height:1.7;margin-bottom:16px;}
+.instructor-stats{display:flex;gap:24px;flex-wrap:wrap;}
+.stat-item{text-align:center;}
+.stat-num{font-size:1.4rem;font-weight:800;color:#28c2e7;}
+.stat-label{font-size:0.75rem;color:rgba(249,250,251,0.5);}
+.instructor-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.itag{font-size:0.78rem;background:rgba(40,194,231,0.08);border:1px solid rgba(40,194,231,0.2);border-radius:999px;padding:4px 12px;color:#28c2e7;}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px;}
+.case-card{background:rgba(255,255,255,0.04);border:1px solid rgba(40,194,231,0.12);border-radius:16px;padding:28px;}
+.case-result{font-size:1rem;font-weight:800;color:#28c2e7;margin-bottom:12px;}
+.case-quote{font-size:0.88rem;color:rgba(249,250,251,0.65);line-height:1.7;font-style:italic;border-left:2px solid rgba(40,194,231,0.3);padding-left:16px;}
+.testi-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;}
+.testi-card .stars{color:#fcb040;font-size:0.85rem;margin-bottom:8px;}
+.testi-card p{font-size:0.85rem;color:rgba(249,250,251,0.7);margin-bottom:8px;line-height:1.6;}
+.testi-card .name{font-size:0.78rem;color:rgba(249,250,251,0.4);}
+.testi-marquee{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);margin-bottom:16px;}
+.testi-track{display:flex;gap:16px;width:max-content;animation:testiscroll 55s linear infinite;}
+.testi-track.rev{animation-direction:reverse;animation-duration:65s;}
+.testi-marquee:hover .testi-track{animation-play-state:paused;}
+.testi-track .testi-card{flex:0 0 auto;width:280px;}
+@keyframes testiscroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){.testi-track{animation:none;flex-wrap:wrap;}}
+.pricing-section{background:linear-gradient(180deg,#0a0f1a,#0d1525,#0a0f1a);}
+.pricing-header{text-align:center;margin-bottom:16px;}
+.pricing-header h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:8px;}
+.pricing-header h2 em{color:#fcb040;font-style:normal;}
+.pricing-header p{color:rgba(249,250,251,0.6);}
+.pricing-tagline{text-align:center;margin-bottom:40px;padding:16px 20px;background:rgba(252,176,64,0.08);border:1px solid rgba(252,176,64,0.2);border-radius:16px;max-width:500px;margin-left:auto;margin-right:auto;}
+.pricing-tagline p{color:#fcb040;font-size:1rem;font-weight:700;}
+.pricing-tagline span{color:rgba(249,250,251,0.5);font-size:0.82rem;font-weight:400;}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:20px;max-width:860px;margin:0 auto 24px;}
+.price-card{border-radius:20px;padding:28px 24px;text-align:center;position:relative;transition:transform 0.3s;}
+.price-card:hover{transform:translateY(-4px);}
+.price-card.standard{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);}
+.price-card.popular{background:linear-gradient(135deg,rgba(40,194,231,0.12),rgba(15,117,188,0.12));border:2px solid #28c2e7;}
+.price-card.group{background:linear-gradient(135deg,rgba(252,176,64,0.15),rgba(249,115,22,0.08));border:2px solid rgba(252,176,64,0.5);}
+.popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#28c2e7;color:#0a0f1a;font-size:0.75rem;font-weight:800;padding:4px 16px;border-radius:999px;white-space:nowrap;}
+.group-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#fcb040;color:#0a0f1a;font-size:0.75rem;font-weight:800;padding:4px 16px;border-radius:999px;white-space:nowrap;}
+.price-pax{font-size:1rem;font-weight:800;color:#f9fafb;margin-bottom:6px;}
+.price-pax-sub{font-size:0.78rem;color:rgba(249,250,251,0.45);margin-bottom:16px;}
+.price-amount{font-size:3rem;font-weight:900;color:#f9fafb;margin-bottom:2px;line-height:1;}
+.price-amount span{font-size:1.1rem;font-weight:600;vertical-align:top;margin-top:8px;display:inline-block;}
+.price-per{font-size:0.82rem;color:rgba(249,250,251,0.5);margin-bottom:8px;}
+.price-save{font-size:0.95rem;font-weight:800;color:#22c55e;margin-bottom:20px;min-height:22px;}
+.price-card.group .price-save{color:#fcb040;font-size:1.1rem;}
+.price-btn{width:100%;padding:14px;border-radius:999px;font-size:0.95rem;font-weight:800;cursor:pointer;border:none;transition:all 0.2s;}
+.price-card.standard .price-btn{background:rgba(255,255,255,0.08);color:#f9fafb;border:1px solid rgba(255,255,255,0.15);}
+.price-card.standard .price-btn:hover{background:rgba(255,255,255,0.15);}
+.price-card.popular .price-btn{background:#28c2e7;color:#0a0f1a;}
+.price-card.popular .price-btn:hover{background:#22b0d4;}
+.price-card.group .price-btn{background:linear-gradient(135deg,#fcb040,#f97316);color:#fff;box-shadow:0 4px 20px rgba(252,176,64,0.35);}
+.price-card.group .price-btn:hover{box-shadow:0 6px 28px rgba(252,176,64,0.5);transform:translateY(-1px);}
+.pricing-note{text-align:center;font-size:0.85rem;color:rgba(249,250,251,0.4);margin-top:16px;}
+.value-stack{max-width:640px;margin:0 auto 40px;background:rgba(255,255,255,0.03);border:1px solid rgba(40,194,231,0.2);border-radius:20px;padding:28px 28px 24px;}
+.vs-course{margin-bottom:18px;}
+.vs-course-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.vs-course-name{font-size:1.05rem;font-weight:800;color:#f9fafb;}
+.vs-course-price{font-size:0.95rem;font-weight:700;color:#fcb040;white-space:nowrap;}
+.vs-course-sub{font-size:0.82rem;color:rgba(249,250,251,0.5);margin-top:4px;}
+.vs-divider{text-align:center;font-size:0.82rem;font-weight:700;color:#28c2e7;margin:18px 0;padding:8px 0;border-top:1px dashed rgba(40,194,231,0.25);border-bottom:1px dashed rgba(40,194,231,0.25);}
+.vs-gifts{list-style:none;padding:0;margin:0 0 20px;}
+.vs-gifts li{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.vs-gift-name{font-size:0.92rem;font-weight:700;color:#f9fafb;}
+.vs-gift-price{font-size:0.85rem;font-weight:700;color:#22c55e;white-space:nowrap;text-align:right;}
+.vs-gift-benefit{grid-column:1/2;font-size:0.78rem;color:rgba(249,250,251,0.5);}
+.vs-total{text-align:center;padding-top:16px;}
+.vs-total-value{font-size:1rem;color:rgba(249,250,251,0.7);margin-bottom:6px;}
+.vs-total-value strong{color:#f9fafb;font-weight:800;text-decoration:line-through;text-decoration-color:rgba(239,68,68,0.6);}
+.vs-total-now{font-size:1.05rem;color:rgba(249,250,251,0.7);}
+.vs-total-now strong{color:#fcb040;font-weight:900;font-size:1.25rem;}
+.price-original{font-size:0.85rem;color:rgba(249,250,251,0.4);margin-bottom:2px;}
+.price-original s{color:rgba(239,68,68,0.7);}
+[id^="form-"]{scroll-margin-top:56px;}
+.crowd-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:20px 44px;margin-bottom:36px;}
+.cstat{text-align:center;}
+.cstat-num{font-size:2rem;font-weight:900;color:#28c2e7;line-height:1;}
+.cstat-label{font-size:0.8rem;color:rgba(249,250,251,0.5);margin-top:6px;}
+.crowd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:680px){.crowd-grid{grid-template-columns:1fr;}}
+.crowd-photo{aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);}
+.crowd-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.giftbox-section{background:linear-gradient(180deg,rgba(252,176,64,0.06),rgba(40,194,231,0.04));}
+.giftbox-head{text-align:center;margin-bottom:28px;}
+.giftbox-badge{display:inline-block;background:#fcb040;color:#0a0f1a;font-size:0.8rem;font-weight:800;padding:5px 16px;border-radius:999px;margin-bottom:16px;}
+.giftbox-head h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:10px;}
+.giftbox-head h2 em{color:#fcb040;font-style:normal;}
+.giftbox-head p{color:rgba(249,250,251,0.75);font-size:1rem;}
+.giftbox-head p strong{color:#fcb040;font-weight:900;font-size:1.15rem;}
+.giftbox-list{list-style:none;padding:0;max-width:680px;margin:0 auto 28px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 16px;}
+.giftbox-list li{font-size:0.92rem;font-weight:700;color:#f9fafb;background:rgba(255,255,255,0.04);border:1px solid rgba(252,176,64,0.22);border-radius:10px;padding:12px 16px;}
+@media(max-width:560px){.giftbox-list{grid-template-columns:1fr;}}
+.giftbox-cta{text-align:center;}
+.why-section{background:rgba(255,255,255,0.02);}
+.why-lead{text-align:center;max-width:700px;margin:0 auto 40px;color:rgba(249,250,251,0.72);font-size:1.02rem;line-height:1.8;}
+.why-lead strong{color:#fcb040;}
+.why-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:920px;margin:0 auto 44px;}
+@media(max-width:620px){.why-compare{grid-template-columns:1fr;}}
+.why-col{border-radius:18px;padding:24px 22px;}
+.why-col.them{background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.25);}
+.why-col.us{background:linear-gradient(135deg,rgba(40,194,231,0.1),rgba(252,176,64,0.06));border:2px solid rgba(40,194,231,0.5);}
+.why-col-h{font-size:1rem;font-weight:800;margin-bottom:16px;}
+.why-col.them .why-col-h{color:#f87171;}
+.why-col.us .why-col-h{color:#28c2e7;}
+.why-col ul{list-style:none;padding:0;}
+.why-col li{font-size:0.9rem;line-height:1.55;padding:9px 0 9px 26px;position:relative;color:rgba(249,250,251,0.82);border-bottom:1px solid rgba(255,255,255,0.05);}
+.why-col li:last-child{border-bottom:none;}
+.why-col.them li::before{content:'✗';position:absolute;left:0;color:#ef4444;font-weight:800;}
+.why-col.us li::before{content:'✓';position:absolute;left:0;color:#22c55e;font-weight:800;}
+.why-col.us li strong{color:#fff;}
+.why-points{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:18px;max-width:1000px;margin:0 auto 36px;}
+.why-card{background:rgba(255,255,255,0.04);border:1px solid rgba(40,194,231,0.15);border-radius:16px;padding:24px 22px;}
+.why-card .ic{font-size:1.8rem;margin-bottom:12px;}
+.why-card h4{font-size:1rem;font-weight:800;color:#f9fafb;margin-bottom:8px;}
+.why-card h4 em{color:#fcb040;font-style:normal;}
+.why-card p{font-size:0.86rem;color:rgba(249,250,251,0.65);line-height:1.65;}
+.why-reframe{max-width:720px;margin:0 auto;text-align:center;background:linear-gradient(135deg,rgba(40,194,231,0.1),rgba(252,176,64,0.06));border:1px solid rgba(40,194,231,0.3);border-radius:16px;padding:24px 26px;}
+.why-reframe p{font-size:1.05rem;font-weight:700;color:#f9fafb;line-height:1.7;}
+.why-reframe span{color:#fcb040;}
+@media(max-width:640px){
+  .instructor-wrap{flex-direction:column;text-align:center;}
+  .instructor-photo{width:150px;height:150px;margin:0 auto;}
+  .instructor-stats{justify-content:center;}
+  .instructor-tags{justify-content:center;}
+}
+</style>
+
+<!-- Alert Bar -->
+<div class="alert-bar">⚠️ 8月21日 / 8月28日（星期日）两场任选，每场限 40 席，剩 <span id="alertLeft">28</span> 席，先到先得！</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-logo"><img src="https://files.catbox.moe/9vfzq8.png" alt="SUMA College"></div>
+  <div class="hero-badge"><span></span> 线下实操 · 两场任选 · 每场限40席</div>
+  <h1>发一条广告，本来要一整队人 ——<br>这支团队 <em>住进你的电脑</em>，变成你的 <strong>AI内容营销系统</strong></h1>
+  <p class="hero-sub">文案、设计、摄影、剪辑、配音…… 以前一条内容要动用一整队人。这堂课手把手带你把 6 个 AI 技能，串成一套会持续替你产出内容的系统 —— <strong style="color:#28c2e7">一句话，一整套全出</strong>，当天做出成品带回家。（其中最抓眼球的 AI 数字人，帮你不用露脸也能天天出片。）</p>
+  <div class="hero-info">
+    <span class="hl">🏫 100% 线下实体课</span>
+    <span>📅 8月21日 或 8月28日（星期日 · 两场任选）</span>
+    <span>🕙 早上10:00 - 下午5:00</span>
+    <span>📍 Sunway Nexis</span>
+  </div>
+  <div class="countdown-wrap">
+    <p class="countdown-label">距离最近一场（8月21日）还有</p>
+    <div class="countdown">
+      <div class="cd-box"><span class="cd-num" id="cd-d">00</span><div class="cd-label">天</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-box"><span class="cd-num" id="cd-h">00</span><div class="cd-label">小时</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-box"><span class="cd-num" id="cd-m">00</span><div class="cd-label">分钟</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-box"><span class="cd-num" id="cd-s">00</span><div class="cd-label">秒</div></div>
+    </div>
+  </div>
+  <div class="spot-bar">
+    <div class="spot-text">
+      <span>🔴 已报名 <span class="taken" id="takenNum">12</span> / 40 席</span>
+      <span class="left">仅剩 <span id="leftNum">28</span> 个空位</span>
+    </div>
+    <div class="spot-track"><div class="spot-fill" id="spotFill" style="width:30%"></div></div>
+  </div>
+  <button class="btn-primary" onclick="goPay()">🎯 立即锁定席位</button>
+  <p class="hero-note">↓ 先看下面这段视频，了解课程详情</p>
+</section>
+
+<!-- Benefits Strip -->
+<div class="benefits">
+  <div class="benefits-inner">
+    <div class="benefit-item"><div class="benefit-icon">🧩</div><div class="benefit-text"><strong>6个AI技能</strong><span>视频&数字人·图像·文案·剪辑·音乐·PPT</span></div></div>
+    <div class="benefit-item"><div class="benefit-icon">⚙️</div><div class="benefit-text"><strong>组成你自己的系统</strong><span>不是零散技能，是一套会持续产出的系统</span></div></div>
+    <div class="benefit-item"><div class="benefit-icon">✅</div><div class="benefit-text"><strong>零基础可上手</strong><span>不需要设计或技术背景</span></div></div>
+    <div class="benefit-item"><div class="benefit-icon">🏫</div><div class="benefit-text"><strong>当天线下实操</strong><span>亲手做出成品，直接带回家</span></div></div>
+  </div>
+</div>
+
+<!-- Team-in-computer (System is the hero) -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title"><h2>发一条广告，你要动用 <em>多少人</em>？</h2><p>今天，这一整支团队 —— 住进你的电脑</p></div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;max-width:820px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 18px;text-align:center;min-width:96px;"><div style="font-size:1.6rem;">✍️</div><div style="font-size:0.85rem;font-weight:700;margin-top:4px;">文案</div></div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 18px;text-align:center;min-width:96px;"><div style="font-size:1.6rem;">🎨</div><div style="font-size:0.85rem;font-weight:700;margin-top:4px;">设计师</div></div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 18px;text-align:center;min-width:96px;"><div style="font-size:1.6rem;">🎥</div><div style="font-size:0.85rem;font-weight:700;margin-top:4px;">摄影</div></div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 18px;text-align:center;min-width:96px;"><div style="font-size:1.6rem;">✂️</div><div style="font-size:0.85rem;font-weight:700;margin-top:4px;">剪辑</div></div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 18px;text-align:center;min-width:96px;"><div style="font-size:1.6rem;">🎙️</div><div style="font-size:0.85rem;font-weight:700;margin-top:4px;">配音</div></div>
+      </div>
+    </div>
+    <div class="system-callout" style="margin-top:28px;">
+      <h3>今天，这一整支团队 —— <em>住进你的电脑</em></h3>
+      <p>这堂课不是教你「学一个工具」。老师带你把这支团队装成一套系统 —— <strong style="color:#fcb040">一句话，一整套内容全出</strong>。就像直接给你一辆车，今天教你装好，带走就能开。</p>
+    </div>
+  </div>
+</section>
+
+<!-- VSL Video -->
+<div class="vsl-section">
+  <div class="vsl-inner">
+    <div class="vsl-label">
+      <p>▶ SUMA College 院长 Jared 亲自讲</p>
+      <h2>以前你要 <span style="color:#f87171">花钱一样一样学</span> 文案、设计、剪辑…… 全是散的<br>
+      现在我们教你用 AI 全部搞定 —— <span style="color:#28c2e7">AI视频&数字人 · AI图像 · AI文案 · AI剪辑 · AI音乐 · AI PPT</span><br>
+      最后一步，把它们串成一套属于你自己的 <span style="color:#fcb040">AI内容营销系统</span></h2>
+    </div>
+    <div class="video-wrap">
+      <video id="vslVideo" src="https://files.catbox.moe/dq0872.mp4"
+             autoplay muted playsinline preload="auto" controls controlslist="nodownload"></video>
+      <button id="vslUnmute" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;
+        display:flex;align-items:center;gap:8px;background:rgba(10,15,26,0.8);
+        color:#fff;border:1px solid rgba(40,194,231,0.6);border-radius:999px;
+        padding:12px 22px;font-size:0.95rem;font-weight:800;cursor:pointer;backdrop-filter:blur(6px);">
+        🔊 点击开声音
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var v=document.getElementById('vslVideo'), b=document.getElementById('vslUnmute');
+  if(!v||!b)return;
+  function unmute(){ v.muted=false; v.volume=1; v.play(); b.style.display='none'; }
+  b.addEventListener('click', unmute);
+  v.addEventListener('click', function(){ if(v.muted) unmute(); });
+  v.addEventListener('volumechange', function(){ if(!v.muted) b.style.display='none'; });
+})();
+</script>
+
+<!-- Gift Box Teaser (front) -->
+<section class="section giftbox-section">
+  <div class="section-inner">
+    <div class="giftbox-head">
+      <div class="giftbox-badge">🎁 报名即送</div>
+      <h2>现在报名，免费送你 <em>7 大 AI 启动包</em></h2>
+      <p>总价值 <strong>RM9,300</strong> 的礼包 · 上完课立刻开干，不用从零摸索</p>
+    </div>
+    <ul class="giftbox-list">
+      <li>🎁《AI 数字分身》启动包</li>
+      <li>🎁《AI 品牌定位》启动包</li>
+      <li>🎁《AI 产品图》启动包</li>
+      <li>🎁《AI 口播短视频》启动包</li>
+      <li>🎁《AI 爆款文案》启动包</li>
+      <li>🎁《AI 销售 PPT》启动包</li>
+      <li>🎁《AI 品牌配乐》启动包</li>
+    </ul>
+    <div class="giftbox-cta">
+      <button class="btn-primary" onclick="goPay()">🎯 立即报名，领取礼包</button>
+    </div>
+  </div>
+</section>
+
+<!-- Target Audience -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title">
+      <h2>这堂课适合 <em>你</em> 吗？</h2>
+      <p>你已经在做内容 / 营销 / 销售 — 这堂课帮你把 6 个 AI 技能，组成一套自己的内容系统</p>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <h3>🏢 创业者 / 老板</h3>
+        <div class="role">已经在做内容营销，但产能卡住了</div>
+        <ul>
+          <li>懂社媒、懂广告，但内容永远不够用</li>
+          <li>已经在投广告，素材产出速度跟不上</li>
+          <li>外包贵又慢，自己做又没时间</li>
+          <li>想扩大，内容这块一直是瓶颈</li>
+        </ul>
+        <span class="audience-tag">搭一套自己的内容系统</span>
+      </div>
+      <div class="audience-card">
+        <h3>🎥 内容创作者 / KOL</h3>
+        <div class="role">已经在发内容，但增长遇到了天花板</div>
+        <ul>
+          <li>有账号、有方向，产量和质量卡住了</li>
+          <li>每条内容花太多时间制作</li>
+          <li>已经在更新，但算法还是不够给量</li>
+          <li>想多平台发布，一个人顾不过来</li>
+        </ul>
+        <span class="audience-tag">用系统突破产能瓶颈</span>
+      </div>
+      <div class="audience-card">
+        <h3>📊 Marketer / 广告投手</h3>
+        <div class="role">已经在跑广告，素材产能是最大瓶颈</div>
+        <ul>
+          <li>懂投放策略，缺的是足够多的高质量素材</li>
+          <li>广告数据会看，但测素材速度跟不上</li>
+          <li>懂 targeting，创意产出靠设计团队排队</li>
+          <li>想自己一套系统稳定出素材，不用排队等人</li>
+        </ul>
+        <span class="audience-tag">自己搭一套素材生产系统</span>
+      </div>
+      <div class="audience-card">
+        <h3>💼 MLM / 直销 / 保险 / 房产</h3>
+        <div class="role">已经在做业务，想用内容把个人品牌规模化</div>
+        <ul>
+          <li>有产品、有客户，缺持续稳定的内容系统</li>
+          <li>已经在发社媒，但内容同质化没有自己风格</li>
+          <li>有业绩，但还没把经验变成可复制内容</li>
+          <li>想靠内容引流招募，而不是硬推销</li>
+        </ul>
+        <span class="audience-tag">内容系统化，品牌规模化</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pain Points -->
+<section class="section pain-section">
+  <div class="section-inner">
+    <div class="section-title">
+      <h2>你是否也有 <em>这些烦恼</em>？</h2>
+      <p>不是你不够努力，也不是你没天分 —— 是从来没人教过你，把这些 AI 工具<strong style="color:#fcb040">串成一套系统</strong>。<br>那些只教你「用某个工具」的课，收了你的钱，却让你继续一个人耗时间。</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FDHjSe3aUAKddbUXhCtvXmfl3T/hf_20260618_043444_c5c5e1ed-4717-4fe9-8dca-d494eb8c130d.png" alt="" loading="lazy"></div>
+        <div class="pain-body"><h3>😩 每天不知道发什么内容</h3><p>脑袋空白，打开手机不知道从哪里开始，内容创作变成每天最大的压力。</p></div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FDHjSe3aUAKddbUXhCtvXmfl3T/hf_20260618_043207_7af0b20b-dd6e-4483-8313-183fadf5a2df.png" alt="" loading="lazy"></div>
+        <div class="pain-body"><h3>💸 一条视频外包 RM3,000、等一星期</h3><p>找 production house 做一条视频，报价 RM3,000、还要等一个星期；改一次又要再等，效率极低、成本高到吃不消。</p></div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FDHjSe3aUAKddbUXhCtvXmfl3T/hf_20260618_043208_9e282704-a323-4e54-a313-7e39d630dfaa.png" alt="" loading="lazy"></div>
+        <div class="pain-body"><h3>📉 学了一堆技巧，还是拼不起来</h3><p>会用几个 AI 工具，但每次都从零开始、东拼西凑，始终没有一套能一直复用的流程。</p></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:8px;color:rgba(249,250,251,0.62);font-size:0.98rem;max-width:660px;margin-left:auto;margin-right:auto;line-height:1.8;">再拖下去，代价只会更贵：对手每天在出片、在被看见，你还在为「今天发什么」耗掉一个下午。<strong style="color:#f87171">时间，是你唯一补不回来的成本。</strong></p>
+  </div>
+</section>
+
+<!-- Before/After + Modules -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title"><h2>上完课之后，<em>你的工作流</em>会变成这样</h2></div>
+    <div class="ba-container">
+      <div class="ba-grid" id="baGrid">
+        <div class="ba-card before">
+          <div class="ba-label before">之前 BEFORE</div>
+          <ul class="ba-list before"><li>只会裸 ChatGPT，做出来很平庸</li><li>每条内容要几小时</li><li>设计 / 视频要外包 RM3,000、等一周</li><li>只会零散几招，拼不成东西</li></ul>
+        </div>
+        <div class="ba-arrow" id="baArrow">➡️</div>
+        <div class="ba-card after">
+          <div class="ba-label after">之后 AFTER</div>
+          <ul class="ba-list after"><li>一套系统跑出来，质感直接不一样</li><li>10 分钟做出一条内容</li><li>文案·图·短视频·配乐一次到位</li><li>有一套自己的系统，一个人也能持续产出</li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="money-callout">
+      <p>同一条视频：外面 production house <em>报 RM3,000、等一个星期</em> → <strong>你用系统，20 分钟一整套</strong></p>
+      <span>小白看不懂 prompt 多讲究，但人人算得出这笔账。</span>
+    </div>
+    <div class="section-title"><h2>系统会替你产出的 <em>6 样东西</em></h2><p>一句话，系统一条龙全出 · 当天线下实操，做出你自己生意的成品带走</p></div>
+    <div class="modules-container">
+      <div class="modules-grid" id="modGrid">
+        <div class="module-card hook"><div class="module-video"><span class="module-tag">🔥 招牌</span><video src="https://files.catbox.moe/uyu96p.mp4" autoplay muted loop playsinline class="pos-custom"></video></div><div class="module-body"><div class="module-num">01 · AI 视频 &amp; 数字人</div><h4>一句话生成短视频 · 数字人替你出镜</h4><p>输入文字稿，AI 生成可投放短视频；还能用照片级数字人替你出镜讲解 —— 不用露脸、不用拍摄，也能天天出片。</p></div></div>
+        <div class="module-card"><div class="module-video"><video src="https://files.catbox.moe/blf9k7.mp4" autoplay muted loop playsinline></video></div><div class="module-body"><div class="module-num">02 · AI 图像</div><h4>产品广告图 / 服务图 / 情境图</h4><p>手机拍的普通照片，AI 一键变影棚级质感商品图。3 分钟出图，零 Photoshop 基础。</p></div></div>
+        <div class="module-card"><div class="module-video"><video src="https://files.catbox.moe/hnjcda.mp4" autoplay muted loop playsinline></video></div><div class="module-body"><div class="module-num">03 · AI 文案</div><h4>社媒内容 + 广告文案批量产出</h4><p>一个产品，10 秒生成多条不同角度的内容文案。适用 TikTok / 小红书 / Facebook。</p></div></div>
+        <div class="module-card"><div class="module-video"><video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3FDHjSe3aUAKddbUXhCtvXmfl3T/bf7e8497-2291-43fc-a734-2fd91cb89548.mp4" autoplay muted loop playsinline></video></div><div class="module-body"><div class="module-num">04 · AI 剪辑</div><h4>素材丢进去，自动剪成可发布短视频</h4><p>用 AI 剪辑把长素材自动剪成一条短视频 —— 加字幕、卡点、去废话，不用会任何剪辑软件。</p></div></div>
+        <div class="module-card"><div class="module-video"><video src="https://files.catbox.moe/txze1e.mp4" autoplay muted loop playsinline></video></div><div class="module-body"><div class="module-num">05 · AI 音乐</div><h4>打造品牌专属配乐</h4><p>用 AI 生成背景音乐与品牌主题曲，让你的内容听起来与众不同。</p></div></div>
+        <div class="module-card"><div class="module-video"><video src="https://files.catbox.moe/rnsbam.mp4" autoplay muted loop playsinline></video></div><div class="module-body"><div class="module-num">06 · AI PPT</div><h4>快速做出专业提案 / 卖点页</h4><p>AI 帮你搭好结构、排版和图表，把时间留给打磨内容和讲故事。</p></div></div>
+      </div>
+    </div>
+    <div class="system-callout">
+      <h3>最后一步，才是 <em>真正值钱</em> 的地方</h3>
+      <p>市面上的课只教你「学一个技能」，学完你手上还是一堆零散零件。这堂课的重点在最后一步 —— 老师给你一套模板，带你把这 6 个技能亲手组装成一套属于你自己、会持续产出内容的 AI 内容营销系统。当天在课室里搭出来，做出成品直接带回家用。<strong style="color:#fcb040;">拆开来实习生都会，串成系统才是别人抄不走、真正值这个价的东西。</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- Instructor -->
+<section class="section instructor-section">
+  <div class="section-inner">
+    <div class="section-title"><h2>你的 <em>导师团队</em></h2></div>
+
+    <!-- 导师 1：Jared -->
+    <div class="instructor-wrap">
+      <div class="instructor-photo"><img src="https://files.catbox.moe/elc7ux.png" alt="Jared Low"></div>
+      <div class="instructor-info">
+        <h3>Jared Low</h3>
+        <div class="title">Dean of SUMA College</div>
+        <p>马来西亚领先 AI 营销实战导师，专注帮助创业者和 Marketer 通过 AI，在内容量和质量上同时突破。每天重度使用 AI 工具创作内容、管理品牌。教学风格强调「先动手」—— 不讲理论，直接上手，确保每位学员离开时都能立即落地执行。</p>
+        <div class="instructor-stats">
+          <div class="stat-item"><div class="stat-num">1000+</div><div class="stat-label">培训学员</div></div>
+          <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">年AI实战经验</div></div>
+          <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">年Marketing实战经验</div></div>
+          <div class="stat-item"><div class="stat-num">100+场</div><div class="stat-label">实体课堂</div></div>
+          <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">企业合作伙伴</div></div>
+        </div>
+        <div class="instructor-tags">
+          <span class="itag">SUMA College 创办人院长</span>
+          <span class="itag">培训1000+ 数字营销学员</span>
+          <span class="itag">6大AI技能精通</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 导师 2：Cindy -->
+    <div class="instructor-wrap" style="margin-top:48px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.08);">
+      <div class="instructor-photo"><img src="https://files.catbox.moe/lpanev.jpg" alt="Cindy Tan"></div>
+      <div class="instructor-info">
+        <h3>Cindy Tan</h3>
+        <div class="title">Marketing Manager｜SUMA College</div>
+        <p>从 2023 年 SUMA 第一批学生开始，SUMA 的整套 marketing 就是 Cindy 一手 build 起来的 —— 社媒内容、广告投放、官网、自动回复与预约系统、招生一对一流程，全部从零搭建。你在网上看到的每一支 SUMA 广告，都是她做、她投的。她把 AI 数字人、图像、影片、文案、音乐、PPT 六个技能，串成一套会持续产出的 <strong>AI 内容营销系统</strong>；手把手带你把同一套系统，当天在课室里亲手搭出来、带回家用。</p>
+        <div class="instructor-stats">
+          <div class="stat-item"><div class="stat-num">RM200k+</div><div class="stat-label">每年操盘广告投放</div></div>
+          <div class="stat-item"><div class="stat-num">8倍</div><div class="stat-label">广告收入回报 · 7位数业绩</div></div>
+          <div class="stat-item"><div class="stat-num">4+</div><div class="stat-label">年销售与市场经验</div></div>
+          <div class="stat-item"><div class="stat-num">5+</div><div class="stat-label">年活动策划经验</div></div>
+        </div>
+        <div class="instructor-tags">
+          <span class="itag">Marketing Manager｜SUMA College</span>
+          <span class="itag">SUMA 整套营销系统 从0搭建者</span>
+          <span class="itag">每年操盘 RM200k+ 广告 · 8倍回报</span>
+          <span class="itag">内容制作 · 品牌策略 · 广告投放 · 数据分析</span>
+          <span class="itag">Automation · Landing Page · Funnel 设计</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Cases -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title"><h2>学员 <em>真实成果</em></h2><p>上完课，当天就能复制的结果</p></div>
+    <div class="cases-grid">
+      <div class="case-card"><div class="case-result">⏱️ 一条内容 3 小时 → 20 分钟 · 产量 ×5</div><div class="case-quote">"以前一条内容耗一个下午，现在用系统一句话，文案、图、短视频一次到位，20 分钟搞定，一周产量多了 5 倍。"</div></div>
+      <div class="case-card"><div class="case-result">💰 内容外包成本降 80%</div><div class="case-quote">"以前设计、剪辑全外包，一个月几千块。现在整套系统自己跑，一条视频省下 RM3,000，内容还更稳定。"</div></div>
+      <div class="case-card"><div class="case-result">📈 广告素材产量 ×10 · ROAS 往上走</div><div class="case-quote">"有了自己的内容系统，我一天能测十几组素材，广告 ROAS 明显提升，不用再等设计团队排队。"</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials (auto-scroll marquee) -->
+<section class="section" style="background:rgba(255,255,255,0.02);">
+  <div class="section-inner">
+    <div class="section-title"><h2>🎬 学员怎么说</h2><p>真实反馈，来自真实的商业主</p></div>
+    <div class="testi-marquee">
+      <div class="testi-track">
+        <div class="testi-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"最印象深刻的是整个 AI 内容营销系统的流程设计 —— 不只教怎么用工具，更教你建立一套可重复、可复制的系统。"</p><div class="name">— Kenny Tham · SkinBeuti Group</div></div>
+        <div class="testi-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"With this full system, everything is structured, simple and practical — easily applied and duplicated in our work or project."</p><div class="name">— Suzanne Lim · Hamous Sdn Bhd</div></div>
+        <div class="testi-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"整体课程内容非常实用，让我对 AI 内容营销有了更系统化的认识。谢谢老师的分享！"</p><div class="name">— Kenny Tham · SkinBeuti Group</div></div>
+        <div class="testi-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"终于搞懂 Claude 和 Notion 怎么配合，会更好用。"</p><div class="name">— Aang Swee Guan · Jack Studio Marketing</div></div>
+      </div>
+    </div>
+    <div class="testi-marquee">
+      <div class="testi-track rev">
+        <div class="testi-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"那个一句话就自动生出文案、剪辑影片的部分，令我印象深刻。"</p><div class="name">— 倪绍維</div></div>
+        <div class="testi-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"可以自动生成 idea、自动排进 Notion，速度快很多。"</p><div class="name">— Yap Yeu Ling</div></div>
+        <div class="testi-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Cindy &amp; Jared 的教导很清晰。整体很实用。"</p><div class="name">— Yanice Lim</div></div>
+        <div class="testi-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"助教都很 helpful，谢谢！"</p><div class="name">— 学员</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof · Group Photos -->
+<section class="section" style="background:rgba(255,255,255,0.02);">
+  <div class="section-inner">
+    <div class="section-title"><h2>已经有 <em>1000+ 学员</em> 一起学过</h2><p>一场又一场实体课，真实的人，真实的改变</p></div>
+    <div class="crowd-stats">
+      <div class="cstat"><div class="cstat-num">1000+</div><div class="cstat-label">培训学员</div></div>
+      <div class="cstat"><div class="cstat-num">100+场</div><div class="cstat-label">实体课堂</div></div>
+      <div class="cstat"><div class="cstat-num">100+</div><div class="cstat-label">企业伙伴</div></div>
+    </div>
+    <div class="crowd-grid">
+      <div class="crowd-photo"><img src="https://wsrv.nl/?url=d2ol7oe51mr4n9.cloudfront.net/user_3FDHjSe3aUAKddbUXhCtvXmfl3T/f9191258-a615-4533-a838-4c5fadc39652.png&amp;w=900&amp;q=72&amp;output=webp" alt="SUMA 学员大合照" loading="lazy" decoding="async"></div>
+      <div class="crowd-photo"><img src="https://wsrv.nl/?url=d2ol7oe51mr4n9.cloudfront.net/user_3FDHjSe3aUAKddbUXhCtvXmfl3T/8bff3a20-3cb8-4f97-a2d4-c9ccc27dd896.png&amp;w=900&amp;q=72&amp;output=webp" alt="Cindy 老师现场带教" loading="lazy" decoding="async"></div>
+      <div class="crowd-photo"><img src="https://wsrv.nl/?url=d2ol7oe51mr4n9.cloudfront.net/user_3FDHjSe3aUAKddbUXhCtvXmfl3T/0e7be67c-6a36-48ae-aec0-39c48886cc38.png&amp;w=900&amp;q=72&amp;output=webp" alt="Cindy 老师现场授课" loading="lazy" decoding="async"></div>
+      <div class="crowd-photo"><img src="https://wsrv.nl/?url=d2ol7oe51mr4n9.cloudfront.net/user_3FDHjSe3aUAKddbUXhCtvXmfl3T/93ec8c17-3915-41ef-8666-accd938470aa.png&amp;w=900&amp;q=72&amp;output=webp" alt="Cindy 老师现场授课" loading="lazy" decoding="async"></div>
+      <div class="crowd-photo"><img src="https://wsrv.nl/?url=d2ol7oe51mr4n9.cloudfront.net/user_3FDHjSe3aUAKddbUXhCtvXmfl3T/009e8145-c42f-4615-b143-3c1c0e99d8d0.png&amp;w=900&amp;q=72&amp;output=webp" alt="Cindy 老师现场带教" loading="lazy" decoding="async"></div>
+      <div class="crowd-photo"><img src="https://wsrv.nl/?url=d2ol7oe51mr4n9.cloudfront.net/user_3FDHjSe3aUAKddbUXhCtvXmfl3T/9fe8acca-88e5-4387-be24-fa874ac52e39.png&amp;w=900&amp;q=72&amp;output=webp" alt="Jared 老师现场授课" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Us -->
+<section class="section why-section">
+  <div class="section-inner">
+    <div class="section-title">
+      <h2>市面上卖 AI 课的一大堆 —— <em>凭什么选 SUMA？</em></h2>
+      <p>同样叫「AI 课」，学完做得出的东西天差地别。看清差在哪，再决定把钱花在谁身上。</p>
+    </div>
+
+    <p class="why-lead">大多数 AI 课，教你几个工具、放段录播就收钱 —— 你学完，手上还是<strong>一堆散工具</strong>，做不出能用、能卖的东西。<br>SUMA 不卖工具。我们带你把 6 个 AI 技能，<strong>亲手搭成一套会一直替你产出内容的系统</strong>。</p>
+
+    <div class="why-compare">
+      <div class="why-col them">
+        <div class="why-col-h">😕 市面上大多数 AI 课</div>
+        <ul>
+          <li>教几个工具 / prompt，学完还是散的，拼不成东西</li>
+          <li>录播 / 网课，看完就忘，做不出来也没人管</li>
+          <li>讲师自己没在实战，照着 PPT 念一遍</li>
+          <li>理论一大堆，回去还是不知道怎么落地</li>
+          <li>上完课，两手空空，没有可复用的东西</li>
+        </ul>
+      </div>
+      <div class="why-col us">
+        <div class="why-col-h">🚀 SUMA College【AI内容营销系统】</div>
+        <ul>
+          <li>不教单个工具，带你把 6 个 AI 技能<strong>串成一套自己的系统</strong></li>
+          <li><strong>100% 线下实操</strong>，老师手把手，当天亲手做出成品</li>
+          <li>导师<strong>天天在打仗</strong>：每年操盘 RM200k+ 广告、8 倍回报</li>
+          <li>教的是我们团队<strong>现在真正在用、跑得通的 formula</strong></li>
+          <li>当天带走<strong>成品 + 一套模板 + 7 大启动包</strong>，回去立刻开干</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="why-points">
+      <div class="why-card">
+        <div class="ic">🧩</div>
+        <h4>卖的是 <em>一套系统</em>，不是几招</h4>
+        <p>你缺的从来不是工具，是「怎么用 AI 真正做出东西」。市场教你学一个技能，我们教你把 6 个技能组成一套会持续产出的系统 —— 这才是真正难被取代、真正值钱的。</p>
+      </div>
+      <div class="why-card">
+        <div class="ic">🏫</div>
+        <h4>100% <em>线下实操</em>，不是看录播</h4>
+        <p>老师现场手把手带，当天就把系统搭出来、做出成品带回家。不是买了课丢你自己啃，学不会没人理。</p>
+      </div>
+      <div class="why-card">
+        <div class="ic">💪</div>
+        <h4>教你的人，<em>自己天天在做</em></h4>
+        <p>Jared（院长 · 8 年 AI · 10 年营销）+ Cindy（一手 build 起 SUMA 整套营销系统、每年操盘 RM200k+ 广告 · 8 倍回报）。Marketer 教 Marketer，不是讲师念稿。</p>
+      </div>
+      <div class="why-card">
+        <div class="ic">📦</div>
+        <h4>带走的是 <em>可复用的模板</em></h4>
+        <p>别人给你几个 prompt 用完就没了。我们最后一步给你一套模板，让你把这套系统<strong>装回自己的生意里，一直用下去</strong>。</p>
+      </div>
+      <div class="why-card">
+        <div class="ic">🏆</div>
+        <h4>有底的学院，<em>不是网红开课</em></h4>
+        <p>1000+ 学员 · 100+ 场实体课 · 100+ 企业伙伴。不是收一波就跑的短期班，是经得起看的学院。</p>
+      </div>
+      <div class="why-card">
+        <div class="ic">🎁</div>
+        <h4>报名即送 <em>7 大启动包</em></h4>
+        <p>总值 RM9,300 的启动包，帮你上课前就整理好资料、上完课立刻开干，不用从零摸索。</p>
+      </div>
+    </div>
+
+    <div class="why-reframe">
+      <p>别人给你 <span>几招</span>，用完就没了。<br>SUMA 带你搭一套 <span>属于自己、会一直帮你出内容的系统</span> —— 这不是一堂课，是一套你带得走的资产。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Future Pacing + Yes-set -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title"><h2>想象一下，<em>30 天后的你</em></h2><p>不是"如果"，是这堂课结束时，你手上就有的那套系统</p></div>
+    <div class="why-reframe" style="text-align:left;max-width:720px;">
+      <p style="font-weight:500;font-size:1.02rem;line-height:2;color:rgba(249,250,251,0.88);">
+      早上打开电脑，<span style="color:#28c2e7">一句话</span> —— AI 数字人替你出镜、文案图片配乐一次到位；<br>
+      你不再为「今天发什么」发愁，因为系统一直在替你产；<br>
+      客户问起来，你 20 分钟就交出一条外面报 RM3,000 的成品；<br>
+      你终于把时间，还给真正该做的事。<br>
+      <span style="color:#fcb040;font-weight:800;">这不是想象 —— 是你当天在课室里，亲手搭出来、带回家的那套系统。</span>
+      </p>
+    </div>
+    <div style="max-width:640px;margin:24px auto 0;">
+      <p style="text-align:center;color:rgba(249,250,251,0.6);font-size:0.9rem;margin-bottom:14px;">如果你符合下面任何一条 —— 这堂课就是为你开的：</p>
+      <div style="display:grid;gap:10px;">
+        <div style="background:rgba(40,194,231,0.06);border:1px solid rgba(40,194,231,0.2);border-radius:10px;padding:12px 16px;font-size:0.92rem;">✅ 我已经在做内容 / 生意，但产能一直卡住</div>
+        <div style="background:rgba(40,194,231,0.06);border:1px solid rgba(40,194,231,0.2);border-radius:10px;padding:12px 16px;font-size:0.92rem;">✅ 我不想再为「今天发什么」发愁</div>
+        <div style="background:rgba(40,194,231,0.06);border:1px solid rgba(40,194,231,0.2);border-radius:10px;padding:12px 16px;font-size:0.92rem;">✅ 我想要一套自己的系统，而不是学完就忘的几招</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Master Value Stack (物超所值) -->
+<section class="section" style="background:rgba(255,255,255,0.02);">
+  <div class="section-inner">
+    <div class="section-title"><h2>这套系统里，藏着 <em>5 位大师</em> 的功夫</h2><p>系统写的每一句，背后都是这些心法 —— 传统上一项一项跟大师学，要多少钱？</p></div>
+    <div style="max-width:600px;margin:0 auto;display:grid;gap:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 18px;"><span style="font-size:0.95rem;font-weight:600;">🧠 NLP 说服 / 影响力</span><span style="font-family:monospace;font-weight:800;color:#22c55e;">RM 6,900</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 18px;"><span style="font-size:0.95rem;font-weight:600;">✍️ 文案 / 销售文案</span><span style="font-family:monospace;font-weight:800;color:#22c55e;">RM 4,000</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 18px;"><span style="font-size:0.95rem;font-weight:600;">🎤 演讲 / 说服 / 影响力</span><span style="font-family:monospace;font-weight:800;color:#22c55e;">RM 4,980</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 18px;"><span style="font-size:0.95rem;font-weight:600;">🤝 销售 / 成交心法</span><span style="font-family:monospace;font-weight:800;color:#22c55e;">RM 6,800</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 18px;"><span style="font-size:0.95rem;font-weight:600;">🎨 设计 / 海报 / 品牌视觉</span><span style="font-family:monospace;font-weight:800;color:#22c55e;">RM 1,880</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,rgba(252,176,64,0.15),rgba(249,115,22,0.08));border:2px solid rgba(252,176,64,0.5);border-radius:10px;padding:16px 18px;"><span style="font-size:1.05rem;font-weight:800;">跟 5 位大师学齐</span><span style="font-family:monospace;font-weight:900;color:#fcb040;font-size:1.3rem;">≈ RM 24,560</span></div>
+    </div>
+    <div class="why-reframe" style="max-width:640px;margin-top:26px;">
+      <p>跟 5 位大师一项项学齐 <span>≈ RM 24,560</span>，还要花上好几年。<br>这些心法，我们全熬进了系统的每一句里 —— <span>你一堂课，就整套拿走。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section pricing-section" id="pricing">
+  <div class="section-inner">
+    <div class="pricing-header"><h2>立即报名，<em>8月21日 或 8月28日见</em></h2><p>两场任选 · 每场限额40席 · 先到先得</p></div>
+    <!-- Value Stack -->
+    <div class="value-stack">
+      <div class="vs-course">
+        <div class="vs-course-row">
+          <span class="vs-course-name">✅ AI内容营销系统 · 线下实操课（1天）</span>
+          <span class="vs-course-price">原价 RM2,980/人</span>
+        </div>
+        <div class="vs-course-sub">6个AI技能 + 现场实操 + 亲手搭出你自己的系统 · 小班带教</div>
+      </div>
+      <div class="vs-divider">现在报名，再免费送你 7 大启动包</div>
+      <ul class="vs-gifts">
+        <li><span class="vs-gift-name">🎁《AI 数字分身》启动包</span><span class="vs-gift-benefit">不用露脸，照样天天出片</span><span class="vs-gift-price">价值 RM1,800</span></li>
+        <li><span class="vs-gift-name">🎁《AI 品牌定位》启动包</span><span class="vs-gift-benefit">上课前帮你整理好业务资料，AI 一开口就懂你生意</span><span class="vs-gift-price">价值 RM1,800</span></li>
+        <li><span class="vs-gift-name">🎁《AI 口播短视频》启动包</span><span class="vs-gift-benefit">录个口播，剩下交给 AI</span><span class="vs-gift-price">价值 RM1,500</span></li>
+        <li><span class="vs-gift-name">🎁《AI 爆款文案》启动包</span><span class="vs-gift-benefit">用文字，做出你自己的个人 IP</span><span class="vs-gift-price">价值 RM1,500</span></li>
+        <li><span class="vs-gift-name">🎁《AI 产品图》启动包</span><span class="vs-gift-benefit">产品照随手拍，AI 帮你出广告图</span><span class="vs-gift-price">价值 RM1,200</span></li>
+        <li><span class="vs-gift-name">🎁《AI 销售 PPT》启动包</span><span class="vs-gift-benefit">不用熬夜做 slide，AI 帮你 10 分钟出一份</span><span class="vs-gift-price">价值 RM900</span></li>
+        <li><span class="vs-gift-name">🎁《AI 品牌配乐》启动包</span><span class="vs-gift-benefit">做出你自己的专属音乐</span><span class="vs-gift-price">价值 RM600</span></li>
+      </ul>
+      <div class="vs-total">
+        <div class="vs-total-value">课程 + 礼包 总价值 <strong>RM12,280</strong></div>
+        <div class="vs-total-now">现在只需 <strong>RM1,299/人</strong> 起</div>
+      </div>
+    </div>
+
+    <p style="text-align:center;max-width:620px;margin:0 auto 32px;color:rgba(249,250,251,0.78);font-size:0.98rem;line-height:1.85;">换个角度算：系统里那 5 位大师的功夫，跟大师学齐 <strong style="color:#fff">≈ RM24,560、还要好几年</strong>；外包<strong style="color:#fff">一条视频 RM3,000、等一星期</strong>。而这堂课连 7 大启动包，<strong style="color:#fcb040">RM1,299 让你自己一直做下去</strong> —— 一次投资，换一套永远带得走的系统。</p>
+
+    <div class="pricing-tagline">
+      <p>👥 带上你的团队，一起升级AI内容力</p>
+      <span>老板带员工来 · 搭档一起学 · 学完当天就能分工协作</span>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card standard">
+        <div class="price-pax">1 人报名</div>
+        <div class="price-pax-sub">独自出发</div>
+        <div class="price-original">原价 <s>RM2,980</s></div>
+        <div class="price-amount"><span>RM</span>1,299</div>
+        <div class="price-per">每人 RM1,299</div>
+        <div class="price-save">一个人，也能搭起自己的内容系统</div>
+        <button class="price-btn" onclick="goForm()">立即报名 →</button>
+      </div>
+      <div class="price-card popular">
+        <div class="popular-badge">💙 最多人选</div>
+        <div class="price-pax">2 人同来</div>
+        <div class="price-pax-sub">带同事 / 搭档同行</div>
+        <div class="price-original">原价 <s>RM5,960</s></div>
+        <div class="price-amount"><span>RM</span>2,398</div>
+        <div class="price-per">每人 RM1,199</div>
+        <div class="price-save">两个人一起上，回去就能分工协作</div>
+        <button class="price-btn" onclick="goForm()">立即报名 →</button>
+      </div>
+      <div class="price-card group">
+        <div class="group-badge">🔥 团队首选</div>
+        <div class="price-pax">3 人同来</div>
+        <div class="price-pax-sub">带你的小团队</div>
+        <div class="price-original">原价 <s>RM8,940</s></div>
+        <div class="price-amount"><span>RM</span>2,997</div>
+        <div class="price-per">每人 RM999</div>
+        <div class="price-save">带上核心小队，打造公司的内容生产系统</div>
+        <button class="price-btn" onclick="goForm()">立即报名 →</button>
+      </div>
+    </div>
+    <p style="text-align:center;max-width:540px;margin:16px auto 0;color:rgba(249,250,251,0.72);font-size:0.92rem;line-height:1.7;">😌 零基础也不怕 —— 全程老师现场手把手带，当天亲手做出属于你自己的成品才走。</p>
+    <p class="pricing-note">每人都送齐 7 大启动包 · 报名时可选 8月21日 或 8月28日 场次 · 点任一档「立即报名」前往锁定席位</p>
+  </div>
+</section>
+
+<!-- ★ 在此插入 AutoCRM 原生 form。下面这个锚点让「立即报名」按钮精准滚到表单上方（不依赖表单 id） -->
+<div id="reg-anchor" style="height:1px;scroll-margin-top:64px;"></div>
+
+<script>
+(function(){
+  function goForm(){
+    var f = document.querySelector('#form-nc3ZJobg5o')
+         || document.querySelector('[id^="form-"]')
+         || document.querySelector('#reg-anchor');
+    if(f){ f.scrollIntoView({behavior:'smooth', block:'start'}); }
+  }
+  window.goForm = goForm;
+  window.goPay  = goForm;
+  var target = new Date('2026-08-21T10:00:00+08:00').getTime();
+  function pad(n){ return (n<10?'0':'')+n; }
+  function tick(){
+    var d = target - Date.now();
+    if(d < 0) d = 0;
+    var set = function(id,v){ var el=document.getElementById(id); if(el) el.textContent=pad(v); };
+    set('cd-d', Math.floor(d/86400000));
+    set('cd-h', Math.floor(d%86400000/3600000));
+    set('cd-m', Math.floor(d%3600000/60000));
+    set('cd-s', Math.floor(d%60000/1000));
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>

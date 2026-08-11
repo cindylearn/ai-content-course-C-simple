@@ -1,0 +1,219 @@
+<!--
+====================================================================
+ base.html —— 《AI 一键落地页》主模板（9 区块 · 大师结构预装）
+--------------------------------------------------------------------
+ 用法（skill 内部）：
+ 1. 把 {{TOKEN}} 换成 Step 2 的答案；图片 {{IMG_*}} 换成压缩后的 base64 data URI。
+ 2. 可重复块（卖点卡/见证/价值项）标了 <!-- repeat:xxx -->，按数量复制。
+ 3. 没有的区块整块删掉（如无见证→删见证区），不要留空壳。
+ 4. 出两版：
+    · AutoCRM 片段 = 从 <style> 开始（本文件就是），CTA 处保留 form 插入点。
+    · 独立页 = 用 wrap-standalone.html 包起来，CTA 换成 WhatsApp 按钮。
+ 配色：改最上面 :root 的 4 个变量即可（对应 Step2 第10题的主题）。
+   SUMA蓝 --b1:#28c2e7 --b2:#0f75bc --acc:#fcb040
+   暖橙   --b1:#f97316 --b2:#ea580c --acc:#fcb040
+   黑金   --b1:#d4af37 --b2:#b8860b --acc:#f5d76e
+   清新绿 --b1:#22c55e --b2:#16a34a --acc:#a3e635
+====================================================================
+-->
+<style>
+:root{ --b1:#28c2e7; --b2:#0f75bc; --acc:#fcb040;
+  --bg:#0a0f1a; --bg2:#0d1525; --ink:#f9fafb; --mut:rgba(249,250,251,.65); --line:rgba(255,255,255,.08); --card:rgba(255,255,255,.04); --danger:#f87171; --ok:#22c55e; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','Inter',sans-serif;line-height:1.6;}
+img{display:block;max-width:100%;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
+.section{padding:60px 20px;}
+.sec-title{text-align:center;margin-bottom:36px;}
+.sec-title h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:8px;}
+.sec-title h2 em{color:var(--b1);font-style:normal;}
+.sec-title p{color:var(--mut);font-size:.95rem;max-width:640px;margin:0 auto;}
+.btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--acc),#f97316);color:#fff;font-size:1.1rem;font-weight:800;padding:16px 38px;border-radius:999px;cursor:pointer;border:none;box-shadow:0 8px 32px rgba(0,0,0,.3);text-decoration:none;}
+.btn:hover{transform:translateY(-2px);}
+
+/* header */
+.top{background:var(--bg2);padding:14px 20px;text-align:center;border-bottom:1px solid var(--line);}
+.top img{height:44px;margin:0 auto;}
+.top .brandtext{font-size:1.2rem;font-weight:800;color:var(--b1);}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--bg2),var(--bg));padding:56px 20px;text-align:center;}
+.hero-badge{display:inline-block;border:1px solid var(--b1);border-radius:999px;padding:6px 18px;font-size:.82rem;color:var(--b1);margin-bottom:20px;}
+.hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.2;margin-bottom:16px;}
+.hero h1 em{color:var(--b1);font-style:normal;} .hero h1 strong{color:var(--acc);}
+.hero-sub{font-size:1rem;color:var(--mut);max-width:640px;margin:0 auto 28px;}
+.hero-visual{max-width:720px;margin:0 auto 28px;border-radius:16px;overflow:hidden;border:1px solid var(--line);}
+
+/* pain (PAS) */
+.pain-section{background:rgba(255,255,255,.02);}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:20px;}
+.pain-card{border-radius:16px;overflow:hidden;background:var(--card);border:1px solid rgba(248,113,113,.25);}
+.pain-card .pimg{aspect-ratio:16/9;overflow:hidden;background:var(--bg2);}
+.pain-card .pimg img{width:100%;height:100%;object-fit:cover;}
+.pain-card .pbody{padding:18px 20px;}
+.pain-card h3{color:var(--danger);font-size:1rem;font-weight:700;margin-bottom:8px;}
+.pain-card p{color:var(--mut);font-size:.86rem;}
+
+/* solution callout */
+.callout{max-width:760px;margin:32px auto 0;background:linear-gradient(135deg,rgba(40,194,231,.1),rgba(252,176,64,.06));border:1px solid var(--b1);border-radius:16px;padding:24px 28px;text-align:center;}
+.callout h3{font-size:1.15rem;font-weight:800;margin-bottom:8px;} .callout h3 em{color:var(--acc);font-style:normal;}
+.callout p{font-size:.92rem;color:var(--mut);}
+
+/* modules 卖点卡 */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:22px;}
+.mod-card{background:var(--card);border:1px solid rgba(40,194,231,.18);border-radius:16px;overflow:hidden;}
+.mod-card .mimg{aspect-ratio:4/3;overflow:hidden;background:var(--bg);}
+.mod-card .mimg img{width:100%;height:100%;object-fit:cover;}
+.mod-card .mbody{padding:18px 20px;}
+.mod-card h4{font-size:1rem;margin-bottom:6px;}
+.mod-card p{font-size:.85rem;color:var(--mut);}
+
+/* value stack + anchor */
+.vstack{max-width:640px;margin:0 auto;background:rgba(255,255,255,.03);border:1px solid var(--b1);border-radius:20px;padding:28px;}
+.vstack ul{list-style:none;}
+.vstack li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem;}
+.vstack .vprice{color:var(--ok);font-weight:700;white-space:nowrap;}
+.vstack .vtotal{text-align:center;padding-top:18px;}
+.vstack .vtotal .was{font-size:1rem;color:var(--mut);}
+.vstack .vtotal .was strong{color:var(--ink);text-decoration:line-through;text-decoration-color:var(--danger);}
+.vstack .vtotal .now strong{color:var(--acc);font-weight:900;font-size:1.4rem;}
+
+/* testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px;}
+.testi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;}
+.testi .stars{color:var(--acc);margin-bottom:8px;}
+.testi p{font-size:.88rem;color:var(--mut);margin-bottom:10px;}
+.testi .who{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--mut);}
+.testi .who img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+
+/* cases (optional) */
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px;}
+.case{background:var(--card);border:1px solid rgba(40,194,231,.12);border-radius:16px;padding:24px;}
+.case .res{font-size:1.05rem;font-weight:800;color:var(--b1);margin-bottom:10px;}
+.case .q{font-size:.86rem;color:var(--mut);font-style:italic;border-left:2px solid var(--b1);padding-left:14px;}
+
+/* pricing + urgency */
+.pricing{background:linear-gradient(180deg,var(--bg),var(--bg2),var(--bg));}
+.price-card{max-width:420px;margin:0 auto;text-align:center;background:linear-gradient(135deg,rgba(40,194,231,.12),rgba(15,117,188,.12));border:2px solid var(--b1);border-radius:20px;padding:32px 28px;}
+.price-orig{font-size:1rem;color:var(--mut);} .price-orig s{color:var(--danger);}
+.price-now{font-size:3rem;font-weight:900;margin:6px 0;}
+.price-save{font-size:1rem;font-weight:800;color:var(--ok);margin-bottom:18px;}
+.urgency{display:inline-block;background:rgba(252,176,64,.15);border:1px solid var(--acc);color:var(--acc);font-weight:700;font-size:.9rem;padding:8px 18px;border-radius:999px;margin-bottom:20px;}
+
+/* final CTA */
+.finalcta{text-align:center;padding:64px 20px;background:linear-gradient(180deg,var(--bg2),var(--bg));}
+.finalcta h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:14px;}
+.finalcta p{color:var(--mut);max-width:560px;margin:0 auto 28px;}
+</style>
+
+<!-- ① 顶部 header ································· logo 或纯文字品牌名 -->
+<div class="top">
+  <!-- 有 logo：--><img src="{{IMG_LOGO}}" alt="{{BRAND}}">
+  <!-- 无 logo 改用：<div class="brandtext">{{BRAND}}</div> -->
+</div>
+
+<!-- ② Hero 首屏 ······························ Blair Warren 正名 · 连续认同 -->
+<section class="hero">
+  <div class="hero-badge">{{HERO_BADGE}}</div>
+  <h1>{{HERO_HEADLINE}}</h1>
+  <p class="hero-sub">{{HERO_SUB}}</p>
+  <div class="hero-visual"><img src="{{IMG_HERO}}" alt=""></div>
+  <!-- ★ CTA_TOP：AutoCRM 版=锚到下方 form；独立版=WhatsApp 按钮 -->
+  <a class="btn" href="{{CTA_LINK}}">{{CTA_TEXT}}</a>
+</section>
+
+<!-- ③ 痛点 ··································· PAS(Problem·Agitate) · 自我说服 -->
+<section class="section pain-section">
+  <div class="wrap">
+    <div class="sec-title"><h2>你是不是也有 <em>这些烦恼</em>？</h2><p>{{PAIN_INTRO}}</p></div>
+    <div class="pain-grid">
+      <!-- repeat:pain (勾选 2–3 个痛点，每个一张) -->
+      <div class="pain-card"><div class="pimg"><img src="{{IMG_PAIN}}" alt=""></div><div class="pbody"><h3>{{PAIN_TITLE}}</h3><p>{{PAIN_DESC}}</p></div></div>
+      <!-- /repeat -->
+    </div>
+  </div>
+</section>
+
+<!-- ④ 方案登场 ································· PAS(Solution) · 换框 -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-title"><h2>{{SOLUTION_TITLE}}</h2></div>
+    <div class="callout"><h3>{{SOLUTION_HEADLINE}}</h3><p>{{SOLUTION_DESC}}</p></div>
+  </div>
+</section>
+
+<!-- ⑤ 卖点卡（包含什么） ······················· Duarte 客户是英雄 -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-title"><h2>你会拿到 <em>什么</em></h2><p>{{MODULES_INTRO}}</p></div>
+    <div class="mod-grid">
+      <!-- repeat:module (每个卖点/交付物一张，配一张卖点图) -->
+      <div class="mod-card"><div class="mimg"><img src="{{IMG_MODULE}}" alt=""></div><div class="mbody"><h4>{{MODULE_TITLE}}</h4><p>{{MODULE_DESC}}</p></div></div>
+      <!-- /repeat -->
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ 价值堆叠 + 原价锚定 ······················ Cialdini 对比 · 锚定 -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-title"><h2>你到底拿了 <em>多少价值</em></h2></div>
+    <div class="vstack">
+      <ul>
+        <!-- repeat:value (逐项列交付物 + 诚实估价) -->
+        <li><span>{{VALUE_NAME}}</span><span class="vprice">{{VALUE_PRICE}}</span></li>
+        <!-- /repeat -->
+      </ul>
+      <div class="vtotal">
+        <div class="was">加起来值 <strong>{{VALUE_TOTAL}}</strong></div>
+        <div class="now">你今天只付 <strong>{{PRICE_NOW}}</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ 真实见证 ································· Cialdini 社会认同（只放真的） -->
+<section class="section pain-section">
+  <div class="wrap">
+    <div class="sec-title"><h2>他们已经 <em>做到了</em></h2></div>
+    <div class="testi-grid">
+      <!-- repeat:testi (真实见证；无头像可去掉 img) -->
+      <div class="testi"><div class="stars">★★★★★</div><p>{{TESTI_QUOTE}}</p><div class="who"><img src="{{IMG_TESTI}}" alt="">{{TESTI_NAME}}</div></div>
+      <!-- /repeat -->
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ 案例卡（可选，有真数据才放） ················ Belfort 卖 ROI -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-title"><h2>真实 <em>案例</em></h2></div>
+    <div class="case-grid">
+      <!-- repeat:case -->
+      <div class="case"><div class="res">{{CASE_RESULT}}</div><div class="q">{{CASE_QUOTE}}</div></div>
+      <!-- /repeat -->
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ 价格 + 紧迫 ······························ 稀缺 · 换框 -->
+<section class="section pricing">
+  <div class="wrap">
+    <div class="sec-title"><h2>现在 <em>就开始</em></h2></div>
+    <div class="price-card">
+      <div class="urgency">{{URGENCY}}</div>
+      <div class="price-orig">原价 <s>{{PRICE_ORIG}}</s></div>
+      <div class="price-now">{{PRICE_NOW}}</div>
+      <div class="price-save">{{PRICE_SAVE}}</div>
+      <a class="btn" href="{{CTA_LINK}}">{{CTA_TEXT}}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ⑩ 收尾 CTA ································· 未来预演 · 嵌入指令 -->
+<section class="finalcta">
+  <h2>{{FINAL_HEADLINE}}</h2>
+  <p>{{FINAL_FUTUREPACE}}</p>
+  <!-- ★ 在此插入 AutoCRM 原生 form（AutoCRM 版）；独立版换成下面这个按钮 -->
+  <a class="btn" href="{{CTA_LINK}}">{{CTA_TEXT}}</a>
+</section>

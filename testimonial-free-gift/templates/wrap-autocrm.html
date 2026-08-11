@@ -1,0 +1,14 @@
+<!--
+ wrap-autocrm.html —— AutoCRM 片段外壳（说明用）
+ AutoCRM 版几乎不用「包」：base.html 填好的片段本身就是（以 <style> 开头、无 doctype/head）。
+ 直接把整段贴进 AutoCRM 的 HTML 区块即可。
+
+ 唯一要做的两件事：
+ 1. 所有 CTA 的 {{CTA_LINK}} 处不放外链，改成锚点跳到表单：href="#lead-form"
+ 2. 在收尾 CTA 的这个位置：
+      <!-- ★ 在此插入 AutoCRM 原生 form -->
+    删掉那颗 <a class="btn"> 按钮，插入 AutoCRM 自带的原生 form，并给它 id="lead-form"。
+    → lead 直接进 CRM。
+
+ 图片：片段里的 {{IMG_*}} 已是压缩后的 base64，AutoCRM 里能正常显示、加载快、不裂图。
+-->

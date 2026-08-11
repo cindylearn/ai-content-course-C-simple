@@ -1,0 +1,20 @@
+<!--
+ wrap-standalone.html —— 独立页外壳
+ 用法：把 base.html 填好的整段（从 <style> 到最后一个 </section>）塞进下面 {{LP_FRAGMENT}}。
+ 独立页没有后台，所以所有 CTA 的 {{CTA_LINK}} = WhatsApp：
+   https://wa.me/60XXXXXXXXX?text=我想报名{{产品名}}
+ （号码去掉开头 0、加国码 60；text 可留空）
+ 或换成 Google 表单链接。生成后可双击直接打开、也能上线（GitHub Pages 等）。
+-->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{BRAND}}｜{{PRODUCT}}</title>
+<meta name="description" content="{{HERO_SUB}}">
+</head>
+<body>
+{{LP_FRAGMENT}}
+</body>
+</html>
