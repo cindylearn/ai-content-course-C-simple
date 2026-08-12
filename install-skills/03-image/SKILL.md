@@ -28,6 +28,22 @@ metadata:
 > 装 skill：跟用户说「**装 `0X-xxx` → 触发它**」，链接 `https://github.com/cindylearn/ai-content-course-C-simple/tree/main/install-skills/0X-xxx`。装好打斜杠若「Unknown command」＝重开 Claude 或直接说触发词。**没装好没触发那个 skill，就停下让用户去装，别代它做事。**
 > ✅ **触发时机两种都行**：① 答完这个 skill 的全部问题后，**直接说下一个触发词**接着做（同一个对话，不用换）；② 或进另一个 session / 换个时候 **单独触发**。**关键是那个 skill 必须被「触发」才会一题一题问你** —— 没触发就别替它做。
 
+---
+
+## 🧩 做「一条内容」的完整顺序（🔴 文案 + 图/视频 连着做，只 confirm 一次）
+
+> 一条**图文海报** ＝ 文案 ＋ 图，两样都要**问完问题 ＋ 写进同一条 Notion 立项页**，才算 ready。顺序（**02＋03 连着问**，中间**不停下生成、不改 Status**）：
+> 1. **02-copy**：问文案的问题（角度 / 漏斗层 / …）→ 写好文案进立项页「文案」列。🔴 **先别 confirm、先别改 Status、先别问「要不要生成」**。
+> 2. **紧接着 03-image**（说「帮我出图」触发它）：问**图的设计问题（风格 / 场景 / 版式 / 图内文字）** → 写好图 prompt 进同一条立项页。🔴 **图的设计问题必须现在就问、在改 Status 之前问完**，绝不推到「Proceed to Generate 之后才问」。
+> 3. 文案 ＋ 图 prompt 两样都进 Notion 后 → **停下、教用户去 Notion 立项页 check，问「OK 吗？」**。
+> 4. 用户回 **OK → 把 Status 改成 `Proceed to Generate`**。
+> 5. **再问一句：「现在开始生成？还是继续想新 idea？」** —— 用户说「**生成**」才烧 credit（先出 1 张满意才批量）；说「**新 idea**」就回去再加内容、先不生成。
+>
+> 🎥 **视频版同理**：02-copy 写文案 / 脚本 → **紧接着 04-video** 问（谁出镜 / 声音 / 场景 / 穿衣）→ 两样进 Notion → 一次 confirm（去 check）→ OK → Status `Proceed to Generate` → 再问「开始生成 or 继续想新 idea」。
+>
+> 🔴 **绝不**：① 文案写完就单独 confirm ＋ 改 Status 去生成（把图 / 视频的问题漏了）；② 在 Status 改到 `Proceed to Generate` **之后**才问图的风格 / 场景（那就晚了，必须在之前）。
+
+
 
 
 ---
@@ -812,7 +828,7 @@ metadata:
 12. 🔢 **出几张** —— 先出 **1 张**看（默认），满意才批量；批量时**同批不同受众/版式换着搭**，别整批一样。
 
 **C. 答完之后（照统一流程）**
-① 把全部选择 + 图内文字层级 **写进这条的 Notion 立项页** → ② 停下、一句话报「**我要生成 · 用什么模型 · 预计几 credit**」等确认（🔴 没确认绝不烧 credit）→ ③ 照选中的**版式模板 + 元素 + 尺寸**填 prompt，用选中模型 `generate_image`（人物锁脸传 `medias`）先出 **1 张** → ④ **`Read` 图人工审**（乱码/假脸/糊 → 重出）→ ⑤ 合 logo（PIL 后期，按选的位置）→ ⑥ 满意才批量 → ⑦ 三处归档 + 改 Status。
+① 把全部选择 + 图内文字层级 + **图 prompt** 都**写进这条的 Notion 立项页**（这条内容的文案 Step 02 已写好、也在这页）→ ② 🔴 **停下、教用户去 Notion 立项页 check（文案 + 图 prompt 一起看），问「OK 吗？」** → ③ 用户回 **OK → 把 Status 改成 `Proceed to Generate`** → ④ **再问一句：「现在开始生成？还是继续想新 idea？」** —— 用户说「**生成**」才往下（说「新 idea」就回去加内容、先不烧 credit）→ ⑤ 一句话报「**我要生成 · 用什么模型 · 预计几 credit**」→ ⑥ 用选中模型 `generate_image`（人物锁脸传 `medias`）**先出 1 张** → ⑦ **`Read` 图人工审**（乱码/假脸/糊 → 重出）→ ⑧ 合 logo（PIL 后期）→ ⑨ 满意才批量 → ⑩ 三处归档 + 改 Status（`Need Review Poster/Video`）。🔴 顺序照本 skill 顶部「🧩 做『一条内容』的完整顺序」：**图的设计问题在改 Status 之前问完；文案+图都 OK 了才 `Proceed to Generate`；生成前再确认一次**。
 
 > 💡 **credit 速记**：Nano Banana Pro 2cr/张、GPT Image 2 4cr/张（1k；2k/4k 更贵）。批量前先 1 张，省 credit。
 
