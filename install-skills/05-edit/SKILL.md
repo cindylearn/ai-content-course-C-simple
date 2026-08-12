@@ -28,6 +28,7 @@ metadata:
 ## 🚦 交接铁律 · 只做本 skill 的活（🔴 每个 skill 都守，别越界代做）
 
 > 🔴🔴 这个 skill **只负责 AI 剪辑（ChatCut）这一块**。若这一步的活属于**别的 skill**（写文案＝`02-copy` / 出图海报＝`03-image` / 口播视频＝`04-video-avatar` / 卖点 PPT＝`06-ppt` / 配乐＝`07-music`），**必须先让用户装好 ＋ 触发那个对应 skill**，由它**一题一题问**——**绝不在本 skill 里替别的 skill 决定设计 / 主题 / 内容，也绝不代它生成**。那套提问流程只在对应 skill 里，这里没有；硬做＝自己瞎发挥（错）。装 skill：跟用户说「**装 `0X-xxx` → 触发它**」，链接 `https://github.com/cindylearn/ai-content-course-C-simple/tree/main/install-skills/0X-xxx`。**没装好没触发那个 skill，就停下让用户去装，别代它做事。**
+> ✅ **触发时机两种都行**：① 答完这个 skill 的全部问题后，**直接说下一个触发词**接着做（同一个对话，不用换）；② 或进另一个 session / 换个时候 **单独触发**。**关键是那个 skill 必须被「触发」才会一题一题问你** —— 没触发就别替它做。
 
 ---
 
