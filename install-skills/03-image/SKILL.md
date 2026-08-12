@@ -20,6 +20,14 @@ metadata:
 
 > 两种都能触发：斜杠直接点名；说一句话 Claude 认关键词自己进。**🔴 刚装好这个 skill，若打斜杠 `/suma-ai-…` 显示「Unknown command」= 斜杠还没注册进去 —— 重开一次 Claude 再打就行；或直接打那句话（自然语言触发，不用等重开、立刻通）。** 触发后一题一题问你。
 
+---
+
+## 🚦 交接铁律 · 只做本 skill 的活（🔴 每个 skill 都守，别越界代做）
+
+> 🔴🔴 这个 skill **只负责它自己那一块产出**。若这一步的活属于**别的 skill**（写文案＝`02-copy` / 出图海报＝`03-image` / 口播视频＝`04-video-avatar` / 卖点 PPT＝`06-ppt` / AI 剪辑＝`05-edit` / 配乐＝`07-music`），**必须先让用户装好 ＋ 触发那个对应 skill**，由它**一题一题问**（受众 / 版式 / 风格 / 台词…）——**绝不在本 skill 里替别的 skill 决定设计 / 主题 / 内容，也绝不代它生成**。那套提问流程、版式库、大师**只在对应 skill 里，这里没有**；硬做＝自己瞎发挥（错，正是要避免的 bug）。
+> 装 skill：跟用户说「**装 `0X-xxx` → 触发它**」，链接 `https://github.com/cindylearn/ai-content-course-C-simple/tree/main/install-skills/0X-xxx`。装好打斜杠若「Unknown command」＝重开 Claude 或直接说触发词。**没装好没触发那个 skill，就停下让用户去装，别代它做事。**
+
+
 
 ---
 
