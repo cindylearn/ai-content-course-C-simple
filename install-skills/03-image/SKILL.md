@@ -893,13 +893,13 @@ metadata:
    > A 指向证据 · B 手托主体 · C 张开双臂掌控 · D 抱胸站定 · E 侧身回望 · F 撑桌前倾 · G 举手比数 · H 双人协作 · I 手扶下巴思考 ＋「J 我自己描述」。
 9. 🏷️ **Logo**（🔴 出成品必问，别默认）—— ① 用品牌 logo → **哪个版本**：深色版 / 浅色版 / 透明 PNG；**放哪**：右上（默认）/ 左上 / 底部居中 / 其他。② 这张不放 logo。
 10. 📐 **尺寸** —— ① 3:4（默认）② 1:1（FB/IG/WA 缩图）③ 4:5（IG 最占屏）④ 9:16（Story/Reels）。
-11. 🤖 **用哪个 AI 工具生成**（标 credit）—— ① **Nano Banana Pro**（Higgsfield · **2 credit/张** · 原生 3:4、中文字/4K 强 · ⭐默认）② **GPT Image 2**（Higgsfield · **4 credit/张** · 只 1:1 / 2:3 / 3:2，3:4 会被裁成 2:3）。🔴 **默认选 Nano Banana Pro**（我们海报要 3:4 + 渲染中文，它原生支持、还便宜一半）；除非特意要 GPT 的质感。
+11. 🤖 **用哪个 AI 工具生成**（标 credit）—— ① **Nano Banana Pro**（Higgsfield · **2 credit/张** · 原生 3:4、中文字/4K 强 · ⭐默认）② **GPT Image 2**（Higgsfield · **1k/medium 2cr · 2k/medium 3cr · 2k/high 7cr** · 🔴 实测**原生支持 3:4、也收人脸参考图**，所以**锁脸也走得通**）。🔴 **默认选 Nano Banana Pro**（便宜、中文字强）；要 GPT 那种质感、或要 GPT Image 2 锁脸时才用它（3:4 直接出、不裁）。
 12. 🔢 **出几张** —— 先出 **1 张**看（默认），满意才批量；批量时**同批不同受众/版式换着搭**，别整批一样。
 
 **C. 答完之后（照统一流程）**
 ① 把全部选择 + 图内文字层级 + **图 prompt** 都**写进这条的 Notion 立项页**（这条内容的文案 Step 02 已写好、也在这页）→ ② 🔴 **停下、教用户去 Notion 立项页 check（文案 + 图 prompt 一起看），问「OK 吗？」** → ③ 用户回 **OK → 把 Status 改成 `Proceed to Generate`** → ④ **再问一句：「现在开始生成？还是继续想新 idea？」** —— 用户说「**生成**」才往下（说「新 idea」就回去加内容、先不烧 credit）→ ⑤ 一句话报「**我要生成 · 用什么模型 · 预计几 credit**」→ ⑥ 用选中模型 `generate_image`（人物锁脸传 `medias`）**先出 1 张** → ⑦ **`Read` 图人工审**（乱码/假脸/糊 → 重出）→ ⑧ 合 logo（PIL 后期）→ ⑨ 满意才批量 → ⑩ 三处归档 + 改 Status（`Need Review Poster/Video`）。🔴 顺序照本 skill 顶部「🧩 做『一条内容』的完整顺序」：**图的设计问题在改 Status 之前问完；文案+图都 OK 了才 `Proceed to Generate`；生成前再确认一次**。
 
-> 💡 **credit 速记**：Nano Banana Pro 2cr/张、GPT Image 2 4cr/张（1k；2k/4k 更贵）。批量前先 1 张，省 credit。
+> 💡 **credit 速记（实测）**：Nano Banana Pro **2cr/张**；GPT Image 2 **1k/medium 2cr · 2k/medium 3cr · 2k/high 7cr**。🔴 GPT Image 2 **原生支持 3:4、收人脸参考图（锁脸可行）**。批量前先 1 张，省 credit。
 
 ---
 
