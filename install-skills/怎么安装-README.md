@@ -19,7 +19,7 @@
 | 03 | 03-image | `/suma-ai-03-image` | 帮我出海报／产品图 |
 | 04 | 04-video-avatar | `/suma-ai-04-video-avatar` | 帮我做口播短视频（含数字人：AI人／真人样子／卡通人）|
 | 05 | 05-edit | `/suma-ai-05-edit` | 帮我用 ChatCut 剪辑（AI 剪辑：字幕／重点字／颜色／音效／BGM）|
-| 06 | 06-ppt | `/suma-ai-06-ppt` | 帮我做卖点 PPT |
+| 06 | 06-ppt | `/suma-ai-06-ppt` | 帮我做 PPT |
 | 07 | 07-music | `/suma-ai-07-music` | 帮我做配乐／BGM |
 | 08 | 08-full | `/suma-ai-08-full` | 帮我把做好的全部整理成一套完整系统（full set） |
 
