@@ -779,14 +779,14 @@ metadata:
 | **工具 logo 徽章卡** | 秀「用这些真 AI 工具」 | `small rounded badge cards each holding a tool logo, clustered, some tilted ~45°` 🔴 真 logo 后期贴、prompt 别画 |
 | **产品 / 物件堆叠** | 电商多 SKU / 套装 | `a stack of product boxes/items overlapping with depth, hero product on top, soft shadow` |
 | **前后双栏对照**（并列清单，非分屏）| 「使用前 ❌ vs 使用后 ✅」 | `two side-by-side columns: left '使用前' red ✗ bullets | right '使用后' green ✓ bullets` |
-| **评论 / 聊天截图卡** | 询问 / 见证社证 | `a realistic chat / comment / DM screenshot card, rounded, subtle shadow` 🔴 真截图后期贴、绝不编假见证 |
+| **评论 / 聊天截图卡** | 询问 / 见证社证（✅ 鼓励用）| `a realistic chat / comment / DM screenshot card, rounded, subtle shadow` 🔴 用**真**截图后期贴、或留占位；别让模型编假的冒充真客户 |
 | **数据成效面板** | 卖服务 / 代运营成效 | `a results dashboard panel — bar/line charts + KPI numbers (impressions/leads/ROI), clean SaaS UI` 🔴 真数据、别编 |
 | **E1 作品环绕圈** | 卖「我做得出这些」（个人IP/服务）| `subject in center ringed by their own work samples (posts/videos/posters) as floating cards` 🔴 真作品后期贴 |
 | **E3 手指指向证据** | 把视线引到数字 / 图表 | `subject pointing / gesturing toward a chart or number card, gaze following the direction` |
 | **E4 单字变色高亮** | 标题里一个关键词变色 | `ONE key word in the headline in [品牌强调色], the rest ink/white — the color-pop word carries the hook` |
 | **E6 四格利益条** | 一排 4 个利益点 | `a row (or 2×2) of 4 benefit chips, each = icon + 3–4 字 label, evenly spaced` |
 
-> 🔴 **假文字三形态（分开守，别混）：** ① **假见证** —— 评论 / 聊天 / 案例截图必须是**真**的、后期贴，绝不让模型编。② **乱码 UI** —— 画面里屏幕 / 图表 / 手机内容一律 `blurred abstract, NO legible text`（防乱码）。③ **白名单短标签** —— 只渲染**引号里指定的中文**，其余不出字（品牌 / 工具英文除外、要拼对）。
+> 🔴 **假文字三形态（分开守，别混）：** ① **见证（✅ 鼓励用、只是要真）** —— 评论 / 聊天 / 案例截图是**很强的社证、鼓励做**，但要**真的**（真客户后期贴，或先留占位让用户填真的），**别让模型编假的冒充真客户发**。**见证本身不是红线。**② **乱码 UI** —— 画面里屏幕 / 图表 / 手机内容一律 `blurred abstract, NO legible text`（防乱码）。③ **白名单短标签** —— 只渲染**引号里指定的中文**，其余不出字（品牌 / 工具英文除外、要拼对）。
 
 **🕺 人物动作库 A–I（🔴 POSE 铁律：写「动词 + 受力对象」，别写"站着摆 pose"会僵；人物一律本地）**
 
