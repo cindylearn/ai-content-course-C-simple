@@ -1,0 +1,397 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Carousel</title>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  Claude：只改下面两个区块                                              ║
+  ║   ① CONFIG → 6 个视觉维度 + 4 个颜色（各自独立，自由混搭）              ║
+  ║   ② SLIDES → 每一张的内容                                             ║
+  ║  改完跑： node scripts/screenshot.mjs 主题名                           ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+<script>
+// ═══════════════════ ① CONFIG ═══════════════════
+const CONFIG = {
+
+  // ── 版型 6 维度（各自独立选） ──
+  base:      "photo",      // photo 真人照 | photo-dark 照片压暗 | paper 纸质 | solid 纯色 | gradient 渐层
+                           //   单张可在 SLIDES 里写 base:"..." 覆写（例：封面用亮照，内页压暗）
+  titleFont: "hei",        // hei 黑体 | song 宋体 | brush 书法毛笔 | hand 手写签名
+  songTight: false,        // titleFont:"song" 时设 true = 极宋（压窄拉高）
+  script:    "sc",         // sc 简体 | tc 繁体  ← 跟字体各自独立
+  align:     "center",     // 垂直：bottom 下半部 | center 居中(参考帖用这个) | top 上半部
+  textAlign: "center",     // 横向：left 左对齐 | center 置中(参考帖用这个)
+  container: "glass",      // none 无框 | glass 毛玻璃 | outline 描边 | quote 引号框
+  numbering: "tag",        // none | circle 圆圈数字 | corner 3/7 | tag 内容小标签 | toplabel 左上固定标签
+  deco:      ["arrow"],    // 可复选：arrow 右滑箭头 | crown 手绘皇冠 | wave 波浪底线 ~~字~~
+                           //         pointer 指向箭头 | sparkle 星星 | quote 大引号
+  // ── 文字处理（照片底的关键） ──
+  titleTone: "ink",        // ink 标题白字·副标题吃重点色(推荐) | accent 标题直接用重点色
+  textEdge:  true,         // 黑色外发光描边 —— 照片底一定要开，压到亮处才读得到
+
+  // ── 细项 ──
+  topLabel:  "",           // numbering:"toplabel" 时整组共用的系列名
+  bulletMark:"→",          // 条列符号，不要就设 ""
+  photoGrade:"muted",      // muted 低饱和大地色(推荐) | soft 轻微 | none 原图
+  tagStyle:  "text",       // text 纯文字 | solid 实底色块（重点色底 + 深字 + 斜体，最跳）
+  scale:     1,            // 1 = 1080x1350 | 2 = 2160x2700
+
+  // ── 浮水印 ──
+  wmMark: "star",          // star ☆ | crown 手绘皇冠 | dash —•— | none 纯文字
+  wm:     "bottom-center", // bottom-center | top-left | top-center
+  handle: "@your_handle",
+  logo:   "",
+
+  // ── 4 个颜色 ──
+  colors: {
+    bg:     "#1A1A1A",   // ③ 底色（照片底时当 fallback）
+    bg2:    "#2D2D2D",   // 渐层第二色
+    accent: "#E84A8A",   // ② 重点色 ← 副标题/数字/皇冠/波浪/箭头/暗号
+    ink:    "#FFFFFF",   // ④ 主文字色
+    sub:    "rgba(255,255,255,.70)"
+  }
+};
+
+// ═══════════════════ ② SLIDES ═══════════════════
+// type: cover 封面 | point 要点 | text 长文 | quote 金句 | cta 结尾
+// cover 可用：kicker(上行·观众的症状) / title(中·名词+数字) / sub(下·解决什么) / pills(小胶囊列)
+// cta  可用：title / keyword(暗号) / sub / note(底部小字·出处或集数)
+const SLIDES = [
+  { type:"point", tag:"公式一", title:"数字＋身分＋痛点", pointer:true,
+    body:["公式：〈[数字]个[身分]才懂的[痛点]〉","例：3 个做行销的才懂的加班真相"],
+    punch:"数字放~~最前面~~，滑动时最先被看到",
+    takeaway:"没有数字的标题，~~完读率直接砍半~~。" },
+  { type:"point", tag:"公式二", title:"我以为 ✗ 其实 ✓",
+    body:["公式：〈我以为[常识]，其实[真相]〉","例：我以为发得多就有流量"],
+    punch:"反差感是~~完读率的引擎~~" }
+];
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Noto+Serif+SC:wght@700;900&family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;700;900&family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&family=DM+Sans:wght@400;600;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#222; display:flex; flex-direction:column; align-items:center; gap:24px; padding:24px; }
+
+.slide {
+  width:1080px; height:1350px; position:relative; overflow:hidden;
+  font-family:"Noto Sans SC","PingFang SC",sans-serif;
+  color:var(--ink); display:flex; flex-direction:column; padding:110px 84px 250px;
+}
+.photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+/* 照片调色 —— 照片压灰，重点色才跳得起来（shimmer 那套的关键） */
+.g-muted .photo { filter:saturate(.58) brightness(.80) contrast(1.06) sepia(.10); }
+.g-soft  .photo { filter:saturate(.80) brightness(.90) contrast(1.02); }
+.g-none  .photo { filter:none; }
+.scrim { position:absolute; inset:0; }
+.body-wrap { position:relative; width:100%; }
+
+/* ── ① 底材 ── */
+.b-photo      { background:var(--bg); }
+.b-photo .scrim      { background:linear-gradient(180deg,rgba(0,0,0,.12) 0%,rgba(0,0,0,.04) 38%,rgba(0,0,0,.58) 100%); }
+.b-photo-dark { background:var(--bg); }
+.b-photo-dark .scrim { background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 62%,transparent) 0%,color-mix(in srgb,var(--bg) 88%,transparent) 100%); }
+.b-paper      { background:var(--bg); }
+.b-paper .scrim { background:repeating-linear-gradient(0deg,rgba(0,0,0,.014) 0 2px,transparent 2px 4px); }
+.b-solid      { background:var(--bg); }
+.b-solid .scrim { display:none; }
+.b-gradient   { background:linear-gradient(160deg,var(--bg) 0%,var(--bg2) 100%); }
+.b-gradient .scrim { display:none; }
+
+/* ── 横向对齐 ── */
+.x-center { text-align:center; }
+.x-center .body-wrap { text-align:center; }
+.x-center .line { justify-content:center; }
+.x-center .tag { display:inline-block; }
+.x-center .pills { justify-content:center; }
+.x-center .takeaway { text-align:center; }
+.x-left   { text-align:left; }
+
+/* ── ③ 文字位置 ── */
+.a-bottom { justify-content:flex-end; }
+.a-center { justify-content:center; }
+.a-top    { justify-content:flex-start; padding-top:170px; }
+
+/* ── ② 标题字体 ── */
+.title { font-size:82px; font-weight:900; line-height:1.24; color:var(--accent); }
+.f-hei   .title { font-family:"Noto Sans SC","PingFang SC",sans-serif; font-weight:900; }
+.f-song  .title { font-family:"Noto Serif SC","Songti SC",serif; font-weight:900; }
+/* 繁体：整张换成 TC 字型（笔画写法跟 SC 不同，用 SC 显示繁体会不地道） */
+.s-tc              { font-family:"Noto Sans TC","PingFang TC",sans-serif; }
+.s-tc.f-hei  .title { font-family:"Noto Sans TC","PingFang TC",sans-serif; letter-spacing:.02em; }
+.s-tc.f-song .title { font-family:"Noto Serif TC","PMingLiU",serif; letter-spacing:.04em; }
+.s-tc .line, .s-tc .sub, .s-tc .punch, .s-tc .longtext, .s-tc .takeaway, .s-tc .tag
+                   { font-family:"Noto Sans TC","PingFang TC",sans-serif; }
+.f-hk    .title { font-family:"Noto Serif TC","PMingLiU",serif; font-weight:900; letter-spacing:.04em; }
+.f-brush .title { font-family:"Ma Shan Zheng","Kaiti SC",cursive; font-weight:400;
+                  font-size:104px; line-height:1.2; }
+.f-hand  .title { font-family:"Zhi Mang Xing",cursive; font-weight:400;
+                  font-size:108px; line-height:1.16; }
+/* 极宋：压窄拉高 */
+.tight .title { transform:scaleY(1.22) scaleX(.94); transform-origin:left bottom;
+                letter-spacing:-.015em; margin-bottom:18px; }
+/* 标题主色 */
+.t-ink .title { color:var(--ink); }
+.t-accent .title { color:var(--accent); }
+/* 副标题：标题是白的时候，副标题吃重点色（shimmer 的关键做法） */
+.t-ink .sub { color:var(--accent); font-weight:700; }
+
+/* 文字黑色外发光 —— 压在亮背景也读得到 */
+.edge .title, .edge .sub, .edge .punch {
+  text-shadow:
+    0 0 12px rgba(0,0,0,.55), 0 3px 18px rgba(0,0,0,.45),
+    2px 0 0 rgba(0,0,0,.30), -2px 0 0 rgba(0,0,0,.30),
+    0 2px 0 rgba(0,0,0,.30), 0 -2px 0 rgba(0,0,0,.30); }
+
+/* ── 共用文字 ── */
+.tag   { display:inline-block; font-size:32px; color:var(--sub); margin-bottom:18px; letter-spacing:.06em; }
+.tag.solid { background:var(--accent); color:#1A1A1A; font-weight:900;
+             padding:6px 18px; border-radius:4px; font-size:30px;
+             font-style:italic; letter-spacing:.02em; }
+.s-tc .tag.solid { font-family:"Noto Serif TC",serif; }
+.sub   { font-size:40px; line-height:1.62; color:var(--ink); margin-top:26px; }
+.punch { font-size:42px; font-weight:700; color:var(--accent); margin-top:24px; }
+.line  { font-size:40px; line-height:1.62; color:var(--ink); }
+.longtext { font-size:44px; line-height:1.86; color:var(--ink); }
+.longtext em { color:var(--accent); font-style:normal; font-weight:700; }
+
+/* ── ④ 文字容器 ── */
+.box { margin-top:32px; }
+.c-none    .box { }
+.c-glass   .box { background:rgba(0,0,0,.38); backdrop-filter:blur(14px); border-radius:32px; padding:44px 48px; }
+.c-outline .box { border:3px solid var(--accent); border-radius:28px; padding:42px 46px;
+                  background:color-mix(in srgb,var(--accent) 6%,transparent); }
+.c-quote   .quote-mark { font-family:Georgia,serif; font-size:150px; font-weight:900;
+                  color:var(--accent); line-height:.62; display:block; }
+.quote { font-size:78px; font-weight:900; line-height:1.34; color:var(--accent);
+         white-space:pre-line; margin:30px 0; }
+.f-song .quote { font-family:"Noto Serif SC","Songti SC",serif; }
+.s-tc.f-song .quote { font-family:"Noto Serif TC","PMingLiU",serif; }
+.s-tc.f-hei  .quote { font-family:"Noto Sans TC","PingFang TC",sans-serif; }
+.f-hk   .quote { font-family:"Noto Serif TC","PMingLiU",serif; letter-spacing:.04em; }
+.f-brush .quote, .f-hand .quote { font-family:"Ma Shan Zheng",cursive; font-weight:400; font-size:88px; }
+
+/* ── ⑤ 编号 ── */
+.num-circle { display:inline-flex; align-items:center; justify-content:center;
+              width:104px; height:104px; border-radius:50%; background:var(--accent);
+              color:var(--bg); font-size:60px; font-weight:900; margin-bottom:26px; }
+.num-corner { position:absolute; top:64px; right:84px; font-size:34px; color:var(--sub);
+              background:rgba(0,0,0,.28); border-radius:999px; padding:10px 26px; }
+
+/* ── ⑥ 装饰 ── */
+.sparkle { color:var(--accent); font-size:72px; line-height:1; margin-bottom:6px;
+           letter-spacing:6px; display:block; }
+.sparkle-br { position:absolute; right:120px; bottom:290px; color:var(--accent);
+              font-size:56px; opacity:.85; }
+.arrow   { position:absolute; right:84px; bottom:136px; width:120px; height:64px; color:var(--accent); }
+.u-mark  { background:linear-gradient(transparent 62%,color-mix(in srgb,var(--accent) 55%,transparent) 62%); }
+
+/* ── 手绘加号：文字里写 ++ 自动换成手绘十字 ── */
+.plus { display:inline-block; width:52px; height:52px; color:var(--accent);
+        vertical-align:-4px; margin:0 6px; }
+
+/* ── 手绘小皇冠（大女主记号） ── */
+.crown { display:inline-block; width:96px; height:68px; color:var(--accent);
+         vertical-align:-10px; margin-right:16px; }
+
+/* ── 手绘波浪底线：文字里写 ~~字~~ ── */
+.u-wave { position:relative; padding-bottom:18px; }
+.u-wave::after {
+  content:""; position:absolute; left:-2px; right:-2px; bottom:0; height:13px;
+  background-color:var(--accent);
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='34' height='13'><path d='M0 8 Q4.5 2 9 7.5 T18 7.5 T27 7.5 T36 7.5' fill='none' stroke='black' stroke-width='3.4' stroke-linecap='round'/></svg>") repeat-x 0 100% / 34px 13px;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='34' height='13'><path d='M0 8 Q4.5 2 9 7.5 T18 7.5 T27 7.5 T36 7.5' fill='none' stroke='black' stroke-width='3.4' stroke-linecap='round'/></svg>") repeat-x 0 100% / 34px 13px; }
+
+/* ── 手绘指向箭头（公式 → 例子） ── */
+.box { position:relative; }
+.pointer { position:absolute; right:34px; top:26px; width:128px; height:96px;
+           color:var(--accent); opacity:.92; pointer-events:none; }
+
+/* ── 手绘圈圈 / 打勾打叉（备用） ── */
+.circ { position:relative; display:inline-block; }
+.circ svg { position:absolute; left:-14px; top:-12px; width:calc(100% + 28px);
+            height:calc(100% + 24px); color:var(--accent); }
+.tick { display:inline-block; width:44px; height:44px; color:var(--accent); vertical-align:-8px; }
+
+/* ── 左上角固定系列标签（抄 cindy-ip ep-tag） ── */
+.toplabel { position:absolute; top:64px; left:84px; font-family:"DM Sans",sans-serif;
+            font-size:28px; font-weight:600; letter-spacing:.12em; color:var(--sub); }
+
+/* ── 封面剧透药丸（抄 cindy-ip step-pill） ── */
+.pills { display:flex; gap:18px; flex-wrap:wrap; margin-top:34px; }
+.pill  { font-family:"DM Sans",sans-serif; font-size:26px; font-weight:600; letter-spacing:.05em;
+         color:var(--accent); border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);
+         background:color-mix(in srgb,var(--accent) 14%,transparent);
+         padding:9px 22px; border-radius:8px; }
+
+/* ── 条列符号 ── */
+.line { display:flex; gap:20px; align-items:flex-start; }
+.bmark { color:var(--accent); font-weight:700; flex:none; }
+
+/* ── 底部总结句（抄 cindy-ip takeaway） ── */
+.takeaway { font-size:38px; line-height:1.5; color:var(--sub); margin-top:34px;
+            padding-top:28px; border-top:1px solid color-mix(in srgb,var(--ink) 18%,transparent); }
+.takeaway em { color:var(--ink); font-weight:700; font-style:normal; }
+
+/* ── CTA 互动版型（抄 cindy-ip cta） ── */
+.acts { display:flex; gap:64px; margin-top:44px; }
+.act  { text-align:center; }
+.act-i { font-size:64px; }
+.act-l { font-family:"DM Sans",sans-serif; font-size:26px; font-weight:600;
+         color:var(--sub); margin-top:10px; letter-spacing:.06em; }
+
+/* ── 浮水印 ── */
+.wm { position:absolute; font-size:30px; letter-spacing:.14em; color:var(--sub); }
+.wm-bottom-center { left:0; right:0; bottom:58px; text-align:center; }
+.wm-top-center    { left:0; right:0; top:58px; text-align:center; font-style:italic; }
+.wm-top-left      { left:84px; top:64px; font-weight:900; font-size:34px;
+                    line-height:1.15; color:var(--ink); letter-spacing:.18em; }
+.wm img { height:56px; }
+.wm-crown { display:inline-block; width:40px; height:29px; color:var(--accent);
+            vertical-align:-3px; margin:0 14px; }
+
+/* ── CTA 暗号 ── */
+.keyword { display:inline-block; background:var(--accent); color:var(--bg); font-weight:900;
+           font-size:70px; padding:10px 34px; border-radius:18px; margin:0 8px; }
+/* 封面上行（观众的症状）—— 撑起「上症状／中名词／下解决什么」三行公式 */
+.kicker{font-size:44px;font-weight:700;line-height:1.34;margin-bottom:14px;opacity:.92;color:var(--ink);}
+.edge .kicker{text-shadow:0 3px 8px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.7);}
+/* CTA 底部小字（出处／集数） */
+.note-s{margin-top:26px;font-size:24px;opacity:.48;font-weight:500;letter-spacing:.02em;}
+</style>
+
+<script>
+const C = CONFIG, T = C.colors;
+const esc = s => String(s ?? "").replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+// esc 之后再把 ~~字~~ 转成波浪底线（deco 有 wave 才生效）
+const fx = s => {
+  let t = has("wave")
+    ? esc(s).replace(/~~(.+?)~~/g, '<span class="u-wave">$1</span>')
+    : esc(s).replace(/~~(.+?)~~/g, "$1");
+  return t.replace(/\+\+/g, PLUS);   // ++ → 手绘加号
+};
+const has = d => C.deco.includes(d);
+const usesPhoto = C.base === "photo" || C.base === "photo-dark";
+
+const ARROW = `<svg class="arrow" viewBox="0 0 120 64" fill="none" stroke="currentColor"
+  stroke-width="7" stroke-linecap="round"><path d="M6 44C34 16 74 8 112 24"/><path d="M90 8l24 16-20 20"/></svg>`;
+const SPARKLE   = `<div class="sparkle">✦ ✧</div>`;
+const SPARKLE_BR = `<div class="sparkle-br">✩ ✧</div>`;
+
+// 手绘小皇冠 —— 刻意画歪，笔触不闭合
+const CROWN = `<svg class="crown" viewBox="0 0 78 56" preserveAspectRatio="xMidYMid meet" fill="none" stroke="currentColor"
+  stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M7 46C6 34 4.5 21 4 13c6 5 12 11 17 15 4-6 9-14 13-21 4 7 8 15 12 21 5-4 11-10 17-15
+           -.6 8-2 21-3 33"/>
+  <path d="M8 47c14-3 34-3.5 62-1"/></svg>`;
+
+// 手绘加号 —— 刻意画歪，两笔不交在正中
+const PLUS = `<svg class="plus" viewBox="0 0 52 52" fill="none" stroke="currentColor"
+  stroke-width="7" stroke-linecap="round"><path d="M26 8c.6 12 .4 24-.6 36"/>
+  <path d="M8 25c12-.8 24-.6 36 .4"/></svg>`;
+
+// 手绘指向箭头 —— 从公式弯向例子
+const POINTER = `<svg class="pointer" viewBox="0 0 150 110" fill="none" stroke="currentColor"
+  stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M8 12c34 2 62 18 76 46 3 6 5 13 6 21"/>
+  <path d="M74 68l17 13 15-16"/></svg>`;
+
+const WMCROWN = `<svg class="wm-crown" viewBox="0 0 78 56" fill="none" stroke="currentColor"
+  stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M7 46C6 34 4.5 21 4 13c6 5 12 11 17 15 4-6 9-14 13-21 4 7 8 15 12 21 5-4 11-10 17-15
+           -.6 8-2 21-3 33"/><path d="M8 47c14-3 34-3.5 62-1"/></svg>`;
+
+function watermark() {
+  if (C.logo) return `<div class="wm wm-${C.wm}"><img src="${C.logo}"></div>`;
+  const h = esc(C.handle);
+  const m = C.wmMark;
+  const inner = m === "crown" ? `${WMCROWN}${h}${WMCROWN}`
+              : m === "dash"  ? `— • ${h} • —`
+              : m === "none"  ? h
+              : `☆ ${h} ☆`;
+  return `<div class="wm wm-${C.wm}">${inner}</div>`;
+}
+
+function numbering(d, i, total) {
+  if (C.numbering === "circle" && d.num) return `<div class="num-circle">${esc(d.num)}</div>`;
+  if (C.numbering === "corner")          return `<div class="num-corner">${i + 1}/${total}</div>`;
+  if (C.numbering === "tag" && d.tag)    return `<div class="tag${C.tagStyle === "solid" ? " solid" : ""}">${esc(d.tag)}</div>`;
+  return "";
+}
+
+function box(html) { return html ? `<div class="box">${html}</div>` : ""; }
+function topLabel() {
+  return (C.numbering === "toplabel" && C.topLabel)
+    ? `<div class="toplabel">${esc(C.topLabel)}</div>` : "";
+}
+function takeaway(d) {
+  if (!d.takeaway) return "";
+  const t = has("wave") ? String(d.takeaway).replace(/~~(.+?)~~/g, '<span class="u-wave">$1</span>')
+                        : String(d.takeaway).replace(/~~(.+?)~~/g, "$1");
+  return `<div class="takeaway">${t}</div>`;
+}
+
+function content(d) {
+  const crown = has("crown") ? CROWN : "";
+
+  if (d.type === "cover") {
+    const pills = (d.pills || []).map(t => `<div class="pill">${esc(t)}</div>`).join("");
+    return (d.kicker ? `<div class="kicker">${String(d.kicker)}</div>` : "") +
+           `<div class="title">${crown}${fx(d.title)}</div>` +
+           (d.sub ? `<div class="sub">${fx(d.sub)}</div>` : "") +
+           (pills ? `<div class="pills">${pills}</div>` : "");
+  }
+
+  if (d.type === "point") {
+    const bm = C.bulletMark ? `<span class="bmark">${esc(C.bulletMark)}</span>` : "";
+    const lines = (d.body || []).map(l => `<div class="line">${bm}<span>${fx(l)}</span></div>`).join("");
+    const punch = d.punch ? `<div class="punch">${fx(d.punch)}</div>` : "";
+    const ptr = (has("pointer") && d.pointer) ? POINTER : "";
+    return `<div class="title">${crown}${fx(d.title)}</div>` + box(ptr + lines + punch) + takeaway(d);
+  }
+
+  if (d.type === "text")
+    return `<div class="longtext">${String(d.body).split("\n").map(l => l || "&nbsp;").join("<br>")}</div>`;
+
+  if (d.type === "quote") {
+    const q = (C.container === "quote" || has("quote"));
+    return (q ? `<span class="quote-mark">&ldquo;</span>` : "") +
+      `<div class="quote">${esc(d.quote)}</div>` +
+      (q ? `<div style="text-align:right"><span class="quote-mark">&rdquo;</span></div>` : "") +
+      (d.sub ? `<div class="sub">${esc(d.sub)}</div>` : "");
+  }
+
+  if (d.type === "cta") {
+    // 有 keyword = 留言暗号型（推荐）；没有 = 互动型（点赞/收藏/分享）
+    const body = d.keyword
+      ? `<div class="sub">底下留言 <span class="keyword">${esc(d.keyword)}</span></div>`
+      : `<div class="acts">` + [["❤️","点赞"],["🔖","收藏"],["↗️","分享"]]
+          .map(([i,l]) => `<div class="act"><div class="act-i">${i}</div><div class="act-l">${l}</div></div>`)
+          .join("") + `</div>`;
+    return `<div class="title">${crown}${fx(d.title)}</div>` + body +
+      (d.sub ? `<div class="sub">${fx(d.sub)}</div>` : "") +
+      (d.note ? `<div class="note-s">${String(d.note)}</div>` : "");
+  }
+
+  return "";
+}
+
+function render(d, i, total) {
+  const base = d.base || C.base;                       // 单张可覆写底材（例：封面用 photo，内页 photo-dark）
+  const wantsPhoto = (base === "photo" || base === "photo-dark");
+  const photo = (wantsPhoto && d.photo) ? `<img class="photo" src="${d.photo}">` : "";
+  const cls = `slide b-${base} g-${C.photoGrade} f-${C.titleFont} s-${C.script} t-${C.titleTone} x-${C.textAlign}` +
+    ` a-${C.align} c-${C.container}${C.textEdge ? " edge" : ""}` +
+    ((C.titleFont === "song" && C.songTight) ? " tight" : "");
+  const vars = `--bg:${T.bg};--bg2:${T.bg2};--accent:${T.accent};--ink:${T.ink};--sub:${T.sub}`;
+  const last = i === total - 1;
+  return `<div class="${cls}" style="${vars}">
+    ${photo}<div class="scrim"></div>
+    ${has("sparkle") ? SPARKLE_BR : ""}${topLabel()}
+    <div class="body-wrap">${has("sparkle") ? SPARKLE : ""}${numbering(d, i, total)}${content(d)}</div>
+    ${watermark()}
+    ${(has("arrow") && !last) ? ARROW : ""}
+  </div>`;
+}
+
+document.write(SLIDES.map((d, i) => render(d, i, SLIDES.length)).join(""));
+</script>
