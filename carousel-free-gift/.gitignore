@@ -1,0 +1,8 @@
+output/
+node_modules/
+*.bak
+.DS_Store
+assets/*.png
+assets/*.jpg
+assets/*.jpeg
+BRANDS.md
