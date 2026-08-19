@@ -13,27 +13,29 @@
 // ═══════════════════ ① CONFIG ═══════════════════
 const CONFIG = {
 
-  // ── 版型 6 维度（各自独立选） ──
-  base:      "photo",      // photo 真人照 | photo-dark 照片压暗 | paper 纸质 | solid 纯色 | gradient 渐层
+  // ── 版型 13 维度（各自独立选） ──
+  base:      "solid",      // photo 真人照 | photo-dark 照片压暗 | paper 纸质 | solid 纯色 | gradient 渐层
                            //   单张可在 SLIDES 里写 base:"..." 覆写（例：封面用亮照，内页压暗）
   titleFont: "hei",        // hei 黑体 | song 宋体 | brush 书法毛笔 | hand 手写签名
   songTight: false,        // titleFont:"song" 时设 true = 极宋（压窄拉高）
   script:    "sc",         // sc 简体 | tc 繁体  ← 跟字体各自独立
-  align:     "center",     // 垂直：bottom 下半部 | center 居中(参考帖用这个) | top 上半部
-  textAlign: "center",     // 横向：left 左对齐 | center 置中(参考帖用这个)
+  align:     "bottom",     // 垂直：bottom 下半部 | center 居中 | top 上半部
+  textAlign: "left",       // 横向：left 左对齐 | center 置中
   container: "glass",      // none 无框 | glass 毛玻璃 | outline 描边 | quote 引号框
   numbering: "tag",        // none | circle 圆圈数字 | corner 3/7 | tag 内容小标签 | toplabel 左上固定标签
-  deco:      ["arrow"],    // 可复选：arrow 右滑箭头 | crown 手绘皇冠 | wave 波浪底线 ~~字~~
-                           //         pointer 指向箭头 | sparkle 星星 | quote 大引号
+  deco:      ["arrow","wave"],  // 可复选：arrow 右滑箭头 | crown 手绘皇冠 | wave 波浪底线 ~~字~~
+                                //         pointer 指向箭头 | sparkle 星星 | quote 大引号
   // ── 文字处理（照片底的关键） ──
   titleTone: "ink",        // ink 标题白字·副标题吃重点色(推荐) | accent 标题直接用重点色
   textEdge:  true,         // 黑色外发光描边 —— 照片底一定要开，压到亮处才读得到
 
   // ── 细项 ──
-  topLabel:  "",           // numbering:"toplabel" 时整组共用的系列名
+  topLabel:  "",           // 整组共用的系列名（左上角），不要就留空 —— 🔴 跟 numbering 各自独立，可并存
   bulletMark:"→",          // 条列符号，不要就设 ""
-  photoGrade:"muted",      // muted 低饱和大地色(推荐) | soft 轻微 | none 原图
-  tagStyle:  "text",       // text 纯文字 | solid 实底色块（重点色底 + 深字 + 斜体，最跳）
+  photoGrade:"soft",       // muted 低饱和大地色 | soft 轻微(推荐) | none 原图
+  tagStyle:  "solid",      // text 纯文字 | solid 实底色块（重点色底 + 深字 + 斜体，最跳）
+  tagPlace:  "inline",     // inline 标签跟标题左右并排 | above 标签压在标题上一行
+  density:   "airy",       // airy 字大·行距宽·留白多（一张只放 3 行）| normal 紧凑（放得下 4–5 行）
   scale:     1,            // 1 = 1080x1350 | 2 = 2160x2700
 
   // ── 浮水印 ──
@@ -46,7 +48,7 @@ const CONFIG = {
   colors: {
     bg:     "#1A1A1A",   // ③ 底色（照片底时当 fallback）
     bg2:    "#2D2D2D",   // 渐层第二色
-    accent: "#E84A8A",   // ② 重点色 ← 副标题/数字/皇冠/波浪/箭头/暗号
+    accent: "#E8A33D",   // ② 重点色 ← 副标题/数字/皇冠/波浪/箭头/暗号
     ink:    "#FFFFFF",   // ④ 主文字色
     sub:    "rgba(255,255,255,.70)"
   }
@@ -55,15 +57,35 @@ const CONFIG = {
 // ═══════════════════ ② SLIDES ═══════════════════
 // type: cover 封面 | point 要点 | text 长文 | quote 金句 | cta 结尾
 // cover 可用：kicker(上行·观众的症状) / title(中·名词+数字) / sub(下·解决什么) / pills(小胶囊列)
+// point 可用：tag(小标签) / title / body[] / punch(重点句) / takeaway(收尾句) / photo
+//   🔴 body 每行写「小标题 :: 内容」→ 小标题会吃重点色另起一行（分得出哪行是方法、哪行是例子）
 // cta  可用：title / keyword(暗号) / sub / note(底部小字·出处或集数)
+// 🔴 单张可写 photo:"xxx.png" 指定底图；base:"photo" 才会吃
 const SLIDES = [
-  { type:"point", tag:"公式一", title:"数字＋身分＋痛点", pointer:true,
-    body:["公式：〈[数字]个[身分]才懂的[痛点]〉","例：3 个做行销的才懂的加班真相"],
+
+  { type:"cover",
+    kicker:"每次要发文就卡住",
+    title:"3 个万用标题公式",
+    sub:"照抄就能写完这个月",
+    pills:["公式一","公式二","公式三"] },
+
+  { type:"point", tag:"公式一", title:"数字＋身分＋痛点",
+    body:["怎么写 :: 〈[数字]个[身分]才懂的[痛点]〉",
+          "示范 A :: 〈3 个做行销的才懂的加班真相〉",
+          "示范 B :: 〈5 个新手爸妈都踩过的坑〉"],
     punch:"数字放~~最前面~~，滑动时最先被看到",
     takeaway:"没有数字的标题，~~完读率直接砍半~~。" },
+
   { type:"point", tag:"公式二", title:"我以为 ✗ 其实 ✓",
-    body:["公式：〈我以为[常识]，其实[真相]〉","例：我以为发得多就有流量"],
-    punch:"反差感是~~完读率的引擎~~" }
+    body:["怎么写 :: 〈我以为[常识]，其实[真相]〉",
+          "示范 A :: 〈我以为发得多就有流量〉",
+          "示范 B :: 〈我以为价格低才卖得动〉"],
+    punch:"反差感是~~完读率的引擎~~",
+    takeaway:"先认同他，再推翻他。" },
+
+  { type:"cta", title:"存起来，下次直接用",
+    sub:"也可以传给那个一直说没灵感的朋友",
+    note:"共 4 张" }
 ];
 </script>
 
@@ -154,6 +176,18 @@ body { background:#222; display:flex; flex-direction:column; align-items:center;
 .longtext { font-size:44px; line-height:1.86; color:var(--ink); }
 .longtext em { color:var(--accent); font-style:normal; font-weight:700; }
 
+/* ── 疏密：airy = 字大、行距宽、留白多 ── */
+.d-airy .line     { font-size:46px; line-height:1.92; margin-bottom:16px; }
+.d-airy .box      { padding:58px 54px; }
+.d-airy .punch    { font-size:48px; margin-top:36px; }
+.d-airy .takeaway { font-size:42px; margin-top:46px; padding-top:36px; line-height:1.6; }
+.d-airy .sub      { font-size:44px; margin-top:32px; }
+.d-airy .kicker   { font-size:46px; margin-bottom:18px; }
+.d-airy .tag       { font-size:40px; margin-bottom:22px; }
+.d-airy .tag.solid { font-size:52px; padding:8px 26px; border-radius:8px; }
+/* 整块文字往上提（底部留白加大 = 内容上移） */
+.d-airy.a-bottom.slide-cover { padding-bottom:420px; }   /* 封面再提高一截 */
+
 /* ── ④ 文字容器 ── */
 .box { margin-top:32px; }
 .c-none    .box { }
@@ -169,6 +203,11 @@ body { background:#222; display:flex; flex-direction:column; align-items:center;
 .s-tc.f-hei  .quote { font-family:"Noto Sans TC","PingFang TC",sans-serif; }
 .f-hk   .quote { font-family:"Noto Serif TC","PMingLiU",serif; letter-spacing:.04em; }
 .f-brush .quote, .f-hand .quote { font-family:"Ma Shan Zheng",cursive; font-weight:400; font-size:88px; }
+
+/* ── 标签跟标题左右并排 ── */
+.title-row { display:flex; align-items:center; gap:24px; }
+.title-row .tag { margin-bottom:0; flex:none; }
+.title-row .title { margin-bottom:0; }
 
 /* ── ⑤ 编号 ── */
 .num-circle { display:inline-flex; align-items:center; justify-content:center;
@@ -212,11 +251,11 @@ body { background:#222; display:flex; flex-direction:column; align-items:center;
             height:calc(100% + 24px); color:var(--accent); }
 .tick { display:inline-block; width:44px; height:44px; color:var(--accent); vertical-align:-8px; }
 
-/* ── 左上角固定系列标签（抄 cindy-ip ep-tag） ── */
+/* ── 左上角固定系列标签 ── */
 .toplabel { position:absolute; top:64px; left:84px; font-family:"DM Sans",sans-serif;
             font-size:28px; font-weight:600; letter-spacing:.12em; color:var(--sub); }
 
-/* ── 封面剧透药丸（抄 cindy-ip step-pill） ── */
+/* ── 封面剧透药丸 ── */
 .pills { display:flex; gap:18px; flex-wrap:wrap; margin-top:34px; }
 .pill  { font-family:"DM Sans",sans-serif; font-size:26px; font-weight:600; letter-spacing:.05em;
          color:var(--accent); border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);
@@ -225,14 +264,23 @@ body { background:#222; display:flex; flex-direction:column; align-items:center;
 
 /* ── 条列符号 ── */
 .line { display:flex; gap:20px; align-items:flex-start; }
-.bmark { color:var(--accent); font-weight:700; flex:none; }
+.bmark { color:var(--accent); font-weight:700; flex:none; align-self:flex-end; }
 
-/* ── 底部总结句（抄 cindy-ip takeaway） ── */
+/* ── 条列小标题（body 写「小标题 :: 内容」自动生效） ── */
+.l-wrap  { display:block; }
+.l-label { display:block; font-size:28px; font-weight:700; color:var(--accent);
+           letter-spacing:.10em; line-height:1.2; margin-bottom:8px; opacity:.95; }
+.l-text  { display:block; }
+.d-airy .l-label { font-size:30px; margin-bottom:10px; }
+.d-airy .line    { line-height:1.5; margin-bottom:30px; }
+.line .bmark     { line-height:inherit; }
+
+/* ── 底部总结句 ── */
 .takeaway { font-size:38px; line-height:1.5; color:var(--sub); margin-top:34px;
             padding-top:28px; border-top:1px solid color-mix(in srgb,var(--ink) 18%,transparent); }
 .takeaway em { color:var(--ink); font-weight:700; font-style:normal; }
 
-/* ── CTA 互动版型（抄 cindy-ip cta） ── */
+/* ── CTA 互动版型 ── */
 .acts { display:flex; gap:64px; margin-top:44px; }
 .act  { text-align:center; }
 .act-i { font-size:64px; }
@@ -320,8 +368,7 @@ function numbering(d, i, total) {
 
 function box(html) { return html ? `<div class="box">${html}</div>` : ""; }
 function topLabel() {
-  return (C.numbering === "toplabel" && C.topLabel)
-    ? `<div class="toplabel">${esc(C.topLabel)}</div>` : "";
+  return C.topLabel ? `<div class="toplabel">${esc(C.topLabel)}</div>` : "";
 }
 function takeaway(d) {
   if (!d.takeaway) return "";
@@ -330,8 +377,10 @@ function takeaway(d) {
   return `<div class="takeaway">${t}</div>`;
 }
 
-function content(d) {
+function content(d, tagHtml) {
   const crown = has("crown") ? CROWN : "";
+  const inlineTag = (C.tagPlace === "inline" && tagHtml) ? tagHtml : "";
+  const T_ = t => inlineTag ? `<div class="title-row">${inlineTag}<div class="title">${t}</div></div>` : `<div class="title">${t}</div>`;
 
   if (d.type === "cover") {
     const pills = (d.pills || []).map(t => `<div class="pill">${esc(t)}</div>`).join("");
@@ -343,10 +392,16 @@ function content(d) {
 
   if (d.type === "point") {
     const bm = C.bulletMark ? `<span class="bmark">${esc(C.bulletMark)}</span>` : "";
-    const lines = (d.body || []).map(l => `<div class="line">${bm}<span>${fx(l)}</span></div>`).join("");
+    const lines = (d.body || []).map(l => {
+      const m = String(l).split("::");
+      const inner = m.length > 1
+        ? `<span class="l-label">${esc(m[0].trim())}</span><span class="l-text">${fx(m.slice(1).join("::").trim())}</span>`
+        : `<span class="l-text">${fx(l)}</span>`;
+      return `<div class="line">${bm}<span class="l-wrap">${inner}</span></div>`;
+    }).join("");
     const punch = d.punch ? `<div class="punch">${fx(d.punch)}</div>` : "";
     const ptr = (has("pointer") && d.pointer) ? POINTER : "";
-    return `<div class="title">${crown}${fx(d.title)}</div>` + box(ptr + lines + punch) + takeaway(d);
+    return T_(crown + fx(d.title)) + box(ptr + lines + punch) + takeaway(d);
   }
 
   if (d.type === "text")
@@ -364,10 +419,10 @@ function content(d) {
     // 有 keyword = 留言暗号型（推荐）；没有 = 互动型（点赞/收藏/分享）
     const body = d.keyword
       ? `<div class="sub">底下留言 <span class="keyword">${esc(d.keyword)}</span></div>`
-      : `<div class="acts">` + [["❤️","点赞"],["🔖","收藏"],["↗️","分享"]]
+      : `<div class="acts">` + (C.script === "tc" ? [["❤️","按讚"],["🔖","收藏"],["↗️","分享"]] : [["❤️","点赞"],["🔖","收藏"],["↗️","分享"]])
           .map(([i,l]) => `<div class="act"><div class="act-i">${i}</div><div class="act-l">${l}</div></div>`)
           .join("") + `</div>`;
-    return `<div class="title">${crown}${fx(d.title)}</div>` + body +
+    return T_(crown + fx(d.title)) + body +
       (d.sub ? `<div class="sub">${fx(d.sub)}</div>` : "") +
       (d.note ? `<div class="note-s">${String(d.note)}</div>` : "");
   }
@@ -379,15 +434,15 @@ function render(d, i, total) {
   const base = d.base || C.base;                       // 单张可覆写底材（例：封面用 photo，内页 photo-dark）
   const wantsPhoto = (base === "photo" || base === "photo-dark");
   const photo = (wantsPhoto && d.photo) ? `<img class="photo" src="${d.photo}">` : "";
-  const cls = `slide b-${base} g-${C.photoGrade} f-${C.titleFont} s-${C.script} t-${C.titleTone} x-${C.textAlign}` +
-    ` a-${C.align} c-${C.container}${C.textEdge ? " edge" : ""}` +
+  const cls = `slide slide-${d.type} b-${base} g-${C.photoGrade} f-${C.titleFont} s-${C.script} t-${C.titleTone} x-${C.textAlign}` +
+    ` a-${C.align} c-${C.container} d-${C.density || "normal"}${C.textEdge ? " edge" : ""}` +
     ((C.titleFont === "song" && C.songTight) ? " tight" : "");
   const vars = `--bg:${T.bg};--bg2:${T.bg2};--accent:${T.accent};--ink:${T.ink};--sub:${T.sub}`;
   const last = i === total - 1;
   return `<div class="${cls}" style="${vars}">
     ${photo}<div class="scrim"></div>
     ${has("sparkle") ? SPARKLE_BR : ""}${topLabel()}
-    <div class="body-wrap">${has("sparkle") ? SPARKLE : ""}${numbering(d, i, total)}${content(d)}</div>
+    <div class="body-wrap">${(has("sparkle") && d.type === "cover") ? SPARKLE : ""}${(() => { const n = numbering(d, i, total); const inline = C.tagPlace === "inline" && C.numbering === "tag" && d.tag; return (inline ? "" : n) + content(d, n); })()}</div>
     ${watermark()}
     ${(has("arrow") && !last) ? ARROW : ""}
   </div>`;
