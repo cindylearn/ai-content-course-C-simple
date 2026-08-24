@@ -13,54 +13,62 @@
 // ═══════════════════ ① CONFIG ═══════════════════
 const CONFIG = {
 
-  // ── 版型 13 维度（各自独立选） ──
+  // ── 版型 14 维度（各自独立选） ──
+  // 🔴 第 14 维＝封面骨架：标题主导（预设）| 数字主导 bigNum | 清单主导 cards | 极简留白
   base:      "solid",      // photo 真人照 | photo-dark 照片压暗 | paper 纸质 | solid 纯色 | gradient 渐层
+                           //   🆕 grid 细网格 | diag 斜切双色 | chart 图表线条 | glow 柔光晕（全部 0 credit 纯 CSS/SVG）
                            //   单张可在 SLIDES 里写 base:"..." 覆写（例：封面用亮照，内页压暗）
-  titleFont: "hei",        // hei 黑体 | song 宋体 | brush 书法毛笔 | hand 手写签名
+  titleFont: "hei",        // hei 黑体 | heiTight 细长黑体 | song 宋体 | brush 书法 | hand 手写
   songTight: false,        // titleFont:"song" 时设 true = 极宋（压窄拉高）
-  script:    "sc",         // sc 简体 | tc 繁体  ← 跟字体各自独立
-  align:     "bottom",     // 垂直：bottom 下半部 | center 居中 | top 上半部
-  textAlign: "left",       // 横向：left 左对齐 | center 置中
+  script:    "sc",         // sc 简体 | tc 繁体
+  align:     "bottom",     // bottom 下半部 | center 居中 | top 上半部
+  textAlign: "left",       // left 左对齐 | center 置中
   container: "glass",      // none 无框 | glass 毛玻璃 | outline 描边 | quote 引号框
   numbering: "tag",        // none | circle 圆圈数字 | corner 3/7 | tag 内容小标签 | toplabel 左上固定标签
-  deco:      ["arrow","wave"],  // 可复选：arrow 右滑箭头 | crown 手绘皇冠 | wave 波浪底线 ~~字~~
-                                //         pointer 指向箭头 | sparkle 星星 | quote 大引号
+  deco:      ["arrow","wave"],  // arrow 右滑箭头 | crown 皇冠 | wave 波浪底线 ~~字~~
+                                // pointer 指向箭头 | sparkle 星星 | quote 大引号
+
   // ── 文字处理（照片底的关键） ──
   titleTone: "ink",        // ink 标题白字·副标题吃重点色(推荐) | accent 标题直接用重点色
-  textEdge:  true,         // 黑色外发光描边 —— 照片底一定要开，压到亮处才读得到
+  textEdge:  true,         // 黑色外发光描边 —— 照片底一定要开
 
   // ── 细项 ──
-  topLabel:  "",           // 整组共用的系列名（左上角），不要就留空 —— 🔴 跟 numbering 各自独立，可并存
-  bulletMark:"→",          // 条列符号，不要就设 ""
-  photoGrade:"soft",       // muted 低饱和大地色 | soft 轻微(推荐) | none 原图
-  tagStyle:  "solid",      // text 纯文字 | solid 实底色块（重点色底 + 深字 + 斜体，最跳）
-  tagPlace:  "inline",     // inline 标签跟标题左右并排 | above 标签压在标题上一行
-  density:   "airy",       // airy 字大·行距宽·留白多（一张只放 3 行）| normal 紧凑（放得下 4–5 行）
+  topLabel:  "",           // 整组共用的系列名（左上角），极简风就留空
+  bulletMark:"→",
+  photoGrade:"soft",       // muted 低饱和 | soft 轻微(推荐) | none 原图
+  tagStyle:  "solid",      // text 纯文字 | solid 实底色块
+  tagPlace:  "inline",     // inline 标签跟标题并排 | above 标签压标题上一行
+  density:   "airy",       // airy 字大留白多（一张 3 行）| normal 紧凑（4–5 行）
   scale:     1,            // 1 = 1080x1350 | 2 = 2160x2700
 
   // ── 浮水印 ──
+  actIcons: "emoji",       // mono 单色线条图示（吃 accent 色）| emoji 彩色 emoji
   wmMark: "star",          // star ☆ | crown 手绘皇冠 | dash —•— | none 纯文字
-  wm:     "bottom-center", // bottom-center | top-left | top-center
+  wm:     "bottom-center",
   handle: "@your_handle",
   logo:   "",
 
   // ── 4 个颜色 ──
   colors: {
-    bg:     "#1A1A1A",   // ③ 底色（照片底时当 fallback）
-    bg2:    "#2D2D2D",   // 渐层第二色
-    accent: "#E8A33D",   // ② 重点色 ← 副标题/数字/皇冠/波浪/箭头/暗号
-    ink:    "#FFFFFF",   // ④ 主文字色
-    sub:    "rgba(255,255,255,.70)"
+    bg:     "#1A1A1A",
+    bg2:    "#2D2D2D",
+    accent: "#E8A33D",
+    ink:    "#FFFFFF",
+    sub:    "rgba(255,255,255,.70)",
+    tagInk: "#1A1A1A"      // 标签实底色块上的字色 —— accent 是深色时改 #FFFFFF
   }
 };
 
-// ═══════════════════ ② SLIDES ═══════════════════
-// type: cover 封面 | point 要点 | text 长文 | quote 金句 | cta 结尾
-// cover 可用：kicker(上行·观众的症状) / title(中·名词+数字) / sub(下·解决什么) / pills(小胶囊列)
-// point 可用：tag(小标签) / title / body[] / punch(重点句) / takeaway(收尾句) / photo
-//   🔴 body 每行写「小标题 :: 内容」→ 小标题会吃重点色另起一行（分得出哪行是方法、哪行是例子）
-// cta  可用：title / keyword(暗号) / sub / note(底部小字·出处或集数)
-// 🔴 单张可写 photo:"xxx.png" 指定底图；base:"photo" 才会吃
+const _ico = p => `<svg viewBox="0 0 24 24" width="58" height="58" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const HEART = _ico('<path d="M20.8 8.6c0 4.9-8.8 10.4-8.8 10.4S3.2 13.5 3.2 8.6a4.6 4.6 0 0 1 8.8-1.8 4.6 4.6 0 0 1 8.8 1.8z"/>');
+const BOOK  = _ico('<path d="M6 3.5h12v17l-6-4.3-6 4.3z"/>');
+const SEND  = _ico('<path d="M21 3 10.5 13.5M21 3l-6.8 18-3.7-7.5L3 9.8z"/>');
+
+
+// 封面三种骨架示范（换掉第一张的写法就好）：
+//   标题主导 → { type:"cover", kicker, title, sub, pills:[...] }
+//   巨数字   → { type:"cover", kicker, bigNum:"3", title:"样要先修的东西", sub, note }
+//   三格清单 → { type:"cover", kicker, title, cards:["① 一句","② 一句","③ 一句"], sub, note }
 const SLIDES = [
 
   { type:"cover",
@@ -81,12 +89,17 @@ const SLIDES = [
           "示范 A :: 〈我以为发得多就有流量〉",
           "示范 B :: 〈我以为价格低才卖得动〉"],
     punch:"反差感是~~完读率的引擎~~",
-    takeaway:"先认同他，再推翻他。" },
+    takeaway:"越反直觉，~~越有人想看下去~~。" },
 
-  { type:"cta", title:"存起来，下次直接用",
-    sub:"也可以传给那个一直说没灵感的朋友",
-    note:"共 4 张" }
+  { type:"cta", title:"这 3 个公式，你会用几个？",
+    sub:"存起来，下次卡住直接打开",
+    note:"也可以传给那个一直说没灵感的朋友" }
 ];
+
+
+
+
+
 </script>
 
 <style>
@@ -106,6 +119,29 @@ body { background:#222; display:flex; flex-direction:column; align-items:center;
 .g-none  .photo { filter:none; }
 .scrim { position:absolute; inset:0; }
 .body-wrap { position:relative; width:100%; }
+
+
+/* ── 🆕 底材扩充（0 credit 纯 CSS） ── */
+/* grid 细网格 —— 像后台报表／方格纸，最贴「数据」主题 */
+.b-grid { background:var(--bg); }
+.b-grid .scrim {
+  background-image:
+    repeating-linear-gradient(0deg, color-mix(in srgb,var(--ink) 9%,transparent) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(90deg, color-mix(in srgb,var(--ink) 9%,transparent) 0 1px, transparent 1px 72px);
+}
+/* diag 斜切双色 —— 一刀切开，最有版面感 */
+.b-diag { background:var(--bg); }
+.b-diag .scrim { background:linear-gradient(158deg, transparent 0 46%, color-mix(in srgb,var(--accent) 12%,transparent) 46% 100%); }
+/* chart 图表线条 —— 真的柱状图＋趋势线（SVG data URI；颜色跟 accent 走，由 JS 注入） */
+.b-chart { background:var(--bg); }
+.b-chart .scrim { background:none; }
+.chartbg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+/* glow 柔光晕 —— 一颗大光斑，最柔、最不像模板 */
+.b-glow { background:var(--bg); }
+.b-glow .scrim {
+  background:radial-gradient(120% 78% at 88% 8%, color-mix(in srgb,var(--accent) 22%,transparent) 0%, transparent 62%),
+             radial-gradient(90% 60% at 4% 96%, color-mix(in srgb,var(--accent) 14%,transparent) 0%, transparent 58%);
+}
 
 /* ── ① 底材 ── */
 .b-photo      { background:var(--bg); }
@@ -149,6 +185,10 @@ body { background:#222; display:flex; flex-direction:column; align-items:center;
 .f-hand  .title { font-family:"Zhi Mang Xing",cursive; font-weight:400;
                   font-size:108px; line-height:1.16; }
 /* 极宋：压窄拉高 */
+.f-heiTight .title { font-family:"Noto Sans SC","PingFang SC",sans-serif; font-weight:700; }
+.s-tc.f-heiTight .title { font-family:"Noto Sans TC","PingFang TC",sans-serif; letter-spacing:.03em; }
+.f-heiTight .title { transform:scaleY(1.14) scaleX(.86); transform-origin:left bottom; }
+.f-heiTight .quote { font-family:"Noto Sans TC","PingFang TC",sans-serif; }
 .tight .title { transform:scaleY(1.22) scaleX(.94); transform-origin:left bottom;
                 letter-spacing:-.015em; margin-bottom:18px; }
 /* 标题主色 */
@@ -166,7 +206,7 @@ body { background:#222; display:flex; flex-direction:column; align-items:center;
 
 /* ── 共用文字 ── */
 .tag   { display:inline-block; font-size:32px; color:var(--sub); margin-bottom:18px; letter-spacing:.06em; }
-.tag.solid { background:var(--accent); color:#1A1A1A; font-weight:900;
+.tag.solid { background:var(--accent); color:var(--tagink,#1A1A1A); font-weight:900;
              padding:6px 18px; border-radius:4px; font-size:30px;
              font-style:italic; letter-spacing:.02em; }
 .s-tc .tag.solid { font-family:"Noto Serif TC",serif; }
@@ -304,6 +344,12 @@ body { background:#222; display:flex; flex-direction:column; align-items:center;
 .kicker{font-size:44px;font-weight:700;line-height:1.34;margin-bottom:14px;opacity:.92;color:var(--ink);}
 .edge .kicker{text-shadow:0 3px 8px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.7);}
 /* CTA 底部小字（出处／集数） */
+.cover-rule{margin-top:56px;width:150px;height:3px;background:var(--accent);opacity:.85;}
+.bignum{font-size:280px;line-height:1;font-weight:900;color:var(--accent);letter-spacing:-.04em;margin-bottom:-10px;font-family:"Noto Serif TC",serif;}
+.ccards{display:flex;flex-direction:column;gap:14px;margin-top:34px;}
+.ccard{display:flex;align-items:center;gap:20px;border:2px solid var(--accent);border-radius:12px;padding:16px 24px;}
+.ccard-n{font-size:34px;font-weight:900;color:#fff;background:var(--accent);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;}
+.ccard-t{font-size:42px;font-weight:800;color:var(--ink);}
 .note-s{margin-top:26px;font-size:24px;opacity:.48;font-weight:500;letter-spacing:.02em;}
 </style>
 
@@ -384,10 +430,14 @@ function content(d, tagHtml) {
 
   if (d.type === "cover") {
     const pills = (d.pills || []).map(t => `<div class="pill">${esc(t)}</div>`).join("");
+    const cards = (d.cards || []).map((c,ci) => `<div class="ccard"><div class="ccard-n">${ci+1}</div><div class="ccard-t">${esc(c)}</div></div>`).join("");
     return (d.kicker ? `<div class="kicker">${String(d.kicker)}</div>` : "") +
+           (d.bigNum ? `<div class="bignum">${esc(d.bigNum)}</div>` : "") +
            `<div class="title">${crown}${fx(d.title)}</div>` +
+           (cards ? `<div class="ccards">${cards}</div>` : "") +
            (d.sub ? `<div class="sub">${fx(d.sub)}</div>` : "") +
-           (pills ? `<div class="pills">${pills}</div>` : "");
+           (pills ? `<div class="pills">${pills}</div>` : "") +
+           (d.note ? `<div class="cover-rule"></div><div class="note-s">${String(d.note)}</div>` : "");
   }
 
   if (d.type === "point") {
@@ -419,7 +469,9 @@ function content(d, tagHtml) {
     // 有 keyword = 留言暗号型（推荐）；没有 = 互动型（点赞/收藏/分享）
     const body = d.keyword
       ? `<div class="sub">底下留言 <span class="keyword">${esc(d.keyword)}</span></div>`
-      : `<div class="acts">` + (C.script === "tc" ? [["❤️","按讚"],["🔖","收藏"],["↗️","分享"]] : [["❤️","点赞"],["🔖","收藏"],["↗️","分享"]])
+      : `<div class="acts">` + (C.actIcons === "mono"
+          ? (C.script === "tc" ? [[HEART,"按讚"],[BOOK,"收藏"],[SEND,"分享"]] : [[HEART,"点赞"],[BOOK,"收藏"],[SEND,"分享"]])
+          : (C.script === "tc" ? [["❤️","按讚"],["🔖","收藏"],["↗️","分享"]] : [["❤️","点赞"],["🔖","收藏"],["↗️","分享"]]))
           .map(([i,l]) => `<div class="act"><div class="act-i">${i}</div><div class="act-l">${l}</div></div>`)
           .join("") + `</div>`;
     return T_(crown + fx(d.title)) + body +
@@ -430,6 +482,25 @@ function content(d, tagHtml) {
   return "";
 }
 
+const CHARTBG = `<svg class="chartbg" viewBox="0 0 1080 1350" preserveAspectRatio="none">
+  <g fill="var(--accent)" opacity=".15">
+    <rect x="70" y="1010" width="86" height="180"/><rect x="196" y="960" width="86" height="230"/>
+    <rect x="322" y="1055" width="86" height="135"/><rect x="448" y="890" width="86" height="300"/>
+    <rect x="574" y="935" width="86" height="255"/><rect x="700" y="820" width="86" height="370"/>
+    <rect x="826" y="880" width="86" height="310"/><rect x="952" y="760" width="86" height="430"/>
+  </g>
+  <polyline fill="none" stroke="var(--accent)" stroke-width="5" opacity=".30"
+    points="113,1000 239,950 365,1045 491,880 617,925 743,810 869,870 995,750"/>
+  <g fill="var(--accent)" opacity=".38">
+    <circle cx="113" cy="1000" r="9"/><circle cx="239" cy="950" r="9"/><circle cx="365" cy="1045" r="9"/>
+    <circle cx="491" cy="880" r="9"/><circle cx="617" cy="925" r="9"/><circle cx="743" cy="810" r="9"/>
+    <circle cx="869" cy="870" r="9"/><circle cx="995" cy="750" r="9"/>
+  </g>
+  <g stroke="var(--accent)" stroke-width="2" opacity=".10">
+    <line x1="0" y1="1190" x2="1080" y2="1190"/><line x1="0" y1="1050" x2="1080" y2="1050"/>
+    <line x1="0" y1="910" x2="1080" y2="910"/><line x1="0" y1="770" x2="1080" y2="770"/>
+  </g></svg>`;
+
 function render(d, i, total) {
   const base = d.base || C.base;                       // 单张可覆写底材（例：封面用 photo，内页 photo-dark）
   const wantsPhoto = (base === "photo" || base === "photo-dark");
@@ -437,10 +508,10 @@ function render(d, i, total) {
   const cls = `slide slide-${d.type} b-${base} g-${C.photoGrade} f-${C.titleFont} s-${C.script} t-${C.titleTone} x-${C.textAlign}` +
     ` a-${C.align} c-${C.container} d-${C.density || "normal"}${C.textEdge ? " edge" : ""}` +
     ((C.titleFont === "song" && C.songTight) ? " tight" : "");
-  const vars = `--bg:${T.bg};--bg2:${T.bg2};--accent:${T.accent};--ink:${T.ink};--sub:${T.sub}`;
+  const vars = `--bg:${T.bg};--bg2:${T.bg2};--accent:${T.accent};--ink:${T.ink};--sub:${T.sub};--tagink:${T.tagInk || "#1A1A1A"}`;
   const last = i === total - 1;
   return `<div class="${cls}" style="${vars}">
-    ${photo}<div class="scrim"></div>
+    ${photo}<div class="scrim"></div>${base === "chart" ? CHARTBG : ""}
     ${has("sparkle") ? SPARKLE_BR : ""}${topLabel()}
     <div class="body-wrap">${(has("sparkle") && d.type === "cover") ? SPARKLE : ""}${(() => { const n = numbering(d, i, total); const inline = C.tagPlace === "inline" && C.numbering === "tag" && d.tag; return (inline ? "" : n) + content(d, n); })()}</div>
     ${watermark()}
