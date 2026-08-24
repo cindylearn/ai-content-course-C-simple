@@ -4,9 +4,11 @@
 
 | 方式 | 打什么 |
 |---|---|
-| ① 斜杠（最稳·直接点名）| `/suma-ai-04-video` |
+| ① 斜杠（最稳·直接点名）| `/suma-ai-04-video-avatar` |
 | ② First Prompt（说一句话）| 「帮我做口播短视频」 |
 
+> 🔑 **入口只有一个** —— 不管是「从零生成一支片」还是「把已经录好的片换妆/换衣服/换背景/换机位」，都是打这句话进来。**别记两套说法。**
+> 🔴 **进来第一题，Claude 会问你方向**（从零生成 or 重绘已录好的片），再回读确认一次「我理解你要做的是…，走哪条路，大概花多少 credit，对吗？」—— 你点一下就好。两条路成本差 4 倍以上，所以一定先问清楚才动手。
 > 两种效果一样：斜杠直接点名；First Prompt 打一句话，Claude 认关键词自己进。打不中就用斜杠。触发后一题一题问你。
 
 > 🔴 **前置（跟 SKILL.md 一致，缺了先回 `suma-ai-00-setup`）：Notion + Google Drive + GitHub connector 必连**（Notion 建大脑、Drive 存成品、GitHub 装 skill）· 地基 + Notion 骨架先搭好 · 要好 Google Drive folder 链接（成品同步存这）。
