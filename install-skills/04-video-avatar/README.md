@@ -139,6 +139,20 @@ over-smoothed skin, no waxy look, no airbrushing, no over-saturation, no perfect
 ### 3. 运镜 / 动作（1–3 镜点缀，避免死机位）
 - 推镜 `SLOW CINEMATIC CAMERA PUSH-IN`（hook / CTA 收尾）· 横摇 `CAMERA SLOWLY PANS`（展示一排东西）· 手持 `slight handheld camera movement`（口语段）· 动作：手势 / 前倾 / 指向。别每镜都加。
 
+### 3.5 🔴🔴 真实感三件套 —— 换背景／换场景必带（2026-08-24 补 · 50 cr 实测换来）
+
+场景写对了还是「假」，八成是这三样没写。**三样都是独立要问的题**（提问库见 B-1 第 6/7/8 题）：
+
+| # | 没写会怎样 | 实测数字（04 支日新独中 v1） | 必带的 prompt 句 |
+|---|---|---|---|
+| **① 运镜** | 死机位、整支片框一动不动 | 8 个抽帧构图完全一样 | `a SLOW CINEMATIC PUSH-IN…` / `very subtle handheld breathing motion…` |
+| **② 背景活起来** | 背景是一张静止照片：云不飘、光不变、场地上一个人都没有 | 天空 7 秒平均只变 **3–5/255**（噪点级）；草场全程无人 | `the clouds drift slowly…the trees sway…` ＋ `far in the background, a few students walk across the field, small and distant, softly out of focus, mostly facing away` |
+| **③ 景深虚化** | **每一层同等锐利，远处比脸还锐 → 物理上不可能，一眼假** | 脸 5.87 · 教学楼 7.93 · 山 8.00 · 远处草地 **15.67** | `shot at about f/4 — he is the sharpest thing in frame` ＋ **`focus falls off with DISTANCE — the further away, the softer`** |
+
+🔴 **两条连带铁律：**
+- **锁构图的句子会把运镜一起钉死** —— `hold the exact framing from the first frame to the last` 会连你要的推镜一起压死。**要锁的是「人和场景」，不是「镜头」。**
+- **虚化能顺手救掉别的毛病** —— 远景人脸画糊、背景招牌乱码，本来就该软，糊了反而对。所以「背景有人」一定要配虚化。
+
 ### 4. B-roll = 无脸真实近景，对应台词点名的东西
 - 🔴 **首选：无脸真实近景（close-up）实拍/录屏，show 那句台词点名的东西本身**（工具/产品/成品/流程）。真实、贴题。
 - 🔴 **优先用你自己的真实素材**：开工前把该**工具/产品/成品的真实截图或短片**发给 Claude → 当 `image_references` 或让它照着写 prompt，B-roll 才贴、才真、**不乱造假界面**。没参考时才让它按台词描述生成近景示范。
