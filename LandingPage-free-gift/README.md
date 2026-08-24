@@ -1,4 +1,4 @@
-# testimonial-free-gift · 《AI 一键落地页》skill
+# LandingPage-free-gift · 《AI 一键落地页》skill
 
 现场录**视频见证**送的大礼：一个独立、无脑的落地页生成 skill。
 学员答几题选择题 → 自动生成一个「会成交的销售单页」，同时吐两版
