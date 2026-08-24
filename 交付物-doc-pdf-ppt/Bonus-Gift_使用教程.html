@@ -1,0 +1,166 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<title>SUMA College · Bonus Gift 使用教程</title>
+<style>
+@page{size:A4;margin:14mm 14mm 16mm;}
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--b1:#28c2e7;--b2:#0f75bc;--acc:#fcb040;--ink:#0f1b2a;--mut:#5b6b7c;--line:#e2e9f0;--bg:#f6f9fc;--ok:#16a34a;--danger:#dc2626;}
+body{font-family:'Noto Sans SC','PingFang SC','Hiragino Sans GB',sans-serif;color:var(--ink);line-height:1.7;font-size:11pt;}
+h1,h2,h3{line-height:1.25;}
+.cover{background:linear-gradient(135deg,#0a1628,#0f2440);color:#fff;border-radius:14px;padding:34px 32px;margin-bottom:22px;}
+.cover .kick{color:var(--b1);font-weight:800;letter-spacing:.14em;font-size:9pt;text-transform:uppercase;}
+.cover h1{font-size:26pt;font-weight:900;margin:10px 0 8px;}
+.cover h1 em{color:var(--acc);font-style:normal;}
+.cover p{color:rgba(255,255,255,.78);font-size:11pt;max-width:88%;}
+.cover .tag{display:inline-block;margin-top:14px;background:rgba(40,194,231,.18);border:1px solid rgba(40,194,231,.5);color:#bfeeff;font-size:9pt;font-weight:700;padding:5px 14px;border-radius:999px;}
+h2{font-size:15pt;font-weight:850;margin:22px 0 12px;padding-left:12px;border-left:5px solid var(--b1);}
+h2 .n{color:var(--b1);font-family:monospace;margin-right:8px;}
+h3{font-size:12pt;font-weight:800;margin:14px 0 6px;color:var(--b2);}
+p{margin:6px 0;color:#26333f;}
+.lead{color:var(--mut);}
+ul,ol{margin:6px 0 6px 22px;}
+li{margin:4px 0;}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0;break-inside:avoid;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.callout{border-radius:12px;padding:14px 16px;margin:12px 0;break-inside:avoid;font-size:10.5pt;}
+.callout.ok{background:#eafaf1;border:1px solid #b9ecca;}
+.callout.warn{background:#fff4e6;border:1px solid #ffd9a8;}
+.callout.red{background:#fdecec;border:1px solid #f7bcbc;}
+.callout b{color:var(--ink);}
+.step{display:flex;gap:12px;align-items:flex-start;margin:10px 0;break-inside:avoid;}
+.step .num{flex:none;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:12pt;}
+.step .body{flex:1;}
+.step .body b{font-size:11.5pt;}
+.chk{list-style:none;margin-left:0;}
+.chk li{padding-left:26px;position:relative;}
+.chk li::before{content:'☐';position:absolute;left:0;color:var(--b1);font-size:13pt;top:-1px;}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:10pt;break-inside:avoid;}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
+th{background:#eef4fa;font-weight:800;color:var(--b2);}
+code{font-family:'SF Mono',monospace;background:#eef4fa;color:var(--b2);padding:2px 7px;border-radius:5px;font-size:9.5pt;font-weight:700;}
+.pill{display:inline-block;background:#eef4fa;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:9pt;font-weight:700;color:var(--b2);}
+.pagebreak{break-before:page;}
+.foot{margin-top:24px;padding-top:12px;border-top:1px solid var(--line);color:var(--mut);font-size:9pt;text-align:center;}
+</style></head><body>
+
+<div class="cover">
+  <div class="kick">SUMA College · 现场赠礼</div>
+  <h1>🎁 <em>Bonus Gift</em> 使用教程</h1>
+  <p>两份现场大礼的完整步骤 —— 《AI 一键落地页》＋《AI Carousel 图文帖》。两份都是独立 skill，装好就能用，不用懂 code。</p>
+  <span class="tag">🎬 录视频见证 · 现场领取</span>
+</div>
+
+<p class="lead">这两份是你在【AI 内容营销课】现场<strong>录视频见证</strong>换到的赠品。下面每一份都是「装 → 用 → 它会问你什么」三段，照着做就好。</p>
+
+<div class="callout warn">💡 <b>两份共通的一件事</b>：装完 skill <strong>一定要重开一次 Claude</strong>，它才认得。打斜杠显示「Unknown command」＝还没重开。</div>
+
+<h2><span class="n">A</span>🧲 《AI 一键落地页》</h2>
+<p class="lead">答几题选择题 → 自动做出一个<strong>会成交的销售单页</strong>，一次给你两版：贴 AutoCRM 后台用的、能直接上线的独立页。</p>
+
+<div class="card">
+<h3>① 装（只做一次）</h3>
+<p>跟 Claude 说这句，把链接一起贴给它：</p>
+<p><code>帮我从这个链接装 LandingPage-free-gift</code><br>
+<code>https://github.com/cindylearn/ai-content-course-C-simple/tree/main/LandingPage-free-gift</code></p>
+<p>装完 <strong>重开 Claude</strong>。</p>
+<h3>② 用</h3>
+<p>说「<strong>帮我做一个落地页</strong>」，或打 <code>/ai-onepage-lp</code>。</p>
+</div>
+
+<h3>开工前先准备（重要）</h3>
+<p>页面好不好看，靠的是<strong>图</strong>。先把这几样翻出来：</p>
+<ul class="chk">
+<li><b>Logo</b> —— PNG 透明底最好（没有就用文字品牌名）</li>
+<li><b>主视觉</b> —— 一张首屏大图，或一支短视频链接</li>
+<li><b>卖点图 3–6 张</b> —— 每个卖点／产品一张</li>
+<li><b>你自己／团队的照片 1–4 张</b> —— 服务型、个人品牌特别重要</li>
+<li><b>真实客户好评</b> —— 截图，或「名字 + 一句话」</li>
+</ul>
+<div class="callout red">🚫 <b>这几样不能 AI 假造</b>：你的真实产品照、你本人的脸、客户见证的头像和内容。假见证＝砸招牌。<br>
+✅ 可以生成的：背景图、场景图、氛围／概念配图。</div>
+<div class="callout ok">💡 <b>上过课的你</b>：品牌名／颜色／logo／受众如果已经在 <b>01-branding 建的品牌档案</b>里，skill 会自动读，<strong>不重复问你</strong>。</div>
+
+<h3>它会问你什么（心里有数）</h3>
+<table>
+<tr><th>会问什么</th><th>怎么答</th></tr>
+<tr><td>先收素材（Logo、主视觉、卖点图、你的照片、好评）</td><td>有就丢给它；没有 → 它会问要不要 AI 生成或先用占位</td></tr>
+<tr><td>你做哪个<b>行业</b></td><td>点选（电商／美妆／补习／服装／保险…）</td></tr>
+<tr><td>产品／服务<b>名</b></td><td>打字</td></tr>
+<tr><td>卖给<b>谁</b></td><td>点选（老板／打工人／宝妈…）</td></tr>
+<tr><td>他们最<b>痛</b>什么</td><td>勾 2–3 个（按你行业自动列）</td></tr>
+<tr><td>你靠什么<b>解决</b>／<b>包含</b>什么</td><td>点选／多选</td></tr>
+<tr><td><b>价格</b>／原价／优惠</td><td>打数字</td></tr>
+<tr><td><b>紧迫感</b>（名额／限时／早鸟…）</td><td>点选</td></tr>
+<tr><td>按钮点了<b>去哪</b></td><td>点选（WhatsApp／表单／AutoCRM 表单）</td></tr>
+<tr><td><b>配色</b></td><td>读档案／选主题／自填色号</td></tr>
+</table>
+
+<h3>你会拿到两版</h3>
+<div class="two">
+<div class="card"><h3>🅰️ AutoCRM 片段版</h3><p>一段 HTML，直接<strong>贴进 AutoCRM 后台</strong>，接上原生表单收 lead。</p></div>
+<div class="card"><h3>🅱️ 独立页版</h3><p>一个完整网页，<strong>双击就能开、也能上线</strong>。按钮直接导去你的 WhatsApp 或报名表。</p></div>
+</div>
+<div class="callout ok">✅ 图片会自动<strong>压缩后内嵌进页面</strong> —— 两版都加载快、不裂图，不用另外找图床。</div>
+
+<div class="pagebreak"></div>
+
+<h2><span class="n">B</span>🎠 《AI Carousel 图文帖产生器》</h2>
+<p class="lead">做 IG／小红书 <strong>carousel 轮播图</strong>。教练式一题一题问，配好版型和颜色，<strong>先出样张给你看</strong>，你说 OK 才生成整组图。</p>
+
+<div class="card">
+<h3>① 装（只做一次）</h3>
+<p><code>帮我从这个链接装 carousel-free-gift</code><br>
+<code>https://github.com/cindylearn/ai-content-course-C-simple/tree/main/carousel-free-gift</code></p>
+<p>装完 <strong>重开 Claude</strong>。</p>
+<h3>② 再装一次浏览器引擎（也只做一次）</h3>
+<p>第一次跑图之前，在终端机跑这两句：</p>
+<p><code>npm i -D playwright</code><br><code>npx playwright install chromium</code></p>
+<h3>③ 用</h3>
+<p>说「<strong>帮我做 carousel</strong>」，或打 <code>/ai-carousel</code>。</p>
+</div>
+<div class="callout ok">💰 出图是<strong>本机跑的，0 成本</strong>（HTML ＋ 浏览器截图），不用 API、不烧 credit。只有「用 AI 生底图」那一步要付费。</div>
+
+<h3>第一次用要做的一件事</h3>
+<p>把 <code>BRANDS.md.example</code> 复制成 <code>BRANDS.md</code>，把你的品牌填进去（色号／handle／内容线／受众／红线／落脚点）。之后每次开工 skill 会先读它，你不用重讲一遍。</p>
+
+<h3>📸 照片从哪里来（最容易卡在这里）</h3>
+<table>
+<tr><th></th><th>Ⓐ 自己准备</th><th>Ⓑ AI 生成</th><th>Ⓒ 不用照片</th></tr>
+<tr><td><b>花什么</b></td><td>0 元</td><td>要 credit（Higgsfield 是付费工具）</td><td>0 元</td></tr>
+<tr><td><b>怎么做</b></td><td>自己拍／找旧照</td><td>丢 3–5 张真实照片锁脸，用文字描述场景</td><td>纯色底／纸质底</td></tr>
+</table>
+<div class="callout red">🔴 <b>选 Ⓐ 的话</b>，翻相册找「<strong>人不在正中间</strong>」的照片 —— 人靠左或靠右、另一边是墙／天空／地板这种干净的空，才有地方放字。找不到就拍一张：手机架远一点、人站旁边。<b>这一张构图对不对，决定整组好不好看。</b><br>
+🔴 <b>选 Ⓑ 的话</b>，skill 会<strong>先报价</strong>（用哪个模型／生几张／单价／总共多少），<strong>你说「生」它才跑</strong>，跑完立刻回报实际扣了多少。不会先生了再讲钱。</div>
+
+<h3>它会怎么带你</h3>
+<p>全部是<strong>选择题</strong>，一题一题问，每题 5–10 个选项。按你的答案走分支，实际大约问 25–35 题。</p>
+<table>
+<tr><th>阶段</th><th>在干嘛</th></tr>
+<tr><td><b>开工</b></td><td>你的品牌资料在哪 · 做哪个业务 · 做哪一件内容 · 成品放哪（Notion／本机／Drive 分开问）</td></tr>
+<tr><td><b>选题</b></td><td>完全没 idea？→ 走选题引擎：先让你教我你的行业 → 631 比例 → 八大主题 → 拆你的对标帐号 → 出 5–8 个题目给你挑</td></tr>
+<tr><td><b>版型</b></td><td><b>13 个维度各选各的</b>（底材／字体／繁简／位置／对齐／容器／标题色／描边／调色／编号／标签位置／疏密／装饰）</td></tr>
+<tr><td><b>样张</b></td><td>🔴 <b>先出一张给你看</b>，你说对了才往下</td></tr>
+<tr><td><b>颜色</b></td><td>四件套分开问，而且<b>在真的底图上验证</b>（纯色底好看的颜色压到照片上可能糊掉）</td></tr>
+<tr><td><b>内容</b></td><td>每一张的完整文案写出来 → 落 Notion → <b>你说 OK 才出图</b></td></tr>
+<tr><td><b>CTA</b></td><td>9 种形式给你挑（不是只有留言暗号）</td></tr>
+<tr><td><b>caption</b></td><td>🎣 <b>7 种 hook 挑一个</b>，第 2–4 段照填空模板</td></tr>
+<tr><td><b>出图</b></td><td>1080×1350 PNG，要更清晰可设 2 倍</td></tr>
+</table>
+
+<h3>几条它会帮你守住的规则</h3>
+<ul>
+<li><b>封面中间那行大字必须是「名词」</b>＝一个可以被拿走的东西。写不出名词，代表这条内容还没想清楚要给人家什么。</li>
+<li><b>一组只讲一个 formula。</b>塞太多就拆成系列，一集一个 —— 但绝不偷下一集的料来填。</li>
+<li><b>内页给「可以直接抄去用的句式」，不是定义。</b>投影片结构搬进 carousel 会变成三行填空表，没人看完。</li>
+<li><b>内页每行别超过约 20 个中文字</b>，超过就折行，一折行整张立刻变挤。写不下要砍字，不是缩字级。</li>
+<li><b>一份赠品一个暗号，绝不共用。</b>两份不同的东西共用一个字，你分不出观众要哪一份。</li>
+<li><b>要花钱的事先报价再做</b>（生图／训练模型），你说「生」才跑。</li>
+</ul>
+
+<div class="callout red">🚫 <b>两份共通的红线</b>：不编造假见证、假数字、假成果、假紧迫（没名额别写数字）、假产品图、假人脸。<br>
+✅ 你<b>自己生意</b>的价格、优惠、限时 —— 你说了算，放心写。</div>
+
+<h2><span class="n">C</span>下一步</h2>
+<p>这两份做的是<strong>内容</strong>和<strong>静态销售页</strong>，够你开始收单了。想要后台 dashboard、自动跟进、把它变成一台会自己转的机器 —— 那是 <b>Jared 的 AI Business 课（Vibe Coding）</b>。</p>
+
+<div class="foot">SUMA College · School of AI Content ｜ 🎁 Bonus Gift 使用教程 ｜ 现场录视频见证换取</div>
+</body></html>
