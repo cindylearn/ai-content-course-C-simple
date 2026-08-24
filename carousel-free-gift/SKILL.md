@@ -20,7 +20,7 @@ description: |
   🔴 问超过 3 轮还没出样张 ＝ 违规。
   触发时机：用户说「帮我做 carousel」，或输入 /ai-carousel。
 user-invocable: true
-version: 0.6.1-test
+version: 1.0.0
 ---
 
 # Carousel 图文帖产生器
