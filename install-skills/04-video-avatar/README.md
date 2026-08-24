@@ -51,7 +51,10 @@
 2. **人物参考图**：有真人 → 他 3 张脸参考图；没真人 → 从 `05 AI数字人` 拿数字人参考图（数字人怎么做、九宫格选人都在 `05 AI数字人`）。
 3. **锁人物（口播镜）**：用 **3 张脸参考图**（正脸+不同角度更稳）当 `image_references`，每个真人镜 prompt **重复完整 persona 描述** → 全片同一个人。
 4. **逐镜生成**：`seedance_2_0` · `9:16` · 每镜 4–15s。🔴 **口播镜 `generate_audio=true`（声音、画面一起出，不分开）**；B-roll 无脸镜 `generate_audio=false`。
+6. 🔴 **每支片出来后，先问学员三选一：保持 / 提速一点 / 放慢一点。** 节奏是主观的 —— 别替他决定。
+   做法：用 ffmpeg 按比例改 `setpts` 即可，**零 credit、不用重新生成**。提速用 `setpts=0.92*PTS` 之类（数值 <1 变快），放慢用 >1。**记得跟学员讲清楚这是免费的**，他才敢开口要调。
 5. **验证 + 拼接**：抽帧检查（无 ffmpeg 用 `imageio_ffmpeg`）→ 统一参数 → concat 完整版。
+   🔴 **任何 ffmpeg 重编码都必须显式给 CRF**：`-c:v libx264 -crf 16 -preset slow -pix_fmt yuv420p`。**用默认参数会把 1347 kb/s 悄悄压到 483–801（掉 41–64%），整支片变糊** —— 跟「别垫压缩档」是同一个坑。
 6. **后期剪辑**：字幕 / 花字 / 音效 / BGM → 见「AI 剪片」段 + 本包两份配套文档。
 
 ---
@@ -78,6 +81,29 @@ over-smoothed skin, no waxy look, no airbrushing, no over-saturation, no perfect
 
 ## 🔴 硬规则（实操固化，最重要）
 
+### 🔴🔴 口播镜对嘴 · 六条铁律（2026-08-14 实测，约 74 credit 试错换来 —— 漏一条嘴型就崩）
+
+> 这六条是**口播镜**（有脸、要对嘴）专用。B-roll 无脸不对嘴，不适用。
+
+1. 🔴 **ACTION 里绝不写头部大动作** —— 摇头／点头／大幅转头侧头。**实测：写「开头轻摇头」对嘴当场崩，删掉立刻正常。** 头部动画会跟嘴部动画抢资源。正面写死 `HIS HEAD STAYS STEADY AND LEVEL THROUGHOUT — no head shaking, no nodding, no large head turns or tilts. Only tiny natural micro-movements.`，情绪一律靠**表情 + 一只手**表达。（句尾极小幅度的点头安全；开头摇头会毁整段。）
+2. 🔴 **LIP-SYNC 指令放 prompt 第一行**，并写明「其他指令都次于把嘴做对」—— 模型对开头指令权重更高：
+   `LIP-SYNC IS THE TOP PRIORITY OF THIS SHOT: the mouth must follow the supplied audio reference syllable by syllable, opening and closing exactly with the speech and closing between words. Every other instruction below is secondary to getting the mouth right.`
+3. 🔴 **绝不写「嘴持续张开／全程不间断说话」** —— 那等于叫模型无视音素、机械开合，嘴型直接跟咬字脱钩。
+   ⚠️ 特别注意：本 skill 的「**台词第一帧就讲、不留白**」很容易被误写成这样。**「第一帧就开口」可以写，「嘴一直张着不停」绝对不行。** 开头若有留白，**后期剪掉**，别为它牺牲对嘴。
+4. **口播镜配音不得短于约 5 秒** —— 实测 3.72s 的镜对嘴失败、5.69s 正常。**别为了「短句好对嘴」去拆句，拆太短反而对不上**（反直觉，但两次实测都如此）。台词太短就把它跟相邻句合并，或把内容写厚。
+5. **`duration` 贴着配音设，绝不明显长于配音** —— 视频比配音长，模型会把嘴型「摊开」填满整段（实测拉伸 +7%～+15% 就能看出慢半拍）。生成后用 ffmpeg **按比例提速**对到 0 误差：
+   `-filter:v "setpts=<配音秒数/视频秒数>*PTS" -r 24`（**零 credit**，比重跑便宜）。
+6. **运镜／构图用正面写法，别用禁令** —— 见下面「否定句元规律」。要固定机位就写 `a locked-off tripod framing with only the faintest natural float`，要锁构图就写 `held at exactly the same distance from the first frame to the last` 并点名道具必须留在画面里。
+
+### 🔴🔴 否定句元规律 —— 这条比单条规则更重要
+
+**seedance 基本不服从「不要 X」。** 实测被无视的禁令：`NO push-in`（照推）· `NO letters/NO words`（照出乱码）· `NO hologram`（照出科幻感）· 「手机不要立起来」（照立）· 「不要芭蕉叶」（照给热带风）。
+
+> **能用正面描述就别用禁令；实在要禁，得配合物理手段。**
+> 例：要屏幕上没有乱码字 —— 写 `NO letters` 没用，**改成把焦点指定到别处**（`the FOCUS SITS ON THE KEYBOARD, while the SCREEN ITSELF IS SOFTLY OUT OF FOCUS`），用光学让字根本成不了形。
+
+
+
 ### 1. 强制无字幕（最容易踩）
 - **原生配音（`generate_audio=true`）默认会把台词烤成字幕**，模型不会自己去掉。
 - **prompt 写死这句**（漏了就有字幕，写了就干净——已验证）：
@@ -102,6 +128,10 @@ over-smoothed skin, no waxy look, no airbrushing, no over-saturation, no perfect
 - 🔴 **B-roll 一律不放主播、不需要口型** → 生成时 `generate_audio=false` 且**不给 `audio_references`** → 无口型问题、几乎不烤字幕。
 - ❌ **别让主播出镜做演示镜**：主播一开口就要对口型，而 audio_ref 口型在演示镜上不稳、还随机烤字幕。口播归口播、演示归无脸 B-roll，分开最稳。
 - 🔴 **B-roll 必须跟那句台词内容对应**（讲 A 就 show A），泛泛「人在打电脑」不算。
+- 🔴🔴 **B-roll 的更高判准（比「对应台词」更重要）：遮住台词，光看画面，认得出这是卖什么的吗？** 认不出＝重设计。
+  ⚠️ 只照台词拍字面（讲单据就拍单据、讲圈数据就拍圈框）会做出「跟任何生意都能配」的死物特写 —— 对得上字，却没传达你在卖什么。
+  **两个信号分工用**：**卖服务／卖课 ＝ 有人在动手做**（过肩镜／手部镜，**只拍后脑勺和肩膀、不露脸 → 不用对嘴，零风险**）· **AI 在干活 ＝ 没人碰它，它自己在动**（全程无手入画，东西自己完成）。
+
 - 🔴 **画面要快切**：prompt 写 `FAST-PACED, snappy quick HARD CUTS every ~1.2–1.5s, everything moving fast, no slow lingering shots`。
 - 🔴 **prompt 绝不写 hex 色号 / 文字标签**（会被烤成乱码文字，跟海报「别写字体规格」同一个坑）；改写方向词（如 `blue-and-white palette`）+ **纯图标/纯抽象**，并加死 `NO letters, NO numbers, NO words, NO labels of ANY kind`。
 - 屏幕内容一律 **soft/out of focus，无可读文字**。
@@ -134,7 +164,8 @@ over-smoothed skin, no waxy look, no airbrushing, no over-saturation, no perfect
 ---
 
 ## 参数 & 成本（省 credit）
-- **一律 480p + `mode fast`**（≈15–18 credit/镜）；实测 `std/720p` 没明显差别、不值 3–4 倍。
+- **一律 480p + `mode fast`**；实测 `std/720p` 没明显差别、不值 3–4 倍。
+- 🔴 **按秒计费，不是按镜**：实测 **1.5 credit/秒**（480p+fast）。15 秒镜 = 22.5 credit，8 秒镜 = 12。**台词越长越贵** —— 写脚本时就要有成本意识。真跑前用 `get_cost:true` 免费预检（同时还能验参数形状对不对）。
 - `count=1`，一镜一条。
 - 弹 `preset` 推荐不想用 → 带 `declined_preset_id` 原样重发。
 - **先验 1 镜确认「声音+无字幕+眨眼+脸」→ OK 再批量。**
