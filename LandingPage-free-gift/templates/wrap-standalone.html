@@ -1,6 +1,7 @@
 <!--
  wrap-standalone.html —— 独立页外壳
- 用法：把 base.html 填好的整段（从 <style> 到最后一个 </section>）塞进下面 {{LP_FRAGMENT}}。
+ 用法：把 base.html 填好的整段（从 style 到最后一个 section 结束）塞进下面 body 里的插入点
+ （只有 body 里那一处是插入点，本说明里不要再出现同名占位字串）。
  独立页没有后台，所以所有 CTA 的 {{CTA_LINK}} = WhatsApp：
    https://wa.me/60XXXXXXXXX?text=我想报名{{产品名}}
  （号码去掉开头 0、加国码 60；text 可留空）
