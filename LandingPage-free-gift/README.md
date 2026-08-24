@@ -64,7 +64,7 @@ examples/suma-lp.html     SUMA 真实落地页，当活范例
 ```
 
 > 图文教程 PDF **不放在这个资料夹**（装 skill 时会白白吃掉 token）——
-> 在课程 repo 的 `交付物-doc-pdf-ppt/` 里：`AI-Landing-Page_使用教程.pdf`、
-> 以及两份赠品合一的 `Bonus-Gift_使用教程.pdf`。
+> 在课程 repo 的 `交付物-doc-pdf-ppt/Bonus-Gift_使用教程.pdf`
+> （两份赠品合一：AI Landing Page ＋ AI Carousel）。
 
 > 只做**静态销售单页**。dashboard／会员系统／自动跟进／CRM／支付＝ Jared 的 AI Business 课，这里故意不做。
