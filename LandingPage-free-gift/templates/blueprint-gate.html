@@ -1,0 +1,277 @@
+<style>
+/* ==========================================================
+   blueprint-gate.html —— B 閘門頁骨架
+   （免費資料包 → 收名單 → 進社群）
+--------------------------------------------------------------
+   用法：
+   1. 【】裡的字全部換成 Step 2 的答案；一個都不留。
+   2. 圖位 .ph 整塊換成 <img src="base64 或路徑">。
+   3. {{FORM}} → AutoCRM 版換原生 form；獨立頁版換按鈕（WhatsApp／Google 表單）。
+   4. 沒有的區塊整塊刪掉，不要留空殼。
+   5. 配色改下面 4 個變數就好（下面填的是奶油底＋玫紅那套範例）：
+        淺色系（範例）  --rose:#E84A8A --pink:#F0B4C6 --cream:#FFFBED --ink:#48444A
+        SUMA 藍        --rose:#0f75bc --pink:#28c2e7 --cream:#f4fbfe --ink:#2b3440
+        暖橙           --rose:#ea580c --pink:#fdba74 --cream:#fff8f1 --ink:#3f3a36
+        清新綠         --rose:#16a34a --pink:#a7e8bd --cream:#f4fdf7 --ink:#33403a
+   🔴 免費的頁不放價格、不做假限時、不放假見證。
+   ========================================================== */
+:root{
+  --rose:#E84A8A;   /* 主色 · 標題／CTA */
+  --pink:#F0B4C6;   /* 淺粉 · 強調／裝飾 */
+  --cream:#FFFBED;  /* 奶油底 */
+  --ink:#48444A;    /* 正文深灰（不用純黑） */
+  --mut:rgba(72,68,74,.72);
+  --line:rgba(72,68,74,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);color:var(--ink);font-family:'Noto Sans TC','PingFang TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+.section{padding:56px 20px;}
+.sec-title{text-align:center;margin-bottom:32px;}
+.sec-title h2{font-size:clamp(1.35rem,3.2vw,1.9rem);font-weight:800;line-height:1.35;margin-bottom:8px;letter-spacing:-.01em;}
+.sec-title h2 em{color:var(--rose);font-style:normal;}
+.sec-title p{color:var(--mut);font-size:.95rem;max-width:600px;margin:0 auto;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--rose);color:#fff;font-size:1.05rem;font-weight:800;padding:16px 40px;border-radius:999px;cursor:pointer;border:none;text-decoration:none;box-shadow:0 10px 26px rgba(232,74,138,.28);transition:transform .15s ease;}
+.btn:hover{transform:translateY(-2px);}
+.btn-sub{display:block;margin-top:12px;font-size:.82rem;color:var(--mut);}
+
+/* ---------- 圖位（留位子用；換圖時整塊換成 <img>） ---------- */
+.ph{border:2px dashed var(--pink);border-radius:16px;background:rgba(240,180,198,.13);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    padding:22px;color:var(--rose);gap:6px;}
+.ph .ph-t{font-size:.92rem;font-weight:800;}
+.ph .ph-s{font-size:.76rem;color:var(--mut);line-height:1.5;}
+.ph-hero{aspect-ratio:16/9;max-width:720px;margin:0 auto 28px;}
+.ph-card{aspect-ratio:4/3;margin-bottom:16px;}
+.ph-me{aspect-ratio:1/1;width:100%;}
+.ph-ba{aspect-ratio:16/9;margin-top:22px;}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 20px 52px;text-align:center;
+  background:radial-gradient(1000px 380px at 50% -140px, rgba(240,180,198,.45), transparent 70%);}
+.hero-badge{display:inline-block;background:var(--pink);color:#7a2246;border-radius:999px;padding:7px 20px;font-size:.82rem;font-weight:700;margin-bottom:22px;}
+.hero h1{font-size:clamp(1.9rem,5.2vw,3rem);font-weight:900;line-height:1.22;letter-spacing:-.02em;margin:0 auto 16px;max-width:16em;}
+.hero h1 em{color:var(--rose);font-style:normal;}
+.hero h1 .u{background:linear-gradient(180deg,transparent 62%,var(--pink) 62%);}
+.hero-sub{font-size:1.02rem;color:var(--mut);max-width:34em;margin:0 auto 30px;}
+.hero-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px;}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:.82rem;color:var(--mut);}
+.chip b{color:var(--rose);}
+
+/* ---------- 痛點 ---------- */
+.pain-section{background:#fff;}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:18px;}
+.pain-card{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:22px 24px;}
+.pain-card .em{font-size:1.4rem;line-height:1;margin-bottom:12px;display:block;}
+.pain-card h3{font-size:1rem;font-weight:800;margin-bottom:8px;}
+.pain-card p{color:var(--mut);font-size:.88rem;}
+
+/* ---------- 方案 ---------- */
+.callout{max-width:720px;margin:0 auto;background:#fff;border:2px solid var(--pink);border-radius:20px;padding:30px 32px;text-align:center;}
+.callout h3{font-size:1.2rem;font-weight:800;margin-bottom:10px;line-height:1.5;}
+.callout h3 em{color:var(--rose);font-style:normal;}
+.callout p{font-size:.95rem;color:var(--mut);}
+
+/* ---------- 你會拿到什麼 ---------- */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(255px,100%),1fr));gap:18px;}
+.mod-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;position:relative;overflow:hidden;}
+.mod-card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--pink);}
+.mod-card .n{font-size:.78rem;font-weight:800;color:var(--rose);letter-spacing:.08em;margin-bottom:10px;}
+.mod-card h4{font-size:1.02rem;font-weight:800;margin-bottom:8px;}
+.mod-card p{font-size:.88rem;color:var(--mut);}
+
+/* ---------- 這份是怎麼來的 ---------- */
+.origin{background:#fff;}
+.origin-box{max-width:660px;margin:0 auto;background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:30px 32px;}
+.origin-box ul{list-style:none;}
+.origin-box li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 0;border-bottom:1px dashed var(--line);font-size:.94rem;}
+.origin-box li:last-child{border-bottom:none;}
+.origin-box .v{color:var(--rose);font-weight:800;white-space:nowrap;}
+.origin-note{text-align:center;margin-top:20px;font-size:.9rem;color:var(--mut);}
+.origin-note b{color:var(--ink);}
+
+/* ---------- 關於我 ---------- */
+.me-grid{max-width:760px;margin:0 auto;display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;}
+@media(max-width:640px){.me-grid{grid-template-columns:1fr;}}
+.me-body h3{font-size:1.2rem;font-weight:900;margin-bottom:4px;}
+.me-body .handle{font-size:.86rem;color:var(--rose);font-weight:700;margin-bottom:14px;}
+.me-body p{font-size:.92rem;color:var(--mut);margin-bottom:10px;}
+
+/* ---------- 表單 ---------- */
+.form-section{background:radial-gradient(900px 320px at 50% 120%, rgba(240,180,198,.5), transparent 70%);}
+.form-card{max-width:460px;margin:0 auto;background:#fff;border:2px solid var(--rose);border-radius:22px;padding:32px 30px;text-align:center;box-shadow:0 18px 44px rgba(232,74,138,.14);}
+.form-card h3{font-size:1.2rem;font-weight:900;margin-bottom:8px;line-height:1.45;}
+.form-card > p{font-size:.9rem;color:var(--mut);margin-bottom:22px;}
+.field{text-align:left;margin-bottom:14px;}
+.field label{display:block;font-size:.82rem;font-weight:700;margin-bottom:6px;}
+.field input{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font-size:.95rem;font-family:inherit;color:var(--ink);background:var(--cream);}
+.field input:focus{outline:2px solid var(--pink);outline-offset:1px;}
+.form-card .btn{width:100%;margin-top:8px;}
+.privacy{font-size:.76rem;color:var(--mut);margin-top:14px;}
+
+/* ---------- 收尾 ---------- */
+.finalcta{text-align:center;padding:60px 20px 72px;}
+.finalcta h2{font-size:clamp(1.4rem,4vw,2.1rem);font-weight:900;margin-bottom:14px;line-height:1.35;}
+.finalcta h2 em{color:var(--rose);font-style:normal;}
+.finalcta p{color:var(--mut);max-width:32em;margin:0 auto 28px;}
+.foot{text-align:center;padding:26px 20px 40px;font-size:.8rem;color:var(--mut);}
+</style>
+
+<!-- ①【Hero 首屏】··············· Blair Warren 為處境正名 · 連續認同 · 未來預演
+     🔴 標題＝資料包名字，必須跟封面、資料包本體三處一字不差 -->
+<section class="hero">
+  <div class="hero-badge">免費 ·【填一下馬上拿到】</div>
+  <h1><em>【資料包名字 · 主標第一行】</em><br><span class="u">【第二行 · 數字＋東西】</span></h1>
+  <p class="hero-sub">【副標：先替他的處境正名（不是你不會，是沒人告訴你⋯），再講這份東西是怎麼來的（真實成本）。兩句話以內。】</p>
+  <div class="ph ph-hero">
+    <div class="ph-t">主視覺圖位</div>
+    <div class="ph-s">1200 × 675（16:9）· 建議：Before→After 對照，或你拿著資料包的畫面<br>換圖：把這整塊 &lt;div class="ph ph-hero"&gt; 換成 &lt;img src="你的圖"&gt;</div>
+  </div>
+  <a class="btn" href="#get">【我要這份資料包】</a>
+  <span class="btn-sub">填姓名 ＋ email ＋ WhatsApp，馬上給你</span>
+  <div class="hero-meta">
+    <span class="chip">【<b>數字</b> 單位】</span>
+    <span class="chip">【<b>數字</b> 單位】</span>
+    <span class="chip">【<b>數字</b> 條可以直接抄的東西】</span>
+  </div>
+</section>
+
+<!-- ②【痛點 ×3】················· PAS（Problem·Agitate）· 自我說服
+     🔴 寫具體畫面，不要寫形容詞（「跑到第五版還沒對」＞「很浪費時間」） -->
+<section class="section pain-section">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>你是不是也 <em>卡在這裡</em>？</h2>
+      <p>【一句話：如果下面有一條你點頭了，這份就是寫給你的。】</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <span class="em">😮‍💨</span>
+        <h3>【痛點 1 · 一句話】</h3>
+        <p>【把痛點寫成他昨天才發生過的具體畫面，20–40 字。】</p>
+      </div>
+      <div class="pain-card">
+        <span class="em">🙈</span>
+        <h3>【痛點 2 · 一句話】</h3>
+        <p>【同上。這一格最好寫「他以為是自己的問題、其實不是」那種。】</p>
+      </div>
+      <div class="pain-card">
+        <span class="em">💸</span>
+        <h3>【痛點 3 · 一句話】</h3>
+        <p>【同上。第三格放代價（花的錢／時間／機會），用人人懂的單位。】</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③【方案登場】················· PAS（Solution）· 換框 -->
+<section class="section">
+  <div class="wrap">
+    <div class="callout">
+      <h3>問題不在你 —— <em>【在「真正的原因」是什麼】</em></h3>
+      <p>【把敵人指向錯誤的方法或環境，不怪他。然後一句話講這份資料包解決的是哪一層。】</p>
+      <div class="ph ph-ba">
+        <div class="ph-t">Before → After 對照圖位（可留可刪）</div>
+        <div class="ph-s">1200 × 675 · 左邊爛的、右邊好的，並排一張圖最有力</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④【你會拿到什麼 ×4】·········· Duarte：顧客是英雄
+     🔴 最後一格固定是「進社群」，這是閘門頁的落點 -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>你會拿到 <em>什麼</em></h2>
+      <p>【一句話：不是科普，是我自己每天在用的東西。】</p>
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card">
+        <div class="ph ph-card"><div class="ph-t">圖位 01</div><div class="ph-s">800 × 600（4:3）</div></div>
+        <div class="n">01</div>
+        <h4>【交付物 1 · 名字】</h4>
+        <p>【一句話講它為什麼有用（他拿去能幹嘛），不是講它是什麼。】</p>
+      </div>
+      <div class="mod-card">
+        <div class="ph ph-card"><div class="ph-t">圖位 02</div><div class="ph-s">800 × 600（4:3）</div></div>
+        <div class="n">02</div>
+        <h4>【交付物 2 · 名字】</h4>
+        <p>【同上。】</p>
+      </div>
+      <div class="mod-card">
+        <div class="ph ph-card"><div class="ph-t">圖位 03</div><div class="ph-s">800 × 600（4:3）</div></div>
+        <div class="n">03</div>
+        <h4>【交付物 3 · 名字】</h4>
+        <p>【同上。】</p>
+      </div>
+      <div class="mod-card">
+        <div class="ph ph-card"><div class="ph-t">圖位 04 · 社群截圖</div><div class="ph-s">800 × 600 · 群裡的討論截圖（記得遮掉別人的名字）</div></div>
+        <div class="n">04</div>
+        <h4>進「AI x Marketing 學習室🤖📕」</h4>
+        <p>【我後面繼續踩的坑、試出來的新寫法，都先丟在群裡。】</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤【這份是怎麼來的】··········· 取代價值堆疊：只講真實成本，不估價、不錨定
+     🔴 數字一律據實寫；沒有真數字就整塊刪掉，不要編 -->
+<section class="section origin">
+  <div class="wrap">
+    <div class="sec-title"><h2>這份東西 <em>是怎麼來的</em></h2></div>
+    <div class="origin-box">
+      <ul>
+        <li><span>【投入項 1，例：前後跑的版本數】</span><span class="v">【數字】</span></li>
+        <li><span>【投入項 2，例：試到對為止燒掉的成本】</span><span class="v">【數字】</span></li>
+        <li><span>【留下來、真的有用的規則／方法】</span><span class="v">【數字】</span></li>
+        <li><span>你要花的</span><span class="v">0</span></li>
+      </ul>
+      <p class="origin-note">【我不能保證你用了就⋯⋯ 我只能保證 <b>這些是我真的踩過才寫下來的</b>，你不用再照我的順序踩一次。】<br><span style="font-size:.82rem">🔴 紅線：不承諾收入、不晒錢、不保證成果。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥【關於我】··················· 個人 IP 的頁必備：讓他知道是誰在講 -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-title"><h2>我是 <em>誰</em></h2></div>
+    <div class="me-grid">
+      <div class="ph ph-me">
+        <div class="ph-t">你的照片</div>
+        <div class="ph-s">800 × 800（1:1）<br>正面、乾淨背景</div>
+      </div>
+      <div class="me-body">
+        <h3>【你的名字】</h3>
+        <div class="handle">@cindyyy.talk</div>
+        <p>【第一句：你在做什麼（身份）。】</p>
+        <p>【第二句：你憑什麼講這件事（不是頭銜，是你實際做過的事）。】</p>
+        <p>【第三句：你為什麼免費分享這個（動機講清楚，他才不會覺得後面有坑）。】</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦【表單】····················· 嵌入指令 ·「因為」催化劑
+     三格：姓名 ＋ email ＋ WhatsApp -->
+<section class="section form-section" id="get">
+  <div class="wrap">
+    <div class="sec-title"><h2>填一下，<em>馬上給你</em></h2></div>
+    <div class="form-card">
+      <h3>【資料包名字（跟首屏、封面一字不差）】</h3>
+      <p>【填完這三格，資料包連同社群的進群連結一起給你。】</p>
+      {{FORM}}
+      <p class="privacy">只用來把資料包發給你、以及丟新的筆記。不發廣告，隨時可以退。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧【收尾】····················· 未來預演 · 預設 -->
+<section class="finalcta">
+  <h2>【下一次，你就 <em>不用再⋯⋯了</em>】</h2>
+  <p>【未來預演：讓他先在腦中體驗「拿到之後那一天」。一句話，講省下來的東西可以拿去做什麼。】</p>
+  <a class="btn" href="#get">【好，我要這份資料包】</a>
+</section>
+
+<div class="foot">@cindyyy.talk</div>
