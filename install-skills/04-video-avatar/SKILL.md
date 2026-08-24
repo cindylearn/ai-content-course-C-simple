@@ -1059,6 +1059,18 @@ script 点名了地点 → 保留它、另给 2–4 个可换的；没地点 →
 > **② 有对标片／想要的风格** —— 贴链接或讲帐号名给我
 > **③ 没有，你帮我定** —— 我按你的行业和受众推荐给你点
 
+**A-Q6 · 背景要不要虚化（景深）—— 🔴 独立一题（2026-08-24 补）**
+> 库 ＋ prompt 句子见下方**路线 B 第 8 题「背景要不要虚化」**。
+> 🔴 **默认「每一层都同等锐利」＝ 一眼假**（实测：远处比脸还锐）。每一镜都要带「焦点按距离递减」那一句。
+
+**A-Q5 · 背景要不要「活」（云／光／远处有人）—— 🔴 独立一题（2026-08-24 补）**
+> 整个库 ＋ 每个选项的 prompt 句子，见下方**路线 B 第 7 题「背景要不要活」**那一段（两条路共用同一个库）。
+> 🔴 **场景写得再对，背景不动就是一张照片。** 每一镜（含 B-roll）都要带上他选的那几句。
+
+**A-Q4 · 运镜（镜头会不会动）—— 🔴 独立一题，别跟机位混（2026-08-24 补）**
+> 整个运镜库 ＋ 每个选项要写进 prompt 的句子，见下方**路线 B 第 6 题「运镜」**那一段（两条路共用同一个库）。
+> 路线 A 的默认是**动态运镜**（talking-head ＝ 极轻手持 ＋ 慢推近；B-roll ＝ motivated moves），**但还是要问他一题、让他自己选**，别默认。
+
 - 选 **①** → 收下，🔴 **只借气质·场景·光，绝不照抄脸**（要固定脸走 Step 3 九宫格）。
 - 选 **②** → 你看完**用文字讲出你看到的几个点、跟他对一次**（「我看到的是：口播近景、暖色办公室、节奏很快 —— 你要的是这几样吗？」），确认后才写进每一镜 prompt。
 - 选 **③** → 你按**业务 md 的行业 + 受众**推导（场景／穿衣／打光），给他 3–4 个选项点。
@@ -1183,6 +1195,20 @@ over-smoothed skin, no waxy look, no airbrushing, no over-saturation, no perfect
 
 ### 3. 运镜 / 动作（1–3 镜点缀，避免死机位）
 - 推镜 `SLOW CINEMATIC CAMERA PUSH-IN`（hook / CTA 收尾）· 横摇 `CAMERA SLOWLY PANS`（展示一排东西）· 手持 `slight handheld camera movement`（口语段）· 动作：手势 / 前倾 / 指向。别每镜都加。
+
+### 3.5 🔴🔴 真实感三件套 —— 换背景／换场景必带（2026-08-24 补 · 50 cr 实测换来）
+
+场景写对了还是「假」，八成是这三样没写。**三样都是独立要问的题**（提问库见 B-1 第 6/7/8 题）：
+
+| # | 没写会怎样 | 实测数字（04 支日新独中 v1） | 必带的 prompt 句 |
+|---|---|---|---|
+| **① 运镜** | 死机位、整支片框一动不动 | 8 个抽帧构图完全一样 | `a SLOW CINEMATIC PUSH-IN…` / `very subtle handheld breathing motion…` |
+| **② 背景活起来** | 背景是一张静止照片：云不飘、光不变、场地上一个人都没有 | 天空 7 秒平均只变 **3–5/255**（噪点级）；草场全程无人 | `the clouds drift slowly…the trees sway…` ＋ `far in the background, a few students walk across the field, small and distant, softly out of focus, mostly facing away` |
+| **③ 景深虚化** | **每一层同等锐利，远处比脸还锐 → 物理上不可能，一眼假** | 脸 5.87 · 教学楼 7.93 · 山 8.00 · 远处草地 **15.67** | `shot at about f/4 — he is the sharpest thing in frame` ＋ **`focus falls off with DISTANCE — the further away, the softer`** |
+
+🔴 **两条连带铁律：**
+- **锁构图的句子会把运镜一起钉死** —— `hold the exact framing from the first frame to the last` 会连你要的推镜一起压死。**要锁的是「人和场景」，不是「镜头」。**
+- **虚化能顺手救掉别的毛病** —— 远景人脸画糊、背景招牌乱码，本来就该软，糊了反而对。所以「背景有人」一定要配虚化。
 
 ### 4. B-roll = 无脸真实近景，对应台词点名的东西
 - **首选：无脸真实近景（close-up）实拍/录屏，show 那句台词点名的东西本身**（工具/产品/成品/流程）。真实、贴题。
@@ -1675,11 +1701,120 @@ HeyGen 开源（Apache-2.0 免费商用），HTML/CSS → 确定性 MP4。**做�
  · ④ 近景特写（放大表情）· ⑤ 中景半身（看得到手势）· ⑨ 其他
  > 🔴 换机位**只换看的角度，人和场景全部不动** —— 写 prompt 时要把这句点名（见 B-3 / B-4）。
 
-5. **🔴 保留确认（问完改什么，马上问这一句）**：
+6. **🔴🔴 运镜（镜头会不会动）—— 独立一题，问完机位马上问，绝不省（2026-08-24 补）**
+
+ > 🔴 **「机位」和「运镜」是两件事，别混成一题：机位 ＝ 镜头站哪（平视／俯拍／特写）· 运镜 ＝ 镜头动不动（推近／手持／横摇）。**
+ > 🔴 **这一题不问 ＝ 默认死机位。** 模型不会自己动镜头；而且写 prompt 时为了锁构图常会顺手写「构图从第一帧锁到最后一帧」，等于亲手把镜头钉死 —— 出来整支片框一动不动，片子不算错但很平。
+ > 🔴 **实测教训（04 支日新独中重绘 v1，50 cr）**：只问了机位没问运镜 → 成品 8 个抽帧构图一模一样，完全死机位。
+
+ **问法（照抄 · 整个库列出来让他挑，别只给 3–4 个）：**
+
+ > **镜头要不要动？（点一个 —— 打号码给我）**
+ > **① 完全不动** —— 三脚架死机位。最稳、最像正式访谈；但会有点平。
+ > **② 极轻手持呼吸感** —— ⭐**最安全的「活」**。框几乎不动，只有一点自然浮动，像有人手持在拍。
+ > **③ 慢推近（slow push-in）** —— 镜头一路慢慢靠近。讲到重点时情绪会跟着上来，口播片最常用。
+ > **④ 慢拉远（pull-back）** —— 从近景慢慢退开露出整个场景。适合「亮出环境／亮出全部产品」。
+ > **⑤ 手持 UGC 晃动** —— 明显的手持感，像随手拍的。真实、亲切，但会晃。
+ > **⑥ 横摇（pan）** —— 镜头横着扫过去（例：从人扫到展示台）。适合展示一排东西。
+ > **⑦ 焦点转移（rack focus）** —— 焦点在「人」和「他手上的东西」之间切换。产品片很有质感。
+ > **⑧ 环绕／弧形移动（orbit）** —— 镜头绕着他走小半圈。最有电影感。
+ > **⑨ 快节奏（急推／甩镜 whip pan）** —— 抖音那种冲击感。
+ > **⑩ 其他** —— 你自己描述。
+
+ 🔴 **路线 B（重绘原片）要按风险帮他判，别照单全收**：
+ - **② ③ ⑦ 最安全** —— 镜头动得少，脸和构图重算得少 → 飘脸风险低。**推这三个。**
+ - **④ ⑥ 最好只在中景／半身用**（大头特写拉远会连脸一起重画）。
+ - 🔴 **⑧ ⑨ 在路线 B 风险最高** —— 镜头大动 ＝ 每一帧的脸都要重新生成一次，很可能变成另一个人；而且原片本来是死机位，动得越多越假。学员选这两个要**先讲清楚风险 + 报重跑的钱**，他坚持才做。
+ - **路线 A（从零生成）没这个包袱** —— 照 prompt 模板本来就该写「动态运镜非死机位」（talking-head ＝ 手持 UGC ＋ 慢推近；B-roll ＝ motivated moves）。
+
+ **怎么写进 prompt（🔴 一律正面写法，禁令会连正常运镜一起压死 —— 见 B-4 元规律）：**
+
+ | 选项 | 写进 prompt 的句子 |
+ |---|---|
+ | ① 不动 | `a locked-off tripod framing with only the faintest natural float` |
+ | ② 极轻手持 | `very subtle handheld breathing motion, the frame drifts only a hair, never jitters` |
+ | ③ 慢推近 | `a SLOW CINEMATIC PUSH-IN across the whole shot, the camera creeping closer from the first frame to the last` |
+ | ④ 慢拉远 | `a SLOW PULL-BACK, the camera easing away to reveal the whole scene` |
+ | ⑤ 手持 UGC | `handheld UGC camera motion, natural sway and reframing as if filmed by a friend` |
+ | ⑥ 横摇 | `the camera SLOWLY PANS from him across to the display table` |
+ | ⑦ 焦点转移 | `a rack focus shifting between his face and the object in his hands` |
+ | ⑧ 环绕 | `the camera arcs slowly around him in a shallow orbit` |
+ | ⑨ 快节奏 | `a fast punch-in / whip pan, snappy and aggressive` |
+
+ 🔴 **选了 ②–⑨ 任何一个，就绝不能再写 `hold the exact framing from the first frame to the last` 这类锁构图句** —— 那两句会打架，模型通常听锁死那一边（正负句比例决定模型听哪边，见 B-4）。要锁的只有**人和场景**，不是镜头。
+
+7. **🔴🔴 背景要不要「活」—— 独立一题，选了换背景就一定要问（2026-08-24 补）**
+
+ > 🔴 **换背景只问「换到哪」是不够的。** 模型给你的默认是**一张静止的照片**：云不飘、光不变、草场上一个人都没有 —— 前面站个会讲话的人，一看就是抠图贴上去。
+ > 🔴 **实测教训（04 支日新独中重绘 v1，50 cr）**：换成校园大草场后量过每一块 —— **天空 7 秒内平均只变 3–5/255（噪点级，等于冻住）**、山与楼带 15%、草地树叶 40%（唯一有点动的）、**全片草场一个人都没有**。背景对了，但是死的。
+ > 🔴 **判准（照这句自检）：把人遮住，只看背景那 7 秒 —— 它像一段影片，还是像一张照片？**
+
+ **问法（照抄 · 整个库列出来让他挑，可多选）：**
+
+ > **背景要不要「活」起来？（可以多选 —— 打号码给我）**
+ > **① 不用，背景静静的就好** —— 最干净、最不会乱。但会有一点「照片感」。
+ > **② 云在飘、树叶被风吹、草在晃** —— ⭐**最划算的一项**。加了这个，背景立刻从照片变影片，而且几乎不会出错。
+ > **③ 光影会变** —— 云飘过时地上的光暗一下、他脸上的光跟着呼吸。最能骗过眼睛，做对了很高级。
+ > **④ 背景远处有人** —— ⭐**校园片最关键的一项**。学生走过、远处有人在打球，草场就不会空得诡异。
+ > **⑤ 背景有活动在发生** —— 远处有比赛／有人在摊位前看东西／有人排队，热闹感。
+ > **⑥ 有旗子／横幅／气球在动** —— 校庆赛事场合很搭，风一吹就有活气。
+ > **⑦ 全都要（②③④⑤）** —— 最真，但也最容易乱（见下面风险）。
+ > **⑧ 其他** —— 你自己描述。
+
+ 🔴 **风险要先讲，别让他踩**：
+ - **② ⑥ 最安全** —— 动的是植物和布料，模型画错了也看不出来。**先加这两个。**
+ - **③ 中等** —— 光影变化会连人脸的光一起重算，路线 B 要留意脸的色调有没有跑掉。
+ - **④ ⑤ 最容易出丑** —— 远景人物是模型的重灾区：**脸糊成一团、多手多脚、走路姿势诡异**。所以 prompt 一定要写死三件事：**离得远 · 大多背对或侧对镜头 · 不抢焦（在景深外）**。
+ - **⑦ 全都要 ＝ 一次改很多处** —— 出问题分不清是哪一项害的，跟「一次全改」同一个坑。
+
+ **怎么写进 prompt（🔴 一律正面写法，别写 `no empty background` 这种禁令）：**
+
+ | 选项 | 写进 prompt 的句子 |
+ |---|---|
+ | ② 云／树／草 | `the background is ALIVE: the clouds drift slowly across the sky, the trees and grass sway gently in the breeze` |
+ | ③ 光影变化 | `the light breathes as a cloud passes — the sunlight on the ground and on his face dims slightly and comes back` |
+ | ④ 远处有人 | `far in the background, a few students walk across the field and some play ball, all of them SMALL and DISTANT, mostly facing away from camera, softly out of focus, never pulling attention from him` |
+ | ⑤ 有活动 | `in the far background a small crowd watches a game / browses a booth, small and distant, out of focus` |
+ | ⑥ 旗子横幅 | `banners and flags along the field ripple in the wind` |
+
+ 🔴 **④ ⑤ 一定要跟这句一起写**（否则远景人脸会糊成鬼）：`background people stay small, distant and soft — no readable faces, no close-up bystanders`。
+ 🔴 **别写成前景**：一律加 `far in the background`，不然模型会把人放到他旁边抢镜。
+
+8. **🔴🔴 背景要不要虚化一点（景深）—— 独立一题，换背景就一定要问（2026-08-24 补）**
+
+ > 🔴 **这是「假」最物理的来源，也是最容易被漏掉的一题。** 模型的默认是**每一层都同等锐利** —— 人、几十米外的教学楼、几百米外的山、远处草地，全部一样清楚。**真实镜头物理上不可能这样**，所以人脑一眼就知道不对，但讲不出哪里不对。
+ > 🔴 **实测数字（04 支日新独中 v1，量的边缘锐度）：脸 5.87 · 教学楼 7.93 · 山 8.00 · 远处草地 15.67** —— **背景比脸还锐**。这就是那支片「场景对了但还是假」的真正原因。
+ > 🔴 **判准**：由近到远，锐度应该**一路递减**。量出来「远处比脸锐」＝ 一定假。
+ > 💡 **顺带的好处**：虚化会**同时救掉远景人物画糊、背景招牌乱码**这两个毛病 —— 本来就该软的东西，糊了反而对。所以「背景有人」那一题选了 ④⑤ 的话，这一题更要加虚化。
+
+ **问法（照抄）：**
+
+ > **背景要不要虚化一点？（点一个）**
+ > **① 全部清晰** —— 背景跟人一样清楚。⚠️ 这是模型的默认，也是**最假**的那一种（远处比脸还锐）。除非你要观众看清背景的字或招牌，否则别选。
+ > **② 轻微虚化** —— ⭐**推荐**。背景稍微软一点，像手机人像模式温和版；场景还看得清楚，但层次出来了。
+ > **③ 中度虚化** —— 背景明显软，像用相机拍的，人非常突出。校园／山／天还认得出是什么，但细节没了。
+ > **④ 强虚化（奶油散景）** —— 背景化成一团光斑，最「电影」。⚠️ 校舍、招牌、远处的人**全都认不出了** —— 如果这支片要靠背景讲「这是日新的校园」，别选。
+ > **⑤ 分层：远景虚、近处的东西清楚** —— ⭐**产品片最好用**。他手上的盲盒和面前的展示台保持清晰，山和校舍软掉。
+ > **⑥ 其他** —— 你自己描述。
+
+ **怎么写进 prompt（🔴 写「物理」不写「风格」—— 写光圈和距离，模型比较听得懂）：**
+
+ | 选项 | 写进 prompt 的句子 |
+ |---|---|
+ | ① 全清晰 | `deep focus, everything from him to the far hill stays sharp`（⚠️ 等于默认，会假） |
+ | ② 轻微虚化 | `shot on a real camera at about f/4 — he is the sharpest thing in frame, the school buildings and hill behind fall gently softer with distance` |
+ | ③ 中度虚化 | `shot at about f/2.8, shallow depth of field — his face is crisp while the background is clearly soft` |
+ | ④ 强虚化 | `shot at about f/1.8, very shallow depth of field, the background melting into creamy bokeh` |
+ | ⑤ 分层 | `his face AND the blind-box in his hands stay crisp, the display table just slightly softer, and the buildings and hill well out of focus behind` |
+
+ 🔴 **必带这一句（不然模型只会均匀糊掉整张）**：`focus falls off with DISTANCE — the further away, the softer`。**要的是「按距离递减」，不是「整张变模糊」。**
+ 🔴 **路线 B 特别注意**：这一项**只动镜头的物理**，不动脸 → **是最安全的加真实感手段**（比换光、换动作都安全）。**换背景的时候顺手就该加。**
+
+9. **🔴 保留确认（问完改什么，马上问这一句）**：
  > 「除了〔第 2、3 题选的那一处〕，**其他全部保持原片不变**（脸 / 妆 / 衣服 / 发型 / 背景 / 手势 / 构图）—— 对吗？」
  > 🔴 **这题不能省**：扩散模型「没点名的就会被丢掉」（六轮 96 credits 换来的教训）—— 要保留什么，必须**在 prompt 里逐样点名**，不是不写就等于不变。他确认后，把这份「要保留清单」抄进 prompt 的 IDENTITY LOCK 段。
 
-6. **声音确认（照抄）**
+10. **声音确认（照抄）**
  > **声音怎么处理？（点一个）**
  > **① 用我原片的声音**（默认，推荐）—— 你讲的那段话原封不动，只有画面变
  > **② 我想重新配音** —— 🔴 那其实是「重讲一段新的话」＝**路线 A**，我带你回去从脚本开始做
@@ -1780,6 +1915,16 @@ HeyGen 开源（Apache-2.0 免费商用），HTML/CSS → 确定性 MP4。**做�
 只写 `hand movements` 不够 —— 会把举起的手换到画面另一边、还会把镜头推近。必须写：
 `her raised hand stays on the same side of the frame` +
 `the exact framing, camera distance and crop — do not push in, do not zoom, do not reframe tighter`
+
+**⑦ 锁构图的句子会把运镜一起钉死。**
+`hold the exact framing from the first frame to the last` / `do not push in, do not reframe` 这类句子本意是防止模型乱推镜、乱裁 —— 但它同时把**你想要的运镜**也一起压死了。
+**要锁的只有「人和场景」，不是「镜头」。** 选了运镜（②–⑨）就把锁构图句删掉，改成正面写运镜那一句。
+> 实测：04 支日新独中 v1 写了锁构图 → 8 个抽帧构图一模一样，完全死机位。
+
+**⑧ 换背景不写「活起来」＝ 换到一张照片前面。**
+模型给的默认背景是**静止**的：云不飘、光不变、场地上一个人都没有。
+实测量过 04 支 v1：**天空 7 秒平均只变 3–5/255（噪点级）**、草场全程无人。
+→ 换背景时**必须**额外写云／树／光／远处有人（见 B-1 第 7 题的句子表）；远景人物一定带 `far in the background … small, distant, softly out of focus, mostly facing away`。
 
 ### B-4 · 🔴🔴 否定句四条元规律（比单条铁律更重要 —— 扩散模型不处理否定）
 
