@@ -1,0 +1,551 @@
+<!--
+  templates/blueprint-service.html —— E 服务型官网页（作品集＋服务介绍）
+  agency／工作室／代运营／接案的「首页」。区块顺序见 SKILL.md 的 E 蓝图。
+
+  🔴 这份模板的价值不在文案，在【整套高级特效】—— 被嫌「没设计感／特效太小」时直接拿这份换档：
+     · 全屏 hero（100vh）＋ clamp() 巨型标题 ＋ 空心描边字／渐层字／衬线斜体三种混排
+     · 会慢飘的极光光晕 ×3（26/32/38 秒不同步）＋ SVG 噪点 ＋ 暗角
+     · 逐行遮罩揭幕 · 图位 clip-path 擦除 · 细线 scaleX 拉出
+     · 自订游标（hover 外圈放大）· 磁吸按钮 · 服务列表 hover 整行撑开
+     · 顶部滚动进度条 · 顶栏滚动变毛玻璃 · 数字 count-up · 巨型跑马灯双向对跑
+
+  🔴 白页红线（铁律 7）：所有隐藏态都挂在 .lg.js 底下，JS 第一行先 add('js')，
+     结尾有 setTimeout(showAll,3000) 兜底 —— 没 JS 的环境必须照样看得到全部内容。改的时候不准拆掉。
+
+  占位符（生成时替换）：
+    {{ACCENT}}      重点色正色（大标题／按钮／数字）
+    {{ACCENT_DEEP}} 重点色深一阶（11–13px 小标签用；亮底中彩度色对比度不足，见 Step 2.8）
+    {{ACCENT_RGB}}  重点色的 R,G,B（给 rgba() 用）
+    {{品牌名}} {{品牌名大写}} {{后缀}} {{handle}}
+    <FORMSLOT>      表单插槽：独立页塞 WhatsApp 表单，AutoCRM 版塞原生 form 注解
+
+  底色切换：亮底用 --nx:#FBF7F5 / --iv:#191219；深底把 --nx 换深色、--iv 换象牙白，
+  并把覆写层里的 grain(multiply→overlay)、暗角、描边字颜色一起翻过来。
+-->
+<style>
+:root{--nx:#FBF7F5;--nx2:#FFFFFF;--navy:#002B64;--gold:{{ACCENT}};--gold-2:#F2789F;--gold-s:rgba({{ACCENT_RGB}},.38);--iv:#191219;--iv-d:rgba(25,18,25,.62);--iv-f:rgba(25,18,25,.13)}
+.lg *{box-sizing:border-box;margin:0;padding:0}
+.lg{position:relative;background:var(--nx);color:var(--iv);font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:auto}
+.lg .serif{font-family:"Songti TC","Noto Serif TC","Source Han Serif TC",Georgia,serif}
+.lg .wrap{max-width:1180px;margin:0 auto;padding:0 30px;position:relative;z-index:3}
+
+/* grain + vignette */
+.lg .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='.5'/></svg>")}
+.lg .vig{position:fixed;inset:0;z-index:59;pointer-events:none;background:radial-gradient(120% 80% at 50% 40%,transparent 40%,rgba(0,0,0,.55) 100%)}
+
+/* progress + cursor */
+.lg .prog{position:fixed;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),#F0DFA6);z-index:70;transition:width .1s linear;box-shadow:0 0 14px var(--gold-s)}
+.lg .cur{position:fixed;width:9px;height:9px;border-radius:50%;background:var(--gold);z-index:80;pointer-events:none;opacity:0;transform:translate(-50%,-50%);transition:opacity .3s,width .3s,height .3s,background .3s}
+.lg .cur-r{position:fixed;width:40px;height:40px;border:1px solid var(--gold-s);border-radius:50%;z-index:79;pointer-events:none;opacity:0;transform:translate(-50%,-50%);transition:opacity .3s,width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1),border-color .3s}
+.lg.js.hascur .cur,.lg.js.hascur .cur-r{opacity:1}
+.lg.hover-big .cur-r{width:80px;height:80px;border-color:var(--gold)}
+@media(max-width:1024px){.lg .cur,.lg .cur-r{display:none}}
+
+/* aurora */
+.lg .aur{position:absolute;inset:-20% -20% auto -20%;height:150vh;z-index:0;pointer-events:none;filter:blur(90px);opacity:.55}
+.lg .aur i{position:absolute;display:block;border-radius:50%}
+.lg .aur i:nth-child(1){width:52vw;height:52vw;left:-6vw;top:-6vw;background:radial-gradient(circle,rgba(0,74,168,.55),transparent 68%);animation:fl1 26s ease-in-out infinite alternate}
+.lg .aur i:nth-child(2){width:44vw;height:44vw;right:-4vw;top:16vh;background:radial-gradient(circle,rgba(201,162,39,.22),transparent 66%);animation:fl2 32s ease-in-out infinite alternate}
+.lg .aur i:nth-child(3){width:60vw;height:60vw;left:22vw;top:52vh;background:radial-gradient(circle,rgba(0,43,100,.6),transparent 70%);animation:fl3 38s ease-in-out infinite alternate}
+@keyframes fl1{to{transform:translate3d(9vw,7vh,0) scale(1.16)}}
+@keyframes fl2{to{transform:translate3d(-11vw,10vh,0) scale(1.22)}}
+@keyframes fl3{to{transform:translate3d(6vw,-9vh,0) scale(.86)}}
+
+/* header */
+.lg .hd{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .5s,backdrop-filter .5s,border-color .5s,padding .5s;border-bottom:1px solid transparent;padding:26px 0}
+.lg.scrolled .hd{background:rgba(3,16,31,.72);backdrop-filter:blur(14px);border-color:var(--iv-f);padding:15px 0}
+.lg .hd .in{max-width:1180px;margin:0 auto;padding:0 30px;display:flex;justify-content:space-between;align-items:center}
+.lg .bn{font-size:14px;font-weight:700;letter-spacing:.34em;color:var(--iv)}
+.lg .bn i{font-style:normal;color:var(--gold);opacity:.9}
+.lg .hcta{font-size:11.5px;letter-spacing:.26em;color:var(--iv-d);text-decoration:none;border:1px solid var(--iv-f);padding:11px 20px;transition:.45s;position:relative;overflow:hidden}
+.lg .hcta:hover{color:var(--nx);border-color:var(--gold);background:var(--gold)}
+
+/* hero */
+.lg .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:150px 0 70px;position:relative;overflow:hidden}
+.lg .eyeb{display:flex;align-items:center;gap:16px;font-size:11.5px;letter-spacing:.34em;color:var(--gold);margin-bottom:44px}
+.lg .eyeb::before{content:"";width:0;height:1px;background:var(--gold);transition:width 1.3s cubic-bezier(.16,1,.3,1) .25s}
+.lg.on .eyeb::before{width:62px}
+.lg h1{font-size:clamp(50px,9.6vw,132px);line-height:1.02;font-weight:400;letter-spacing:-.028em}
+.lg h1 .ln{display:block;overflow:hidden}
+.lg h1 .ln>span{display:block;transform:translateY(0)}
+.lg.js h1 .ln>span{transform:translateY(105%);transition:transform 1.25s cubic-bezier(.16,1,.3,1)}
+.lg.js.on h1 .ln>span{transform:translateY(0)}
+.lg.js h1 .ln:nth-child(2)>span{transition-delay:.13s}
+.lg.js h1 .ln:nth-child(3)>span{transition-delay:.26s}
+.lg h1 .go{color:var(--gold);font-style:italic}
+.lg h1 .out{color:transparent;-webkit-text-stroke:1.4px var(--iv-d)}
+.lg .hbot{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:end;margin-top:70px}
+.lg .lede{font-size:18px;line-height:2.05;color:var(--iv-d);max-width:27em}
+.lg .lede b{color:var(--iv);font-weight:600}
+.lg .scrollhint{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.28em;color:var(--iv-d);margin-top:56px}
+.lg .scrollhint .bar{width:1px;height:52px;background:linear-gradient(var(--gold),transparent);animation:sc 2.2s ease-in-out infinite}
+@keyframes sc{0%,100%{transform:scaleY(.3);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
+
+/* buttons */
+.lg .btn{position:relative;display:inline-flex;align-items:center;gap:14px;padding:22px 46px;font-size:15.5px;font-weight:600;letter-spacing:.06em;color:var(--nx);text-decoration:none;background:var(--gold);border:0;cursor:pointer;overflow:hidden;isolation:isolate;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.lg .btn::before{content:"";position:absolute;inset:0;background:var(--iv);transform:translateY(101%);transition:transform .5s cubic-bezier(.16,1,.3,1);z-index:-1}
+.lg .btn:hover{transform:translateY(-4px);box-shadow:0 22px 48px -20px rgba(201,162,39,.75)}
+.lg .btn:hover::before{transform:translateY(0)}
+.lg .btn .ar{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.lg .btn:hover .ar{transform:translateX(7px)}
+.lg .fine{margin-top:20px;font-size:12.5px;color:var(--iv-d);line-height:1.9;letter-spacing:.02em}
+
+/* marquee big */
+.lg .mq{border-top:1px solid var(--iv-f);border-bottom:1px solid var(--iv-f);padding:26px 0;overflow:hidden;background:rgba(255,255,255,.015)}
+.lg .mq+.mq{border-top:0}
+.lg .mqin{display:flex;gap:52px;width:max-content;animation:mqa 30s linear infinite}
+.lg .mq.rev .mqin{animation:mqb 36s linear infinite}
+.lg .mqin span{font-size:clamp(26px,4.2vw,54px);line-height:1;letter-spacing:-.01em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(243,239,231,.4)}
+.lg .mqin span.f{color:var(--gold);-webkit-text-stroke:0}
+@keyframes mqa{to{transform:translateX(-50%)}}
+@keyframes mqb{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+
+/* sections */
+.lg section{padding:150px 0;position:relative;z-index:2}
+.lg .lbl{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.32em;color:var(--gold);margin-bottom:34px}
+.lg .lbl::before{content:"";width:38px;height:1px;background:var(--gold);transform-origin:left}
+.lg.js .lbl::before{transform:scaleX(0);transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.lg.js .rv.on .lbl::before{transform:scaleX(1)}
+.lg h2{font-size:clamp(31px,5.4vw,68px);line-height:1.18;font-weight:400;letter-spacing:-.022em;max-width:15em}
+.lg h2 .go{color:var(--gold);font-style:italic}
+.lg h2 .out{color:transparent;-webkit-text-stroke:1.1px var(--iv-d)}
+.lg .lead{margin-top:30px;font-size:17px;line-height:2.1;color:var(--iv-d);max-width:32em}
+
+/* reveal */
+.lg.js .rv{opacity:0;transform:translateY(46px)}
+.lg.js .rv.on{opacity:1;transform:none;transition:opacity 1.15s cubic-bezier(.16,1,.3,1),transform 1.15s cubic-bezier(.16,1,.3,1)}
+
+/* pains */
+.lg .pains{margin-top:80px}
+.lg .pain{display:grid;grid-template-columns:170px 1fr 1.35fr;gap:40px;align-items:start;padding:52px 0;border-top:1px solid var(--iv-f);position:relative;transition:padding-left .6s cubic-bezier(.16,1,.3,1)}
+.lg .pain::after{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--gold);transition:width 1s cubic-bezier(.16,1,.3,1)}
+.lg .pain:hover::after{width:100%}
+.lg .pain:hover{padding-left:22px}
+.lg .pain:last-child{border-bottom:1px solid var(--iv-f)}
+.lg .pain .pn{font-size:clamp(56px,8vw,104px);line-height:.9;color:transparent;-webkit-text-stroke:1px var(--iv-f);letter-spacing:-.04em;transition:.6s}
+.lg .pain:hover .pn{-webkit-text-stroke:1px var(--gold);color:rgba(201,162,39,.1)}
+.lg .pain h3{font-size:clamp(21px,2.6vw,30px);font-weight:400;line-height:1.45;letter-spacing:-.01em}
+.lg .pain p{font-size:16px;color:var(--iv-d);line-height:2.05}
+
+/* quote */
+.lg .qsec{padding:170px 0}
+.lg .q{font-size:clamp(28px,5vw,62px);line-height:1.32;font-weight:400;letter-spacing:-.025em;max-width:16em}
+.lg .q .go{color:var(--gold);font-style:italic}
+.lg .qmark{font-size:150px;line-height:.5;color:var(--gold);opacity:.22;display:block;margin-bottom:26px}
+.lg .qafter{margin-top:52px;font-size:17px;line-height:2.15;color:var(--iv-d);max-width:31em;padding-left:30px;border-left:1px solid var(--gold-s)}
+
+/* services list */
+.lg .svc{margin-top:76px;border-top:1px solid var(--iv-f)}
+.lg .sv{border-bottom:1px solid var(--iv-f);padding:44px 0;display:grid;grid-template-columns:120px 1fr auto;gap:36px;align-items:center;position:relative;overflow:hidden;transition:padding .55s cubic-bezier(.16,1,.3,1)}
+.lg .sv::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,rgba(201,162,39,.14),transparent);transition:width .7s cubic-bezier(.16,1,.3,1)}
+.lg .sv:hover{padding:52px 0 52px 26px}
+.lg .sv:hover::before{width:100%}
+.lg .sv>*{position:relative;z-index:1}
+.lg .svn{font-size:13px;letter-spacing:.24em;color:var(--gold);opacity:.7}
+.lg .sv h3{font-size:clamp(24px,3.6vw,44px);font-weight:400;letter-spacing:-.02em;line-height:1.3;transition:color .5s}
+.lg .sv:hover h3{color:var(--gold)}
+.lg .svgo{width:52px;height:52px;border:1px solid var(--iv-f);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--iv-d);transition:.55s;flex:none}
+.lg .sv:hover .svgo{background:var(--gold);border-color:var(--gold);color:var(--nx);transform:rotate(-45deg)}
+.lg .svbody{grid-column:2/4;max-height:0;overflow:hidden;opacity:0;transition:max-height .7s cubic-bezier(.16,1,.3,1),opacity .5s,margin .6s}
+.lg .sv:hover .svbody{max-height:340px;opacity:1;margin-top:22px}
+.lg .svbody p{font-size:16px;color:var(--iv-d);line-height:2.05;max-width:36em}
+.lg .svbody ul{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;list-style:none}
+.lg .svbody li{font-size:13px;letter-spacing:.04em;color:var(--iv-d);border:1px solid var(--iv-f);padding:8px 14px;border-radius:999px}
+.lg .svbody .fw{display:inline-block;margin-top:20px;font-size:12.5px;letter-spacing:.14em;color:var(--gold)}
+.lg .svhint{font-size:11.5px;letter-spacing:.2em;color:var(--iv-d);opacity:.5;margin-top:22px}
+
+/* stats */
+.lg .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:96px;border-top:1px solid var(--iv-f);border-bottom:1px solid var(--iv-f)}
+.lg .stat{padding:52px 34px;border-right:1px solid var(--iv-f);text-align:center}
+.lg .stat:last-child{border-right:0}
+.lg .stat .num{font-size:clamp(48px,7vw,86px);line-height:1;color:var(--gold);letter-spacing:-.04em}
+.lg .stat .cap{margin-top:16px;font-size:13px;letter-spacing:.2em;color:var(--iv-d)}
+
+/* work */
+.lg .works{margin-top:76px;display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.lg .ph{position:relative;overflow:hidden;background:rgba(255,255,255,.028);border:1px solid var(--iv-f);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:30px;transition:border-color .6s,transform .8s cubic-bezier(.16,1,.3,1)}
+.lg.js .ph{clip-path:inset(0 0 100% 0)}
+.lg.js .rv.on .ph{clip-path:inset(0 0 0 0);transition:clip-path 1.25s cubic-bezier(.16,1,.3,1),border-color .6s,transform .8s cubic-bezier(.16,1,.3,1)}
+.lg.js .rv.on .ph:nth-child(2){transition-delay:.14s}
+.lg.js .rv.on .ph:nth-child(3){transition-delay:.28s}
+.lg.js .rv.on .ph:nth-child(4){transition-delay:.42s}
+.lg .ph:hover{border-color:var(--gold-s);transform:translateY(-8px)}
+.lg .ph b{font-size:14.5px;letter-spacing:.12em;color:var(--gold);font-weight:500}
+.lg .ph small{font-size:12.5px;color:var(--iv-d);line-height:1.9}
+.lg .w-a{grid-column:span 2;aspect-ratio:4/5}
+.lg .w-wide{grid-column:span 6;aspect-ratio:16/5}
+
+/* steps */
+.lg .steps{margin-top:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:34px}
+.lg .st{position:relative;padding-top:30px}
+.lg .st::before{content:"";position:absolute;left:0;top:0;width:100%;height:1px;background:var(--iv-f);transform-origin:left}
+.lg .st::after{content:"";position:absolute;left:0;top:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.lg .rv.on .st::after{transform:scaleX(1)}
+.lg .rv.on .st:nth-child(2)::after{transition-delay:.18s}
+.lg .rv.on .st:nth-child(3)::after{transition-delay:.36s}
+.lg .rv.on .st:nth-child(4)::after{transition-delay:.54s}
+.lg .st b{display:block;font-size:11.5px;letter-spacing:.24em;color:var(--gold);margin-bottom:16px}
+.lg .st h4{font-size:21px;font-weight:400;margin-bottom:12px;letter-spacing:-.01em}
+.lg .st p{font-size:14.5px;color:var(--iv-d);line-height:2}
+
+/* why */
+.lg .whyg{margin-top:80px;display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+.lg .wy{padding:48px 48px 48px 0;border-top:1px solid var(--iv-f);position:relative;transition:.6s cubic-bezier(.16,1,.3,1)}
+.lg .wy:nth-child(even){padding-left:48px;border-left:1px solid var(--iv-f)}
+.lg .wy:hover{background:rgba(201,162,39,.045)}
+.lg .wy .wn{font-size:11.5px;letter-spacing:.24em;color:var(--gold);opacity:.75;margin-bottom:20px}
+.lg .wy h3{font-size:clamp(20px,2.4vw,27px);font-weight:400;line-height:1.45;margin-bottom:16px;letter-spacing:-.012em}
+.lg .wy p{font-size:15.5px;line-height:2.05;color:var(--iv-d)}
+
+/* testimonial */
+.lg .tst{margin-top:70px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lg .tst .ph{aspect-ratio:3/4}
+
+/* form */
+.lg .fgrid{display:grid;grid-template-columns:.95fr 1.05fr;gap:80px;align-items:start;margin-top:70px}
+.lg .faq .it{border-top:1px solid var(--iv-f);padding:26px 0}
+.lg .faq .it:last-child{border-bottom:1px solid var(--iv-f)}
+.lg .faq h4{font-size:12px;letter-spacing:.24em;color:var(--gold);margin-bottom:12px}
+.lg .faq p{font-size:16px;color:var(--iv-d);line-height:1.95}
+.lg .form{background:rgba(255,255,255,.035);border:1px solid var(--iv-f);padding:52px;backdrop-filter:blur(8px);position:relative}
+.lg .form::before{content:"";position:absolute;left:-1px;top:-1px;width:64px;height:1px;background:var(--gold)}
+.lg .form::after{content:"";position:absolute;left:-1px;top:-1px;width:1px;height:64px;background:var(--gold)}
+.lg .form h3{font-size:27px;font-weight:400;letter-spacing:-.015em;margin-bottom:10px}
+.lg .form .sm{font-size:14.5px;color:var(--iv-d);margin-bottom:34px}
+.lg .form label{display:block;font-size:11px;letter-spacing:.24em;color:var(--gold);margin:26px 0 10px}
+.lg .form label:first-of-type{margin-top:0}
+.lg .form input,.lg .form select{width:100%;background:transparent;border:0;border-bottom:1px solid var(--iv-f);border-radius:0;padding:13px 2px;font-size:16.5px;font-family:inherit;color:var(--iv);transition:border-color .45s}
+.lg .form select option{background:var(--nx2);color:var(--iv)}
+.lg .form input::placeholder{color:rgba(243,239,231,.3)}
+.lg .form input:focus,.lg .form select:focus{outline:0;border-color:var(--gold)}
+.lg .form .btn{width:100%;justify-content:center;margin-top:40px}
+.lg .form .ff{margin-top:20px;font-size:12.5px;color:var(--iv-d);line-height:1.9}
+
+/* end */
+.lg .end{padding:190px 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--iv-f)}
+.lg .end .bg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:clamp(130px,23vw,340px);line-height:1;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px rgba(243,239,231,.07);white-space:nowrap;z-index:0}
+.lg .end h2{margin:0 auto;max-width:15em}
+.lg .end .lead{margin:28px auto 0}
+.lg .end .btn{margin-top:52px}
+.lg .ft{border-top:1px solid var(--iv-f);padding:40px 30px}
+.lg .ft .in{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:11.5px;letter-spacing:.24em;color:var(--iv-d)}
+.lg .todo{max-width:1180px;margin:30px auto;background:rgba(201,162,39,.09);border:1px solid var(--gold-s);padding:24px 26px;font-size:13.5px;color:var(--iv-d);line-height:2}
+.lg .todo b{color:var(--gold)}
+
+@media(max-width:960px){
+.lg .hbot,.lg .steps,.lg .whyg,.lg .fgrid,.lg .tst,.lg .stats{grid-template-columns:1fr!important;gap:28px}
+.lg .pain{grid-template-columns:82px 1fr;gap:22px}.lg .pain p{grid-column:2}
+.lg .sv{grid-template-columns:74px 1fr auto;gap:18px}.lg .svbody{max-height:none;opacity:1;margin-top:18px}
+.lg .works{grid-template-columns:repeat(2,1fr)}.lg .w-a,.lg .w-wide{grid-column:span 2;aspect-ratio:16/10}
+.lg section{padding:82px 0}.lg .qsec{padding:96px 0}.lg .end{padding:110px 0}
+.lg .form{padding:30px}.lg .wy,.lg .wy:nth-child(even){padding:34px 0;border-left:0}
+.lg .stat{border-right:0;border-bottom:1px solid var(--iv-f)}
+}
+
+/* ===== 亮底 · 玫紅 覆寫層 ===== */
+.lg{background:var(--nx);color:var(--iv)}
+.lg .grain{opacity:.34;mix-blend-mode:multiply}
+.lg .vig{background:radial-gradient(120% 80% at 50% 38%,transparent 45%,rgba(120,70,95,.13) 100%)}
+.lg .prog{background:linear-gradient(90deg,var(--gold),#FFB08C);box-shadow:0 0 12px rgba({{ACCENT_RGB}},.5)}
+
+/* 極光：玫紅 → 蜜桃 → 淡紫，亮底要更淡更大 */
+.lg .aur{opacity:.85;filter:blur(110px)}
+.lg .aur i:nth-child(1){background:radial-gradient(circle,rgba({{ACCENT_RGB}},.34),transparent 68%)}
+.lg .aur i:nth-child(2){background:radial-gradient(circle,rgba(255,176,140,.34),transparent 66%)}
+.lg .aur i:nth-child(3){background:radial-gradient(circle,rgba(196,140,220,.26),transparent 70%)}
+
+.lg.scrolled .hd{background:rgba(251,247,245,.8)}
+.lg .hcta{color:var(--iv-d);border-color:var(--iv-f)}
+.lg .hcta:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+
+/* 標題：描邊字改墨色，重點字走玫紅漸層 */
+.lg h1 .out,.lg h2 .out{-webkit-text-stroke:1.3px rgba(25,18,25,.32)}
+.lg h1 .go,.lg h2 .go,.lg .q .go{background:linear-gradient(100deg,var(--gold),#FF9A7B);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* 按鈕：玫紅漸層 + 白字，hover 翻墨底 */
+.lg .btn{background:linear-gradient(100deg,var(--gold),#F5779B);color:#fff}
+.lg .btn::before{background:var(--iv)}
+.lg .btn:hover{box-shadow:0 22px 48px -20px rgba({{ACCENT_RGB}},.6)}
+.lg .btn span{position:relative;z-index:1}
+
+.lg .mqin span{-webkit-text-stroke:1px rgba(25,18,25,.26)}
+.lg .mqin span.f{color:var(--gold)}
+.lg .mq{background:rgba({{ACCENT_RGB}},.035)}
+
+.lg .pain .pn{-webkit-text-stroke:1px rgba(25,18,25,.16)}
+.lg .pain:hover .pn{-webkit-text-stroke:1px var(--gold);color:rgba({{ACCENT_RGB}},.09)}
+.lg .pain::after{background:linear-gradient(90deg,var(--gold),transparent)}
+
+.lg .sv::before{background:linear-gradient(90deg,rgba({{ACCENT_RGB}},.10),transparent)}
+.lg .svgo{border-color:var(--iv-f);color:var(--iv-d)}
+.lg .sv:hover .svgo{background:var(--gold);border-color:var(--gold);color:#fff}
+.lg .svbody li{border-color:var(--iv-f);background:rgba(255,255,255,.6)}
+
+.lg .stats{border-color:var(--iv-f)}
+.lg .stat .num{background:linear-gradient(100deg,var(--gold),#FF9A7B);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* 圖位：白卡 + 柔陰影 */
+.lg .ph{background:#fff;border:1px solid var(--iv-f);box-shadow:0 2px 20px -12px rgba(25,18,25,.18)}
+.lg .ph:hover{border-color:var(--gold-s);box-shadow:0 26px 54px -26px rgba({{ACCENT_RGB}},.45)}
+.lg .ph b{color:var(--gold)}
+
+.lg .wy:hover{background:rgba({{ACCENT_RGB}},.05)}
+.lg .qafter{border-left-color:var(--gold-s)}
+.lg .qmark{opacity:.3}
+
+/* 表單：白卡 + 玫紅直角 + 柔陰影 */
+.lg .form{background:#fff;border-color:var(--iv-f);box-shadow:0 30px 70px -40px rgba(25,18,25,.4);backdrop-filter:none}
+.lg .form select option{background:#fff;color:var(--iv)}
+.lg .form input::placeholder{color:rgba(25,18,25,.3)}
+
+/* 收尾區：深玫紅漸層，做整頁唯一的深色反差 */
+.lg .end{background:linear-gradient(140deg,#2A0C1B 0%,#5A123C 48%,#8E1E54 100%);border-top:0;color:#FFF6F9}
+.lg .end h2{color:#FFF6F9}
+.lg .end h2 .go{background:linear-gradient(100deg,#FFB6CF,#FFD2AE);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lg .end .lead{color:rgba(255,246,249,.8)}
+.lg .end .bg{-webkit-text-stroke:1px rgba(255,255,255,.11)}
+.lg .end .btn{background:#fff;color:#8E1E54}
+.lg .end .btn::before{background:#FFE3EC}
+.lg .end .btn:hover{color:#8E1E54;box-shadow:0 22px 48px -20px rgba(0,0,0,.5)}
+
+.lg .ft{background:#2A0C1B;border-top:0}
+.lg .ft .in{color:rgba(255,246,249,.55)}
+.lg .todo{background:rgba({{ACCENT_RGB}},.08);border-color:var(--gold-s);color:var(--iv-d)}
+.lg .todo b{color:var(--gold)}
+
+
+/* 小字用深一階玫紅：{{ACCENT}} 在亮底只有 3.2 對比度，11px 小標會發虛 */
+.lg .lbl,.lg .svn,.lg .wn,.lg .st b,.lg .faq h4,.lg .form label,.lg .svbody .fw,.lg .eyeb,.lg .ph b{color:{{ACCENT_DEEP}}}
+.lg .lbl::before,.lg .eyeb::before{background:{{ACCENT_DEEP}}}
+.lg .form::before,.lg .form::after{background:var(--gold)}
+
+</style>
+
+<div class="lg" id="lgroot">
+<div class="grain"></div><div class="vig"></div>
+<div class="prog" id="lgprog"></div><div class="cur" id="lgcur"></div><div class="cur-r" id="lgcurr"></div>
+
+<header class="hd"><div class="in">
+  <div class="bn">{{品牌名}} <i>{{后缀}}</i></div>
+  <a class="hcta" href="#form">免費了解你的業務</a>
+</div></header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="aur"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="eyeb">MALAYSIA · CONTENT · ADS · LANDING PAGE</div>
+    <h1 class="serif">
+      <span class="ln"><span>你不缺曝光，</span></span>
+      <span class="ln"><span>缺的是<em class="go">會成交</em></span></span>
+      <span class="ln"><span>的 <em class="out">lead</em>。</span></span>
+    </h1>
+    <div class="hbot">
+      <div>
+        <p class="lede">內容、廣告、落地頁 —— <b>一條線交給我們做</b>。<br>你只負責回覆那些主動來問價的人。</p>
+        <div class="scrollhint"><span class="bar"></span>SCROLL</div>
+      </div>
+      <div>
+        <a class="btn mag" href="#form"><span>免費了解你的業務</span><span class="ar">→</span></a>
+        <p class="fine">先聊清楚你卡在哪，再談要不要合作。<br>不推方案 · 不綁約 · 這一段不收費。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mq"><div class="mqin">
+  <span>到店服務老闆娘</span><span class="f">·</span><span>中小企老闆</span><span class="f">·</span><span>房產／保險顧問</span><span class="f">·</span>
+  <span>到店服務老闆娘</span><span class="f">·</span><span>中小企老闆</span><span class="f">·</span><span>房產／保險顧問</span><span class="f">·</span>
+</div></div>
+<div class="mq rev"><div class="mqin">
+  <span class="f">社媒代運營</span><span>·</span><span class="f">廣告投放代管</span><span>·</span><span class="f">內容包</span><span>·</span><span class="f">落地頁設計</span><span>·</span>
+  <span class="f">社媒代運營</span><span>·</span><span class="f">廣告投放代管</span><span>·</span><span class="f">內容包</span><span>·</span><span class="f">落地頁設計</span><span>·</span>
+</div></div>
+
+<!-- PAIN -->
+<section class="rv"><div class="wrap">
+  <div class="lbl">你是不是也這樣</div>
+  <h2 class="serif">不是你的生意不行，<br>是沒有人幫你把<em class="go">「為什麼該選你」</em>講清楚。</h2>
+  <div class="pains">
+    <div class="pain"><div class="pn serif">01</div><h3 class="serif">廣告錢花了，<br>看不到回報</h3><p>每個月照樣付，報表照樣收，可是「這筆錢到底換回什麼」始終沒有人說得清楚。不敢停，也不敢加。</p></div>
+    <div class="pain"><div class="pn serif">02</div><h3 class="serif">你太忙了，<br>內容根本做不完</h3><p>知道要發、也知道要拍，但生意本身就忙不過來。發一輪停三個月，帳號永遠在重新開始。</p></div>
+    <div class="pain"><div class="pn serif">03</div><h3 class="serif">發了很久，<br>還是沒人問價</h3><p>貼文有人按讚，客人卻沒有多。曝光不等於生意 —— 中間那一段「讓人想問你」的東西，一直缺著。</p></div>
+  </div>
+</div></section>
+
+<!-- QUOTE -->
+<section class="qsec rv"><div class="wrap">
+  <div class="lbl">問題出在哪</div>
+  <span class="qmark serif">“</span>
+  <p class="q serif">錯的不是你 —— 是<em class="go">「內容歸內容、廣告歸廣告」</em>這種做法。</p>
+  <p class="qafter">很多生意的內容、廣告、頁面，是三批人在做，彼此不知道對方在幹嘛：內容不知道廣告要跑什麼，廣告把人帶到一個沒有在說服人的頁面，最後誰也說不清問題斷在哪一段。<br><br>我們把這三段接成一條線 —— 內容讓人認識你，廣告把對的人帶過來，落地頁把他變成一個來問價的人。同一個團隊做，斷在哪裡就看得出來。</p>
+</div></section>
+
+<!-- SERVICES -->
+<section class="rv"><div class="wrap">
+  <div class="lbl">我們做什麼</div>
+  <h2 class="serif">四項服務。可以只做一項，<br>也可以<em class="go">整條線</em>交給我們。</h2>
+  <div class="svc">
+    <div class="sv"><div class="svn">01</div><h3 class="serif">社媒代運營月包</h3><div class="svgo">↗</div>
+      <div class="svbody"><p>從選題、文案、設計到排期發佈，整個帳號交給我們顧。你只需要每個月確認方向。</p>
+        <ul><li>內容企劃與選題規劃</li><li>圖文／短片製作</li><li>排期發佈</li><li>留言初步回覆</li><li>每月成效檢視</li></ul>
+        <span class="fw">最適合 · 忙到沒空做內容的老闆</span></div></div>
+    <div class="sv"><div class="svn">02</div><h3 class="serif">廣告投放代管</h3><div class="svgo">↗</div>
+      <div class="svbody"><p>Meta／Google。從受眾、素材到出價與優化，一個窗口負責到底；錢花在哪、換回什麼，用你聽得懂的話講。</p>
+        <ul><li>受眾與素材規劃</li><li>投放設定</li><li>日常優化</li><li>白話成效報告</li><li>與內容、頁面互相配合</li></ul>
+        <span class="fw">最適合 · 投過廣告但看不出回報</span></div></div>
+    <div class="sv"><div class="svn">03</div><h3 class="serif">內容包（只交成品）</h3><div class="svgo">↗</div>
+      <div class="svbody"><p>不代運營，只交成品 —— 你自己發、自己回。適合想建立個人形象、但素材永遠不夠用的人。</p>
+        <ul><li>圖文貼文／輪播</li><li>短片腳本與成品</li><li>知識型內容</li><li>一批交付，你自由安排</li></ul>
+        <span class="fw">最適合 · 房產／保險顧問做個人 IP</span></div></div>
+    <div class="sv"><div class="svn">04</div><h3 class="serif">落地頁設計＋搬家</h3><div class="svgo">↗</div>
+      <div class="svbody"><p>把「會說服人」的那一頁做出來，再搬進你現有的系統（GHL／AS／WordPress），不用重建整套。</p>
+        <ul><li>成交結構與文案</li><li>頁面設計</li><li>手機版</li><li>搬去你指定的工具</li><li>表單／WhatsApp 接好</li></ul>
+        <span class="fw">最適合 · 有流量但頁面留不住人</span></div></div>
+  </div>
+  <p class="svhint">— 滑過每一項看細節 —</p>
+  <div class="stats">
+    <div class="stat"><div class="num serif" data-count="4">4</div><div class="cap">項服務</div></div>
+    <div class="stat"><div class="num serif" data-count="3">3</div><div class="cap">段接成一條線</div></div>
+    <div class="stat"><div class="num serif" data-count="1">1</div><div class="cap">個窗口負責到底</div></div>
+  </div>
+</div></section>
+
+<!-- WORK -->
+<section class="rv" id="work"><div class="wrap">
+  <div class="lbl">作品</div>
+  <h2 class="serif">我們自己也在做內容 ——<br><em class="out">不是紙上談兵</em>。</h2>
+  <p class="lead">客戶的案子放上來之前都會先取得對方同意；沒有拿到同意的，我們寧可留白。</p>
+  <div class="works">
+    <div class="ph w-a"><b>客戶作品 01</b><small>800 × 1000<br>實際交付的圖文／輪播<br>🔴 需客戶同意</small></div>
+    <div class="ph w-a"><b>客戶作品 02</b><small>800 × 1000<br>另一個行業的成品</small></div>
+    <div class="ph w-a"><b>客戶作品 03</b><small>800 × 1000<br>短片封面或成品截圖</small></div>
+    <div class="ph w-wide"><b>後台數據截圖</b><small>1400 × 440 · 廣告後台／洞察畫面 —— 🔴 需客戶同意；數字只用來說明「看得懂發生了什麼」，不當成果承諾</small></div>
+  </div>
+</div></section>
+
+<!-- STEPS -->
+<section class="rv"><div class="wrap">
+  <div class="lbl">合作流程</div>
+  <h2 class="serif">合作起來長這樣。</h2>
+  <div class="steps">
+    <div class="st"><b>STEP 01</b><h4 class="serif">了解你的業務</h4><p>先聊清楚你賣什麼、客人從哪來、現在卡在哪一段。免費，也不推方案。</p></div>
+    <div class="st"><b>STEP 02</b><h4 class="serif">提出做法</h4><p>依你的情況建議先做哪一段、做多久、大概要投入什麼。你覺得合理才往下。</p></div>
+    <div class="st"><b>STEP 03</b><h4 class="serif">開始執行</h4><p>內容／廣告／頁面照排期跑，過程你看得到，不會消失一個月才出現。</p></div>
+    <div class="st"><b>STEP 04</b><h4 class="serif">每月檢視</h4><p>用白話講這個月發生了什麼、下個月調哪裡。看不懂的，我們負責講到你懂。</p></div>
+  </div>
+</div></section>
+
+<!-- WHY -->
+<section class="rv"><div class="wrap">
+  <div class="lbl">為什麼選我們</div>
+  <h2 class="serif">你要找的不是一間會交報告的公司，<br>是一個<em class="go">講得清楚、也做得出來</em>的團隊。</h2>
+  <div class="whyg">
+    <div class="wy"><div class="wn">理由 01</div><h3 class="serif">數據講得清楚，不只交報告</h3><p>每個月的檢視用你聽得懂的話講：錢花在哪、發生了什麼、下一步調哪裡。我們不承諾具體數字，但你一定看得懂發生了什麼事。</p></div>
+    <div class="wy"><div class="wn">理由 02</div><h3 class="serif">一站式：內容 → 廣告 → 頁面</h3><p>三段同一個團隊做，彼此對得上。不用找三家供應商，也不用自己夾在中間傳話。</p></div>
+    <div class="wy"><div class="wn">理由 03</div><h3 class="serif">我們自己也在做內容</h3><p>{{品牌名}} 自己的帳號就在跑。方法先用在自己身上，跑得通才拿來服務客戶。</p></div>
+    <div class="wy"><div class="wn">理由 04</div><h3 class="serif">懂本地市場，也懂女性客群</h3><p>馬來西亞華文市場、以女性顧客為主的生意 —— 美容、零售、服務業 —— 是我們最熟的一塊。</p></div>
+  </div>
+</div></section>
+
+<!-- TESTIMONIAL -->
+<section class="rv"><div class="wrap">
+  <div class="lbl">客戶怎麼說</div>
+  <h2 class="serif">這一區<em class="go">只放真的</em>。</h2>
+  <p class="lead">截圖或原話拿到之後才放上來，在那之前保持留白 —— 寧缺勿造。</p>
+  <div class="tst">
+    <div class="ph"><b>見證 01</b><small>WhatsApp 截圖<br>或：客戶名 ＋ 生意類型 ＋ 一句原話</small></div>
+    <div class="ph"><b>見證 02</b><small>盡量找不同行業的<br>覆蓋面比較廣</small></div>
+    <div class="ph"><b>見證 03</b><small>放不滿三則就先放兩則</small></div>
+  </div>
+</div></section>
+
+<!-- FORM -->
+<section class="rv" id="form"><div class="wrap">
+  <div class="lbl">下一步</div>
+  <h2 class="serif">先讓我們<em class="go">了解你的業務</em>。</h2>
+  <div class="fgrid">
+    <div class="faq">
+      <div class="it"><h4>會聊什麼</h4><p>你賣什麼、客人現在從哪來、之前試過什麼、卡在哪一段。</p></div>
+      <div class="it"><h4>要多久</h4><p>大約 15–30 分鐘，WhatsApp 文字或通話都可以。</p></div>
+      <div class="it"><h4>會不會被硬銷</h4><p>不會。不適合我們會直說，也可以只給你方向自己去做。</p></div>
+      <div class="it"><h4>收不收費</h4><p>這一段不收費。</p></div>
+    </div>
+    <FORMSLOT>
+  </div>
+</div></section>
+
+<!-- END -->
+<section class="end rv">
+  <div class="bg serif">{{品牌名大写}}</div>
+  <div class="wrap">
+    <h2 class="serif">想像下個月，來問你價錢的人<br><em class="go">是自己找上門的</em>。</h2>
+    <p class="lead">你不用先變成一個很會做內容的人 ——<br>你只需要一個把這件事接下來的團隊。</p>
+    <a class="btn mag" href="#form"><span>免費了解你的業務</span><span class="ar">→</span></a>
+  </div>
+</section>
+
+<div class="ft"><div class="in"><span>{{品牌名大写}} STUDIO</span><span>@{{品牌名大写}}_STUDIO</span><span>MALAYSIA</span></div></div>
+
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('lgroot');if(!root)return;
+  root.classList.add('js');
+  requestAnimationFrame(function(){setTimeout(function(){root.classList.add('on')},120)});
+
+  var els=root.querySelectorAll('.rv');
+  function showAll(){for(var i=0;i<els.length;i++)els[i].classList.add('on')}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    for(var i=0;i<els.length;i++)io.observe(els[i]);
+  }else{showAll()}
+  setTimeout(showAll,3000);
+
+  // scroll progress + header state
+  var prog=document.getElementById('lgprog'),tick=false;
+  function onScroll(){
+    if(tick)return;tick=true;
+    requestAnimationFrame(function(){
+      var h=document.documentElement.scrollHeight-window.innerHeight;
+      var p=h>0?(window.pageYOffset/h)*100:0;
+      if(prog)prog.style.width=p+'%';
+      root.classList.toggle('scrolled',window.pageYOffset>70);
+      tick=false;
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // custom cursor (desktop only)
+  if(window.matchMedia('(min-width:1025px)').matches&&window.matchMedia('(pointer:fine)').matches){
+    var c=document.getElementById('lgcur'),r=document.getElementById('lgcurr'),cx=0,cy=0,rx=0,ry=0;
+    root.classList.add('hascur');
+    document.addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;if(c){c.style.left=cx+'px';c.style.top=cy+'px'}});
+    (function loop(){rx+=(cx-rx)*.14;ry+=(cy-ry)*.14;if(r){r.style.left=rx+'px';r.style.top=ry+'px'}requestAnimationFrame(loop)})();
+    root.querySelectorAll('a,button,.sv,.ph,.pain').forEach(function(el){
+      el.addEventListener('mouseenter',function(){root.classList.add('hover-big')});
+      el.addEventListener('mouseleave',function(){root.classList.remove('hover-big')});
+    });
+    // magnetic buttons
+    root.querySelectorAll('.mag').forEach(function(b){
+      b.addEventListener('mousemove',function(e){var q=b.getBoundingClientRect();
+        b.style.transform='translate('+((e.clientX-q.left-q.width/2)*.18)+'px,'+((e.clientY-q.top-q.height/2)*.3-4)+'px)'});
+      b.addEventListener('mouseleave',function(){b.style.transform=''});
+    });
+  }
+
+  // count-up
+  var nums=root.querySelectorAll('.num[data-count]');
+  if('IntersectionObserver' in window){
+    var io2=new IntersectionObserver(function(en){en.forEach(function(x){
+      if(!x.isIntersecting)return;io2.unobserve(x.target);
+      var el=x.target,target=parseInt(el.getAttribute('data-count'),10)||0,st=null;
+      function step(t){if(!st)st=t;var p=Math.min((t-st)/1100,1);el.textContent=Math.round(target*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)}
+      requestAnimationFrame(step);
+    })},{threshold:.5});
+    for(var j=0;j<nums.length;j++)io2.observe(nums[j]);
+  }
+})();
+</script>
