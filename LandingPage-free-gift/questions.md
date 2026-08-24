@@ -1,4 +1,4 @@
-# questions.md —— 《AI 一键落地页》完整提问清单
+# questions.md —— 《AI Landing Page》完整提问清单
 
 > 规矩：**一题一张选项卡**（`AskUserQuestion`），能做选项就做选项，绝不一次全倒。
 > `[读md或问]` = 先读 01-branding 的品牌/业务 md，读到就用、不问；读不到才问。

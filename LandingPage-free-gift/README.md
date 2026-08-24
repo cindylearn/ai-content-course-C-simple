@@ -1,4 +1,4 @@
-# 🧲 AI 一键落地页（LandingPage-free-gift）
+# 🧲 AI Landing Page（LandingPage-free-gift）
 
 答几题选择题 → 自动做出一个**会成交的销售单页**，同时吐两版
 （贴 AutoCRM 用 / 独立上线用）。成交结构预装在模板里，**你不用碰 code**。
@@ -64,7 +64,7 @@ examples/suma-lp.html     SUMA 真实落地页，当活范例
 ```
 
 > 图文教程 PDF **不放在这个资料夹**（装 skill 时会白白吃掉 token）——
-> 在课程 repo 的 `交付物-doc-pdf-ppt/` 里：`AI一键落地页-使用教程.pdf`、
+> 在课程 repo 的 `交付物-doc-pdf-ppt/` 里：`AI-Landing-Page_使用教程.pdf`、
 > 以及两份赠品合一的 `Bonus-Gift_使用教程.pdf`。
 
 > 只做**静态销售单页**。dashboard／会员系统／自动跟进／CRM／支付＝ Jared 的 AI Business 课，这里故意不做。
