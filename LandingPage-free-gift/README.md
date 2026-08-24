@@ -14,7 +14,7 @@
 https://github.com/cindylearn/ai-content-course-C-simple/tree/main/LandingPage-free-gift
 ```
 
-装完 **重开 Claude**。
+**装完就能用了。**
 
 ## 用
 
@@ -24,7 +24,7 @@ https://github.com/cindylearn/ai-content-course-C-simple/tree/main/LandingPage-f
 
 或输入 `/ai-onepage-lp`。
 
-> 打斜杠显示「Unknown command」＝还没重开 Claude；重开一次再打，或直接说上面那句话。
+> 打斜杠没反应？重开一次 Claude 再试，或直接说上面那句话。
 
 ---
 

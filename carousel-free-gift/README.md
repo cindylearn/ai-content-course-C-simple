@@ -14,7 +14,7 @@
 https://github.com/cindylearn/ai-content-course-C-simple/tree/main/carousel-free-gift
 ```
 
-装完 **重开 Claude**。
+**装完就能用了。**（打斜杠没反应就重开一次 Claude 再试）
 
 第一次跑图之前还要装一次浏览器引擎（只需一次）：
 
